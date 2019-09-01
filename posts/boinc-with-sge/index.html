@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>Integrating BOINC with Sun Grid Engine :: Nathan Vaughn — Adventures in programming and tech</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Background Recently, I setup a small High-Performance Computing (HPC) cluster for Iowa State&amp;rsquo;s solar car team. This cluster was primarily used for running Computational Fluid Dynamics (CFD) and MATLAB code. However, whenever the team was in the build phase and not actively designing the next car, the cluster sat idle the vast majority of the time. We decided that we should donate the extra compute time to scientific research."/>
+<meta name="keywords" content="[programming tech]"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://blog.nathanv.me/posts/boinc-with-sge/" />
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css">
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/img/favicon.png"/>
+
+<meta name="twitter:title" content="Integrating BOINC with Sun Grid Engine"/>
+<meta name="twitter:description" content="Getting BOINC to work on a High-Performance Cluster that uses Sun Grid Engine for job scheduling to donate extra compute time"/>
+
+
+
+<meta property="og:title" content="Integrating BOINC with Sun Grid Engine" />
+<meta property="og:description" content="Getting BOINC to work on a High-Performance Cluster that uses Sun Grid Engine for job scheduling to donate extra compute time" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/boinc-with-sge/" />
+
+<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png" />
+<meta property="article:published_time" content="2019-07-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-07-05T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
+
+
+<meta name="theme-color" content="#7ec699">
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" width="44" height="44" viewBox="0 0 44 44">
+  <polyline fill="none" stroke="#000" stroke-width="2" points="15 8 29.729 22.382 15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">Nathan Vaughn</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://nathanv.me">Homepage</a></li>
+        
+      
+        
+          <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://nathanv.me">Homepage</a></li>
+      
+    
+      
+        <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  <div class="post">
+    <h2 class="post-title"><a href="https://blog.nathanv.me/posts/boinc-with-sge/">Integrating BOINC with Sun Grid Engine</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">
+            2019-07-05
+        </span>
+      
+      <span class="post-author">— Written by Nathan Vaughn</span>
+      
+        <span class="post-read-time">— 5 min read</span>
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://blog.nathanv.me/tags/high-performance-computing/">High-Performance Computing</a>&nbsp;
+        
+          #<a href="https://blog.nathanv.me/tags/sun-grid-engine/">Sun Grid Engine</a>&nbsp;
+        
+          #<a href="https://blog.nathanv.me/tags/boinc/">BOINC</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+
+<h2 id="background">Background</h2>
+
+<p>Recently, I setup a small High-Performance Computing (HPC) cluster for Iowa State&rsquo;s
+solar car team. This cluster was primarily used for running
+Computational Fluid Dynamics (CFD) and MATLAB code. However, whenever the team
+was in the build phase and not actively designing the next car, the cluster
+sat idle the vast majority of the time. We decided that we should donate the extra
+compute time to scientific research.</p>
+
+<h2 id="introducing-boinc">Introducing BOINC</h2>
+
+<p>We decided that BOINC would be the best way to donate our extra compute time.
+In case you&rsquo;re not aware, <a href="https://boinc.berkeley.edu/" rel="noreferrer" target="_blank">BOINC</a> stands for
+Berkeley Open Infrastructure for Network Computing. Basically,
+it&rsquo;s a way for people to have their personal computers
+donate extra computational capacity to various scientific research projects and
+is run by University of California, Berkeley. Being designed for home computers
+will prove to be problematic.</p>
+
+<h2 id="installing-boinc">Installing BOINC</h2>
+
+<p>The first challenge was simply installing BOINC. To avoid as many configuration changes
+as possible, we prefer to install applications to our network file share rather than
+locally on each compute node. Also, all of our compute nodes are headless, and BOINC
+usually ships with a GUI manager. This quickly rules out simply using the
+package manager and the prebuilt binaries available are severely out-of date. This
+leaves us with compiling from source.</p>
+
+<pre><code class="language-bash"># change directories to network file share
+cd /share/apps
+# clone repo
+git clone https://github.com/BOINC/boinc
+# move into repo
+cd boinc
+# run setup script
+./_autosetup
+# run configure script with file share path, and disable GUI BOINC manager
+./configure --prefix=&quot;/share/apps/boinc&quot; --disable-manager
+# run make multithreaded
+make -j
+</code></pre>
+
+<h2 id="creating-account-s">Creating Account(s)</h2>
+
+<p>In order to use BOINC, you need to create an account with each project you want
+to contribute to and attach your hosts to it. This can be extremely tedious,
+so using a service like <a href="https://boincstats.com/en/bam/" rel="noreferrer" target="_blank">BOINC Account Manager</a> (BAM)
+is highly recommended. Once you select some projects, you can also check the option
+&ldquo;Attach new host by default?&rdquo; so that everything is automatic.</p>
+
+<p>The only issue I&rsquo;ve had with BAM, is that my work profile was not being added to new
+hosts by default.</p>
+
+<h2 id="configuring-sge">Configuring SGE</h2>
+
+<p>The next challenge was that BOINC is designed to only be run on a single computer
+and is <em>not</em> built around Message Passing Interface (MPI) like most applications that
+run on HPC clusters. To get around this, we created a separate queue in our job
+scheduler (Son of Grid Engine (SGE, an open-source fork of Sun Grid Engine)) with a
+single slot per compute node, so that if a BOINC job got scheduled on a node,
+it would be reserved the entire node. Make sure that the user account you will be
+using for BOINC has access to this queue and the compute nodes.</p>
+
+<h3 id="important-setting">Important Setting</h3>
+
+<p>An important setting needs to be set in SGE so that other jobs have higher priority.
+For every other queue that you have, set the BOINC-specific queue to be a subordinate
+with a max slot count as 1. That way, if <strong>any</strong> other jobs come into the queue, they
+will take priority over the BOINC job.</p>
+
+<h2 id="starting-boinc">Starting BOINC</h2>
+
+<p>Next, we need to setup how BOINC will be launched.</p>
+
+<h3 id="array-job">Array Job</h3>
+
+<p>Launching a job across multiple hosts is easy with SGE with array jobs. We can write
+a small Bash script to parse how many slots are available in the BOINC queue
+and launch an array job for that many:</p>
+
+<pre><code class="language-bash">#!/bin/bash
+
+BOINC_SLOTS=`qstat -g c -q boinc.q | tail -1 | sed -e &quot;s/ [ ]*/ /g&quot; | cut --delim=\  -f 5`
+
+qsub -q boinc.q -t 1-${BOINC_SLOTS} -o boinc_out.txt -j y -cwd -N Boinc /home/boinc/runBoinc.sh
+</code></pre>
+
+<h3 id="boinc-client">BOINC Client</h3>
+
+<p>Launching the client is trickier. BOINC doesn&rsquo;t like sharing a directory with other
+running instances, so each host needs it&rsquo;s own directory to work out of. Also, we want
+to attach each instance to our account manager. Lastly, we need to launch the client
+in interactive mode so the job is considered running by SGE. If you let BOINC
+launch in the background like it wants to by default, SGE will think the job
+has completed and mark the node as available.</p>
+
+<p>Example script:</p>
+
+<pre><code class="language-bash">#!/bin/bash
+
+USERNAME=yourusername
+PASSWORD=yourpassword
+HOST=`hostname -s`
+
+CLIENT_BASE=/share/apps/boinc/client/
+DATA_BASE=/home/boinc/boinc_data
+
+DATA_DIR=$DATA_BASE/$HOST
+
+# stop any existing instances
+pkill boinc_client
+
+echo &quot;Creating data directory $DATA_DIR&quot;
+mkdir -p $DATA_DIR
+
+echo &quot;Clearing lockfile&quot;
+rm -f $DATA_DIR/lockfile
+
+# start the client
+echo &quot;Starting BOINC client&quot;
+$CLIENT_BASE/boinc_client --daemon --dir $DATA_DIR
+
+# wait for client to start
+echo &quot;Waiting for BOINC client to start&quot;
+sleep 5
+
+cd $DATA_DIR
+# make sure account is joined
+echo &quot;Attaching account manager&quot;
+$CLIENT_BASE/boinccmd --join_acct_mgr http://bam.boincstats.com $USERNAME $PASSWORD || true
+# sync
+echo &quot;Syncing account manager&quot;
+$CLIENT_BASE/boinccmd --acct_mgr sync
+
+# stop client from daemon mode and restart on interactive
+echo &quot;Stopping BOINC client&quot;
+$CLIENT_BASE/boinccmd --quit
+
+# give the client time to stop
+sleep 60
+pkill boinc_client
+
+echo &quot;Restarting BOINC client in interactive mode&quot;
+$CLIENT_BASE/boinc_client --dir $DATA_DIR
+
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>That&rsquo;s it! You should now be able to run your array job submission script which will
+start a BOINC process on each available host. If any new jobs come in, the BOINC
+jobs will be paused until the entire host is available again.</p>
+
+<h3 id="references">References</h3>
+
+<ul>
+<li><a href="https://boinc.berkeley.edu/wiki/Boinccmd_tool#Miscellaneous" rel="noreferrer" target="_blank">https://boinc.berkeley.edu/wiki/Boinccmd_tool#Miscellaneous</a></li>
+<li><a href="http://wiki.gridengine.info/wiki/index.php/Integrating_BOINC_and_Grid_Engine" rel="noreferrer" target="_blank">http://wiki.gridengine.info/wiki/index.php/Integrating_BOINC_and_Grid_Engine</a></li>
+<li><a href="https://boinc.berkeley.edu/wiki/Client_configuration_#Command-line_options" rel="noreferrer" target="_blank">https://boinc.berkeley.edu/wiki/Client_configuration_#Command-line_options</a></li>
+</ul>
+
+    </div>
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://blog.nathanv.me/posts/self-host-docker/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Self-Hosting with Docker and Argo Tunnel</span>
+              </a>
+            </span>
+          
+          
+        </div>
+      </div>
+    
+
+    <script src="https://utteranc.es/client.js"
+        repo="nathanvaughn/blog.nathanv.me"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" width="44" height="44" viewBox="0 0 44 44">
+  <polyline fill="none" stroke="#000" stroke-width="2" points="15 8 29.729 22.382 15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">Nathan Vaughn</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span>© 2019 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
+        <span>Theme created by <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-91853319-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+  </body>
+</html>

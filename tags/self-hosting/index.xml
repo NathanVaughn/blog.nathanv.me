@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>self-hosting on Nathan Vaughn</title>
+    <link>https://blog.nathanv.me/tags/self-hosting/</link>
+    <description>Recent content in self-hosting on Nathan Vaughn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 07 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.nathanv.me/tags/self-hosting/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Self-Hosting with Docker and Argo Tunnel</title>
+      <link>https://blog.nathanv.me/posts/self-host-docker/</link>
+      <pubDate>Sun, 07 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/self-host-docker/</guid>
+      <description>Background For the past few years, I&amp;rsquo;ve rented a VPS to host some web apps for myself. I&amp;rsquo;ve done this since I&amp;rsquo;ve lived in college apartments behind a NAT and I wanted to be able to access these services from the outside world. Also, running locally, I wouldn&amp;rsquo;t be able to setup HTTPS other than self-signed certs. Yuck.
+However, with Cloudflare&amp;rsquo;s new service, Argo Tunnel, and poor financial decisions a server I bought on Craigslist, I decided to move my apps to be hosted on-premise.</description>
+    </item>
+    
+  </channel>
+</rss>

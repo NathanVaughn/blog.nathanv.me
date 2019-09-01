@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>Self-Hosting with Docker and Argo Tunnel :: Nathan Vaughn — Adventures in programming and tech</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Background For the past few years, I&amp;rsquo;ve rented a VPS to host some web apps for myself. I&amp;rsquo;ve done this since I&amp;rsquo;ve lived in college apartments behind a NAT and I wanted to be able to access these services from the outside world. Also, running locally, I wouldn&amp;rsquo;t be able to setup HTTPS other than self-signed certs. Yuck.
+However, with Cloudflare&amp;rsquo;s new service, Argo Tunnel, and poor financial decisions a server I bought on Craigslist, I decided to move my apps to be hosted on-premise."/>
+<meta name="keywords" content="[programming tech]"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://blog.nathanv.me/posts/self-host-docker/" />
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css">
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/img/self-host-docker/hp_dl_360_g5.jpg"/>
+
+<meta name="twitter:title" content="Self-Hosting with Docker and Argo Tunnel"/>
+<meta name="twitter:description" content="Moving my personal web apps from the cloud to self-hosted infrastructure"/>
+
+
+
+<meta property="og:title" content="Self-Hosting with Docker and Argo Tunnel" />
+<meta property="og:description" content="Moving my personal web apps from the cloud to self-hosted infrastructure" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/self-host-docker/" />
+
+<meta property="og:image" content="https://blog.nathanv.me/img/self-host-docker/hp_dl_360_g5.jpg" />
+<meta property="article:published_time" content="2019-07-07T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-07-07T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
+
+
+<meta name="theme-color" content="#7ec699">
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" width="44" height="44" viewBox="0 0 44 44">
+  <polyline fill="none" stroke="#000" stroke-width="2" points="15 8 29.729 22.382 15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">Nathan Vaughn</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://nathanv.me">Homepage</a></li>
+        
+      
+        
+          <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://nathanv.me">Homepage</a></li>
+      
+    
+      
+        <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  <div class="post">
+    <h2 class="post-title"><a href="https://blog.nathanv.me/posts/self-host-docker/">Self-Hosting with Docker and Argo Tunnel</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">
+            2019-07-07
+        </span>
+      
+      <span class="post-author">— Written by Nathan Vaughn</span>
+      
+        <span class="post-read-time">— 12 min read</span>
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://blog.nathanv.me/tags/docker/">Docker</a>&nbsp;
+        
+          #<a href="https://blog.nathanv.me/tags/self-hosting/">self-hosting</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+
+<h2 id="background">Background</h2>
+
+<p>For the past few years, I&rsquo;ve rented a VPS to host some web apps for myself. I&rsquo;ve done
+this since I&rsquo;ve lived in college apartments behind a NAT and I wanted to be able
+to access these services from the outside world. Also, running locally, I wouldn&rsquo;t
+be able to setup HTTPS other than self-signed certs. Yuck.</p>
+
+<p>However, with Cloudflare&rsquo;s new service,
+<a href="https://www.cloudflare.com/products/argo-tunnel/" rel="noreferrer" target="_blank">Argo Tunnel</a>,
+and <del>poor financial decisions</del> a server I bought on Craigslist,
+I decided to move my apps to be hosted on-premise.</p>
+
+
+  <figure class="center" >
+    <img src="/img/self-host-docker/hp_dl_360_g5.jpg"  alt="HP DL360 G5 with dual Xeon E5410s and 64GB of RAM"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >HP DL360 G5 with dual Xeon E5410s and 64GB of RAM</figcaption>
+    
+  </figure>
+
+
+
+<h2 id="decision-to-use-docker">Decision to Use Docker</h2>
+
+<p>Previously, my $5/month Linode VPS only had 1GB of RAM, so memory was at a premium.
+Because of this, I exclusively used applications built on a LAMP stack
+so they could share each other&rsquo;s stack.
+While this did help with memory, security wasn&rsquo;t great, and incompatibilities
+between things like MySQL and PHP versions made life difficult. This is also
+significantly limited what apps I could use for myself.</p>
+
+<p>Now that I have a server with more memory than I know what to do with, I wanted to
+try out some virtualization technologies. I figured if the experiment went well,
+I would move all my applications to my server. I decided to try out Docker and
+containerization first since that&rsquo;s all the rage now. If Docker didn&rsquo;t
+work out, I would try traditional VMs with VSphere, ESXi, Proxmox, or something.</p>
+
+<h2 id="what-are-containers">What are containers?</h2>
+
+<p>Docker containers behave a lot like Virtual Machines (VMs). However, under-the-hood,
+they&rsquo;re completely different. Instead of running a full-blown operating system,
+they actually share the host&rsquo;s kernel, and run off of that. The processes inside a
+container are actually processes under the host OS. However, to the processes in the
+container, it&rsquo;s like they are in their own OS. The filesystem is sandboxed
+from the host (unless you decide to provide access to specific directories)
+and containers even get their own network interface. Compared to VMs, containers
+have a <strong>much</strong> lower memory footprint, and are super fast to start. Neat!</p>
+
+<pre><code>nathan@zeus:[~]$ sudo /usr/bin/landscape-sysinfo
+
+  System load:                    0.15
+  Usage of /:                     18.1% of 133.52GB
+  Memory usage:                   10%
+  Swap usage:                     0%
+  Processes:                      377
+  Users logged in:                1
+  IP address for enp22s0f1:       172.20.1.193
+  IP address for br-d99eb9eae6a2: 172.22.0.1
+  IP address for docker0:         172.17.0.1
+  IP address for br-48843a63cc0c: 172.24.0.1
+  IP address for br-b799383b2034: 172.26.0.1
+  IP address for br-ab6f5666082e: 172.27.0.1
+  IP address for br-e2cb99d7f99f: 172.28.0.1
+  IP address for br-fb8873ceab0c: 172.30.0.1
+  IP address for br-87cfeddb1a48: 172.31.0.1
+  IP address for br-47045830e86b: 192.168.0.1
+  IP address for br-7799754001bc: 192.168.32.1
+  IP address for br-3780ddef1e2f: 192.168.64.1
+</code></pre>
+
+
+  <figure class="center" >
+    <img src="/img/self-host-docker/docker_vs_vm.png"  alt="Docker vs VM diagram"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Docker vs VM diagram (Image from https://blog.docker.com/2018/08/containers-replacing-virtual-machines/)</figcaption>
+    
+  </figure>
+
+
+
+<h2 id="docker-setup">Docker Setup</h2>
+
+<p>After choosing to try out containers with Docker,
+I quickly decided upon using <a href="https://docs.docker.com/compose/" rel="noreferrer" target="_blank">Docker Compose</a> rather
+than standard Docker. As far as I can tell, Docker Compose and Docker will let you
+do the same things, but Docker Compose allows you to create defined <code>.yml</code> files
+to run multi-container applications. To me, it seems like the difference is really just
+defining your configuration in a file rather than the command line.</p>
+
+<p>Instead of this:</p>
+
+<pre><code class="language-bash">docker run -d --restart unless-stopped --log-opt max-size=10m \
+  -v freshrss-data:/var/www/FreshRSS/data \
+  -e CRON_MIN=4,34 \
+  -e TZ=Europe/Paris \
+  --label traefik.port=80 \
+  --label traefik.frontend.rule=Host:freshrss.example.net \
+  --label traefik.frontend.headers.forceSTSHeader=true \
+  --label traefik.frontend.headers.STSSeconds=31536000 \
+  --name freshrss freshrss/freshrss
+</code></pre>
+
+<p>You have this:</p>
+
+<pre><code class="language-docker">version: '3'
+services:
+  freshrss:
+    container_name: freshrss
+    image: freshrss/freshrss
+    environment:
+      - CRON_MIN=4,34
+      - TZ=Europe/Paris
+    volumes:
+      - 'freshrss-data:/var/www/FreshRSS/data'
+    restart: unless-stopped
+    labels:
+      - traefik.port=80
+      - traefik.frontend.rule=Host:freshrss.example.net
+      - traefik.frontend.headers.forceSTSHeader=true
+      - traefik.frontend.headers.STSSeconds=31536000
+</code></pre>
+
+<p>Working off some examples, I made a Docker Compose file for each
+of my applications, each in their own folder. For security, I have every app restricted
+to their own network (which Docker Compose will do by default).</p>
+
+<pre><code>~/dockerfiles
+│
+└───app1
+│   │   docker-compose.yml
+│
+└───app2
+│   │   docker-compose.yml
+│   │   .env
+│
+...
+</code></pre>
+
+<p>For applications that need it, I also opted to create an environment file which contains
+secrets like the MySQL account password, rather putting secrets in the actual config
+files which are tracked by Git. This is easily done with the <code>env_file</code>
+parameter in the <code>docker-compose.yml</code> file. I go into this more below.</p>
+
+<pre><code class="language-docker">env_file:
+  - ./.env
+</code></pre>
+
+<p>In order to start or stop them all quickly, I wrote a small Python script which will
+<code>sudo docker-compose up -d</code> or <code>sudo docker-compose down</code> all the
+various Compose stacks.</p>
+
+<h2 id="networking">Networking</h2>
+
+<p>This is where the real key is. Since my server lives behind a university firewall,
+and I want to access applications running on it from the outside world, I need
+to use some sort of tunnel.
+I opted to use Cloudflare&rsquo;s new service, Argo Tunnel to accomplish this. Basically,
+you install the command-line client on your server. You connect it to your locally
+running application, it automatically creates a persistent tunnel into Cloudflare&rsquo;s
+network, and creates the appropriate DNS record for your domain. Argo Tunnel is included
+free with <a href="https://www.cloudflare.com/products/argo-smart-routing/" rel="noreferrer" target="_blank">Argo</a> which is
+$5/month/domain. It&rsquo;s also $0.10/GB of bandwidth after the first gigabyte per month.
+The only limit is a hard cap of 1000 tunnels per account.
+So far so good.</p>
+
+<p>However, Cloudflare&rsquo;s <a href="https://developers.cloudflare.com/argo-tunnel/reference/docker/" rel="noreferrer" target="_blank">official instructions</a>
+of how to use Argo Tunnel with Docker containers kinda suck and is very manual. No good.
+I initially tried to use an <a href="https://github.com/jwilder/nginx-proxy" rel="noreferrer" target="_blank">nginx reverse proxy</a>
+and have a single tunnel coming out of the Docker host, but wasn&rsquo;t able to get it to work.
+Then, I came across <a href="https://github.com/aschzero/hera" rel="noreferrer" target="_blank">Hera</a>.</p>
+
+<p>Hera is a Docker container which automatically monitors your containers and creates
+tunnels based on two labels you apply to your containers. This was perfect!
+Every application could have it&rsquo;s own tunnel independent of each other and it was
+completely automated. The only two labels you need to apply to each container
+is the desired hostname and the port the service runs on <strong>inside the container</strong>.</p>
+
+<p>To make this work, I put all the containers that had a web server into a shared
+network with the Hera container. I kept web servers and database servers in a stack
+sharing their own private network like before. As I didn&rsquo;t really want to create one
+<strong>mega</strong> <code>docker-compose.yml</code> file, I have the Hera container create the network,
+then all the web servers reference it as an external network.</p>
+
+<p>Hera <code>docker-compose.yml</code>:</p>
+
+<pre><code class="language-docker">version: '3'
+
+services:
+  app:
+    image: 'aschzero/hera:latest'
+    networks:
+      - tunnel
+    restart: unless-stopped
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
+      - '/home/nathan/certs:/certs'
+
+networks:
+  tunnel:
+</code></pre>
+
+<p>Sample application <code>docker-compose.yml</code>:</p>
+
+<pre><code class="language-docker">version: '3'
+
+services:
+  app:
+    depends_on:
+      - db
+    image: 'app/app:latest'
+    labels:
+      hera.hostname: app.example.com
+      hera.port: '80'
+    networks:
+      - default
+      - hera_tunnel
+    ports:
+      - '127.0.0.1:1001:80'
+    restart: unless-stopped
+    volumes:
+      - 'app_data:/var/www/'
+
+  db:
+    image: 'mysql:latest'
+    networks:
+      - default
+    restart: unless-stopped
+    volumes:
+      - 'db_data:/var/lib/mysql'
+
+networks:
+  default:
+    internal: true
+  hera_tunnel:
+    external: true
+
+volumes:
+  app_data:
+    driver: local
+  db_data:
+    driver: local
+</code></pre>
+
+<p>The port being exposed to the host (<code>1001</code> in the example above) isn&rsquo;t important
+as Hera only cares about the port <strong>inside</strong> the container. It just needs to be unique
+as you can&rsquo;t have duplicates. I simply started at 1000 and started counting up.</p>
+
+<p>Yes, I could probably also just run a container with the <code>cloudflared</code> daemon as part of
+each stack, but I didn&rsquo;t see a regularly updated image available.</p>
+
+<h3 id="note-about-domains">Note About Domains</h3>
+
+<p>Cloudflare Argo is billed per <strong>domain</strong>. This means without doubling your monthly cost,
+you can&rsquo;t create tunnels for two domains. I have a short domain I like to use for
+image hosting and link shortening, so this sucked. However, I figured out a simple
+workaround. Simply create the tunnel on your main domain to whatever subdomain you
+want, then just <code>CNAME</code> your second domain to the tunnel subdomain.</p>
+
+<p>Example:</p>
+
+<pre><code>Link Shortener (app) -&gt; linkshortener.example.com (Tunnel) -&gt; xmpl.com  (CNAME DNS)
+</code></pre>
+
+<h2 id="security">Security</h2>
+
+<p>Now that I have my applications accessible from the outside world, I would like to
+secure them more than their built-in login forms. Niche software developed by amateur
+programmers isn&rsquo;t always the most secure. For this, I opted to go with
+<a href="https://www.cloudflare.com/products/cloudflare-access/" rel="noreferrer" target="_blank">Cloudflare Access</a>. This
+is a pretty cool service. Basically, this allows you to add authentication via
+a multitude of providers, in front of any application you have using Cloudflare DNS,
+with extremely granular control. The great thing is that it&rsquo;s free for up to
+5 users/month, even for the Premium offering. Yes, this does create a single point
+of failure for all of my applications, but Cloudflare outages are pretty rare and
+minimal.</p>
+
+<p>Using Cloudflare Access, I&rsquo;ve basically whitelisted all my services to only be able
+to be accessed by my Google Account. However, many applications have their own
+API routes with their own authentication, and can&rsquo;t handle Cloudflare Access
+in front of it, so I have to create bypass rules for those.</p>
+
+<p>Lastly, I bind the host port of each container to only the host so that it can&rsquo;t
+be accessed even from the local network (my only exception to this right now is
+Nextcloud while I sync a bunch of data the first time to avoid paying for Argo
+bandwidth).</p>
+
+<pre><code class="language-docker">ports:
+    - '127.0.0.1:1001:80'
+</code></pre>
+
+<h2 id="useful-tools">Useful Tools</h2>
+
+<h3 id="portainer">Portainer</h3>
+
+<p><a href="https://www.portainer.io" rel="noreferrer" target="_blank">Portainer</a> is an absolutely incredible tool for
+managing Docker. You can easily view container logs,
+launch a console connected to a container, start and stop containers,
+manage volumes and networks, and more all from a web interface. It makes interacting
+with Docker so much easier.</p>
+
+
+  <figure class="center" >
+    <img src="/img/self-host-docker/portainer.jpg"  alt="Screenshot of Portainer interface"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Screenshot of Portainer interface</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="netdata">Netdata</h3>
+
+<p>While not specifically Docker-related, I recently found out about
+<a href="https://www.netdata.cloud/" rel="noreferrer" target="_blank">Netdata</a>. Netdata is an all-in-one performance monitoring
+tool for Linux servers. While similar to Grafana + Prometheus, the appeal is that
+everything is configured out-of-the-box.
+It&rsquo;s a really beautiful interface with a <strong>ton</strong> of statistics available. While not
+particularly customizable, the amount of information is immense, and it integrates
+well with Docker so you can see which container specifically is hogging all your
+CPU.</p>
+
+
+  <figure class="center" >
+    <img src="/img/self-host-docker/netdata.jpg"  alt="Screenshot of Netdata statistics"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Screenshot of Netdata statstics</figcaption>
+    
+  </figure>
+
+
+
+<h2 id="backups">Backups</h2>
+
+<p>One of the most important parts of any hosting operation is backups. I backup the data
+and configurations I use for Docker in 3 places.</p>
+
+<h3 id="docker-compose-files">Docker Compose files</h3>
+
+<p>The Docker Compose files I&rsquo;ve built are stored in a private Git repository on
+my GitHub account.</p>
+
+<h3 id="docker-secrets">Docker Secrets</h3>
+
+<p>All of my secrets (MySQL passwords, SMTP login, etc.) are stored as secure notes
+in my <a href="https://lastpass.com/f?14012062" rel="noreferrer" target="_blank">LastPass</a> account.</p>
+
+<h3 id="data">Data</h3>
+
+<p>Every night, I have setup an instance of <a href="https://www.duplicati.com/" rel="noreferrer" target="_blank">Duplicati</a>
+to backup the entire contents of <code>/var/lib/docker/volumes</code> to a
+<a href="https://www.backblaze.com/b2/cloud-storage.html" rel="noreferrer" target="_blank">Backblaze B2</a> bucket,
+and email me a report.
+While I probably <em>should</em> stop all containers before doing this, in a low
+usage-scenario like mine, I&rsquo;ve never had any issues. I chose to use Backblaze B2
+versus AWS S3 or Google Cloud because I&rsquo;ve been a big fan of their
+service for a long time, and their pricing is really good
+($0.005/GB/month with the first 10GB free).</p>
+
+<h2 id="automation">Automation</h2>
+
+<p>As much as I love tinkering with things, I do like making the machines work for me.</p>
+
+<h3 id="docker-container-updates">Docker Container Updates</h3>
+
+<p>Every night, an instance of <a href="https://github.com/containrrr/watchtower" rel="noreferrer" target="_blank">Watchtower</a>
+runs and updates any container which has a new image version available.
+While probably not the best for a true production environment,
+as this is just for myself, I don&rsquo;t mind living life dangerously.</p>
+
+<h3 id="host-os-updates">Host OS Updates</h3>
+
+<p>I setup both <code>apticron</code> and <code>unattended-upgrades</code> on the Ubuntu Server host
+so that I get emails about available package updates, and automatic security
+update reports.</p>
+
+<h3 id="backups-1">Backups</h3>
+
+<p>As mentioned above, a Duplicati container creates a backup every night and emails
+a report.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+
+  <figure class="center" >
+    <img src="/img/self-host-docker/server_diagram.jpg"  alt="Rough diagram of final setup"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Rough diagram of final setup</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="things-i-m-happy-with">Things I&rsquo;m Happy With</h3>
+
+<p>Overall, I&rsquo;m extremely pleased with how everything turned out. I understand all the
+hype of containers now. Containers make it so easy to quickly run applications
+in a consistent way in a pseudo virtual machine. I&rsquo;ve really come to love them just for
+trying things out. Instead of launching a new VM just to try to
+<a href="https://xkcd.com/1168/" rel="noreferrer" target="_blank">remember the proper flags for a <code>tar</code> command</a>, I can quickly
+launch a disposable Ubuntu container and be immediately dumped into a shell.</p>
+
+<pre><code class="language-docker">sudo docker run -it ubuntu
+</code></pre>
+
+<p>All in all, my applications now are running on my server in my apartment while being securely
+accessible from the outside world, while costing nearly the same as before. Everything
+is automatically updated along with nightly off-site backups with email reports.</p>
+
+<h3 id="things-i-m-not-happy-with">Things I&rsquo;m Not Happy With</h3>
+
+<h4 id="docker-mysql">Docker MySQL</h4>
+
+<p>With hosting all my apps on the same stack in the past, they all shared the same
+MySQL server. Now, with Docker, every application has its own MySQL server, as there
+is no easy way to have multiple databases and users created automatically with the
+MySQL Docker image without creating some special bash scripts.
+This just seems strange to me, as SQL servers are meant to
+handle multiple databases, and running a bunch of extra instances is a lot of
+unnecessary memory overhead.</p>
+
+<h4 id="docker-secrets-1">Docker Secrets</h4>
+
+<p>I feel like Docker doesn&rsquo;t really have a <em>great</em> way to manage secrets. Right now, you can
+<a href="https://docs.docker.com/engine/swarm/secrets/" rel="noreferrer" target="_blank">create secrets with Docker</a>,
+but they are only made available to containers via files and are only
+available for Docker Swarms.
+This sucks, because nearly every container uses environment variables to handle secrets.
+Unless you add some shims to your Dockerfiles to support loading values from
+files into environment variables, you&rsquo;re out of luck. This essentially forces you
+to either pass them on the command-line, or put them into environment files.</p>
+
+<h4 id="argo-pricing">Argo Pricing</h4>
+
+<p>Cloudflare Argo charges $0.10/GB after the first gigabyte of data. This means I
+have be <strong>very</strong> careful in what I upload/download from my server via the tunnels,
+especially with bandwidth heavy stuff like Nextcloud. Unfortunately, really
+solving this problem would require me to use a different service
+which charges differently, or hosting my own solution, which I talk about more below.</p>
+
+<h3 id="future-work">Future Work</h3>
+
+<p>The biggest limitation that bothers me is that Argo Tunnel only works for HTTP traffic.
+This means that I can&rsquo;t run any sort of game servers that work over TCP traffic
+without using a service like <a href="https://serveo.net" rel="noreferrer" target="_blank">Serveo</a> or <a href="https://ngrok.com/" rel="noreferrer" target="_blank">ngrok</a>
+on an ad-hoc basis. I could use a <code>f1-micro</code> instance in the free-tier of
+<a href="https://cloud.google.com/free/" rel="noreferrer" target="_blank">Google Cloud</a> to run
+a server with Serveo or <a href="https://github.com/fatedier/frp" rel="noreferrer" target="_blank">frp</a> or something.
+However, I really like how well Argo Tunnel <i>Just Works</i>™ with Hera. I could
+also potentially restructure everything with a Traefik reverse-proxy on the Docker
+host, and then use an ngrok tunnel for the same price, as ngrok allows
+tunneling TCP traffic, and doesn&rsquo;t charge based on bandwidth usage.
+However, I have more faith in Cloudflare as a significantly larger company with a
+long history.</p>
+
+<h3 id="references">References</h3>
+
+<ul>
+<li><a href="https://help.ubuntu.com/lts/serverguide/automatic-updates.html" rel="noreferrer" target="_blank">https://help.ubuntu.com/lts/serverguide/automatic-updates.html</a></li>
+<li><a href="https://www.linode.com/docs/email/postfix/postfix-smtp-debian7/" rel="noreferrer" target="_blank">https://www.linode.com/docs/email/postfix/postfix-smtp-debian7/</a></li>
+</ul>
+
+    </div>
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+        <div class="pagination__buttons">
+          
+            <span class="button previous">
+              <a href="https://blog.nathanv.me/posts/docker-mysql-to-mariadb/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Converting MySQL 8 Docker Containers to MariaDB</span>
+              </a>
+            </span>
+          
+          
+            <span class="button next">
+              <a href="https://blog.nathanv.me/posts/boinc-with-sge/">
+                <span class="button__text">Integrating BOINC with Sun Grid Engine</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+    <script src="https://utteranc.es/client.js"
+        repo="nathanvaughn/blog.nathanv.me"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" width="44" height="44" viewBox="0 0 44 44">
+  <polyline fill="none" stroke="#000" stroke-width="2" points="15 8 29.729 22.382 15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">Nathan Vaughn</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span>© 2019 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
+        <span>Theme created by <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-91853319-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+  </body>
+</html>
