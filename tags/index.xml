@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Nathan Vaughn</title>
+    <link>https://blog.nathanv.me/tags/</link>
+    <description>Recent content in Tags on Nathan Vaughn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.nathanv.me/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>HP</title>
+      <link>https://blog.nathanv.me/tags/hp/</link>
+      <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/hp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ProLiant</title>
+      <link>https://blog.nathanv.me/tags/proliant/</link>
+      <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/proliant/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ubuntu</title>
+      <link>https://blog.nathanv.me/tags/ubuntu/</link>
+      <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/ubuntu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://blog.nathanv.me/tags/docker/</link>
+      <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MariaDB</title>
+      <link>https://blog.nathanv.me/tags/mariadb/</link>
+      <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/mariadb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MySQL</title>
+      <link>https://blog.nathanv.me/tags/mysql/</link>
+      <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>self-hosting</title>
+      <link>https://blog.nathanv.me/tags/self-hosting/</link>
+      <pubDate>Sun, 07 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/self-hosting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BOINC</title>
+      <link>https://blog.nathanv.me/tags/boinc/</link>
+      <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/boinc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>High-Performance Computing</title>
+      <link>https://blog.nathanv.me/tags/high-performance-computing/</link>
+      <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/high-performance-computing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sun Grid Engine</title>
+      <link>https://blog.nathanv.me/tags/sun-grid-engine/</link>
+      <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/sun-grid-engine/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

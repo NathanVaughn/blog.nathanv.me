@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>Installing HP ProLiant Utilities on Ubuntu Server :: Nathan Vaughn — Adventures in programming and tech</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Background As mentioned in my &amp;ldquo;Self-Hosting with Docker and Argo Tunnel&amp;rdquo; post, I bought a HP DL360 G5 server a little while back. I&amp;rsquo;m most comfortable with Ubuntu Server, so I opted to install that on the sever. I recently learned that HP has utilities you can install on Linux to modify and view system-level settings and information, which is pretty cool.
+I wanted to try them out, however, my server being a Gen 5, has not been supported for a long time and Ubuntu isn&amp;rsquo;t part of the of the group of OSs (Red Hat and SUSE) that get Service Packs."/>
+<meta name="keywords" content="[programming tech]"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://blog.nathanv.me/posts/hp-utilities-ubuntu/" />
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css">
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/img/favicon.png"/>
+
+<meta name="twitter:title" content="Installing HP ProLiant Utilities on Ubuntu Server"/>
+<meta name="twitter:description" content="Installing HPE Linux Management Component Pack on Ubuntu on a Gen 5 server"/>
+
+
+
+<meta property="og:title" content="Installing HP ProLiant Utilities on Ubuntu Server" />
+<meta property="og:description" content="Installing HPE Linux Management Component Pack on Ubuntu on a Gen 5 server" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/hp-utilities-ubuntu/" />
+
+<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png" />
+<meta property="article:published_time" content="2019-07-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-07-21T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
+
+
+<meta name="theme-color" content="#7ec699">
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" width="44" height="44" viewBox="0 0 44 44">
+  <polyline fill="none" stroke="#000" stroke-width="2" points="15 8 29.729 22.382 15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">Nathan Vaughn</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://nathanv.me">Homepage</a></li>
+        
+      
+        
+          <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://nathanv.me">Homepage</a></li>
+      
+    
+      
+        <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  <div class="post">
+    <h2 class="post-title"><a href="https://blog.nathanv.me/posts/hp-utilities-ubuntu/">Installing HP ProLiant Utilities on Ubuntu Server</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">
+            2019-07-21
+        </span>
+      
+      <span class="post-author">— Written by Nathan Vaughn</span>
+      
+        <span class="post-read-time">— 5 min read</span>
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://blog.nathanv.me/tags/ubuntu/">Ubuntu</a>&nbsp;
+        
+          #<a href="https://blog.nathanv.me/tags/hp/">HP</a>&nbsp;
+        
+          #<a href="https://blog.nathanv.me/tags/proliant/">ProLiant</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+
+<h2 id="background">Background</h2>
+
+<p>As mentioned in my <a href="../self-host-docker">&ldquo;Self-Hosting with Docker and Argo Tunnel&rdquo;</a>
+post, I bought a HP DL360 G5 server a little while back. I&rsquo;m most comfortable with Ubuntu Server,
+so I opted to install that on the sever. I recently learned that HP has utilities
+you can install on Linux to modify and view system-level settings and information, which
+is pretty cool.</p>
+
+<p>I wanted to try them out, however, my server being a Gen 5, has not been supported for a long time
+and Ubuntu isn&rsquo;t part of the of the group of OSs (Red Hat and SUSE)
+that get <a href="https://downloads.linux.hpe.com/SDR/project/spp/" rel="noreferrer" target="_blank">Service Packs</a>.
+So the documentation and support is minimal, and it took
+me a bit of time to figure everything out.</p>
+
+<p><strong>Disclaimer: I&rsquo;m working on a Gen 5 server, so things may vary.</strong></p>
+
+<h2 id="installation">Installation</h2>
+
+<p>First, in order to install the utilities, you need to add the source to <code>apt</code>:</p>
+
+<pre><code class="language-bash">sudo echo &quot;deb http://downloads.linux.hpe.com/SDR/repo/mcp bionic/current non-free&quot; &gt; /etc/apt/sources.list.d/mcp.list
+</code></pre>
+
+<p>Next, you need enroll HPE&rsquo;s public keys:</p>
+
+<pre><code class="language-bash">curl http://downloads.linux.hpe.com/SDR/hpPublicKey1024.pub | apt-key add -
+curl http://downloads.linux.hpe.com/SDR/hpPublicKey2048.pub | apt-key add -
+curl http://downloads.linux.hpe.com/SDR/hpPublicKey2048_key1.pub | apt-key add -
+curl http://downloads.linux.hpe.com/SDR/hpePublicKey2048_key1.pub | apt-key add -
+</code></pre>
+
+<p>Now, you just need to update your <code>apt</code> sources, and install the utilities.</p>
+
+<pre><code class="language-bash">sudo apt update
+sudo apt install hp-health hponcfg amsd ams ssacli ssaducli ssa
+</code></pre>
+
+<p>Despite the names of the packages listed on
+<a href="https://downloads.linux.hpe.com/SDR/project/mcp/" rel="noreferrer" target="_blank">HPE&rsquo;s page</a>,
+I found that some of the packages simply didn&rsquo;t exist, or had different
+names.</p>
+
+<h2 id="utilities-overview">Utilities Overview</h2>
+
+<p>All of these utilities require being run as root.</p>
+
+<h3 id="hp-health">hp-health</h3>
+
+<h4 id="what-is-it">What Is It</h4>
+
+<p>&ldquo;HPE System Health Application and Command line Utilities (Gen9 and earlier)&rdquo;</p>
+
+<p>Basically lets you view and adjust a lot of system-level settings from the command line.</p>
+
+<h4 id="command">Command</h4>
+
+<pre><code class="language-bash">hpasmcli
+</code></pre>
+
+<h4 id="example">Example</h4>
+
+<pre><code>nathan@zeus:[~]$ sudo hpasmcli
+HPE management CLI for Linux (v2.0)
+Copyright 2015 Hewlett Packard Enterprise Development LP.
+
+--------------------------------------------------------------------------
+NOTE: Some hpasmcli commands may not be supported on all Proliant servers.
+      Type 'help' to get a list of all top level commands.
+--------------------------------------------------------------------------
+hpasmcli&gt; help
+CLEAR  DISABLE  ENABLE  EXIT  HELP  NOTE  QUIT  REPAIR  SET  SHOW
+hpasmcli&gt; show temp
+Sensor   Location              Temp       Threshold
+------   --------              ----       ---------
+#1        I/O_ZONE             48C/118F   65C/149F
+#2        AMBIENT              24C/75F    40C/104F
+#3        PROCESSOR_ZONE       30C/86F    95C/203F
+#4        PROCESSOR_ZONE       30C/86F    95C/203F
+#5        POWER_SUPPLY_BAY     35C/95F    60C/140F
+#6        PROCESSOR_ZONE       30C/86F    95C/203F
+#7        PROCESSOR_ZONE       30C/86F    95C/203F
+
+hpasmcli&gt;
+</code></pre>
+
+<h3 id="hponcfg">hponcfg</h3>
+
+<h4 id="what-is-it-1">What Is It</h4>
+
+<p>&ldquo;HPE RILOE II/iLO online configuration utility&rdquo;</p>
+
+<p>Command-line configuration for iLO</p>
+
+<h4 id="command-1">Command</h4>
+
+<pre><code class="language-bash">hponcfg
+</code></pre>
+
+<h4 id="example-1">Example</h4>
+
+<pre><code>nathan@zeus:[~]$ sudo hponcfg -h
+HP Lights-Out Online Configuration utility
+Version 5.3.0 Date 3/21/2018 (c) 2005,2018 Hewlett Packard Enterprise Development LP
+Firmware Revision = 1.61 Device type = iLO 2 Driver name = hpilo
+
+USAGE:
+  hponcfg  -?
+  hponcfg  -h
+  hponcfg  -m minFw
+  hponcfg  -r [-m minFw]
+  hponcfg  -b [-m minFw]
+  hponcfg  [-a] -w filename [-m minFw]
+  hponcfg  -g [-m minFw]
+  hponcfg  -f filename [-l filename] [-s namevaluepair] [-v] [-m minFw] [-u username] [-p password]
+  hponcfg  -i [-l filename] [-s namevaluepair] [-v] [-m minFw] [-u username] [-p password]
+
+  -h,  --help           Display this message
+  -?                    Display this message
+  -r,  --reset          Reset the Management Processor to factory defaults
+  -b,  --reboot         Reboot Management Processor without changing any setting
+  -f,  --file           Get/Set Management Processor configuration from &quot;filename&quot;
+  -i,  --input          Get/Set Management Processor configuration from the XML input
+                        received through the standard input stream.
+  -w,  --writeconfig    Write the Management Processor configuration to &quot;filename&quot;
+  -a,  --all            Capture complete Management Processor configuration to the file.
+                        This should be used along with '-w' option
+  -l,  --log            Log replies to &quot;filename&quot;
+  -v,  --xmlverbose     Display all the responses from Management Processor
+  -s,  --substitute     Substitute variables present in input config file
+                        with values specified in &quot;namevaluepairs&quot;
+  -g,  --get_hostinfo   Get the Host information
+  -m,  --minfwlevel     Minimum firmware level
+  -u,  --username       iLO Username
+  -p,  --password       iLO Password
+</code></pre>
+
+<h3 id="amsd">amsd</h3>
+
+<h4 id="what-is-it-2">What Is It</h4>
+
+<p>&ldquo;HPE Agentless Management Service (Gen10 only)&rdquo;</p>
+
+<h4 id="command-2">Command</h4>
+
+<pre><code class="language-bash">amsd
+</code></pre>
+
+<h4 id="example-2">Example</h4>
+
+<p>¯\_(ツ)_/¯</p>
+
+<p>I have a Gen 5 server, so it doesn&rsquo;t do anything.</p>
+
+<h3 id="ams">ams</h3>
+
+<h4 id="what-is-it-3">What Is It</h4>
+
+<p>&ldquo;HPE Agentless Management Service (Gen9 and earlier)&rdquo;</p>
+
+<h4 id="command-3">Command</h4>
+
+<pre><code class="language-bash">ams
+</code></pre>
+
+<h4 id="example-3">Example</h4>
+
+<p>¯\_(ツ)_/¯</p>
+
+<p>It requires an X server running, so I don&rsquo;t know what it does.</p>
+
+<h3 id="ssacli">ssacli</h3>
+
+<h4 id="what-is-it-4">What Is It</h4>
+
+<p>&ldquo;HPE Command Line Smart Storage Administration Utility&rdquo;</p>
+
+<p>Command-line utility to view/modify storage arrays.</p>
+
+<h4 id="command-4">Command</h4>
+
+<pre><code class="language-bash">ssacli
+</code></pre>
+
+<h4 id="example-4">Example</h4>
+
+<pre><code class="language-sh">nathan@zeus:[~]$ sudo ssacli ctrl all show config
+
+Smart Array E500 in Slot 1                (sn: PAFGH0K9XXXXXX)
+
+
+   Port Name: 1E
+
+   Port Name: 2E
+
+
+Smart Array P400i in Slot 0 (Embedded)    (sn: PH87XXXXXX    )
+
+
+
+   Internal Drive Cage at Port 1I, Box 1, OK
+
+
+   Port Name: 1I
+
+   Port Name: 2I
+
+   Array A (SAS, Unused Space: 4  MB)
+
+      logicaldrive 1 (136.67 GB, RAID 5, OK)
+
+      physicaldrive 1I:1:1 (port 1I:box 1:bay 1, SAS HDD, 72 GB, OK)
+      physicaldrive 1I:1:2 (port 1I:box 1:bay 2, SAS HDD, 72 GB, OK)
+      physicaldrive 1I:1:3 (port 1I:box 1:bay 3, SAS HDD, 72 GB, OK)
+</code></pre>
+
+<h3 id="ssaducli">ssaducli</h3>
+
+<h4 id="what-is-it-5">What Is It</h4>
+
+<p>&ldquo;HPE Command Line Smart Storage Administration Diagnostics&rdquo;</p>
+
+<p>Command-line utility to diagnose storage arrays.</p>
+
+<h4 id="command-5">Command</h4>
+
+<pre><code class="language-bash">ssaducli
+</code></pre>
+
+<h4 id="example-5">Example</h4>
+
+<pre><code class="language-bash"># Generates report
+sudo ssaducli -adu -txt -f filename.txt
+</code></pre>
+
+<h3 id="ssa">ssa</h3>
+
+<h4 id="what-is-it-6">What Is It</h4>
+
+<p>&ldquo;HPE Array Smart Storage Administration Service&rdquo;</p>
+
+<p>This appears to do the same thing as the diagnostic tool plus a bit more.</p>
+
+<h4 id="command-6">Command</h4>
+
+<pre><code class="language-bash">ssa
+</code></pre>
+
+<h4 id="example-6">Example</h4>
+
+<pre><code class="language-bash"># Generates report
+sudo ssa -diag -txt -f filename.txt
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Despite some hiccups, With these utilities installed, I can now modify basically
+all of the BIOS and iLO settings without needing a keyboard or monitor. I don&rsquo;t think
+I have any need anymore to go into the BIOS maybe other than maybe modifying the
+RAID array configuration (which would wipe everything).</p>
+
+<h3 id="references">References</h3>
+
+<ul>
+<li><a href="https://downloads.linux.hpe.com/SDR/project/mcp/" rel="noreferrer" target="_blank">https://downloads.linux.hpe.com/SDR/project/mcp/</a></li>
+<li><a href="https://downloads.linux.hpe.com/SDR/keys.html" rel="noreferrer" target="_blank">https://downloads.linux.hpe.com/SDR/keys.html</a></li>
+<li><a href="https://binaryimpulse.com/2013/09/installing-hp-array-configuration-utility-hp-acu-on-ubuntu-12-04/" rel="noreferrer" target="_blank">https://binaryimpulse.com/2013/09/installing-hp-array-configuration-utility-hp-acu-on-ubuntu-12-04/</a></li>
+</ul>
+
+    </div>
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+        <div class="pagination__buttons">
+          
+          
+            <span class="button next">
+              <a href="https://blog.nathanv.me/posts/docker-mysql-to-mariadb/">
+                <span class="button__text">Converting MySQL 8 Docker Containers to MariaDB</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+    <script src="https://utteranc.es/client.js"
+        repo="nathanvaughn/blog.nathanv.me"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" width="44" height="44" viewBox="0 0 44 44">
+  <polyline fill="none" stroke="#000" stroke-width="2" points="15 8 29.729 22.382 15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">Nathan Vaughn</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span>© 2019 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
+        <span>Theme created by <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-91853319-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+  </body>
+</html>

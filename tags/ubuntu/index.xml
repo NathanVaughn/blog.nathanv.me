@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ubuntu on Nathan Vaughn</title>
+    <link>https://blog.nathanv.me/tags/ubuntu/</link>
+    <description>Recent content in Ubuntu on Nathan Vaughn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 Jul 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.nathanv.me/tags/ubuntu/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installing HP ProLiant Utilities on Ubuntu Server</title>
+      <link>https://blog.nathanv.me/posts/hp-utilities-ubuntu/</link>
+      <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/hp-utilities-ubuntu/</guid>
+      <description>Background As mentioned in my &amp;ldquo;Self-Hosting with Docker and Argo Tunnel&amp;rdquo; post, I bought a HP DL360 G5 server a little while back. I&amp;rsquo;m most comfortable with Ubuntu Server, so I opted to install that on the sever. I recently learned that HP has utilities you can install on Linux to modify and view system-level settings and information, which is pretty cool.
+I wanted to try them out, however, my server being a Gen 5, has not been supported for a long time and Ubuntu isn&amp;rsquo;t part of the of the group of OSs (Red Hat and SUSE) that get Service Packs.</description>
+    </item>
+    
+  </channel>
+</rss>
