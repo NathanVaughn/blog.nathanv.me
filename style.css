@@ -1,9 +1,0 @@
-/* Change blinky cursor color */
-.logo__cursor {
-    background: #7ec699;
-}
-
-/* Allow links to be word broken */
-.post-content li>a {
-    word-break: break-all;
-}
