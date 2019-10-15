@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>home-networking on Nathan Vaughn</title>
+    <link>https://blog.nathanv.me/tags/home-networking/</link>
+    <description>Recent content in home-networking on Nathan Vaughn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.nathanv.me/tags/home-networking/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Building a Home Network on a Budget</title>
+      <link>https://blog.nathanv.me/posts/budget-home-network/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/budget-home-network/</guid>
+      <description>Background At the time of writing, I&amp;rsquo;m currently co-oping at Collins Aerospace, whom are nice enough to provide me a 3-floor townhouse. Since this is the first time I&amp;rsquo;ve lived somewhere where I can setup my own network, I just wanted to write up how I&amp;rsquo;ve done it.
+Network Infrastructure Here are the components of my home network infrastructure.
+Technicolor Modem - $11.50/Month Some crappy Technicolor (I didn&amp;rsquo;t know they were even still around) modem provided by my ISP.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Jul 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>home-networking</title>
+      <link>https://blog.nathanv.me/tags/home-networking/</link>
+      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/home-networking/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>HP</title>

@@ -190,8 +190,8 @@ it quickly became very tedious.</p>
 <li><p>Change the <code>docker-compose.yml</code> file to use MariaDB.</p>
 
 <pre><code class="language-diff">-   command: '--default-authentication-plugin=mysql_native_password'
-env_file:
-    - ./.env
+    env_file:
+        - ./.env
 -   image: 'mysql:latest'
 +   image: 'mariadb:latest'
 </code></pre></li>

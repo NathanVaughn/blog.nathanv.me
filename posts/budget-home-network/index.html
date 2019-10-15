@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>Building a Home Network on a Budget :: Nathan Vaughn — Adventures in programming and tech</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Background At the time of writing, I&amp;rsquo;m currently co-oping at Collins Aerospace, whom are nice enough to provide me a 3-floor townhouse. Since this is the first time I&amp;rsquo;ve lived somewhere where I can setup my own network, I just wanted to write up how I&amp;rsquo;ve done it.
+Network Infrastructure Here are the components of my home network infrastructure.
+Technicolor Modem - $11.50/Month Some crappy Technicolor (I didn&amp;rsquo;t know they were even still around) modem provided by my ISP."/>
+<meta name="keywords" content="[programming tech]"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://blog.nathanv.me/posts/budget-home-network/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css">
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/img/favicon.png"/>
+
+<meta name="twitter:title" content="Building a Home Network on a Budget"/>
+<meta name="twitter:description" content="This is the first time I&#39;ve lived somewhere where I can setup my own network. I just wanted to write up how I&#39;ve done it."/>
+
+
+
+<meta property="og:title" content="Building a Home Network on a Budget" />
+<meta property="og:description" content="This is the first time I&#39;ve lived somewhere where I can setup my own network. I just wanted to write up how I&#39;ve done it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/budget-home-network/" />
+
+<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png" />
+<meta property="article:published_time" content="2019-10-14T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-10-14T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
+
+
+<meta name="theme-color" content="#7ec699">
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">Nathan Vaughn</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://nathanv.me">Homepage</a></li>
+        
+      
+        
+          <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://nathanv.me">Homepage</a></li>
+      
+    
+      
+        <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  <div class="post">
+    <h2 class="post-title"><a href="https://blog.nathanv.me/posts/budget-home-network/">Building a Home Network on a Budget</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">
+            2019-10-14
+        </span>
+      
+      <span class="post-author">— Written by Nathan Vaughn</span>
+      
+        <span class="post-read-time">— 4 min read</span>
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://blog.nathanv.me/tags/home-networking/">home-networking</a>&nbsp;
+        
+      </span>
+    
+
+    
+      
+        <img src="https://blog.nathanv.me/img/budget-home-network/cover.jpg" class="post-cover" />
+      
+    
+
+    <div class="post-content">
+      
+
+<h2 id="background">Background</h2>
+
+<p>At the time of writing, I&rsquo;m currently co-oping at Collins Aerospace, whom are
+nice enough to provide me a 3-floor townhouse. Since this is the first time I&rsquo;ve
+lived somewhere where I can setup my own network, I just wanted to write up
+how I&rsquo;ve done it.</p>
+
+<h2 id="network-infrastructure">Network Infrastructure</h2>
+
+<p>Here are the components of my home network infrastructure.</p>
+
+<h3 id="technicolor-modem-11-50-month">Technicolor Modem - $11.50/Month</h3>
+
+
+  <figure class="center" >
+    <img src="/img/budget-home-network/technicolor-modem.png"  alt="Some crappy Technicolor (I didn&#39;t know they were even still around) modem provided by my ISP."   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Some crappy Technicolor (I didn&rsquo;t know they were even still around) modem provided by my ISP.</figcaption>
+    
+  </figure>
+
+
+
+<p>This is modem/router combo provided by my ISP (Mediacom).
+While I would normally buy my own equipment,
+since I&rsquo;m only going to be at this place for a few months,
+I decided to just rent it instead from my ISP instead.</p>
+
+<p>Unfortunately, despite
+my best efforts, I have yet to figure out how to even login to the web management
+portal to disable it&rsquo;s WiFi, since I just want to use it as a modem, and not a router.</p>
+
+
+  <figure class="center" >
+    <img src="/img/budget-home-network/homewifi.jpg"  alt="The online control panel doesn&#39;t seem to work, and I don&#39;t care enough to call support."   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >The online control panel doesn&rsquo;t seem to work, and I don&rsquo;t care enough to call support.</figcaption>
+    
+  </figure>
+
+
+
+
+  <figure class="center" >
+    <img src="/img/budget-home-network/account_dashboard.jpg"  alt="It doesn&#39;t work on my account dashboard either."   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >It doesn&rsquo;t work on my account dashboard either.</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="tp-link-archer-c1900-34-99">TP-Link Archer C1900 - $34.99</h3>
+
+
+  <img src="/img/budget-home-network/tplink-archer.jpg"  alt="TP-Link Archer C1900"  class="center"  style="border-radius: 8px;"  />
+
+
+
+<p>I managed to snag a refurbished unit in a Newegg flash deal for $34.99.</p>
+
+<p>This is my WiFi access point for my network along with my DHCP server. Unfortunately,
+as mentioned above, since I haven&rsquo;t been able to get into my ISP modem/router,
+I&rsquo;m currently broadcasting multiple WiFi networks right next to each other.
+I got this because I wanted more control (like changing DNS servers) than I
+was positive the ISP provided router would allow.</p>
+
+<p>Also, very usefully, this router has a USB port on it. I believe it&rsquo;s for setting
+up a printer, but it does provide enough amperage to power a Raspberry Pi (see below).</p>
+
+<h3 id="raspberry-pi-3-model-b-free">Raspberry Pi 3 Model B - Free</h3>
+
+
+  <img src="/img/budget-home-network/rpi3.jpg"  alt="Raspberry Pi 3 Model B"  class="center"  style="border-radius: 8px;"  />
+
+
+
+<p>I got a free Raspberry Pi 3 a few years back when Arrow was running a promotion for
+Pi day (March 14), where they were selling Raspberry Pi&rsquo;s for $3.14. Well, their
+website crashed under the load, and the next day they gave a bunch away for free
+to people like me who tried to place an order.</p>
+
+<p>I now have my Pi 3 acting as DNS server for my network with
+<a href="https://pi-hole.net" rel="noreferrer" target="_blank">Pi-hole</a> (I really like the
+<a href="https://dbl.oisd.nl/" rel="noreferrer" target="_blank">https://dbl.oisd.nl/</a> blocklist.) Thanks to the USB port on my
+router, I just have it sitting physically right next to my router and directly
+plugged in.</p>
+
+<h3 id="netgear-gs305-19-99">Netgear GS305 - $19.99</h3>
+
+
+  <img src="/img/budget-home-network/netgear-gs305.jpg"  alt="Netgear GS305"  class="center"  style="border-radius: 8px;"  />
+
+
+
+<p>Not much to say about this. It&rsquo;s a basic 5-port gigabit unmanaged switch.
+I&rsquo;ve had it for a few years.</p>
+
+<h3 id="netgear-powerline-1200-79-99">Netgear Powerline 1200 - $79.99</h3>
+
+
+  <img src="/img/budget-home-network/PL1200_NA_Hero_Transparent.png"  alt="Netgear Powerline 1200"  class="center"  style="border-radius: 8px;"  />
+
+
+
+<p>This one hurt the most to purchase. For best WiFi coverage, I have my router
+sitting on the main floor of my townhouse. My desktop computer and
+server, however, are both located downstairs.
+As I didn&rsquo;t want to use WiFi for those, there weren&rsquo;t many options
+to get ethernet down into the basement.</p>
+
+<ol>
+<li>Run 200ft ethernet cable across and over living room, down staircase, around corner,
+and down hallway.</li>
+<li>Punch holes in the floor and run cable.</li>
+<li>Powerline adapters.</li>
+</ol>
+
+<p>Option #1 is not practical, and I don&rsquo;t think my landlord would really like option #2.
+I had heard of powerline adapters before, but just had never used them before.
+I really wanted to get my server back up and running, so I decided to give it a shot
+and went to my local Best Buy and bought a pair of Netgear Powerline 1200.</p>
+
+<p>So far, I&rsquo;ve been satisficed. The bandwidth is a bit less than my 5Ghz WiFi, but the
+latency is noticeably less. I use the Netgear switch mentioned above to split the
+connection to my desktop and server.</p>
+
+<h2 id="diagram">Diagram</h2>
+
+
+  <figure class="center" >
+    <img src="/img/budget-home-network/network_diagram.jpg"  alt="Diagram of my home network."   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Diagram of my home network.</figcaption>
+    
+  </figure>
+
+
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Quick summary:</p>
+
+<ul>
+<li>Technicolor Modem: Modem</li>
+<li>TP-Link Archer: Router, DHCP, WiFi</li>
+<li>Raspberry Pi: DNS</li>
+<li>Powerline Adapters: Getting ethernet into basement</li>
+<li>Netgear Switch: Splitting powerline connection</li>
+</ul>
+
+<p>For $34.99 and $11.50 monthly (and miscellaneous cables), I have a pretty solid
+home network with 2.4 and 5GHz WiFi (though I don&rsquo;t use the 2.4GHz since
+everything these days supports 5GHz AC), an isolated guest network, and network-wide
+ad-blocking via Pi-hole. I also have true gigabit for everything within the network
+(very helpful for my local Nextcloud instance).
+For another $100, I have ethernet in my basement
+for all of my fixed devices (a number I don&rsquo;t like thinking about).</p>
+
+<p>I&rsquo;m a bit of a statistics nerd, so I would love a way to see which devices
+are connecting to what domains, how much bandwidth they&rsquo;re using, etc.,
+but I have not found a software solution to this. My router does
+allow you to see how many bytes each device sends and receives, but that&rsquo;s it.
+I know I can sort of estimate it with Pi-hole and seeing what DNS queries
+devices are making, and how often, but I&rsquo;d love a solution similar to
+<a href="https://www.glasswire.com/" rel="noreferrer" target="_blank">Glasswire</a>, but for the whole network. Unfortunately,
+I don&rsquo;t think there&rsquo;s a way to accomplish this without using a different
+router (like a pfSense box) completely (a step I&rsquo;m not willing to take yet).</p>
+
+    </div>
+    
+      <div class="pagination">
+        <div class="pagination__title">
+          <span class="pagination__title-h">Read other posts</span>
+          <hr />
+        </div>
+        <div class="pagination__buttons">
+          
+          
+            <span class="button next">
+              <a href="https://blog.nathanv.me/posts/hp-utilities-ubuntu/">
+                <span class="button__text">Installing HP ProLiant Utilities on Ubuntu Server</span>
+                <span class="button__icon">→</span>
+              </a>
+            </span>
+          
+        </div>
+      </div>
+    
+
+    <script src="https://utteranc.es/client.js"
+        repo="nathanvaughn/blog.nathanv.me"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">Nathan Vaughn</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span>© 2019 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
+        <span>Theme created by <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-91853319-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+  </body>
+</html>
