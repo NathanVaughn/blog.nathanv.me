@@ -373,7 +373,8 @@ passed in as environment variables to securely store important tokens.</p>
       run: curl $(echo $GITHUB_REPOSITORY | cut -d &quot;/&quot; -f 2-) --location --output /dev/null
 </code></pre>
 
-<p>To finish it off, I do a <code>curl</code> pull of my site to ensure it&rsquo;s working properly.</p>
+<p>To finish it off, I do a <code>curl</code> pull of my site to ensure it&rsquo;s working properly.
+This should also make sure Cloudflare refreshes their cache of my site.</p>
 
 <p>The <code>echo $GITHUB_REPOSITORY | cut -d &quot;/&quot; -f 2-</code> command is simply taking the
 <code>GITHUB_REPOSITORY</code> environment variable, which gives the author and repository name
