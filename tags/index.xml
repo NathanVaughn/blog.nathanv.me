@@ -6,10 +6,46 @@
     <description>Recent content in Tags on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>continuous delivery</title>
+      <link>https://blog.nathanv.me/tags/continuous-delivery/</link>
+      <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/continuous-delivery/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitHub</title>
+      <link>https://blog.nathanv.me/tags/github/</link>
+      <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitHub Actions</title>
+      <link>https://blog.nathanv.me/tags/github-actions/</link>
+      <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/github-actions/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://blog.nathanv.me/tags/hugo/</link>
+      <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/hugo/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>home-networking</title>

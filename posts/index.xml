@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 14 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 15 Oct 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Deploying a Static Site with GitHub Actions</title>
+      <link>https://blog.nathanv.me/posts/static-site-github-actions/</link>
+      <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/static-site-github-actions/</guid>
+      <description>Background A little while back, GitHub released their Actions integrated CI/CD (continuous integration and delivery) platform. I signed up for the beta and managed to get in. This article will cover how I used GitHub Actions to completely automate the building and deployment of my personal site (and this blog).
+Actions Introduction GitHub Actions is a continuous integration and delivery product. It&amp;rsquo;s similar to Travis CI or Circle CI or other similar existing providers.</description>
+    </item>
     
     <item>
       <title>Building a Home Network on a Budget</title>
