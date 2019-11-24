@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 23 Nov 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker Hub Build Hook to Apply Multiple Image Tags</title>
+      <link>https://blog.nathanv.me/posts/docker-hub-multiple-tags/</link>
+      <pubDate>Sat, 23 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/docker-hub-multiple-tags/</guid>
+      <description>Background While working on my Docker image for webtrees, I ran into a peculiar issue. I had setup automated builds in Docker Hub for every tagged commit in my git repository. At first, I wanted to be able to have multiple tags for each image build, so that each build could be version tagged (like 1.7.15) and have the latest tag applied as well. Using an undocumented feature, I was able to get that to work.</description>
+    </item>
     
     <item>
       <title>Deploying a Static Site with GitHub Actions</title>
