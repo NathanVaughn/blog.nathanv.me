@@ -17,7 +17,7 @@
       <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/docker-mysql-to-mariadb/</guid>
-      <description>Background Recently, when I setup a number of Docker Compose stacks for myself, I naively used MySQL 8 databases. I had heard of MariaDB in the past, and knew it was a drop-in replacement to MySQL, but I didn&amp;rsquo;t really know much about it. After recently reading about some of MariaDB&amp;rsquo;s features and speed-improvements over MySQL Community Edition (and many people including myself really hate Oracle), I decided I wanted to swap out my MySQL databases.</description>
+      <description>Background Recently, when I setup a number of Docker Compose stacks for myself, I naively used MySQL 8 databases. I had heard of MariaDB in the past, and knew it was a drop-in replacement to MySQL, but I didn&#39;t really know much about it. After recently reading about some of MariaDB&#39;s features and speed-improvements over MySQL Community Edition (and many people including myself really hate Oracle), I decided I wanted to swap out my MySQL databases.</description>
     </item>
     
   </channel>

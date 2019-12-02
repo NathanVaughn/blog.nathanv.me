@@ -7,7 +7,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="description" content="Background A little while back, GitHub released their Actions integrated CI/CD (continuous integration and delivery) platform. I signed up for the beta and managed to get in. This article will cover how I used GitHub Actions to completely automate the building and deployment of my personal site (and this blog).
-Actions Introduction GitHub Actions is a continuous integration and delivery product. It&amp;rsquo;s similar to Travis CI or Circle CI or other similar existing providers."/>
+Actions Introduction GitHub Actions is a continuous integration and delivery product. It&#39;s similar to Travis CI or Circle CI or other similar existing providers."/>
 <meta name="keywords" content="[programming tech]"/>
 <meta name="robots" content="noodp"/>
 <link rel="canonical" href="https://blog.nathanv.me/posts/static-site-github-actions/" />
@@ -38,8 +38,7 @@ Actions Introduction GitHub Actions is a continuous integration and delivery pro
 <meta property="og:description" content="How I used GitHub Actions to completely automate the building and deployment of my personal site (and this blog)" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.nathanv.me/posts/static-site-github-actions/" />
-
-<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png" />
+<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png"/>
 <meta property="article:published_time" content="2019-10-15T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-10-15T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
 
@@ -147,96 +146,78 @@ Actions Introduction GitHub Actions is a continuous integration and delivery pro
     
 
     <div class="post-content">
-      
-
-<h2 id="background">Background</h2>
-
+      <h2 id="background">Background</h2>
 <p>A little while back, GitHub released their
-<a href="https://github.com/features/actions" rel="noreferrer" target="_blank">Actions</a>
+<a href="https://github.com/features/actions">Actions</a>
 integrated CI/CD (continuous integration and delivery) platform.
 I signed up for the beta and managed to get in. This article will cover
 how I used GitHub Actions to completely automate the building and deployment
 of my personal site (and this blog).</p>
-
 <h2 id="actions-introduction">Actions Introduction</h2>
-
 <p>GitHub Actions is a continuous
-<a href="https://en.wikipedia.org/wiki/Continuous_integration" rel="noreferrer" target="_blank">integration</a> and
-<a href="https://en.wikipedia.org/wiki/Continuous_delivery" rel="noreferrer" target="_blank">delivery</a> product. It&rsquo;s
-similar to <a href="https://travis-ci.org/" rel="noreferrer" target="_blank">Travis CI</a> or
-<a href="https://circleci.com/" rel="noreferrer" target="_blank">Circle CI</a> or other similar existing providers.
+<a href="https://en.wikipedia.org/wiki/Continuous_integration">integration</a> and
+<a href="https://en.wikipedia.org/wiki/Continuous_delivery">delivery</a> product. It's
+similar to <a href="https://travis-ci.org/">Travis CI</a> or
+<a href="https://circleci.com/">Circle CI</a> or other similar existing providers.
 In simple terms, it means that on every commit, pull request,
 or whatever else you setup, scripts run. These can be to run tests to make sure
-your commit doesn&rsquo;t break anything (integration), or to automatically format code,
+your commit doesn't break anything (integration), or to automatically format code,
 or to deploy your software (delivery), or anything else you want.</p>
-
 <p>In the case of GitHub Actions,
-<a href="https://help.github.com/en/articles/configuring-a-workflow" rel="noreferrer" target="_blank">these scripts</a>
+<a href="https://help.github.com/en/articles/configuring-a-workflow">these scripts</a>
 are defined in <code>.yml</code> files placed
 in the folder <code>.github/workflows/</code> in the root of your repository
-(<a href="https://github.com/NathanVaughn/nathanv.me/blob/master/.github/workflows/main.yml" rel="noreferrer" target="_blank">example</a>).
+(<a href="https://github.com/NathanVaughn/nathanv.me/blob/master/.github/workflows/main.yml">example</a>).
 The workflows you setup can be run on repository events (push, pull request, etc.),
 webhook events (forking, wiki update, etc.), scheduled events (a cron schedule),
 or external events (external webhook). These workflows run on
-<a href="https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions" rel="noreferrer" target="_blank">premade Docker containers</a>
+<a href="https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions">premade Docker containers</a>
 for a variety of operating systems, which include a lot of useful
 software already installed (like Python 3, webpack, MySQL, etc.).</p>
-
 <p>However, if you need more functionality than what is available in the workflows,
 or want to make something reusable, you can create your own
-<a href="https://help.github.com/en/articles/creating-a-docker-container-action" rel="noreferrer" target="_blank">Docker container</a>
-or <a href="https://help.github.com/en/articles/creating-a-javascript-action" rel="noreferrer" target="_blank">JavaScript</a>
+<a href="https://help.github.com/en/articles/creating-a-docker-container-action">Docker container</a>
+or <a href="https://help.github.com/en/articles/creating-a-javascript-action">JavaScript</a>
 action. These are automatically executed within the existing Docker container your
 action runs in, seamlessly.</p>
-
 <p>Arguably, the best part of Actions, is the
-<a href="https://github.com/marketplace?type=actions" rel="noreferrer" target="_blank">Marketplace</a>. With the GitHub marketplace,
+<a href="https://github.com/marketplace?type=actions">Marketplace</a>. With the GitHub marketplace,
 people can make their custom actions available for others to use, and you can import
 them into your workflows easily. GitHub also publishes some of
-<a href="https://github.com/actions" rel="noreferrer" target="_blank">their own actions</a>
+<a href="https://github.com/actions">their own actions</a>
 with some basic, yet widely used functionality.</p>
-
 <h2 id="my-website-setup">My Website Setup</h2>
-
 <p>My website is built with the
-<a href="https://gohugo.io" rel="noreferrer" target="_blank">Hugo</a> static site generator, using a theme I made for myself.
-I admit, my website doesn&rsquo;t exactly have the cleanest structure. While Hugo is meant
+<a href="https://gohugo.io">Hugo</a> static site generator, using a theme I made for myself.
+I admit, my website doesn't exactly have the cleanest structure. While Hugo is meant
 to be used with Markdown files (like this blog), I wanted <em>extremely</em> structured
-content for my website. In order to do this, I used Hugo&rsquo;s
-<a href="https://gohugo.io/templates/data-templates/" rel="noreferrer" target="_blank">data templates</a>
-(<a href="https://github.com/NathanVaughn/nathanv.me/blob/master/data/workexperience.yml" rel="noreferrer" target="_blank">example</a>).</p>
-
+content for my website. In order to do this, I used Hugo's
+<a href="https://gohugo.io/templates/data-templates/">data templates</a>
+(<a href="https://github.com/NathanVaughn/nathanv.me/blob/master/data/workexperience.yml">example</a>).</p>
 <p>Because the theme and actual content are extremely coupled together,
 I decided not to release the theme separately, and just tie it into my
-main Hugo site repo. This means that I&rsquo;m not using git submodules,
+main Hugo site repo. This means that I'm not using git submodules,
 and my npm scripts for the HTML/CSS are in the same <code>package.json</code> file as
 my scripts for Hugo.</p>
-
 <p>Anyways, this was my build process for my site previously:</p>
-
 <ol>
 <li>Make content/theme update</li>
 <li>Run <code>npm run svgmin</code> to minify SVG files (if needed)</li>
-<li>Run <code>npm run critical</code> to generate new <a href="https://www.sitelocity.com/critical-path-css-generator" rel="noreferrer" target="_blank">critical CSS</a> (if needed)</li>
+<li>Run <code>npm run critical</code> to generate new <a href="https://www.sitelocity.com/critical-path-css-generator">critical CSS</a> (if needed)</li>
 <li>Run <code>npm run build:css</code> to polyfill and minify the CSS (if needed)</li>
 <li>Run <code>npm run build:js</code> to minify the JS (if needed)</li>
-<li>Run <code>hugo</code> to actually build the site&rsquo;s contents</li>
+<li>Run <code>hugo</code> to actually build the site's contents</li>
 <li>Run <code>npm run beautify</code> to beautify the output HTML because whitespace with HTML
 templates is surprisingly difficult</li>
 <li>Run <code>npm run deploy</code> to actually commit and push the changes</li>
 </ol>
-
 <p>While I did basically have steps 4-7 clumped together into a single <code>build</code> script,
-it was clunky and I&rsquo;d always inevitably forget to run something. No more!</p>
-
+it was clunky and I'd always inevitably forget to run something. No more!</p>
 <h2 id="my-website-actions-workflow">My Website Actions Workflow</h2>
-
 <p>With the help of GitHub Actions, I was able to automate every single step of this
-process, plus steps I hadn&rsquo;t even automated previously.</p>
-
+process, plus steps I hadn't even automated previously.</p>
 <p>My workflow file (at time of writing):</p>
-
-<pre><code class="language-yml">name: Build
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">name: Build
 
 on:
   push:
@@ -252,7 +233,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@master
       with:
-        submodules: true
+        submodules: <span style="color:#66d9ef">true</span>
     - name: Install Node
       uses: actions/setup-node@master
     - name: Install dependencies
@@ -275,130 +256,91 @@ jobs:
         CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
         CLOUDFLARE_AUTH_KEY: ${{ secrets.CLOUDFLARE_AUTH_KEY }}
     - name: Load Site
-      run: curl $(echo $GITHUB_REPOSITORY | cut -d &quot;/&quot; -f 2-) --location --output /dev/null
-</code></pre>
-
-<h3 id="breakdown">Breakdown</h3>
-
-<pre><code class="language-yml">on:
+      run: curl $(echo $GITHUB_REPOSITORY | cut -d <span style="color:#e6db74">&#34;/&#34;</span> -f <span style="color:#ae81ff">2</span>-) --location --output /dev/<span style="color:#66d9ef">null</span>
+</code></pre></div><h3 id="breakdown">Breakdown</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">on:
   push:
     branches:
     - master
-</code></pre>
-
-<p>I want this workflow to run on every single push to the master branch. I don&rsquo;t have
+</code></pre></div><p>I want this workflow to run on every single push to the master branch. I don't have
 this set to <em>every</em> branch, because I publish the output HTML to the <code>gh-pages</code> branch
-for <a href="https://pages.github.com/" rel="noreferrer" target="_blank">GitHub Pages</a> (how I host the site). Plus, if I want to work on a separate branch and not have the changes deployed, I can do so.</p>
-
-<pre><code class="language-yml">jobs:
+for <a href="https://pages.github.com/">GitHub Pages</a> (how I host the site). Plus, if I want to work on a separate branch and not have the changes deployed, I can do so.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">jobs:
   build:
 
     runs-on: ubuntu-latest
-</code></pre>
-
-<p>You can define multiple &ldquo;jobs&rdquo; per workflow, but mine just has one called &ldquo;build&rdquo;.
+</code></pre></div><p>You can define multiple &ldquo;jobs&rdquo; per workflow, but mine just has one called &ldquo;build&rdquo;.
 I want it to run on the latest build of Ubuntu.</p>
-
-<pre><code class="language-yml">    steps:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    steps:
     - name: Checkout code
       uses: actions/checkout@master
       with:
-        submodules: true
-</code></pre>
-
-<p>This is where the steps of the job start. To begin, I use the latest copy of the premade
-<a href="https://github.com/actions/checkout" rel="noreferrer" target="_blank">checkout</a> action to <code>git clone</code> my repository
-and initialize all submodules (though I don&rsquo;t use any submodules currently for my main
+        submodules: <span style="color:#66d9ef">true</span>
+</code></pre></div><p>This is where the steps of the job start. To begin, I use the latest copy of the premade
+<a href="https://github.com/actions/checkout">checkout</a> action to <code>git clone</code> my repository
+and initialize all submodules (though I don't use any submodules currently for my main
 site).</p>
-
-<pre><code class="language-yml">    - name: Install Node
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Install Node
       uses: actions/setup-node@master
-</code></pre>
-
-<p>Next I use the premade <a href="https://github.com/actions/setup-node" rel="noreferrer" target="_blank">setup-node</a> action
+</code></pre></div><p>Next I use the premade <a href="https://github.com/actions/setup-node">setup-node</a> action
 to setup NodeJS and npm.</p>
-
-<pre><code class="language-yml">    - name: Install dependencies
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Install dependencies
       run: npm install
-</code></pre>
-
-<p>After that, I simply run the <code>npm install</code> command to install all the dependencies.
-Since I&rsquo;m using the <a href="https://www.npmjs.com/package/hugo-bin" rel="noreferrer" target="_blank">hugo-bin</a> package,
+</code></pre></div><p>After that, I simply run the <code>npm install</code> command to install all the dependencies.
+Since I'm using the <a href="https://www.npmjs.com/package/hugo-bin">hugo-bin</a> package,
 this also sets up Hugo for me. While I <em>could</em> run a different script
 to download and install Hugo, doing it in one shot with npm just makes things easier.</p>
-
-<pre><code class="language-yml">    - name: Build Critical CSS
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Build Critical CSS
       run: npm run critical
-</code></pre>
-
-<p>Next, I run my npm script to start the Hugo server, and generate the critical CSS.</p>
-
-<pre><code class="language-yml">    - name: Build Site
+</code></pre></div><p>Next, I run my npm script to start the Hugo server, and generate the critical CSS.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Build Site
       run: npm run build
-</code></pre>
-
-<p>Then, I run my npm script to build the site (CSS, JS, Hugo) as described above.</p>
-
-<pre><code class="language-yml">    - name: Deploy Site
+</code></pre></div><p>Then, I run my npm script to build the site (CSS, JS, Hugo) as described above.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Deploy Site
       uses: peaceiris/actions-gh-pages@master
       if: success()
       env:
         ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         PUBLISH_BRANCH: gh-pages
         PUBLISH_DIR: ./public
-</code></pre>
-
-<p>Afterwards, I use <a href="https://github.com/peaceiris/actions-gh-pages" rel="noreferrer" target="_blank">an action</a>
+</code></pre></div><p>Afterwards, I use <a href="https://github.com/peaceiris/actions-gh-pages">an action</a>
 from the Marketplace to automatically commit and push all the changes to the <code>./public</code> directory
 to my <code>gh-pages</code> branch. The <code>if: success()</code> statements means this step will only run
-if the previous step ran successfully. This is important, as I don&rsquo;t want to commit a
+if the previous step ran successfully. This is important, as I don't want to commit a
 broken site build.</p>
-
-<pre><code class="language-yml">    - name: Purge Cache
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Purge Cache
       uses: nathanvaughn/actions-cloudflare-purge@master
       if: success()
       env:
         CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
         CLOUDFLARE_AUTH_KEY: ${{ secrets.CLOUDFLARE_AUTH_KEY }}
-</code></pre>
-
-<p>This uses a custom action
-<a href="https://github.com/nathanvaughn/actions-cloudflare-purge" rel="noreferrer" target="_blank">I made</a> to purge
-Cloudflare&rsquo;s cache of my site. Otherwise, old CSS or JS can get cached for too
+</code></pre></div><p>This uses a custom action
+<a href="https://github.com/nathanvaughn/actions-cloudflare-purge">I made</a> to purge
+Cloudflare's cache of my site. Otherwise, old CSS or JS can get cached for too
 long leading to things breaking. This uses
-<a href="https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables" rel="noreferrer" target="_blank">repository secrets</a>
+<a href="https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables">repository secrets</a>
 passed in as environment variables to securely store important tokens.</p>
-
-<pre><code class="language-yml">    - name: Load Site
-      run: curl $(echo $GITHUB_REPOSITORY | cut -d &quot;/&quot; -f 2-) --location --output /dev/null
-</code></pre>
-
-<p>To finish it off, I do a <code>curl</code> pull of my site to ensure it&rsquo;s working properly.
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Load Site
+      run: curl $(echo $GITHUB_REPOSITORY | cut -d <span style="color:#e6db74">&#34;/&#34;</span> -f <span style="color:#ae81ff">2</span>-) --location --output /dev/<span style="color:#66d9ef">null</span>
+</code></pre></div><p>To finish it off, I do a <code>curl</code> pull of my site to ensure it's working properly.
 This should also make sure Cloudflare refreshes their cache of my site.</p>
-
 <p>The <code>echo $GITHUB_REPOSITORY | cut -d &quot;/&quot; -f 2-</code> command is simply taking the
 <code>GITHUB_REPOSITORY</code> environment variable, which gives the author and repository name
 as a single string (like <code>nathanvaughn/nathanv.me</code>) and returns everything
 past the first <code>/</code>.</p>
-
 <p>The <code>--location</code> flag tells <code>curl</code> to follow redirects
 (since my site redirects to HTTPS) and <code>--output /dev/null</code> just prevents
 the return HTML from being spit out to the console.</p>
-
 <h2 id="my-blog-actions-workflow">My Blog Actions Workflow</h2>
-
 <p>While the above covered how I setup my website with Actions, the workflow for
-my blog is extremely similar. As I don&rsquo;t use my own theme for my blog,
-I don&rsquo;t use any npm scripts. Therefore, to build the site with Hugo,
-I use someone else&rsquo;s <a href="https://github.com/peaceiris/actions-hugo" rel="noreferrer" target="_blank">custom action</a>.
+my blog is extremely similar. As I don't use my own theme for my blog,
+I don't use any npm scripts. Therefore, to build the site with Hugo,
+I use someone else's <a href="https://github.com/peaceiris/actions-hugo">custom action</a>.
 The other steps are all the same.</p>
-
 <h2 id="other-uses">Other Uses</h2>
-
-<p>There&rsquo;s all sorts of stuff you can do with Actions too.</p>
-
+<p>There's all sorts of stuff you can do with Actions too.</p>
 <p>I currently have a repository for a Dockerfile of a web app I use.
-I have a <a href="https://github.com/NathanVaughn/webtrees-docker/blob/master/.github/workflows/main.yml" rel="noreferrer" target="_blank">workflow setup</a>
+I have a <a href="https://github.com/NathanVaughn/webtrees-docker/blob/master/.github/workflows/main.yml">workflow setup</a>
 which checks the latest version
 of the underlying web app, and if a new version
 has been released (stable, beta, or alpha), it automatically updates the Dockerfile
@@ -406,26 +348,21 @@ to reflect the new version on the appropriate branch of my repo, and commits
 the change. This will cause Docker Hub to automatically build, tag, and publish the
 image. No more subscribing to RSS release feeds and doing updates manually
 (to be fair, most of this is done with a Python script run on a schedule by Actions).</p>
-
-<p>Another example is my main website again. I have a <a href="https://github.com/NathanVaughn/nathanv.me/blob/master/.github/workflows/linkchecker.yml" rel="noreferrer" target="_blank">separate workflow</a>
-setup which runs weekly, and checks all the links on the site to see if they&rsquo;re broken,
-and automatically creates GitHub issues for the links that don&rsquo;t work.</p>
-
+<p>Another example is my main website again. I have a <a href="https://github.com/NathanVaughn/nathanv.me/blob/master/.github/workflows/linkchecker.yml">separate workflow</a>
+setup which runs weekly, and checks all the links on the site to see if they're broken,
+and automatically creates GitHub issues for the links that don't work.</p>
 <h2 id="conclusion">Conclusion</h2>
-
 <p>GitHub Actions is extremely powerful, flexible, and best of all, <strong>free</strong>
 (for public repos).
 There are tons of possibilities, such as running tests, automating administrative tasks,
-doing deployments, or anything else. I&rsquo;m excited to see where GitHub and the community
+doing deployments, or anything else. I'm excited to see where GitHub and the community
 take the product.</p>
-
 <h2 id="references">References</h2>
-
 <ul>
-<li><a href="https://help.github.com/en/categories/automating-your-workflow-with-github-actions" rel="noreferrer" target="_blank">https://help.github.com/en/categories/automating-your-workflow-with-github-actions</a></li>
-<li><a href="https://help.github.com/en/articles/events-that-trigger-workflows" rel="noreferrer" target="_blank">https://help.github.com/en/articles/events-that-trigger-workflows</a></li>
-<li><a href="https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions" rel="noreferrer" target="_blank">https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions</a></li>
-<li><a href="https://github.com/sdras/awesome-actions" rel="noreferrer" target="_blank">https://github.com/sdras/awesome-actions</a></li>
+<li><a href="https://help.github.com/en/categories/automating-your-workflow-with-github-actions"><a href="https://help.github.com/en/categories/automating-your-workflow-with-github-actions">https://help.github.com/en/categories/automating-your-workflow-with-github-actions</a></a></li>
+<li><a href="https://help.github.com/en/articles/events-that-trigger-workflows"><a href="https://help.github.com/en/articles/events-that-trigger-workflows">https://help.github.com/en/articles/events-that-trigger-workflows</a></a></li>
+<li><a href="https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions"><a href="https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions">https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions</a></a></li>
+<li><a href="https://github.com/sdras/awesome-actions"><a href="https://github.com/sdras/awesome-actions">https://github.com/sdras/awesome-actions</a></a></li>
 </ul>
 
     </div>

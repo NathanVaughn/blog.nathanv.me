@@ -17,7 +17,8 @@
       <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/boinc-with-sge/</guid>
-      <description>Background Recently, I setup a small High-Performance Computing (HPC) cluster for Iowa State&amp;rsquo;s solar car team. This cluster was primarily used for running Computational Fluid Dynamics (CFD) and MATLAB code. However, whenever the team was in the build phase and not actively designing the next car, the cluster sat idle the vast majority of the time. We decided that we should donate the extra compute time to scientific research.</description>
+      <description>Background Recently, I setup a small High-Performance Computing (HPC) cluster for Iowa State&#39;s solar car team. This cluster was primarily used for running Computational Fluid Dynamics (CFD) and MATLAB code. However, whenever the team was in the build phase and not actively designing the next car, the cluster sat idle the vast majority of the time. We decided that we should donate the extra compute time to scientific research.
+Introducing BOINC We decided that BOINC would be the best way to donate our extra compute time.</description>
     </item>
     
   </channel>

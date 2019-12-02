@@ -6,7 +6,7 @@
     
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-<meta name="description" content="Background Recently, when I setup a number of Docker Compose stacks for myself, I naively used MySQL 8 databases. I had heard of MariaDB in the past, and knew it was a drop-in replacement to MySQL, but I didn&amp;rsquo;t really know much about it. After recently reading about some of MariaDB&amp;rsquo;s features and speed-improvements over MySQL Community Edition (and many people including myself really hate Oracle), I decided I wanted to swap out my MySQL databases."/>
+<meta name="description" content="Background Recently, when I setup a number of Docker Compose stacks for myself, I naively used MySQL 8 databases. I had heard of MariaDB in the past, and knew it was a drop-in replacement to MySQL, but I didn&#39;t really know much about it. After recently reading about some of MariaDB&#39;s features and speed-improvements over MySQL Community Edition (and many people including myself really hate Oracle), I decided I wanted to swap out my MySQL databases."/>
 <meta name="keywords" content="[programming tech]"/>
 <meta name="robots" content="noodp"/>
 <link rel="canonical" href="https://blog.nathanv.me/posts/docker-mysql-to-mariadb/" />
@@ -37,7 +37,6 @@
 <meta property="og:description" content="Replacing existing MySQL 8 containers in Docker Compose stacks with MariaDB" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.nathanv.me/posts/docker-mysql-to-mariadb/" />
-
 <meta property="og:image" content="https://blog.nathanv.me/img/docker-mysql-to-mariadb/mysql_to_mariadb.jpg" />
 <meta property="article:published_time" content="2019-07-20T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-07-20T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
@@ -150,143 +149,122 @@
     
 
     <div class="post-content">
-      
-
-<h2 id="background">Background</h2>
-
+      <h2 id="background">Background</h2>
 <p>Recently, when I setup a number of Docker Compose stacks for myself, I naively
 used MySQL 8 databases. I had heard of MariaDB in the past, and knew it was a
-drop-in replacement to MySQL, but I didn&rsquo;t really know much about it.
-After recently reading about some of MariaDB&rsquo;s
-<a href="https://mariadb.com/kb/en/library/mariadb-vs-mysql-features/" rel="noreferrer" target="_blank">features and speed-improvements</a>
+drop-in replacement to MySQL, but I didn't really know much about it.
+After recently reading about some of MariaDB's
+<a href="https://mariadb.com/kb/en/library/mariadb-vs-mysql-features/">features and speed-improvements</a>
 over MySQL Community Edition
-(and <a href="https://www.reddit.com/r/sysadmin/search/?q=flair_name%3A%22Rant%22%20oracle&amp;restrict_sr=1" rel="noreferrer" target="_blank">many people</a>
+(and <a href="https://www.reddit.com/r/sysadmin/search/?q=flair_name%3A%22Rant%22%20oracle&amp;restrict_sr=1">many people</a>
 including myself <strong><em>really</em></strong> hate Oracle),
 I decided I wanted to swap out my MySQL databases.
 This ended up being more complicated than I initially hoped.</p>
-
 <h2 id="challenge">Challenge</h2>
-
 <p>The challenge was that I had previously used MySQL 8 for my databases.
-This presented the problem that I simply couldn&rsquo;t stop the old MySQL container,
+This presented the problem that I simply couldn't stop the old MySQL container,
 and start a new MariaDB container with the existing volume of the <code>/var/lib/mysql</code>
-folder (which contains MySQL&rsquo;s data) as is supported
-with <a href="https://mariadb.com/kb/en/library/upgrading-from-mysql-to-mariadb/" rel="noreferrer" target="_blank">older versions of MySQL</a>.
+folder (which contains MySQL's data) as is supported
+with <a href="https://mariadb.com/kb/en/library/upgrading-from-mysql-to-mariadb/">older versions of MySQL</a>.
 This meant that I would need to export the data from each database, delete the volume,
 start a new MariaDB database, and reimport the data. While it sounds simple enough,
 it quickly became very tedious.</p>
-
 <h2 id="process">Process</h2>
-
 <p>The general process was as follows:</p>
-
 <ul>
-<li>Dump the MySQL database of the current database container.</li>
-</ul>
-
+<li>
+<p>Dump the MySQL database of the current database container.</p>
 <p><code>sudo docker exec -i container_name mysqldump -u username -p database &gt; database_db.sql</code></p>
-
-<ul>
-<li>Stop the Docker Compose stack.</li>
-</ul>
-
+</li>
+<li>
+<p>Stop the Docker Compose stack.</p>
 <p><code>sudo docker-compose down</code></p>
-
-<ul>
-<li><p>Change the <code>docker-compose.yml</code> file to use MariaDB.</p>
-
-<pre><code class="language-diff">-   command: '--default-authentication-plugin=mysql_native_password'
-    env_file:
-        - ./.env
--   image: 'mysql:latest'
-+   image: 'mariadb:latest'
-</code></pre></li>
-
-<li><p>Delete the old data volume.</p></li>
+</li>
+<li>
+<p>Change the <code>docker-compose.yml</code> file to use MariaDB.</p>
+</li>
 </ul>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">-   command: &#39;--default-authentication-plugin=mysql_native_password&#39;
+</span><span style="color:#f92672"></span>        env_file:
+            - ./.env
+<span style="color:#f92672">-   image: &#39;mysql:latest&#39;
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+   image: &#39;mariadb:latest&#39;
+</span></code></pre></div><ul>
+<li>
+<p>Delete the old data volume.</p>
 <p><code>sudo docker volume rm volume_name</code></p>
-
-<ul>
-<li>Start the modified Docker Compose stack.</li>
-</ul>
-
+</li>
+<li>
+<p>Start the modified Docker Compose stack.</p>
 <p><code>sudo docker-compose up -d</code></p>
-
-<ul>
-<li>Wait for the MariaDB container to become ready, and load in the data.</li>
-</ul>
-
+</li>
+<li>
+<p>Wait for the MariaDB container to become ready, and load in the data.</p>
 <p><code>sudo docker exec -i container_name mysql -u username -p database &lt; database_db.sql</code></p>
-
+</li>
+</ul>
 <h2 id="automating">Automating</h2>
-
 <p>After doing this process by hand twice, I quickly decided to write a script to do it
 for me as I use a standard naming convention for all of my Docker Compose stacks and really
 wanted to speed up the process</p>
+<p><strong><em>WARNING: DON'T USE THIS SCRIPT WITHOUT GOOD BACKUPS</em></strong></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e"># inputs</span>
 
-<p><strong><em>WARNING: DON&rsquo;T USE THIS SCRIPT WITHOUT GOOD BACKUPS</em></strong></p>
-
-<pre><code class="language-bash">#!/bin/bash
-
-# inputs
-
-echo &quot;Enter application name (lower case):&quot;
+echo <span style="color:#e6db74">&#34;Enter application name (lower case):&#34;</span>
 read APPNAME
 
-read -p &quot;Enter the directory with the docker-compose.yml file: &quot; -e -i `pwd`/$APPNAME DOCKERDIR
-read -p &quot;Enter the container name: &quot; -e -i ${APPNAME}_db_1 CONTAINERNAME
-read -p &quot;Enter the container volume name: &quot; -e -i ${APPNAME}_db_data VOLUMENAME
-read -p &quot;Enter the MySQL database: &quot; -e -i $APPNAME DATABASE
-read -p &quot;Enter the MySQL username: &quot; -e -i $APPNAME USERNAME
-read -p &quot;Enter the MySQL password: &quot; -s PASSWORD
+read -p <span style="color:#e6db74">&#34;Enter the directory with the docker-compose.yml file: &#34;</span> -e -i <span style="color:#e6db74">`</span>pwd<span style="color:#e6db74">`</span>/$APPNAME DOCKERDIR
+read -p <span style="color:#e6db74">&#34;Enter the container name: &#34;</span> -e -i <span style="color:#e6db74">${</span>APPNAME<span style="color:#e6db74">}</span>_db_1 CONTAINERNAME
+read -p <span style="color:#e6db74">&#34;Enter the container volume name: &#34;</span> -e -i <span style="color:#e6db74">${</span>APPNAME<span style="color:#e6db74">}</span>_db_data VOLUMENAME
+read -p <span style="color:#e6db74">&#34;Enter the MySQL database: &#34;</span> -e -i $APPNAME DATABASE
+read -p <span style="color:#e6db74">&#34;Enter the MySQL username: &#34;</span> -e -i $APPNAME USERNAME
+read -p <span style="color:#e6db74">&#34;Enter the MySQL password: &#34;</span> -s PASSWORD
 
-# -----------------
-# Data export
+<span style="color:#75715e"># -----------------</span>
+<span style="color:#75715e"># Data export</span>
 
-FILENAME=${DATABASE}_db.sql
+FILENAME<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>DATABASE<span style="color:#e6db74">}</span>_db.sql
 
-echo &quot;Changing directories to $DOCKERDIR&quot;
+echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Changing directories to </span>$DOCKERDIR<span style="color:#e6db74">&#34;</span>
 cd $DOCKERDIR
 
-echo &quot;Dumping MySQL database to $FILENAME&quot;
+echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Dumping MySQL database to </span>$FILENAME<span style="color:#e6db74">&#34;</span>
 sudo docker exec -i $CONTAINERNAME mysqldump -u $USERNAME -p$PASSWORD $DATABASE &gt; $FILENAME
 
-echo &quot;Stopping containers&quot;
+echo <span style="color:#e6db74">&#34;Stopping containers&#34;</span>
 sudo docker-compose down
 
-# -----------------
-# Wait for user to modify compose file
+<span style="color:#75715e"># -----------------</span>
+<span style="color:#75715e"># Wait for user to modify compose file</span>
 
-read -p &quot;Press enter once you have modified the docker-compose.yml file&quot;
+read -p <span style="color:#e6db74">&#34;Press enter once you have modified the docker-compose.yml file&#34;</span>
 
-# -----------------
-# Data import
+<span style="color:#75715e"># -----------------</span>
+<span style="color:#75715e"># Data import</span>
 
-echo &quot;Changing directories to $DOCKERDIR&quot;
+echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Changing directories to </span>$DOCKERDIR<span style="color:#e6db74">&#34;</span>
 cd $DOCKERDIR
 
-echo &quot;Deleting old volume $VOLUMENAME&quot;
+echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Deleting old volume </span>$VOLUMENAME<span style="color:#e6db74">&#34;</span>
 sudo docker volume rm $VOLUMENAME
 
-echo &quot;Starting containers&quot;
+echo <span style="color:#e6db74">&#34;Starting containers&#34;</span>
 sudo docker-compose up -d
 
-echo &quot;Waiting 90 seconds&quot;
-sleep 90
+echo <span style="color:#e6db74">&#34;Waiting 90 seconds&#34;</span>
+sleep <span style="color:#ae81ff">90</span>
 
-echo &quot;Loading MySQL database from $FILENAME&quot;
-echo &quot;sudo docker exec -i $CONTAINERNAME mysql -u $USERNAME -p$PASSWORD $DATABASE &lt; $FILENAME&quot;
+echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Loading MySQL database from </span>$FILENAME<span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">sudo docker exec -i </span>$CONTAINERNAME<span style="color:#e6db74"> mysql -u </span>$USERNAME<span style="color:#e6db74"> -p</span>$PASSWORD<span style="color:#e6db74"> </span>$DATABASE<span style="color:#e6db74"> &lt; </span>$FILENAME<span style="color:#e6db74">&#34;</span>
 sudo docker exec -i $CONTAINERNAME mysql -u $USERNAME -p$PASSWORD $DATABASE &lt; $FILENAME
 
-#echo &quot;Removing $DOCKERDIR/$FILENAME&quot;
-#rm $DOCKERDIR/$FILENAME
-</code></pre>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>With a bit of time and effort, I&rsquo;ve now converted all my MySQL databases to MariaDB
-as part of my goal of <a href="https://www.cnbc.com/2018/08/01/amazon-plans-to-move-off-oracle-software-by-early-2020.html" rel="noreferrer" target="_blank">ridding myself</a> of all Oracle software.</p>
+<span style="color:#75715e">#echo &#34;Removing $DOCKERDIR/$FILENAME&#34;</span>
+<span style="color:#75715e">#rm $DOCKERDIR/$FILENAME</span>
+</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>With a bit of time and effort, I've now converted all my MySQL databases to MariaDB
+as part of my goal of <a href="https://www.cnbc.com/2018/08/01/amazon-plans-to-move-off-oracle-software-by-early-2020.html">ridding myself</a> of all Oracle software.</p>
 
     </div>
     

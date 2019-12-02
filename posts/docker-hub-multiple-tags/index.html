@@ -37,8 +37,7 @@
 <meta property="og:description" content="Writing a custom build hook for Docker Hub to apply multiple tags to a Docker image" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.nathanv.me/posts/docker-hub-multiple-tags/" />
-
-<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png" />
+<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png"/>
 <meta property="article:published_time" content="2019-11-23T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-11-23T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
 
@@ -144,36 +143,29 @@
     
 
     <div class="post-content">
-      
-
-<h2 id="background">Background</h2>
-
+      <h2 id="background">Background</h2>
 <p>While working on my
-<a href="https://github.com/NathanVaughn/webtrees-docker" rel="noreferrer" target="_blank">Docker image for webtrees</a>,
+<a href="https://github.com/NathanVaughn/webtrees-docker">Docker image for webtrees</a>,
 I ran into a peculiar issue. I had setup automated builds in Docker Hub for every
 tagged commit in my git repository.
 At first, I wanted to be able to have multiple tags for
 each image build, so that each build could be version tagged (like <code>1.7.15</code>) and
 have the <code>latest</code> tag applied as well.
-Using an <a href="https://github.com/docker/hub-feedback/issues/341#issuecomment-551808767" rel="noreferrer" target="_blank">undocumented feature</a>,
+Using an <a href="https://github.com/docker/hub-feedback/issues/341#issuecomment-551808767">undocumented feature</a>,
 I was able to get that to work. However, problems arose once I wanted to also properly
-<a href="https://medium.com/@chamilad/lets-make-your-docker-image-better-than-90-of-existing-ones-8b1e5de950d" rel="noreferrer" target="_blank">label my image</a>.
+<a href="https://medium.com/@chamilad/lets-make-your-docker-image-better-than-90-of-existing-ones-8b1e5de950d">label my image</a>.
 Specifically, I was trying to add the <code>BUILD_DATE</code> and <code>VCS_REF</code> labels.
 With Docker Hub, this requires
-you to add your own <a href="https://docs.docker.com/docker-hub/builds/advanced/" rel="noreferrer" target="_blank">build hook</a>
+you to add your own <a href="https://docs.docker.com/docker-hub/builds/advanced/">build hook</a>
 in order to pass in the needed build arguments.
-Using <a href="https://medium.com/microscaling-systems/labelling-automated-builds-on-docker-hub-f3d073fb8e1" rel="noreferrer" target="_blank">an example I found</a>,
+Using <a href="https://medium.com/microscaling-systems/labelling-automated-builds-on-docker-hub-f3d073fb8e1">an example I found</a>,
 I added my own build hook to my repository.</p>
-
-<pre><code class="language-bash">#!/bin/bash
-
-docker build --build-arg VCS_REF=`git rev-parse — short HEAD` \
-  --build-arg BUILD_DATE=`date -u +”%Y-%m-%dT%H:%M:%SZ”` \
-  -t $IMAGE_NAME .
-</code></pre>
-
-<p>This is where everything fell apart. My image builds started failing!</p>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
+docker build --build-arg VCS_REF<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>git rev-parse — short HEAD<span style="color:#e6db74">`</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  --build-arg BUILD_DATE<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>date -u +”%Y-%m-%dT%H:%M:%SZ”<span style="color:#e6db74">`</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>  -t $IMAGE_NAME .
+</code></pre></div><p>This is where everything fell apart. My image builds started failing!</p>
 
   <figure class="center" >
     <img src="/img/docker-hub-multiple-tags/build_fail.jpg"  alt="Docker Hub build failure"   style="border-radius: 8px;"  />
@@ -183,59 +175,46 @@ docker build --build-arg VCS_REF=`git rev-parse — short HEAD` \
   </figure>
 
 
-
 <h2 id="issue">Issue</h2>
-
 <p>After some head scratching and debugging, I discovered the two-part problem.</p>
-
 <h3 id="environment-variable">Environment Variable</h3>
-
 <p>The first part of the problem was the <code>IMAGE_NAME</code>
-<a href="https://docs.docker.com/docker-hub/builds/advanced/#environment-variables-for-building-and-testing" rel="noreferrer" target="_blank">environment variable</a>.
+<a href="https://docs.docker.com/docker-hub/builds/advanced/#environment-variables-for-building-and-testing">environment variable</a>.
 Normally, this environment variable provides a value like
 <code>index.docker.io/username/repo:tag</code>. However, when you abuse
-Docker Hub&rsquo;s tagging system to do multiple tags like I was doing,
+Docker Hub's tagging system to do multiple tags like I was doing,
 you instead get a value like <code>index.docker.io/username/repo:tag1,tag2</code>.</p>
-
 <h3 id="build-hook">Build Hook</h3>
-
 <p>With the aforementioned malformed environment variable, the simple build hook
 script example I found completely falls flat, as this is not valid syntax.</p>
-
-<p>Mysteriously, if you don&rsquo;t use
+<p>Mysteriously, if you don't use
 a custom build script, this <em>does</em> in fact work, so Docker must be able to handle
-this in their own scripts, with logic they don&rsquo;t share.</p>
-
+this in their own scripts, with logic they don't share.</p>
 <h2 id="workaround">Workaround</h2>
-
 <p>To fix this, you need to write your own build hook script that can handle multiple
 tags being passed to it. You can either tag the image during the <code>build</code>
 command (easier) or build the the image first, then <code>docker tag</code> it multiple times
 (a bit more difficult, since you have to reference the image properly).
 I was unable to find anyone else who has done this, so I wrote my own.
 This is what I have come up with and seems to work:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/bin/bash
+</span><span style="color:#75715e"></span>
+IFS<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;,&#39;</span> read -ra tags <span style="color:#f92672">&lt;&lt;&lt;</span> <span style="color:#e6db74">&#34;</span>$DOCKER_TAG<span style="color:#e6db74">&#34;</span>
+TAG_COMMAND<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
 
-<pre><code class="language-bash">#!/bin/bash
+<span style="color:#66d9ef">for</span> tag in <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>tags[@]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">do</span>
+    TAG_COMMAND<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$TAG_COMMAND<span style="color:#e6db74"> -t </span>$DOCKER_REPO<span style="color:#e6db74">:</span>$tag<span style="color:#e6db74">&#34;</span>
+<span style="color:#66d9ef">done</span>
 
-IFS=',' read -ra tags &lt;&lt;&lt; &quot;$DOCKER_TAG&quot;
-TAG_COMMAND=&quot;&quot;
-
-for tag in &quot;${tags[@]}&quot;
-do
-    TAG_COMMAND=&quot;$TAG_COMMAND -t $DOCKER_REPO:$tag&quot;
-done
-
-docker build --build-arg BUILD_DATE=`date -u +&quot;%Y-%m-%dT%H:%M:%SZ&quot;` \
-             --build-arg VCS_REF=`git rev-parse --short HEAD` \
-             $TAG_COMMAND .
-</code></pre>
-
-<p>This script takes in the <code>DOCKER_TAG</code> environment variable
+docker build --build-arg BUILD_DATE<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>date -u +<span style="color:#e6db74">&#34;%Y-%m-%dT%H:%M:%SZ&#34;</span><span style="color:#e6db74">`</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>             --build-arg VCS_REF<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>git rev-parse --short HEAD<span style="color:#e6db74">`</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>             $TAG_COMMAND .
+</code></pre></div><p>This script takes in the <code>DOCKER_TAG</code> environment variable
 (which provides a comma-separated list of tags), splits it by comma, then builds
 the <code>-t</code> tagging argument for the <code>build</code> command. There is no harm in
 using this for an image with only a single tag, as this will still work perfectly
 fine.</p>
-
 
   <figure class="center" >
     <img src="/img/docker-hub-multiple-tags/build_success.jpg"  alt="Docker Hub build success"   style="border-radius: 8px;"  />
@@ -245,13 +224,10 @@ fine.</p>
   </figure>
 
 
-
 <h2 id="conclusion">Conclusion</h2>
-
 <p>With a bit of abuse of some undocumented features, I was able to get my Docker image
 to build automatically on Docker Hub with all of the
-<a href="https://microbadger.com/images/nathanvaughn/webtrees" rel="noreferrer" target="_blank">labels and tags</a> I wanted.</p>
-
+<a href="https://microbadger.com/images/nathanvaughn/webtrees">labels and tags</a> I wanted.</p>
 
   <figure class="center" >
     <img src="/img/docker-hub-multiple-tags/microbadger_labels.jpg"  alt="Microbadger labels"   style="border-radius: 8px;"  />
@@ -261,20 +237,17 @@ to build automatically on Docker Hub with all of the
   </figure>
 
 
-
-<p>This adventure though has really made me question my usage of Docker Hub&rsquo;s
+<p>This adventure though has really made me question my usage of Docker Hub's
 image building. It seems like I could have avoided a lot of this hassle if I
 had set up builds with a different CI provider like GitHub Actions, and then just
 push to Docker Hub, instead of dealing with all of these weird, undocumented
-limitations. I also don&rsquo;t know if or when this workaround will stop functioning.</p>
-
+limitations. I also don't know if or when this workaround will stop functioning.</p>
 <h2 id="references">References</h2>
-
 <ul>
-<li><a href="https://docs.docker.com/docker-hub/builds/advanced/" rel="noreferrer" target="_blank">https://docs.docker.com/docker-hub/builds/advanced/</a></li>
-<li><a href="https://medium.com/microscaling-systems/labelling-automated-builds-on-docker-hub-f3d073fb8e1" rel="noreferrer" target="_blank">https://medium.com/microscaling-systems/labelling-automated-builds-on-docker-hub-f3d073fb8e1</a></li>
-<li><a href="https://github.com/docker/hub-feedback/issues/341#issuecomment-551811075" rel="noreferrer" target="_blank">https://github.com/docker/hub-feedback/issues/341#issuecomment-551811075</a></li>
-<li><a href="https://microbadger.com/images/nathanvaughn/webtrees" rel="noreferrer" target="_blank">https://microbadger.com/images/nathanvaughn/webtrees</a></li>
+<li><a href="https://docs.docker.com/docker-hub/builds/advanced/"><a href="https://docs.docker.com/docker-hub/builds/advanced/">https://docs.docker.com/docker-hub/builds/advanced/</a></a></li>
+<li><a href="https://medium.com/microscaling-systems/labelling-automated-builds-on-docker-hub-f3d073fb8e1"><a href="https://medium.com/microscaling-systems/labelling-automated-builds-on-docker-hub-f3d073fb8e1">https://medium.com/microscaling-systems/labelling-automated-builds-on-docker-hub-f3d073fb8e1</a></a></li>
+<li><a href="https://github.com/docker/hub-feedback/issues/341#issuecomment-551811075"><a href="https://github.com/docker/hub-feedback/issues/341#issuecomment-551811075">https://github.com/docker/hub-feedback/issues/341#issuecomment-551811075</a></a></li>
+<li><a href="https://microbadger.com/images/nathanvaughn/webtrees"><a href="https://microbadger.com/images/nathanvaughn/webtrees">https://microbadger.com/images/nathanvaughn/webtrees</a></a></li>
 </ul>
 
     </div>
