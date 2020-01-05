@@ -6,10 +6,19 @@
     <description>Recent content on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Sun Ultra 24 Server Build</title>
+      <link>https://blog.nathanv.me/posts/sun-ultra-24-build/</link>
+      <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/sun-ultra-24-build/</guid>
+      <description>Background Early last year, I went to my university&amp;rsquo;s surplus store. I was looking to purchase an old Mac Pro tower with the intent to do a case mod with it, since I knew the surplus store had a few available for cheap and I thought it would be a fun project. However, while looking around, I spotted a beautiful Sun Ultra 24 on the shelf. I quickly decided to purchase that instead for two reasons.</description>
+    </item>
     
     <item>
       <title>Docker Hub Build Hook to Apply Multiple Image Tags</title>

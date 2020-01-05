@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>pc building</title>
+      <link>https://blog.nathanv.me/tags/pc-building/</link>
+      <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/pc-building/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>self-hosting</title>
+      <link>https://blog.nathanv.me/tags/self-hosting/</link>
+      <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/self-hosting/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>bash</title>
@@ -125,15 +143,6 @@
       <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/tags/mysql/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>self-hosting</title>
-      <link>https://blog.nathanv.me/tags/self-hosting/</link>
-      <pubDate>Sun, 07 Jul 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.nathanv.me/tags/self-hosting/</guid>
       <description></description>
     </item>
     

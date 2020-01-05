@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pc building on Nathan Vaughn</title>
+    <link>https://blog.nathanv.me/tags/pc-building/</link>
+    <description>Recent content in pc building on Nathan Vaughn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 05 Jan 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.nathanv.me/tags/pc-building/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sun Ultra 24 Server Build</title>
+      <link>https://blog.nathanv.me/posts/sun-ultra-24-build/</link>
+      <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/sun-ultra-24-build/</guid>
+      <description>Background Early last year, I went to my university&amp;rsquo;s surplus store. I was looking to purchase an old Mac Pro tower with the intent to do a case mod with it, since I knew the surplus store had a few available for cheap and I thought it would be a fun project. However, while looking around, I spotted a beautiful Sun Ultra 24 on the shelf. I quickly decided to purchase that instead for two reasons.</description>
+    </item>
+    
+  </channel>
+</rss>
