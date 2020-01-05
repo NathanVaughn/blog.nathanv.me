@@ -26,7 +26,7 @@
       <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/docker-mysql-to-mariadb/</guid>
-      <description>Background Recently, when I setup a number of Docker Compose stacks for myself, I naively used MySQL 8 databases. I had heard of MariaDB in the past, and knew it was a drop-in replacement to MySQL, but I didn&#39;t really know much about it. After recently reading about some of MariaDB&#39;s features and speed-improvements over MySQL Community Edition (and many people including myself really hate Oracle), I decided I wanted to swap out my MySQL databases.</description>
+      <description>Background Recently, when I setup a number of Docker Compose stacks for myself, I naively used MySQL 8 databases. I had heard of MariaDB in the past, and knew it was a drop-in replacement to MySQL, but I didn&amp;rsquo;t really know much about it. After recently reading about some of MariaDB&amp;rsquo;s features and speed-improvements over MySQL Community Edition (and many people including myself really hate Oracle), I decided I wanted to swap out my MySQL databases.</description>
     </item>
     
     <item>
@@ -35,8 +35,8 @@
       <pubDate>Sun, 07 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/self-host-docker/</guid>
-      <description>Background For the past few years, I&#39;ve rented a VPS to host some web apps for myself. I&#39;ve done this since I&#39;ve lived in college apartments behind a NAT and I wanted to be able to access these services from the outside world. Also, running locally, I wouldn&#39;t be able to setup HTTPS other than self-signed certs. Yuck.
-However, with Cloudflare&#39;s new service, Argo Tunnel, and poor financial decisions a server I bought on Craigslist, I decided to move my apps to be hosted on-premise.</description>
+      <description>Background For the past few years, I&amp;rsquo;ve rented a VPS to host some web apps for myself. I&amp;rsquo;ve done this since I&amp;rsquo;ve lived in college apartments behind a NAT and I wanted to be able to access these services from the outside world. Also, running locally, I wouldn&amp;rsquo;t be able to setup HTTPS other than self-signed certs. Yuck.
+However, with Cloudflare&amp;rsquo;s new service, Argo Tunnel, and poor financial decisions a server I bought on Craigslist, I decided to move my apps to be hosted on-premise.</description>
     </item>
     
   </channel>

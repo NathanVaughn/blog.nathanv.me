@@ -27,7 +27,7 @@
       
       <guid>https://blog.nathanv.me/posts/static-site-github-actions/</guid>
       <description>Background A little while back, GitHub released their Actions integrated CI/CD (continuous integration and delivery) platform. I signed up for the beta and managed to get in. This article will cover how I used GitHub Actions to completely automate the building and deployment of my personal site (and this blog).
-Actions Introduction GitHub Actions is a continuous integration and delivery product. It&#39;s similar to Travis CI or Circle CI or other similar existing providers.</description>
+Actions Introduction GitHub Actions is a continuous integration and delivery product. It&amp;rsquo;s similar to Travis CI or Circle CI or other similar existing providers.</description>
     </item>
     
     <item>
@@ -36,9 +36,9 @@ Actions Introduction GitHub Actions is a continuous integration and delivery pro
       <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/budget-home-network/</guid>
-      <description>Background At the time of writing, I&#39;m currently co-oping at Collins Aerospace, whom are nice enough to provide me a 3-floor townhouse. Since this is the first time I&#39;ve lived somewhere where I can setup my own network, I just wanted to write up how I&#39;ve done it.
+      <description>Background At the time of writing, I&amp;rsquo;m currently co-oping at Collins Aerospace, whom are nice enough to provide me a 3-floor townhouse. Since this is the first time I&amp;rsquo;ve lived somewhere where I can setup my own network, I just wanted to write up how I&amp;rsquo;ve done it.
 Network Infrastructure Here are the components of my home network infrastructure.
-Technicolor Modem - $11.50/Month Some crappy Technicolor (I didn&#39;t know they were even still around) modem provided by my ISP.</description>
+Technicolor Modem - $11.50/Month Some crappy Technicolor (I didn&amp;rsquo;t know they were even still around) modem provided by my ISP.</description>
     </item>
     
     <item>
@@ -47,8 +47,8 @@ Technicolor Modem - $11.50/Month Some crappy Technicolor (I didn&#39;t know they
       <pubDate>Sun, 21 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/hp-utilities-ubuntu/</guid>
-      <description>Background As mentioned in my &amp;ldquo;Self-Hosting with Docker and Argo Tunnel&amp;rdquo; post, I bought a HP DL360 G5 server a little while back. I&#39;m most comfortable with Ubuntu Server, so I opted to install that on the sever. I recently learned that HP has utilities you can install on Linux to modify and view system-level settings and information, which is pretty cool.
-I wanted to try them out, however, my server being a Gen 5, has not been supported for a long time and Ubuntu isn&#39;t part of the of the group of OSs (Red Hat and SUSE) that get Service Packs.</description>
+      <description>Background As mentioned in my &amp;ldquo;Self-Hosting with Docker and Argo Tunnel&amp;ldquo; post, I bought a HP DL360 G5 server a little while back. I&amp;rsquo;m most comfortable with Ubuntu Server, so I opted to install that on the sever. I recently learned that HP has utilities you can install on Linux to modify and view system-level settings and information, which is pretty cool.
+I wanted to try them out, however, my server being a Gen 5, has not been supported for a long time and Ubuntu isn&amp;rsquo;t part of the of the group of OSs (Red Hat and SUSE) that get Service Packs.</description>
     </item>
     
     <item>
@@ -57,7 +57,7 @@ I wanted to try them out, however, my server being a Gen 5, has not been support
       <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/docker-mysql-to-mariadb/</guid>
-      <description>Background Recently, when I setup a number of Docker Compose stacks for myself, I naively used MySQL 8 databases. I had heard of MariaDB in the past, and knew it was a drop-in replacement to MySQL, but I didn&#39;t really know much about it. After recently reading about some of MariaDB&#39;s features and speed-improvements over MySQL Community Edition (and many people including myself really hate Oracle), I decided I wanted to swap out my MySQL databases.</description>
+      <description>Background Recently, when I setup a number of Docker Compose stacks for myself, I naively used MySQL 8 databases. I had heard of MariaDB in the past, and knew it was a drop-in replacement to MySQL, but I didn&amp;rsquo;t really know much about it. After recently reading about some of MariaDB&amp;rsquo;s features and speed-improvements over MySQL Community Edition (and many people including myself really hate Oracle), I decided I wanted to swap out my MySQL databases.</description>
     </item>
     
     <item>
@@ -66,8 +66,8 @@ I wanted to try them out, however, my server being a Gen 5, has not been support
       <pubDate>Sun, 07 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/self-host-docker/</guid>
-      <description>Background For the past few years, I&#39;ve rented a VPS to host some web apps for myself. I&#39;ve done this since I&#39;ve lived in college apartments behind a NAT and I wanted to be able to access these services from the outside world. Also, running locally, I wouldn&#39;t be able to setup HTTPS other than self-signed certs. Yuck.
-However, with Cloudflare&#39;s new service, Argo Tunnel, and poor financial decisions a server I bought on Craigslist, I decided to move my apps to be hosted on-premise.</description>
+      <description>Background For the past few years, I&amp;rsquo;ve rented a VPS to host some web apps for myself. I&amp;rsquo;ve done this since I&amp;rsquo;ve lived in college apartments behind a NAT and I wanted to be able to access these services from the outside world. Also, running locally, I wouldn&amp;rsquo;t be able to setup HTTPS other than self-signed certs. Yuck.
+However, with Cloudflare&amp;rsquo;s new service, Argo Tunnel, and poor financial decisions a server I bought on Craigslist, I decided to move my apps to be hosted on-premise.</description>
     </item>
     
     <item>
@@ -76,8 +76,7 @@ However, with Cloudflare&#39;s new service, Argo Tunnel, and poor financial deci
       <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/boinc-with-sge/</guid>
-      <description>Background Recently, I setup a small High-Performance Computing (HPC) cluster for Iowa State&#39;s solar car team. This cluster was primarily used for running Computational Fluid Dynamics (CFD) and MATLAB code. However, whenever the team was in the build phase and not actively designing the next car, the cluster sat idle the vast majority of the time. We decided that we should donate the extra compute time to scientific research.
-Introducing BOINC We decided that BOINC would be the best way to donate our extra compute time.</description>
+      <description>Background Recently, I setup a small High-Performance Computing (HPC) cluster for Iowa State&amp;rsquo;s solar car team. This cluster was primarily used for running Computational Fluid Dynamics (CFD) and MATLAB code. However, whenever the team was in the build phase and not actively designing the next car, the cluster sat idle the vast majority of the time. We decided that we should donate the extra compute time to scientific research.</description>
     </item>
     
   </channel>

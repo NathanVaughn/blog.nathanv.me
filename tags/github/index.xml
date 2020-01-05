@@ -18,7 +18,7 @@
       
       <guid>https://blog.nathanv.me/posts/static-site-github-actions/</guid>
       <description>Background A little while back, GitHub released their Actions integrated CI/CD (continuous integration and delivery) platform. I signed up for the beta and managed to get in. This article will cover how I used GitHub Actions to completely automate the building and deployment of my personal site (and this blog).
-Actions Introduction GitHub Actions is a continuous integration and delivery product. It&#39;s similar to Travis CI or Circle CI or other similar existing providers.</description>
+Actions Introduction GitHub Actions is a continuous integration and delivery product. It&amp;rsquo;s similar to Travis CI or Circle CI or other similar existing providers.</description>
     </item>
     
   </channel>
