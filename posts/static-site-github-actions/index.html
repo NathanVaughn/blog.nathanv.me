@@ -234,111 +234,111 @@ it was clunky and I&rsquo;d always inevitably forget to run something. No more!<
 process, plus steps I hadn&rsquo;t even automated previously.</p>
 
 <p>My workflow file (at time of writing):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">name: Build
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">name</span>: Build
 
-on:
-  push:
-    branches:
+<span style="color:#66d9ef">on</span>:
+  <span style="color:#66d9ef">push</span>:
+    <span style="color:#66d9ef">branches</span>:
     - master
 
-jobs:
-  build:
+<span style="color:#66d9ef">jobs</span>:
+  <span style="color:#66d9ef">build</span>:
 
-    runs-on: ubuntu-latest
+    <span style="color:#66d9ef">runs-on</span>: ubuntu-latest
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@master
-      with:
-        submodules: <span style="color:#66d9ef">true</span>
-    - name: Install Node
-      uses: actions/setup-node@master
-    - name: Install dependencies
-      run: npm install
-    - name: Build Critical CSS
-      run: npm run critical
-    - name: Build Site
-      run: npm run build
-    - name: Deploy Site
-      uses: peaceiris/actions-gh-pages@master
-      if: success()
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./public
-    - name: Purge Cache
-      uses: nathanvaughn/actions-cloudflare-purge@master
-      if: success()
-      env:
-        CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
-        CLOUDFLARE_AUTH_KEY: ${{ secrets.CLOUDFLARE_AUTH_KEY }}
-    - name: Load Site
-      run: curl $(echo $GITHUB_REPOSITORY | cut -d <span style="color:#e6db74">&#34;/&#34;</span> -f <span style="color:#ae81ff">2</span>-) --location --output /dev/<span style="color:#66d9ef">null</span></code></pre></div>
+    <span style="color:#66d9ef">steps</span>:
+    - <span style="color:#66d9ef">name</span>: Checkout code
+      <span style="color:#66d9ef">uses</span>: actions/checkout@master
+      <span style="color:#66d9ef">with</span>:
+        <span style="color:#66d9ef">submodules</span>: <span style="color:#66d9ef">true</span>
+    - <span style="color:#66d9ef">name</span>: Install Node
+      <span style="color:#66d9ef">uses</span>: actions/setup-node@master
+    - <span style="color:#66d9ef">name</span>: Install dependencies
+      <span style="color:#66d9ef">run</span>: npm install
+    - <span style="color:#66d9ef">name</span>: Build Critical CSS
+      <span style="color:#66d9ef">run</span>: npm run critical
+    - <span style="color:#66d9ef">name</span>: Build Site
+      <span style="color:#66d9ef">run</span>: npm run build
+    - <span style="color:#66d9ef">name</span>: Deploy Site
+      <span style="color:#66d9ef">uses</span>: peaceiris/actions-gh-pages@master
+      <span style="color:#66d9ef">if</span>: success()
+      <span style="color:#66d9ef">env</span>:
+        <span style="color:#66d9ef">ACTIONS_DEPLOY_KEY</span>: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        <span style="color:#66d9ef">PUBLISH_BRANCH</span>: gh-pages
+        <span style="color:#66d9ef">PUBLISH_DIR</span>: ./public
+    - <span style="color:#66d9ef">name</span>: Purge Cache
+      <span style="color:#66d9ef">uses</span>: nathanvaughn/actions-cloudflare-purge@master
+      <span style="color:#66d9ef">if</span>: success()
+      <span style="color:#66d9ef">env</span>:
+        <span style="color:#66d9ef">CLOUDFLARE_ZONE</span>: ${{ secrets.CLOUDFLARE_ZONE }}
+        <span style="color:#66d9ef">CLOUDFLARE_AUTH_KEY</span>: ${{ secrets.CLOUDFLARE_AUTH_KEY }}
+    - <span style="color:#66d9ef">name</span>: Load Site
+      <span style="color:#66d9ef">run</span>: curl $(echo $GITHUB_REPOSITORY | cut -d <span style="color:#e6db74">&#34;/&#34;</span> -f <span style="color:#ae81ff">2</span>-) --location --output /dev/<span style="color:#66d9ef">null</span></code></pre></div>
 <h3 id="breakdown">Breakdown</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">on:
-  push:
-    branches:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">on</span>:
+  <span style="color:#66d9ef">push</span>:
+    <span style="color:#66d9ef">branches</span>:
     - master</code></pre></div>
 <p>I want this workflow to run on every single push to the master branch. I don&rsquo;t have
 this set to <em>every</em> branch, because I publish the output HTML to the <code>gh-pages</code> branch
 for <a href="https://pages.github.com/" rel="noreferrer" target="_blank">GitHub Pages</a> (how I host the site). Plus, if I want to work on a separate branch and not have the changes deployed, I can do so.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">jobs:
-  build:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">jobs</span>:
+  <span style="color:#66d9ef">build</span>:
 
-    runs-on: ubuntu-latest</code></pre></div>
+    <span style="color:#66d9ef">runs-on</span>: ubuntu-latest</code></pre></div>
 <p>You can define multiple &ldquo;jobs&rdquo; per workflow, but mine just has one called &ldquo;build&rdquo;.
 I want it to run on the latest build of Ubuntu.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    steps:
-    - name: Checkout code
-      uses: actions/checkout@master
-      with:
-        submodules: <span style="color:#66d9ef">true</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    <span style="color:#66d9ef">steps</span>:
+    - <span style="color:#66d9ef">name</span>: Checkout code
+      <span style="color:#66d9ef">uses</span>: actions/checkout@master
+      <span style="color:#66d9ef">with</span>:
+        <span style="color:#66d9ef">submodules</span>: <span style="color:#66d9ef">true</span></code></pre></div>
 <p>This is where the steps of the job start. To begin, I use the latest copy of the premade
 <a href="https://github.com/actions/checkout" rel="noreferrer" target="_blank">checkout</a> action to <code>git clone</code> my repository
 and initialize all submodules (though I don&rsquo;t use any submodules currently for my main
 site).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Install Node
-      uses: actions/setup-node@master</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Install Node
+      <span style="color:#66d9ef">uses</span>: actions/setup-node@master</code></pre></div>
 <p>Next I use the premade <a href="https://github.com/actions/setup-node" rel="noreferrer" target="_blank">setup-node</a> action
 to setup NodeJS and npm.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Install dependencies
-      run: npm install</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Install dependencies
+      <span style="color:#66d9ef">run</span>: npm install</code></pre></div>
 <p>After that, I simply run the <code>npm install</code> command to install all the dependencies.
 Since I&rsquo;m using the <a href="https://www.npmjs.com/package/hugo-bin" rel="noreferrer" target="_blank">hugo-bin</a> package,
 this also sets up Hugo for me. While I <em>could</em> run a different script
 to download and install Hugo, doing it in one shot with npm just makes things easier.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Build Critical CSS
-      run: npm run critical</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Build Critical CSS
+      <span style="color:#66d9ef">run</span>: npm run critical</code></pre></div>
 <p>Next, I run my npm script to start the Hugo server, and generate the critical CSS.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Build Site
-      run: npm run build</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Build Site
+      <span style="color:#66d9ef">run</span>: npm run build</code></pre></div>
 <p>Then, I run my npm script to build the site (CSS, JS, Hugo) as described above.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Deploy Site
-      uses: peaceiris/actions-gh-pages@master
-      if: success()
-      env:
-        ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        PUBLISH_BRANCH: gh-pages
-        PUBLISH_DIR: ./public</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Deploy Site
+      <span style="color:#66d9ef">uses</span>: peaceiris/actions-gh-pages@master
+      <span style="color:#66d9ef">if</span>: success()
+      <span style="color:#66d9ef">env</span>:
+        <span style="color:#66d9ef">ACTIONS_DEPLOY_KEY</span>: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        <span style="color:#66d9ef">PUBLISH_BRANCH</span>: gh-pages
+        <span style="color:#66d9ef">PUBLISH_DIR</span>: ./public</code></pre></div>
 <p>Afterwards, I use <a href="https://github.com/peaceiris/actions-gh-pages" rel="noreferrer" target="_blank">an action</a>
 from the Marketplace to automatically commit and push all the changes to the <code>./public</code> directory
 to my <code>gh-pages</code> branch. The <code>if: success()</code> statements means this step will only run
 if the previous step ran successfully. This is important, as I don&rsquo;t want to commit a
 broken site build.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Purge Cache
-      uses: nathanvaughn/actions-cloudflare-purge@master
-      if: success()
-      env:
-        CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE }}
-        CLOUDFLARE_AUTH_KEY: ${{ secrets.CLOUDFLARE_AUTH_KEY }}</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Purge Cache
+      <span style="color:#66d9ef">uses</span>: nathanvaughn/actions-cloudflare-purge@master
+      <span style="color:#66d9ef">if</span>: success()
+      <span style="color:#66d9ef">env</span>:
+        <span style="color:#66d9ef">CLOUDFLARE_ZONE</span>: ${{ secrets.CLOUDFLARE_ZONE }}
+        <span style="color:#66d9ef">CLOUDFLARE_AUTH_KEY</span>: ${{ secrets.CLOUDFLARE_AUTH_KEY }}</code></pre></div>
 <p>This uses a custom action
 <a href="https://github.com/nathanvaughn/actions-cloudflare-purge" rel="noreferrer" target="_blank">I made</a> to purge
 Cloudflare&rsquo;s cache of my site. Otherwise, old CSS or JS can get cached for too
 long leading to things breaking. This uses
 <a href="https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables" rel="noreferrer" target="_blank">repository secrets</a>
 passed in as environment variables to securely store important tokens.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - name: Load Site
-      run: curl $(echo $GITHUB_REPOSITORY | cut -d <span style="color:#e6db74">&#34;/&#34;</span> -f <span style="color:#ae81ff">2</span>-) --location --output /dev/<span style="color:#66d9ef">null</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Load Site
+      <span style="color:#66d9ef">run</span>: curl $(echo $GITHUB_REPOSITORY | cut -d <span style="color:#e6db74">&#34;/&#34;</span> -f <span style="color:#ae81ff">2</span>-) --location --output /dev/<span style="color:#66d9ef">null</span></code></pre></div>
 <p>To finish it off, I do a <code>curl</code> pull of my site to ensure it&rsquo;s working properly.
 This should also make sure Cloudflare refreshes their cache of my site.</p>
 
