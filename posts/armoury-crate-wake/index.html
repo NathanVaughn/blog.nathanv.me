@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>Armoury Crate Waking Windows from Sleep :: Nathan Vaughn — Adventures in programming and tech</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Background On Black Friday, I got a new Ryzen 7 2700X with the fancy included RGB cooler, and an Asus motherboard that had Aura Sync. &amp;ldquo;Cool&amp;rdquo;, I thought, &amp;ldquo;I can have synced RGB lighting&amp;rdquo;. While the control software provided on the Aura Sync page would completely refuse to launch for me once it was installed, I was able to get the &amp;ldquo;Armoury Crate&amp;rdquo; Microsoft Store app to work and control the RGB."/>
+<meta name="keywords" content="[programming tech]"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://blog.nathanv.me/posts/armoury-crate-wake/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css">
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/img/favicon.png"/>
+
+<meta name="twitter:title" content="Armoury Crate Waking Windows from Sleep"/>
+<meta name="twitter:description" content="Fixing Asus Armoury Crate from waking my Windows computer from sleep"/>
+
+
+
+<meta property="og:title" content="Armoury Crate Waking Windows from Sleep" />
+<meta property="og:description" content="Fixing Asus Armoury Crate from waking my Windows computer from sleep" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/armoury-crate-wake/" />
+<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png"/>
+<meta property="article:published_time" content="2020-02-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-02-03T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
+
+
+<meta name="theme-color" content="#7ec699">
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">Nathan Vaughn</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://nathanv.me">Homepage</a></li>
+        
+      
+        
+          <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://nathanv.me">Homepage</a></li>
+      
+    
+      
+        <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h2 class="post-title"><a href="https://blog.nathanv.me/posts/armoury-crate-wake/">Armoury Crate Waking Windows from Sleep</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-02-03
+        </span>
+
+        
+          
+        
+      
+
+      <span class="post-author">— Written by Nathan Vaughn</span>
+      
+        <span class="post-read-time">— 2 min read</span>
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://blog.nathanv.me/tags/windows/">Windows</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+
+<h2 id="background">Background</h2>
+
+<p>On Black Friday, I got a new Ryzen 7 2700X with the fancy included RGB cooler,
+and an Asus motherboard that had
+<a href="https://www.asus.com/campaign/aura/global/" rel="noreferrer" target="_blank">Aura Sync</a>.
+&ldquo;Cool&rdquo;, I thought, &ldquo;I can have synced RGB lighting&rdquo;. While the control software
+provided on the Aura Sync page would completely refuse to launch
+for me once it was installed, I was able to get the
+<a href="https://www.microsoft.com/store/productId/9PM9DFQRDH3F" rel="noreferrer" target="_blank">&ldquo;Armoury Crate&rdquo;</a>
+Microsoft Store app to work and control the RGB. I was happy (or so I thought).</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>Lately, my computer has been waking itself up from Sleep mode in the middle of the
+night. Getting increasingly frustrated by this, I decided to investigate.</p>
+
+<p>The simplest way to find the culprit is to run the following command after the computer
+has woken itself up:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">powercfg -lastwake</code></pre></div>
+<p>This shows what woke up the current Windows session. If the current Windows session
+was started from a cold boot or restart, it simply returns blank info.</p>
+
+<p>The other way (and only way to view wake history)
+is to open Event Viewer, go to &ldquo;Windows Logs&rdquo; -&gt; &ldquo;System&rdquo;, and filter by
+&ldquo;Power-Troubleshooter&rdquo;. From there, you can just click through the events to see
+which scheduled tasks or executables last woke your computer.</p>
+
+
+  <figure class="center" >
+    <img src="/img/armoury-crate-wake/event-viewer-culprit.jpg"  alt="Windows Event Viewer"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Windows Event Viewer showing the Power-Troubleshooter filter and the culprit</figcaption>
+    
+  </figure>
+
+
+
+<p>As you can see in the screenshot, the culprit was <code>ArmouryCrate.UserSessionHelper.exe</code>.</p>
+
+<h2 id="fix">Fix</h2>
+
+<p>To fix this, you need to disable wake timers in your power settings. This is buried
+deep in the legacy power plan settings in Control Panel.
+Within the Settings app, go to &ldquo;Power &amp; sleep&rdquo; -&gt; &ldquo;Changing power mode&rdquo; -&gt;
+&ldquo;Change plan settings&rdquo; -&gt; &ldquo;Change advanced power settings&rdquo; -&gt; &ldquo;Sleep&rdquo; -&gt;
+&ldquo;Allow wake timers&rdquo; and set it to &ldquo;Disable&rdquo;.</p>
+
+
+  <figure class="center" >
+    <img src="/img/armoury-crate-wake/power-settings.jpg"  alt="Power plan settings"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Holy settings menu nesting Batman!</figcaption>
+    
+  </figure>
+
+
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://www.ghacks.net/2013/12/31/find-pc-wakes-stop/" rel="noreferrer" target="_blank">https://www.ghacks.net/2013/12/31/find-pc-wakes-stop/</a></li>
+</ul>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="https://blog.nathanv.me/posts/sun-ultra-24-build/">
+                  <span class="button__text">Sun Ultra 24 Server Build</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+
+    
+      
+        <script src="https://utteranc.es/client.js"
+        repo="nathanvaughn/blog.nathanv.me"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+      
+    
+
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">Nathan Vaughn</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
+        <span>Theme created by <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-91853319-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+  </body>
+</html>

@@ -3,17 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.nathanv.me/</loc>
-    <lastmod>2020-01-05T00:00:00+00:00</lastmod>
+    <loc>https://blog.nathanv.me/posts/armoury-crate-wake/</loc>
+    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.nathanv.me/tags/pc-building/</loc>
-    <lastmod>2020-01-05T00:00:00+00:00</lastmod>
+    <loc>https://blog.nathanv.me/</loc>
+    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.nathanv.me/posts/</loc>
+    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/tags/</loc>
+    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/tags/windows/</loc>
+    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/tags/pc-building/</loc>
     <lastmod>2020-01-05T00:00:00+00:00</lastmod>
   </url>
   
@@ -24,11 +39,6 @@
   
   <url>
     <loc>https://blog.nathanv.me/posts/sun-ultra-24-build/</loc>
-    <lastmod>2020-01-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.nathanv.me/tags/</loc>
     <lastmod>2020-01-05T00:00:00+00:00</lastmod>
   </url>
   
