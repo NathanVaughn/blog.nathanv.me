@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>Replacing Mailgun :: Nathan Vaughn — Adventures in programming and tech</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Background For the past few years, I&amp;rsquo;ve used Mailgun to send and receive email for my nathanv.me domain. I initionally signed up Mailgun because it was part of the GitHub Student Developer Pack and it worked great. I could send email from applications and my personal GMail account using SMTP credentials and forward any inbound mail to my GMail account, all in the free tier. This allowed me to send receive email to and from the @nathanv."/>
+<meta name="keywords" content="[programming tech]"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://blog.nathanv.me/posts/replacing-mailgun/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css">
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/img/favicon.png"/>
+
+<meta name="twitter:title" content="Replacing Mailgun"/>
+<meta name="twitter:description" content="Replacing Mailgun with SendGrid and ForwardEmail"/>
+
+
+
+<meta property="og:title" content="Replacing Mailgun" />
+<meta property="og:description" content="Replacing Mailgun with SendGrid and ForwardEmail" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/replacing-mailgun/" />
+<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png"/>
+<meta property="article:published_time" content="2020-02-09T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-02-09T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
+
+
+<meta name="theme-color" content="#7ec699">
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">Nathan Vaughn</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://nathanv.me">Homepage</a></li>
+        
+      
+        
+          <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://nathanv.me">Homepage</a></li>
+      
+    
+      
+        <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h2 class="post-title"><a href="https://blog.nathanv.me/posts/replacing-mailgun/">Replacing Mailgun</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-02-09
+        </span>
+
+        
+          
+        
+      
+
+      <span class="post-author">— Written by Nathan Vaughn</span>
+      
+        <span class="post-read-time">— 4 min read</span>
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://blog.nathanv.me/tags/email/">email</a>&nbsp;
+        
+          #<a href="https://blog.nathanv.me/tags/dns/">DNS</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+
+<h2 id="background">Background</h2>
+
+<p>For the past few years, I&rsquo;ve used <a href="https://www.mailgun.com" rel="noreferrer" target="_blank">Mailgun</a> to send and
+receive email for my <code>nathanv.me</code> domain. I initionally signed up Mailgun because it
+was part of the
+<a href="https://education.github.com/pack/offers" rel="noreferrer" target="_blank">GitHub Student Developer Pack</a>
+and it worked great. I could send email from applications and my personal
+GMail account using SMTP credentials and forward
+any inbound mail to my GMail account, all in the free tier. This allowed me to send
+receive email to and from the <code>@nathanv.me</code> domain,
+all while never actually having an actual email account for it. I really liked this,
+since it gave me vanity email address, <code>nathan@nathanv.me</code>
+that I could put on my resume.
+However, just a few days ago, I received this email from Mailgun:</p>
+
+
+  <figure class="center" >
+    <img src="/img/replacing-mailgun/mailgun-email.jpg"  alt="Mailgun email"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Mailgun plan changes</figcaption>
+    
+  </figure>
+
+
+
+<p>Okay&hellip; does this affect me at all?</p>
+
+
+  <figure class="center" >
+    <img src="/img/replacing-mailgun/mailgun-plans.jpg"  alt="Mailgun plans"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" ><i>Crap&hellip;</i></figcaption>
+    
+  </figure>
+
+
+
+<p>As you can see in the picture above, inbound emails are no longer included in the free
+plan (and now costs $75/month) and after 3 months I&rsquo;ll have to actually pay for the
+emails I send. I don&rsquo;t care about the cost of emails. They&rsquo;re cheap after all, and
+I understand that running email servers costs money. However, now charging $75/month
+for the ability to receive email is not something I want to pay for. Time for a new
+solution.</p>
+
+<h2 id="options">Options</h2>
+
+<p>Here are some potential options I considered.</p>
+
+<h3 id="other-transactional-email-services">Other Transactional Email Services</h3>
+
+<p>I looked into a <em>bunch</em> of different transactional email providers (SendGrid, AWS SES,
+PostSpark, etc.) and they all fell into a combination of three categories:</p>
+
+<ol>
+<li>No support for inbound email</li>
+<li>Inbound email is an expensive tier</li>
+<li>Inbound email can only be sent to webhook</li>
+</ol>
+
+<p>I couldn&rsquo;t find any providers that could forward email like Mailgun lets you.
+The closest thing I could find was a
+<a href="https://aws.amazon.com/blogs/messaging-and-targeting/forward-incoming-email-to-an-external-destination/" rel="noreferrer" target="_blank">blog post from AWS</a>,
+explaining how to setup inbound email forwarding, but this requires additional code,
+setup, and AWS services.</p>
+
+<h3 id="google-domains-email-forwarding">Google Domains Email Forwarding</h3>
+
+<p>As I register all of my domain names through Google Domains,
+another option I considered was using Google Domain&rsquo;s free inbound email forwarding.
+However, this only works if you set the domain&rsquo;s name servers to Google&rsquo;s, so they
+can setup the records.</p>
+
+
+  <figure class="center" >
+    <img src="/img/replacing-mailgun/google-domains-email-forwarding.jpg"  alt="Google Domains email forwarding"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Google Domains email forwarding</figcaption>
+    
+  </figure>
+
+
+
+<p>Unfortunately, I really like Cloudflare for DNS and caching. While I think I could just
+swap the name server to Google, setup the email forward, and then swap it back to
+Cloudflare, I don&rsquo;t want to run the risk of Google figuring out my ruse, and stop
+delivering my emails.</p>
+
+<p>Also, this still doesn&rsquo;t solve my problem for outbound emails.</p>
+
+<h3 id="forwardemail-net-improvmx">ForwardEmail.net/ImprovMX</h3>
+
+<p>While researching my problem, I also discovered
+<a href="https://forwardemail.net/en" rel="noreferrer" target="_blank">ForwardEmail.net</a> and
+<a href="https://improvmx.com/" rel="noreferrer" target="_blank">ImprovMX</a>, which both offer free email forwarding.
+Again though, these only forward inbound emails, and don&rsquo;t offer a way to send email.</p>
+
+<h2 id="what-i-went-with">What I Went With</h2>
+
+<p>I initially attempted to get things setup with AWS using SES, S3, and Lambda.
+However, after discovering that by default, you can only send emails to verified
+addresses without contacting support, and I had a lot of trouble dealing with IAM
+and permissions, I gave up and went with ForwardEmail and SendGrid.</p>
+
+<p>I choose SendGrid for outbound emails as it was part of the GitHub Student Developer
+Pack. It was very simple to setup with just a few <code>CNAME</code> records to setup DKIM/SPF.</p>
+
+
+  <figure class="center" >
+    <img src="/img/replacing-mailgun/sendgrid_dns.jpg"  alt="SendGrid dNS"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >SendGrid DNS</figcaption>
+    
+  </figure>
+
+
+
+<p>Setting up ForwardEmail was a little bit harder. There are a lot more
+<a href="https://forwardemail.net/en/faq#how-do-i-get-started-and-set-up-email-forwarding" rel="noreferrer" target="_blank">DNS records</a>
+you need to setup.</p>
+
+
+  <figure class="center" >
+    <img src="/img/replacing-mailgun/fordwardemail_dns.jpg"  alt="ForwardEmail DNS"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >ForwardEmail DNS</figcaption>
+    
+  </figure>
+
+
+
+<p>The actual DNS records makes sense. I understand why they need
+a <code>MX</code> record for the incoming mail servers and a
+<code>TXT</code> record for what email address to forward to.
+I&rsquo;m very confused why they want you to add a <code>TXT</code> record for SPF, as I thought
+it was only needed for <em>sending</em> emails which this service doesn&rsquo;t do.
+ImprovMX <a href="https://improvmx.com/guides/improvmx-spf-support/" rel="noreferrer" target="_blank">explains this</a> for
+their similar service. ForwardEmail has
+<a href="https://forwardemail.net/en/faq#how-to-send-mail-as-using-gmail" rel="noreferrer" target="_blank">a guide</a>
+on how to &ldquo;Send Mail As&rdquo; with GMail, but my understanding of that is it is still
+being sent by Google&rsquo;s email servers, so I still don&rsquo;t understand why this is needed.
+If someone can explain this better, please leave a comment below.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>While I&rsquo;m sad to see Mailgun go, since it did everything I wanted for free,
+I was able to replace it with multiple services, with just DNS changes.
+The most painful part of this change will be changing all of my SMTP
+credentials on all of my servers and applications that send emails.
+The setup was more complicated, but hopefully it&rsquo;ll work better longer term,
+and will be easier to replace an individual component if it ever needs to
+change in the future.</p>
+
+<p>As always, it was DNS.</p>
+
+
+  <figure class="center" >
+    <img src="/img/replacing-mailgun/its_always_dns.png"  alt="DNS Haiku"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >It was DNS</figcaption>
+    
+  </figure>
+
+
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://www.mailgun.com" rel="noreferrer" target="_blank">https://www.mailgun.com</a></li>
+<li><a href="https://forwardemail.net/en" rel="noreferrer" target="_blank">https://forwardemail.net/en</a></li>
+<li><a href="https://improvmx.com/" rel="noreferrer" target="_blank">https://improvmx.com/</a></li>
+<li><a href="https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/" rel="noreferrer" target="_blank">https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/</a></li>
+</ul>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="https://blog.nathanv.me/posts/armoury-crate-wake/">
+                  <span class="button__text">Armoury Crate Waking Windows from Sleep</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+
+    
+      
+        <script src="https://utteranc.es/client.js"
+        repo="nathanvaughn/blog.nathanv.me"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+      
+    
+
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">Nathan Vaughn</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
+        <span>Theme created by <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-91853319-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+  </body>
+</html>
