@@ -27,7 +27,7 @@ However, with Cloudflare&amp;rsquo;s new service, Argo Tunnel, and poor financia
 
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://blog.nathanv.me/img/hp_dl_360_g5.jpg"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/posts/self-host-docker/img/hp_dl_360_g5.jpg"/>
 
 <meta name="twitter:title" content="Self-Hosting with Docker and Argo Tunnel"/>
 <meta name="twitter:description" content="Moving my personal web apps from the cloud to self-hosted infrastructure"/>
@@ -38,7 +38,7 @@ However, with Cloudflare&amp;rsquo;s new service, Argo Tunnel, and poor financia
 <meta property="og:description" content="Moving my personal web apps from the cloud to self-hosted infrastructure" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.nathanv.me/posts/self-host-docker/" />
-<meta property="og:image" content="https://blog.nathanv.me/img/hp_dl_360_g5.jpg" />
+<meta property="og:image" content="https://blog.nathanv.me/posts/self-host-docker/img/hp_dl_360_g5.jpg" />
 <meta property="article:published_time" content="2019-07-07T00:00:00+00:00" />
 <meta property="article:modified_time" content="2019-07-07T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
 
@@ -322,7 +322,7 @@ then all the web servers reference it as an external network.</p>
 
 <p>Hera <code>docker-compose.yml</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker">version: <span style="color:#e6db74">&#39;3&#39;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>services:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>  app:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>    image: <span style="color:#e6db74">&#39;aschzero/hera:latest&#39;</span><span style="color:#960050;background-color:#1e0010">
@@ -332,12 +332,12 @@ then all the web servers reference it as an external network.</p>
 </span><span style="color:#960050;background-color:#1e0010"></span>    volumes:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>      - <span style="color:#e6db74">&#39;/var/run/docker.sock:/var/run/docker.sock&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>      - <span style="color:#e6db74">&#39;/home/nathan/certs:/certs&#39;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>networks:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>  tunnel:</code></pre></div>
 <p>Sample application <code>docker-compose.yml</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-docker" data-lang="docker">version: <span style="color:#e6db74">&#39;3&#39;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>services:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>  app:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>    depends_on:<span style="color:#960050;background-color:#1e0010">
@@ -354,7 +354,7 @@ then all the web servers reference it as an external network.</p>
 </span><span style="color:#960050;background-color:#1e0010"></span>    restart: unless-stopped<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>    volumes:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>      - <span style="color:#e6db74">&#39;app_data:/var/www/&#39;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>  db:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>    image: <span style="color:#e6db74">&#39;mysql:latest&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>    networks:<span style="color:#960050;background-color:#1e0010">
@@ -362,13 +362,13 @@ then all the web servers reference it as an external network.</p>
 </span><span style="color:#960050;background-color:#1e0010"></span>    restart: unless-stopped<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>    volumes:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>      - <span style="color:#e6db74">&#39;db_data:/var/lib/mysql&#39;</span><span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>networks:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>  default:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>    internal: true<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>  hera_tunnel:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>    external: true<span style="color:#960050;background-color:#1e0010">
-</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>volumes:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>  app_data:<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>    driver: local<span style="color:#960050;background-color:#1e0010">
@@ -390,7 +390,7 @@ workaround. Simply create the tunnel on your main domain to whatever subdomain y
 want, then just <code>CNAME</code> your second domain to the tunnel subdomain.</p>
 
 <p>Example:</p>
-<pre><code>Link Shortener (app) -> linkshortener.example.com (Tunnel) -> xmpl.com  (CNAME DNS)</code></pre>
+<pre><code>Link Shortener (app) -&gt; linkshortener.example.com (Tunnel) -&gt; xmpl.com  (CNAME DNS)</code></pre>
 <h2 id="security">Security</h2>
 
 <p>Now that I have my applications accessible from the outside world, I would like to

@@ -251,10 +251,10 @@ read -p <span style="color:#e6db74">&#34;Enter the MySQL password: &#34;</span> 
 
 FILENAME<span style="color:#f92672">=</span><span style="color:#e6db74">${</span>DATABASE<span style="color:#e6db74">}</span>_db.sql
 
-echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Changing directories to </span>$DOCKERDIR<span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;Changing directories to </span>$DOCKERDIR<span style="color:#e6db74">&#34;</span>
 cd $DOCKERDIR
 
-echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Dumping MySQL database to </span>$FILENAME<span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;Dumping MySQL database to </span>$FILENAME<span style="color:#e6db74">&#34;</span>
 sudo docker exec -i $CONTAINERNAME mysqldump -u $USERNAME -p$PASSWORD $DATABASE &gt; $FILENAME
 
 echo <span style="color:#e6db74">&#34;Stopping containers&#34;</span>
@@ -268,10 +268,10 @@ read -p <span style="color:#e6db74">&#34;Press enter once you have modified the 
 <span style="color:#75715e"># -----------------</span>
 <span style="color:#75715e"># Data import</span>
 
-echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Changing directories to </span>$DOCKERDIR<span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;Changing directories to </span>$DOCKERDIR<span style="color:#e6db74">&#34;</span>
 cd $DOCKERDIR
 
-echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Deleting old volume </span>$VOLUMENAME<span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;Deleting old volume </span>$VOLUMENAME<span style="color:#e6db74">&#34;</span>
 sudo docker volume rm $VOLUMENAME
 
 echo <span style="color:#e6db74">&#34;Starting containers&#34;</span>
@@ -280,8 +280,8 @@ sudo docker-compose up -d
 echo <span style="color:#e6db74">&#34;Waiting 90 seconds&#34;</span>
 sleep <span style="color:#ae81ff">90</span>
 
-echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Loading MySQL database from </span>$FILENAME<span style="color:#e6db74">&#34;</span>
-echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">sudo docker exec -i </span>$CONTAINERNAME<span style="color:#e6db74"> mysql -u </span>$USERNAME<span style="color:#e6db74"> -p</span>$PASSWORD<span style="color:#e6db74"> </span>$DATABASE<span style="color:#e6db74"> &lt; </span>$FILENAME<span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;Loading MySQL database from </span>$FILENAME<span style="color:#e6db74">&#34;</span>
+echo <span style="color:#e6db74">&#34;sudo docker exec -i </span>$CONTAINERNAME<span style="color:#e6db74"> mysql -u </span>$USERNAME<span style="color:#e6db74"> -p</span>$PASSWORD<span style="color:#e6db74"> </span>$DATABASE<span style="color:#e6db74"> &lt; </span>$FILENAME<span style="color:#e6db74">&#34;</span>
 sudo docker exec -i $CONTAINERNAME mysql -u $USERNAME -p$PASSWORD $DATABASE &lt; $FILENAME
 
 <span style="color:#75715e">#echo &#34;Removing $DOCKERDIR/$FILENAME&#34;</span>

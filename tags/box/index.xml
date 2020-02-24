@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Box on Nathan Vaughn</title>
+    <link>https://blog.nathanv.me/tags/box/</link>
+    <description>Recent content in Box on Nathan Vaughn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 24 Feb 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.nathanv.me/tags/box/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Google Drive Isn&#39;t a Very Good Product</title>
+      <link>https://blog.nathanv.me/posts/google-drive-bad/</link>
+      <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/google-drive-bad/</guid>
+      <description>Background To start off with, I&amp;rsquo;m incredibly invested in the Google ecosystem. My Gmail account is my main email account. I love Google Photos. I live by my Google Calendar. I use Google Keep extensively for making lists. I use Google Pixel phones. I register all of my domain names through Google Domains. You get the idea. So why don&amp;rsquo;t I use Google Drive? Because it&amp;rsquo;s just not that great&amp;hellip;</description>
+    </item>
+    
+  </channel>
+</rss>
