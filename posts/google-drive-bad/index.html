@@ -132,7 +132,7 @@
 
       <span class="post-author">— Written by Nathan Vaughn</span>
       
-        <span class="post-read-time">— 6 min read</span>
+        <span class="post-read-time">— 7 min read</span>
       
     </div>
 
@@ -171,20 +171,21 @@ I use Google Pixel phones. I register all of my domain names
 through <a href="https://domains.google.com/m/registrar/" rel="noreferrer" target="_blank">Google Domains</a>.
 You get the idea. So why don&rsquo;t I use Google Drive? Because it&rsquo;s just not that great&hellip;</p>
 
-<p>I <strong><em>used</em></strong> to use Google Drive. It made sense, since I was so invested into the
-ecosystem, but here&rsquo;s why I moved away from it.</p>
+<p>I <strong><em>used</em></strong> to use Google Drive for file syncing.
+It made sense, since I was so invested into the
+Google ecosystem, but here&rsquo;s why I moved away from it.</p>
 
 <h2 id="syncing-documents-folder">Syncing Documents Folder</h2>
 
 <p>The major reason I stopped using Google Drive is that it doesn&rsquo;t sync your Windows
-Documents folder. Yes, it does <em>backup</em> your documents folder, but you can&rsquo;t natively
+Documents folder. Yes, it does <em>backup</em> your Documents folder, but you can&rsquo;t natively
 sync two computers together. They just show up under two separate &ldquo;computers&rdquo;
 in your Google Drive and you can&rsquo;t connect them.</p>
 
 <p>(I&rsquo;m aware you can sort of get around this by changing the location of the Documents
 folder to be inside the Google Drive sync folder.)</p>
 
-<p>This was a huge pain point for myself. Games like to use the user&rsquo;s documents folder
+<p>This was a huge pain point for myself. Games like to use the user&rsquo;s Documents folder
 as a location to save settings and gamesaves.</p>
 
 
@@ -200,7 +201,8 @@ as a location to save settings and gamesaves.</p>
 <p>Some games I play either aren&rsquo;t on Steam, or don&rsquo;t support
 <a href="https://support.steampowered.com/kb_article.php?ref=6736-QEIG-8941" rel="noreferrer" target="_blank">Steam&rsquo;s cloud saves</a>,
 and I really wanted to be able to play a game on
-my desktop and be able to continue seamlessly on my laptop. Having to manually download
+my desktop and be able to continue seamlessly on my laptop.
+Accidentally losing game saves or having to manually download
 files from the Google Drive website was getting really annoying.</p>
 
 <p>I then discovered that <a href="https://nextcloud.com/" rel="noreferrer" target="_blank">Nextcloud</a> lets you sync
@@ -211,23 +213,26 @@ described in the next section.</p>
 
 <h2 id="virtual-file-system">Virtual File System</h2>
 
-<p>Google Drive does not support any sort of virtual file system
-(for consumers.
+<p>Google Drive does not support any sort of virtual file system (for consumers.
 <a href="https://support.google.com/a/answer/7491144?hl=en" rel="noreferrer" target="_blank">Google Drive File Stream</a>
-is available only to GSuite customers).</p>
+is only available to GSuite customers).</p>
 
 <p>What I mean by a virtual file system is where files <em>appear</em> to be on your system,
 but are actually just placeholders. When a file is accessed by a program, the file
-is quickly downloaded to be used. This is great for saving space, as files that
-are not used often can be removed locally and only retrieved when needed. See
-<a href="https://github.com/microsoft/VFSForGit" rel="noreferrer" target="_blank">VFS for Git</a>.</p>
+is quickly downloaded to be used. This is great for saving space as files that
+are not used often can be removed locally and only retrieved when needed.
+Applications don&rsquo;t notice the difference and work seamlessly with it. See
+<a href="https://github.com/microsoft/VFSForGit" rel="noreferrer" target="_blank">VFS for Git</a> which is a very similar
+technology develped by Microsoft for Git.</p>
 
 <p>When you sync the Google Drive folder,
 you must download <em>EVERYTHING</em> or exclude specific top-level directories.
 This means, if for example I don&rsquo;t want
 to sync my 20GB of ISO files to my laptop, I need to put them in a seperate
 top-level folder and exclude those. While not terribly difficult to do, it made me
-consciously think about how my folders were organized with respect to file size.</p>
+consciously think about how my folders were organized with respect to file size so
+that I could exclude certain ones on my laptop which doesn&rsquo;t have as much
+disk space.</p>
 
 <p>Nextcloud is just like Google Drive in this regard. However, Nextcloud does
 provide some more advanced exclusion options. Google Drive makes you sync everything.</p>
@@ -238,11 +243,11 @@ provide some more advanced exclusion options. Google Drive makes you sync everyt
 client for Windows as well.</p>
 
 <p>Opening the application from the system tray is very slow
-and laggy, and makes it feel like it&rsquo;s not a native Windows application.</p>
+and laggy and makes it feel like it&rsquo;s not a native Windows application.</p>
 
 <p>I&rsquo;ve constantly gotten the obnoxious &ldquo;Can&rsquo;t convert X photos to high quality&rdquo; message
 while using the backup to Google Photos option.
-Sometimes this is due to it thinking certain
+Sometimes this is due to the client thinking certain
 file formats are pictures when they are actually not.</p>
 
 
@@ -255,9 +260,12 @@ file formats are pictures when they are actually not.</p>
 
 
 
-<p>I recently had to help my parents restore their Documents folder after their desktop
-computer died and we had to reinstall Windows.
-It was a nightmare. Because of how Google Drive
+<p>My parents use Google Photos for their 20+ year old photo collection
+so I&rsquo;ve set them up with the Backup and Sync client.
+I recently had to help them restore their Documents folder after their desktop
+computer died and we had to reinstall Windows.</p>
+
+<p>It was a <strong><em>nightmare</em></strong>. Because of how Google Drive
 treats seperate computers as mentioned before, getting Google Drive to restore the
 Documents folder and not just try to backup a brand new, empty, copy was frustrating.
 Then, once that got situated, the Backup and Sync program would create empty folders,
@@ -271,7 +279,7 @@ restore data.</p>
 
 <p>Fed up with Google Drive and tired of syncing mountains of data with Nextcloud,
 I looked into options. I thought to myself &ldquo;Microsoft&rsquo;s OneDrive is built into Windows,
-why not try that?&ldquo;. I did, and wow was I impressed.</p>
+why not try that?&ldquo;. I did and wow was I impressed.</p>
 
 <p>Most importantly for me, it natively syncs the Documents, Pictures, and Desktop folders.</p>
 
@@ -285,8 +293,8 @@ why not try that?&ldquo;. I did, and wow was I impressed.</p>
 
 
 
-<p>It supports a virtual system (called &ldquo;Files On Demand&rdquo;)
-so files that aren&rsquo;t used in a certain number of days are removed locally.</p>
+<p>It supports a virtual file system (called &ldquo;Files On Demand&rdquo;)
+so files that aren&rsquo;t used within a certain number of days are removed locally.</p>
 
 
   <figure class="center" >
@@ -299,7 +307,7 @@ so files that aren&rsquo;t used in a certain number of days are removed locally.
 
 
 <p>I absolutely love this feature. I was able to sync my 10GB Documents folder from
-my desktop with my laptop in seconds, since files are only downloaded as needed.
+my desktop with my laptop in seconds since files are only downloaded as needed.
 No more do I need to worry about strategically laying out my folder
 structure to group large files that I don&rsquo;t want synced.</p>
 
@@ -326,6 +334,18 @@ and need to download some file that you forgot to put in the OneDrive folder.</p
 
 
 
+<p>Additionally, if you use OneDrive with Office, your documents get auto-saving.</p>
+
+
+  <figure class="center" >
+    <img src="img/office-autosave.png"  alt="Office Autosave"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >No more losing work in Office from forgetting to save and crashes.</figcaption>
+    
+  </figure>
+
+
+
 <h2 id="other-options">Other Options</h2>
 
 <p>While I quickly fell in love with OneDrive, I did look into alternatives.</p>
@@ -346,7 +366,7 @@ consumer Dropbox may not be long for this world. However, just like Box,
 Dropbox does support file-streaming (&ldquo;Dropbox Smart Sync&rdquo;), but it appears you
 <a href="https://www.dropboxforum.com/t5/Files-folders/Win10-Documents-folder/m-p/259729/highlight/true#M33894" rel="noreferrer" target="_blank">can&rsquo;t sync the Documents folder</a>.
 Additionally, the <a href="https://www.dropbox.com/individual/plans-comparison" rel="noreferrer" target="_blank">plans</a>
-only go from free 2GB to 2TB at $10/month. I don&rsquo;t need 2TB of storage, and don&rsquo;t really
+jump from a free 2GB to 2TB at $10/month. I don&rsquo;t need 2TB of storage, and don&rsquo;t really
 want to pay $120/yr and not be utilizing 98% of it.</p>
 
 <h2 id="conclusion">Conclusion</h2>
@@ -375,7 +395,7 @@ my ass recently).</p>
 <ul>
 <li><a href="https://docs.nextcloud.com/desktop/2.3/navigating.html#configuring-nextcloud-account-settings" rel="noreferrer" target="_blank">Nextcloud File Sync</a></li>
 <li><a href="https://one.google.com/about" rel="noreferrer" target="_blank">Google One Pricing</a></li>
-<li><a href="https://products.office.com/en-us/onedrive/compare-onedrive-plans?activetab=tab%3aprimaryr1" rel="noreferrer" target="_blank">OneDrive Pricing</a></li>
+<li><a href="https://products.office.com/en-us/onedrive/compare-onedrive-plans" rel="noreferrer" target="_blank">OneDrive Pricing</a></li>
 <li><a href="https://www.box.com/pricing/individual" rel="noreferrer" target="_blank">Box Pricing</a></li>
 <li><a href="https://www.dropbox.com/individual/plans-comparison" rel="noreferrer" target="_blank">Dropbox Pricing</a></li>
 </ul>
