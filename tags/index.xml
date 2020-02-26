@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 24 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 26 Feb 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>cycling</title>
+      <link>https://blog.nathanv.me/tags/cycling/</link>
+      <pubDate>Wed, 26 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/cycling/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Box</title>

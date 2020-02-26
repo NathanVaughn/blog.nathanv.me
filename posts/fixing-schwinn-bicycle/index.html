@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>Fixing a 1973 Schwinn Bicycle :: Nathan Vaughn — Adventures in programming and tech</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Background While I was working at Collins my roommate unexpectedly left, and gave me his bicycle for free.
+The bike how I got it.  After closer inspection, the bike was a 27&amp;rdquo; 1973 Schwinn Varsity 10-speed. It was in pretty rough shape. The front tire didn&amp;rsquo;t hold air, neither tire had any tread left (if there was any to begin with), and just in general, the bike looked neglected."/>
+<meta name="keywords" content="[programming tech]"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://blog.nathanv.me/posts/fixing-schwinn-bicycle/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css">
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/posts/fixing-schwinn-bicycle/img/fun-in-the-sun.jpg"/>
+
+<meta name="twitter:title" content="Fixing a 1973 Schwinn Bicycle"/>
+<meta name="twitter:description" content="Repairing an old 27&#34; 1973 Schwinn Varsity 10-speed bicycle to rideable condition"/>
+
+
+
+<meta property="og:title" content="Fixing a 1973 Schwinn Bicycle" />
+<meta property="og:description" content="Repairing an old 27&#34; 1973 Schwinn Varsity 10-speed bicycle to rideable condition" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/fixing-schwinn-bicycle/" />
+<meta property="og:image" content="https://blog.nathanv.me/posts/fixing-schwinn-bicycle/img/fun-in-the-sun.jpg" />
+<meta property="article:published_time" content="2020-02-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-02-26T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
+
+
+<meta name="theme-color" content="#7ec699">
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">nathanv@blog</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://nathanv.me">Homepage</a></li>
+        
+      
+        
+          <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://nathanv.me">Homepage</a></li>
+      
+    
+      
+        <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h2 class="post-title"><a href="https://blog.nathanv.me/posts/fixing-schwinn-bicycle/">Fixing a 1973 Schwinn Bicycle</a></h2>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-02-26
+        </span>
+
+        
+          
+        
+      
+
+      <span class="post-author">— Written by Nathan Vaughn</span>
+      
+        <span class="post-read-time">— 11 min read</span>
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://blog.nathanv.me/tags/cycling/">cycling</a>&nbsp;
+        
+      </span>
+    
+
+    
+      
+        <img src="https://blog.nathanv.me/posts/fixing-schwinn-bicycle/img/fun-in-the-sun.jpg" class="post-cover" />
+      
+    
+
+    <div class="post-content">
+      
+
+<h2 id="background">Background</h2>
+
+<p>While I was
+<a href="https://nathanv.me#systemssoftware-engineering-co-op-collins-aerospace" rel="noreferrer" target="_blank">working at Collins</a>
+my roommate unexpectedly left, and gave me his bicycle for free.</p>
+
+
+  <figure class="center" >
+    <img src="img/old-varsity.jpg"  alt="1973 Schwinn Varsity"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >The bike how I got it.</figcaption>
+    
+  </figure>
+
+
+
+<p>After closer inspection, the bike was a 27&rdquo;
+<a href="https://bikehistory.org/schwinn.php?serial=HJ613361" rel="noreferrer" target="_blank">1973</a>
+Schwinn Varsity 10-speed. It was in pretty rough shape. The front tire didn&rsquo;t hold air,
+neither tire had any tread left (if there was any to begin with), and just in general,
+the bike looked neglected.</p>
+
+
+  <figure class="center" >
+    <img src="img/old-tires.jpg"  alt="Old bike tires"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >I&rsquo;m pretty sure this was the original tire that came with the bike from the factory.</figcaption>
+    
+  </figure>
+
+
+
+<p>Since I got the bike for the wonderful price of free,
+I decided to keep it and fix it up. I hadn&rsquo;t owned a bicycle in many years
+and frankly didn&rsquo;t know much about bike maintenance, but I thought this would be
+a good project to learn with without investing too much money.</p>
+
+<h2 id="project-goals">Project Goals</h2>
+
+<p>To begin with, I immediately decided that I wanted to simply repair the bike and not
+restore it. The major reasons for this were that I wanted to save money and make the
+bike what I wanted. Also, the Varsity line of bicycles from Schwinn aren&rsquo;t exactly
+rare or collectible, so I didn&rsquo;t feel bad at all for not restoring it.</p>
+
+<h2 id="parts">Parts</h2>
+
+<p>Here are all the parts that I ended up purchasing for the bike.</p>
+
+<h3 id="tubes">Tubes</h3>
+
+<p>I purchased two
+<a href="https://www.amazon.com/gp/product/B000AAYBI" rel="noreferrer" target="_blank">27&rdquo; Bell Standard Bike Tubes</a>.
+While the rear tire held air alright, I decided to just replace both tubes at the same
+time since I guessed (correctly) that they were both ancient. I just picked these
+since they were inexpensive, highly rated on Amazon, and were Schrader valves.</p>
+
+
+  <figure class="center" >
+    <img src="img/bell-tube.jpg"  alt="27in Bell standard bike tubes"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Yup. That&rsquo;s a bike tube&hellip;</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="tires">Tires</h3>
+
+<p>This was probably the biggest decision for the whole bike. I ended up going with two
+<a href="https://www.amazon.com/gp/product/B01L0WE62E" rel="noreferrer" target="_blank">Continental Ride Tour</a>
+tires. The reason for this was that I currently live in Iowa, and we actually have
+snow here, so I wanted some tread on the tires. Also, while I could have gotten tires
+that more closely matched the original ones with gum walls
+(such as <a href="https://www.amazon.com/TAC-Two-Pack-27x1-1-Select/dp/B077J86YR2" rel="noreferrer" target="_blank">these</a>),
+I decided not to. To me at least, that rubber just looks more
+&ldquo;plastic-y&rdquo; and not as good quality.</p>
+
+
+  <figure class="center" >
+    <img src="img/continental-tire.png"  alt="Continental Ride Tour Tire"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Continental Ride Tour tire</figcaption>
+    
+  </figure>
+
+
+
+<p>Amazon surprised me by not folding or rolling up the tires at all. No, instead, they
+shipped the tires in their normal resting shape. I was really surprised by the <em>massive</em>
+box they left at my door.</p>
+
+
+  <figure class="center" >
+    <img src="img/big-tire-box.jpg"  alt="Large tire box"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >This is the box they arrived in.</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="rim-tape">Rim Tape</h3>
+
+<p>If you were like me and didn&rsquo;t know what rim tape was, it&rsquo;s just tape that you put
+around the rim of the wheel so that the spokes don&rsquo;t puncture the tube.</p>
+
+
+  <figure class="center" >
+    <img src="img/rim-tape-example.jpg"  alt="Rim tape example"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Rim tape example (from <a href="parktool.com" rel="noreferrer" target="_blank">parktool.com</a>)</figcaption>
+    
+  </figure>
+
+
+
+<p>When I was changing the tires on the bike, I didn&rsquo;t realize I would need this and
+my local bike shop was closed, so I substituted some basic electrical tape from Walmart.</p>
+
+<h3 id="handlebar-endcaps">Handlebar Endcaps</h3>
+
+<p>While not very important, I didn&rsquo;t like that the handlebar endcaps on my bike didn&rsquo;t
+match. One of them was also broken and had sharp metal. I went on Amazon and got
+a <a href="https://www.amazon.com/gp/product/B07XG51Z4M" rel="noreferrer" target="_blank">4-pack</a>
+of various colors that were easily removable. Buying a single pack on Amazon was
+close to the same price, so I decided to get multiple colors so I could pick the one
+I liked the most.</p>
+
+
+  <figure class="center" >
+    <img src="img/handlebar-endcaps.png"  alt="New handlebar endcaps"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >New handlebar endcaps</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="brake-pads">Brake Pads</h3>
+
+<p>The brakes were old, so I got some new ones at Walmart.</p>
+
+
+  <figure class="center" >
+    <img src="img/bell-brake-pads.png"  alt="Bell brake pads"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Just some Bell brand brake pads</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="shifter-cable">Shifter Cable</h3>
+
+<p>I ended up needing to buy a new shifter cable. I just went to my local bike shop
+and got a single one for like $5.</p>
+
+<h3 id="handlebar-tape">Handlebar Tape</h3>
+
+<p>The old handlebar grip tape appeared to be original. However with the age, there
+wasn&rsquo;t much grip left of the &ldquo;grip&rdquo; tape. It was more like a hard plastic at this point.
+You can really tell by the shininess in this picture.</p>
+
+
+  <figure class="center" >
+    <img src="img/old-handlebar-tape.jpg"  alt="Old handlebar tape"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >The old handlebar grip tape more closely resembled a hard plastic shell.</figcaption>
+    
+  </figure>
+
+
+
+<p>There were a number of tears in the tape as well.
+I went to my local bike shop (again) and got some new orange grip tape that actually
+matches really closely to the original. I also paid the shop to put it on for me
+because I didn&rsquo;t trust my own abilities to wrap it well.</p>
+
+
+  <figure class="center" >
+    <img src="img/new-grip-tape.png"  alt="Orange grip tape"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >I&rsquo;m pretty sure this is what I bought at my bike shop.</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="water-bottle-cage">Water Bottle Cage</h3>
+
+<p>Lastly, I want to take this bike on some longer rides, so I got a basic
+water bottle cage.</p>
+
+
+  <figure class="center" >
+    <img src="img/water-bottle-cage.png"  alt="Water bottle cage"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >A water bottle cage pretty similar to what I purchased.</figcaption>
+    
+  </figure>
+
+
+
+<p>While the water bottle cage I got is a very bright red and the bike is more of an
+orange-red, but it looks close enough.</p>
+
+<h2 id="tools">Tools</h2>
+
+<h3 id="wd-40">WD-40</h3>
+
+
+  <figure class="center" >
+    <video src="vid/hank-hill-wd40.mp4"  alt="Hank Hill WD-40"   style="border-radius: 8px;"  autoplay loop/>
+    </video>
+    
+  </figure>
+
+
+
+<h3 id="chain-lube">Chain Lube</h3>
+
+<p>I just went to Walmart and grabbed whatever they had.</p>
+
+
+  <figure class="center" >
+    <img src="img/chain-lube.png"  alt="Chain lube"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >The lightning bolt makes it go faster.</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="tire-levers">Tire Levers</h3>
+
+<p>I had never heard of these things before. In case you&rsquo;re like me and
+don&rsquo;t know what they are, they&rsquo;re basically little pry bars that help you
+put a bike tire on a rim.</p>
+
+
+  <figure class="center" >
+    <img src="img/tire-lever-usage.jpg"  alt="Tire lever usage"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >This is how you&rsquo;re supposed to use a tire lever.</figcaption>
+    
+  </figure>
+
+
+
+<p>I bought a <a href="https://www.amazon.com/gp/product/B07FDS3VCW/" rel="noreferrer" target="_blank">4-pack on Amazon</a>.</p>
+
+
+  <figure class="center" >
+    <img src="img/tire-levers.png"  alt="Tire levers"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >You might be beginning to realize that I like the color red.</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="crescent-wrenches">Crescent Wrenches</h3>
+
+<p>I went to a hardware store and got two really basic Craftsman adjustable
+crescent wrenches. Nothing special about these at all.</p>
+
+<h3 id="wire-brush">Wire Brush</h3>
+
+<p>I also got a basic metal wire brush during my Walmart run to help clean off gunk.</p>
+
+
+  <figure class="center" >
+    <img src="img/wire-brush.png"  alt="Wire brush"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Generic wire brush</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="air-pump">Air Pump</h3>
+
+<p>Lastly, while at Walmart I got a Bell air pump.</p>
+
+
+  <figure class="center" >
+    <img src="img/bell-air-pump.png"  alt="Bell air pump"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >I bought an air pump that&rsquo;s something like this.</figcaption>
+    
+  </figure>
+
+
+
+<h2 id="process">Process</h2>
+
+<h3 id="first-work">First Work</h3>
+
+<p>Well, to start, one of my friends was very kind and let me borrow his living room
+to work on the bike.</p>
+
+
+  <figure class="center" >
+    <img src="img/bike-living-room.jpg"  alt="My bicycle being worked on in a living room"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >First time working on the bike in my friend&rsquo;s living room.</figcaption>
+    
+  </figure>
+
+
+
+<p>With a bit of percussive maintenance, we got both the wheels off. Once the wheels were
+off, it was more obvious how bad of shape the tires were in. While taking the tires
+off the rims, you could hear the rubber cracking.</p>
+
+<p>Also during this process,
+we discovered that the rim tape on the front rim was completely falling off.
+As mentioned above, I got some electrical tape and just wrapped it around twice and
+cut a hole for the tube stem. It&rsquo;s worked fine so far. The rim tape on the rear wheel
+wouldn&rsquo;t come off easily while I was going to replace that as well, so I decided to
+just leave it on.</p>
+
+<p>After replacing the tubes and tires, we changed out the brake pads and handlebar
+endcaps. The endcaps being a bit a tricky as one of the existing ones did not have a
+screw and was just press-fit. It took quite a bit of patience and prying to get it out.</p>
+
+<p>Lastly, we tried to clean the bike as much as reasonably possible and
+lube everything up.</p>
+
+
+  <figure class="center" >
+    <img src="img/dirty-bike.jpg"  alt="Dirty bicycle"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >This was <i>after</i> trying to clean it.</figcaption>
+    
+  </figure>
+
+
+
+<p>During this whole ordeal, we discovered that the frame of the bike is
+more than likely bent. When we first re-attached the rear wheel in a normal
+position, it was rubbing against the frame really badly on the front left of the tire.
+We ended up having to move the left side of the wheel pretty far forward in its slot
+and just tightening it down really hard in order to get it roll straight.</p>
+
+
+  <figure class="center" >
+    <img src="img/rear-wheel-alignment.jpg"  alt="Rear wheel alignment"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >I added the two blue lines to show that the wheel is not centered between the rear two forks. You can also tell by how the brake assembly is tilted a bit to the left.</figcaption>
+    
+  </figure>
+
+
+
+
+  <figure class="center" >
+    <img src="img/rear-tire-rubbing.jpg"  alt="Rear tire rubbing"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >It was hard to get my camera in a position to show it well, but you can kind of see where the tire was rubbing on the frame closest to the camera in the past.</figcaption>
+    
+  </figure>
+
+
+
+
+  <figure class="center" >
+    <img src="img/rear-wheel-mount.jpg"  alt="Rear wheel mount"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >In order to get the wheel to track straight, we had to bring the left side very far forward. A few ugga duggas were used to keep it nice and snug. I swear there is some material holding it on.</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="more-work">More Work</h3>
+
+<p>After reassembling the bike and taking it home, I quickly realized that the rear shifter
+wouldn&rsquo;t shift worth a damn. The bike has 2 gears in the front and 5 in the back.
+While the front shifter worked alright, the rear required a truly ridiculous amount of
+strength to shift more than one gear. I had never worked on a bicycle
+derailleur before, but after putting on my engineer&rsquo;s thinking cap and looking at it
+and playing with for about 10 minutes, I realized the problem. The cable was far too
+loose. So, I pulled out my pliers, loosened the screw at the end of the cable, and
+gave it a good yank to tighten it up. Or so I tried to. It was frayed at the end
+and wouldn&rsquo;t budge.</p>
+
+
+  <figure class="center" >
+    <img src="img/rear-cable-frayed.jpg"  alt="Rear shifter cable frayed"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >You can see at the bottom that it was frayed pretty bad.</figcaption>
+    
+  </figure>
+
+
+
+<p>So I bought a new cable and figured out how to install it. The old cable was a tough
+bastard that didn&rsquo;t want to come out without a fight.</p>
+
+
+  <figure class="center" >
+    <img src="img/rear-cable-removal.jpg"  alt="Rear shifter cable removal"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >It went out swinging.</figcaption>
+    
+  </figure>
+
+
+
+<p>After cursing myself for not cutting the old cable into small chunks to remove, I got
+the cable installed and tightened. After some adjustment, it fixed all of my shifting
+problems.</p>
+
+<p>At this point, the bike was working pretty well.</p>
+
+
+  <figure class="center" >
+    <img src="img/fun-in-less-sun.jpg"  alt="Bike in the sun"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >I was starting to ride the bike to class now.</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="final-work">Final Work</h3>
+
+<p>I decided to also get the grip tape changed
+and add a water bottle holder for the sake of longer rides in the future.</p>
+
+
+  <figure class="center" >
+    <img src="img/new-handlebar-tape.jpg"  alt="New handlebar tape"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >The new handlebar tape matches really closely and the bike shop did a great job wrapping it.</figcaption>
+    
+  </figure>
+
+
+
+<p>When I bought the water bottle cage, I totally forgot that mountain bikes have holes
+you normally screw it into. My road bike had no such holes so I had to get creative.</p>
+
+
+  <figure class="center" >
+    <img src="img/water-bottle-cage-mounted.jpg"  alt="Water bottle cage mounted"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Two hose clamps slipped under the shifting lines hold it nice and snug.</figcaption>
+    
+  </figure>
+
+
+
+<p>Now, I know what you&rsquo;re thinking: &ldquo;Won&rsquo;t that damage the paint?&rdquo;. Yes, yes it will,
+unless I put some electrical tape underneath of it. However, the paint is already so
+beat and rusted that I truly don&rsquo;t care.</p>
+
+<p>Finally, for the sake of safety when I ride at night,
+I got some little silicon rechargeable LED lights
+that wrap around the handlebars and frame.</p>
+
+
+  <figure class="center" >
+    <img src="img/schwinn-lights.png"  alt="Schwinn lights"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >The Schwinn brand lights I got at Walmart.</figcaption>
+    
+  </figure>
+
+
+
+<p>I like them a lot. They&rsquo;ve got three modes: solid bright, solid dim, and blinking dim.
+They recharge via MicroUSB and they come on and off super quick, so I take them off
+whenever I park the bike so they don&rsquo;t get stolen.</p>
+
+
+  <figure class="center" >
+    <img src="img/night-lights.jpg"  alt="Night lights"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >I think it looks pretty good at night.</figcaption>
+    
+  </figure>
+
+
+
+<p>Yes, I&rsquo;m aware that the rear light is basically point straight at the tire.
+I&rsquo;m working on 3D printing parts to replace the existing reflectors with
+mounts I can put these lights on instead.</p>
+
+<h2 id="result">Result</h2>
+
+
+  <figure class="center" >
+    <img src="img/fun-in-the-sun.jpg"  alt="Final result"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >It looks really bright orange in the sun.</figcaption>
+    
+  </figure>
+
+
+
+<p>I think the bike looks pretty good in it&rsquo;s own special patina way.</p>
+
+
+  <figure class="center" >
+    <img src="img/schwinn-badge.jpg"  alt="Schwinn badge"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >The front Schwinn badge is in surprisingly good shape.</figcaption>
+    
+  </figure>
+
+
+
+
+  <figure class="center" >
+    <img src="img/rusty-paint.jpg"  alt="Rusty paint"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >The Schwinn logo on the side though isn&rsquo;t doing so well.</figcaption>
+    
+  </figure>
+
+
+
+<p>I don&rsquo;t have any plans to repaint the bike. For starters, spending the time and money
+to properly disassemble the whole thing, strip all the paint, clean off the rust,
+and repaint it would exceed the value of the bike itself. Also, why would I put in
+the effort for such a low-end crapped out bike anyways? Lastly, with the bike not
+looking particularly great, it lowers the chance of it getting stolen while on campus.</p>
+
+<h2 id="future-work">Future Work</h2>
+
+<h3 id="further-disassembly">Further Disassembly</h3>
+
+<p>This summer I&rsquo;ll have more time and tools to work on the bike, so I&rsquo;d like to
+disassemble some more of the bearings and brake assembly to clean them and
+give them a good lube.
+I will have a power washer available, so I&rsquo;d really like to use that clean a lot
+of the gunk off.</p>
+
+<h3 id="painting-over-phone-number">Painting Over Phone Number</h3>
+
+<p>A previous owner was so kind as to scratch their phone number into the frame of the
+bike. To make it even better, they started on the side, then decided against it
+and started over on the top.</p>
+
+
+  <figure class="center" >
+    <img src="img/old-phone-number.jpg"  alt="Rusty paint"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >The phone number is 10 digits???</figcaption>
+    
+  </figure>
+
+
+
+<p>I want to get a file and a bit of close-enough spray paint to cover it.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Getting two adjustable crescent wrenches was a very smart move. Firstly, for getting
+two as that way myself and a friend can work simultaneously. I bought two
+because I thought the wheels were going to be stubborn to get off and require me
+to brace the other side, but that ended up not being an issue. Second, getting
+adjustable wrenches (and not just a set) was a stroke of genius. For some reason,
+a lot of the bolts and nuts on the bike aren&rsquo;t quite the same width on every side,
+requiring me to constantly adjust the size of the wrench a little bit. I don&rsquo;t
+think a set of fixed size wrenches would have worked at all.</p>
+
+<p>Additionally, buying four tire levers was also really smart. Again, this was because
+a friend and I could both easily work together. I was just going with the
+Amazon&rsquo;s choice and they happened to come in a pack of four.</p>
+
+<p>I&rsquo;m really thrilled with how the bike has turned out. I probably spent around
+~$150-$200 on this at the end of it all. Could I have gotten a better bike from
+craigslist or a pawn shop for what I&rsquo;m using it for, for less?
+Almost certainly. However, it was a fun project that I&rsquo;m proud of and I got to learn
+a lot about bicycles and bike maintenance during it. It may look ugly as sin,
+but it&rsquo;s mechanically pretty sound and I have the satisfaction of having done almost all
+of the work on it myself.</p>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="https://blog.nathanv.me/posts/google-drive-bad/">
+                  <span class="button__text">Google Drive Isn&#39;t a Very Good Product</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+
+    
+      
+        <script src="https://utteranc.es/client.js"
+        repo="nathanvaughn/blog.nathanv.me"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+      
+    
+
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">nathanv@blog</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
+        <span>Theme created by <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-91853319-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+  </body>
+</html>

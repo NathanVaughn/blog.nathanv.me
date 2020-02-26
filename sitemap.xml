@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.nathanv.me/tags/cycling/</loc>
+    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/posts/fixing-schwinn-bicycle/</loc>
+    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/</loc>
+    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/posts/</loc>
+    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/tags/</loc>
+    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.nathanv.me/tags/box/</loc>
     <lastmod>2020-02-24T00:00:00+00:00</lastmod>
   </url>
@@ -23,27 +48,12 @@
   </url>
   
   <url>
-    <loc>https://blog.nathanv.me/</loc>
-    <lastmod>2020-02-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.nathanv.me/tags/nextcloud/</loc>
     <lastmod>2020-02-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.nathanv.me/tags/onedrive/</loc>
-    <lastmod>2020-02-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.nathanv.me/posts/</loc>
-    <lastmod>2020-02-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.nathanv.me/tags/</loc>
     <lastmod>2020-02-24T00:00:00+00:00</lastmod>
   </url>
   
