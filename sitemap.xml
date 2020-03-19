@@ -3,27 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.nathanv.me/</loc>
+    <lastmod>2020-03-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/posts/</loc>
+    <lastmod>2020-03-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/tags/</loc>
+    <lastmod>2020-03-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/tags/windows/</loc>
+    <lastmod>2020-03-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/posts/windows-mouse-lagging/</loc>
+    <lastmod>2020-03-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.nathanv.me/tags/cycling/</loc>
     <lastmod>2020-02-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.nathanv.me/posts/fixing-schwinn-bicycle/</loc>
-    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.nathanv.me/</loc>
-    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.nathanv.me/posts/</loc>
-    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.nathanv.me/tags/</loc>
     <lastmod>2020-02-26T00:00:00+00:00</lastmod>
   </url>
   
@@ -74,11 +84,6 @@
   
   <url>
     <loc>https://blog.nathanv.me/posts/armoury-crate-wake/</loc>
-    <lastmod>2020-02-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.nathanv.me/tags/windows/</loc>
     <lastmod>2020-02-03T00:00:00+00:00</lastmod>
   </url>
   

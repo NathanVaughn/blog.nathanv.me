@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Feb 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Mar 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Windows Mouse Lagging</title>
+      <link>https://blog.nathanv.me/posts/windows-mouse-lagging/</link>
+      <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/windows-mouse-lagging/</guid>
+      <description>Background For a while lately, I&amp;rsquo;ve been dealing with a very frustrating issue on my Windows 10 desktop and laptop. Whenever I would turn on my computer, the mouse cursor would lag horribly for around 20 seconds (unfortunately, it&amp;rsquo;s difficult to reproduce and actually get a screen recording of). Weirdly, the mouse would almost always return to normal after pressing Ctrl+Alt+Del or Ctrl+Shift+Esc (which opens Task Manager). While I&amp;rsquo;m not familiar with how Windows works, I know that Ctrl+Alt+Del produces a kernel interrupt which may be why it fixes it.</description>
+    </item>
     
     <item>
       <title>Fixing a 1973 Schwinn Bicycle</title>
