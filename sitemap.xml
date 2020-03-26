@@ -3,18 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.nathanv.me/posts/schwinn-bicycle-update/</loc>
+    <lastmod>2020-03-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/tags/cycling/</loc>
+    <lastmod>2020-03-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.nathanv.me/</loc>
-    <lastmod>2020-03-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.nathanv.me/posts/</loc>
-    <lastmod>2020-03-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.nathanv.me/tags/</loc>
-    <lastmod>2020-03-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-03-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -25,11 +35,6 @@
   <url>
     <loc>https://blog.nathanv.me/posts/windows-mouse-lagging/</loc>
     <lastmod>2020-03-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.nathanv.me/tags/cycling/</loc>
-    <lastmod>2020-02-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
