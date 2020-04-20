@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>Faking Python Imports :: Nathan Vaughn — Adventures in programming and tech</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Background I&amp;rsquo;m currently working on a Flask project and I wanted to combine two packages (Flask-CDN and Flask-Static-Digest) that both modify Flask&amp;rsquo;s url_for function.
+Problem However, these two packages are not made to work together. Flask-CDN overrides the url_for function in the context of templates. One that function is called, it applies its processing, and then calls Flask&amp;rsquo;s underlying url_for function. Flask-Static-Digest works similarly, but instead defines a new function static_url_for."/>
+<meta name="keywords" content="[programming tech]"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://blog.nathanv.me/posts/faking-python-imports/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css">
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/img/favicon.png"/>
+
+<meta name="twitter:title" content="Faking Python Imports"/>
+<meta name="twitter:description" content="Doing bad things with Python to fake module imports"/>
+
+
+
+<meta property="og:title" content="Faking Python Imports" />
+<meta property="og:description" content="Doing bad things with Python to fake module imports" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/faking-python-imports/" />
+<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png"/>
+<meta property="article:published_time" content="2020-04-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-04-20T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
+
+
+<meta name="theme-color" content="#7ec699">
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">nathanv@blog</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://nathanv.me">Homepage</a></li>
+        
+      
+        
+          <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://nathanv.me">Homepage</a></li>
+      
+    
+      
+        <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title"><a href="https://blog.nathanv.me/posts/faking-python-imports/">Faking Python Imports</a></h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-04-20
+        </span>
+
+        
+          
+        
+      
+
+      <span class="post-author">— Written by Nathan Vaughn</span>
+      
+        <span class="post-read-time">— 3 min read</span>
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://blog.nathanv.me/tags/python/">Python</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+
+<h2 id="background">Background</h2>
+
+<p>I&rsquo;m currently working on a Flask project and I wanted to combine two packages
+(<a href="https://github.com/paylogic/flask-cdn" rel="noreferrer" target="_blank">Flask-CDN</a> and
+<a href="https://github.com/nickjj/flask-static-digest" rel="noreferrer" target="_blank">Flask-Static-Digest</a>)
+that both modify Flask&rsquo;s <code>url_for</code> function.</p>
+
+<h2 id="problem">Problem</h2>
+
+<p>However, these two packages are not made to work together. Flask-CDN overrides the
+<code>url_for</code> function in the context of templates. One that function is called,
+it applies its processing, and then calls Flask&rsquo;s underlying <code>url_for</code> function.
+Flask-Static-Digest works similarly, but instead defines a new
+function <code>static_url_for</code>. This function still ends up calling <code>url_for</code>.</p>
+
+
+  <figure class="center" >
+    <a href="img/original-diagram.svg" target="_blank">
+      <img src="img/original-diagram.svg"  alt="How everything originally works."   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >How everything originally works.</figcaption>
+    
+  </figure>
+
+
+
+<p>What I wanted was to have Flask-Static-Digest call the <code>url_for</code> function of Flask-CDN
+so that I could combine the features of both.</p>
+
+
+  <figure class="center" >
+    <a href="img/desired-diagram.svg" target="_blank">
+      <img src="img/desired-diagram.svg"  alt="How I want it to work."   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >How I want it to work.</figcaption>
+    
+  </figure>
+
+
+
+<p>I really wanted to avoid editing code of the dependencies if at all possible,
+so I tried to see if I could get Flask-Static-Digest import Flask-CDN while making it
+<em>think</em> it was importing Flask.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>The answer is yes, you can do this, by overwriting <code>sys.modules</code>. Here is an example:</p>
+
+<h3 id="a-py">a.py</h3>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">func</span>(val):
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;A&#34;</span>)
+    <span style="color:#66d9ef">return</span> val <span style="color:#f92672">+</span> <span style="color:#ae81ff">5</span></code></pre></div>
+
+<h3 id="b-py">b.py</h3>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">func</span>(val):
+    <span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;B&#34;</span>)
+    <span style="color:#66d9ef">return</span> val <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span></code></pre></div>
+
+<h3 id="c-py">c.py</h3>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> a
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">func</span>(val):
+    <span style="color:#66d9ef">return</span> a<span style="color:#f92672">.</span>func(val)</code></pre></div>
+
+<h3 id="main-py">main.py</h3>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> sys
+
+<span style="color:#f92672">import</span> c
+
+VAL <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;The real value of c.func is: {}&#34;</span><span style="color:#f92672">.</span>format(c<span style="color:#f92672">.</span>func(VAL)))
+
+<span style="color:#75715e"># ideally, you would have never imported this module</span>
+sys<span style="color:#f92672">.</span>modules<span style="color:#f92672">.</span>pop(<span style="color:#e6db74">&#34;c&#34;</span>)
+<span style="color:#75715e"># create reference to real import so we don&#39;t lose it</span>
+a_real_import <span style="color:#f92672">=</span> __import__(<span style="color:#e6db74">&#34;a&#34;</span>)
+a_fake_import <span style="color:#f92672">=</span> __import__(<span style="color:#e6db74">&#34;b&#34;</span>)
+
+<span style="color:#75715e"># fake the import</span>
+sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#34;a&#34;</span>] <span style="color:#f92672">=</span> a_fake_import
+<span style="color:#f92672">import</span> c
+<span style="color:#75715e"># set it back to the real value</span>
+sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#34;a&#34;</span>] <span style="color:#f92672">=</span> a_real_import
+
+<span style="color:#66d9ef">print</span>(<span style="color:#e6db74">&#34;The fake value of c.func is: {}&#34;</span><span style="color:#f92672">.</span>format(c<span style="color:#f92672">.</span>func(VAL)))</code></pre></div>
+
+<p>And after running <code>main.py</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ &gt; python main.py
+A
+The real value of c.func is: <span style="color:#ae81ff">25</span>
+B
+The fake value of c.func is: <span style="color:#ae81ff">30</span></code></pre></div>
+<p>The dictionary <code>sys.module</code> contains references to every module you have imported.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">Python <span style="color:#ae81ff">3.8</span><span style="color:#f92672">.</span><span style="color:#ae81ff">2</span> (tags<span style="color:#f92672">/</span>v3<span style="color:#f92672">.</span><span style="color:#ae81ff">8.2</span>:<span style="color:#ae81ff">7</span>b3ab59, Feb <span style="color:#ae81ff">25</span> <span style="color:#ae81ff">2020</span>, <span style="color:#ae81ff">23</span>:<span style="color:#ae81ff">03</span>:<span style="color:#ae81ff">10</span>) [MSC v<span style="color:#f92672">.</span><span style="color:#ae81ff">1916</span> <span style="color:#ae81ff">64</span> bit (AMD64)] on win32
+Type <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#e6db74">&#34;copyright&#34;</span>, <span style="color:#e6db74">&#34;credits&#34;</span> <span style="color:#f92672">or</span> <span style="color:#e6db74">&#34;license&#34;</span> <span style="color:#66d9ef">for</span> more information<span style="color:#f92672">.</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">import</span> sys
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">import</span> string
+<span style="color:#f92672">&gt;&gt;&gt;</span> sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#34;string&#34;</span>]
+<span style="color:#f92672">&lt;</span>module <span style="color:#e6db74">&#39;string&#39;</span> <span style="color:#f92672">from</span> <span style="color:#e6db74">&#39;C:</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Python38</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">lib</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">string.py&#39;</span><span style="color:#f92672">&gt;</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span></code></pre></div>
+<p>All you have to do is inject or overwrite your own values. For reference,
+here is what I&rsquo;ve done in my Flask app:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># static digest</span>
+<span style="color:#75715e"># we need this to call the CDN&#39;s url_for and not flask</span>
+<span style="color:#75715e"># don&#39;t try this at home, kids</span>
+flask_cdn_import <span style="color:#f92672">=</span> __import__(<span style="color:#e6db74">&#34;flask_cdn&#34;</span>)
+flask_real_import <span style="color:#f92672">=</span> __import__(<span style="color:#e6db74">&#34;flask&#34;</span>)
+
+<span style="color:#75715e"># replace real flask import with fake flask cdn import</span>
+sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#34;flask&#34;</span>] <span style="color:#f92672">=</span> flask_cdn_import
+<span style="color:#75715e"># import the flask digest module with the fake import</span>
+<span style="color:#f92672">from</span> flask_static_digest <span style="color:#f92672">import</span> FlaskStaticDigest  <span style="color:#75715e"># noqa</span>
+
+<span style="color:#75715e"># put the flask module back to what it was</span>
+sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#34;flask&#34;</span>] <span style="color:#f92672">=</span> flask_real_import
+<span style="color:#75715e"># run the class init from flask digest</span>
+static_digest <span style="color:#f92672">=</span> FlaskStaticDigest()</code></pre></div>
+<h2 id="conclusion">Conclusion</h2>
+
+<p>While this trick can be very useful, it can also very dangerous and easy to break stuff.
+Remember, with great power comes great responsibility.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://stackoverflow.com/questions/8658043/how-to-mock-an-import" rel="noreferrer" target="_blank">https://stackoverflow.com/questions/8658043/how-to-mock-an-import</a></li>
+</ul>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="https://blog.nathanv.me/posts/schwinn-bicycle-update/">
+                  <span class="button__text">1973 Schwinn Bicycle Update</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+
+    
+      
+        <script src="https://utteranc.es/client.js"
+        repo="nathanvaughn/blog.nathanv.me"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+      
+    
+
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">nathanv@blog</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
+        <span>Theme created by <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-91853319-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+  </body>
+</html>

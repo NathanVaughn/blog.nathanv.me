@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Nathan Vaughn</title>
+    <link>https://blog.nathanv.me/tags/python/</link>
+    <description>Recent content in Python on Nathan Vaughn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 20 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.nathanv.me/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Faking Python Imports</title>
+      <link>https://blog.nathanv.me/posts/faking-python-imports/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/faking-python-imports/</guid>
+      <description>Background I&amp;rsquo;m currently working on a Flask project and I wanted to combine two packages (Flask-CDN and Flask-Static-Digest) that both modify Flask&amp;rsquo;s url_for function.
+Problem However, these two packages are not made to work together. Flask-CDN overrides the url_for function in the context of templates. One that function is called, it applies its processing, and then calls Flask&amp;rsquo;s underlying url_for function. Flask-Static-Digest works similarly, but instead defines a new function static_url_for.</description>
+    </item>
+    
+  </channel>
+</rss>
