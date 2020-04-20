@@ -7,7 +7,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="description" content="Background I&amp;rsquo;m currently working on a Flask project and I wanted to combine two packages (Flask-CDN and Flask-Static-Digest) that both modify Flask&amp;rsquo;s url_for function.
-Problem However, these two packages are not made to work together. Flask-CDN overrides the url_for function in the context of templates. One that function is called, it applies its processing, and then calls Flask&amp;rsquo;s underlying url_for function. Flask-Static-Digest works similarly, but instead defines a new function static_url_for."/>
+Problem However, these two packages are not made to work together. Flask-CDN overrides the url_for function in the context of templates. Once that function is called, it applies its processing and then calls Flask&amp;rsquo;s underlying url_for function. Flask-Static-Digest works similarly, but instead defines a new function static_url_for."/>
 <meta name="keywords" content="[programming tech]"/>
 <meta name="robots" content="noodp"/>
 <link rel="canonical" href="https://blog.nathanv.me/posts/faking-python-imports/" />
@@ -160,8 +160,8 @@ that both modify Flask&rsquo;s <code>url_for</code> function.</p>
 <h2 id="problem">Problem</h2>
 
 <p>However, these two packages are not made to work together. Flask-CDN overrides the
-<code>url_for</code> function in the context of templates. One that function is called,
-it applies its processing, and then calls Flask&rsquo;s underlying <code>url_for</code> function.
+<code>url_for</code> function in the context of templates. Once that function is called,
+it applies its processing and then calls Flask&rsquo;s underlying <code>url_for</code> function.
 Flask-Static-Digest works similarly, but instead defines a new
 function <code>static_url_for</code>. This function still ends up calling <code>url_for</code>.</p>
 
@@ -193,7 +193,7 @@ so that I could combine the features of both.</p>
 
 
 <p>I really wanted to avoid editing code of the dependencies if at all possible,
-so I tried to see if I could get Flask-Static-Digest import Flask-CDN while making it
+so I tried to see if I could get Flask-Static-Digest to import Flask-CDN while making it
 <em>think</em> it was importing Flask.</p>
 
 <h2 id="solution">Solution</h2>

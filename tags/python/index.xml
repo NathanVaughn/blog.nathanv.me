@@ -18,7 +18,7 @@
       
       <guid>https://blog.nathanv.me/posts/faking-python-imports/</guid>
       <description>Background I&amp;rsquo;m currently working on a Flask project and I wanted to combine two packages (Flask-CDN and Flask-Static-Digest) that both modify Flask&amp;rsquo;s url_for function.
-Problem However, these two packages are not made to work together. Flask-CDN overrides the url_for function in the context of templates. One that function is called, it applies its processing, and then calls Flask&amp;rsquo;s underlying url_for function. Flask-Static-Digest works similarly, but instead defines a new function static_url_for.</description>
+Problem However, these two packages are not made to work together. Flask-CDN overrides the url_for function in the context of templates. Once that function is called, it applies its processing and then calls Flask&amp;rsquo;s underlying url_for function. Flask-Static-Digest works similarly, but instead defines a new function static_url_for.</description>
     </item>
     
   </channel>
