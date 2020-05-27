@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="description" content="Background For the past few years, I&amp;rsquo;ve rented a VPS to host some web apps for myself. I&amp;rsquo;ve done this since I&amp;rsquo;ve lived in college apartments behind a NAT and I wanted to be able to access these services from the outside world. Also, running locally, I wouldn&amp;rsquo;t be able to setup HTTPS other than self-signed certs. Yuck.
 However, with Cloudflare&amp;rsquo;s new service, Argo Tunnel, and poor financial decisions a server I bought on Craigslist, I decided to move my apps to be hosted on-premise."/>
-<meta name="keywords" content="[programming tech]"/>
+<meta name="keywords" content="[programming tech Nathan Vaughn blog]"/>
 <meta name="robots" content="noodp"/>
 <link rel="canonical" href="https://blog.nathanv.me/posts/self-host-docker/" />
 
@@ -150,6 +150,53 @@ However, with Cloudflare&amp;rsquo;s new service, Argo Tunnel, and poor financia
     
 
     <div class="post-content">
+      
+        <h2>Table of Contents</h2>
+        <aside class="table-of-contents"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#background">Background</a></li>
+<li><a href="#decision-to-use-docker">Decision to Use Docker</a></li>
+<li><a href="#what-are-containers">What Are Containers</a></li>
+<li><a href="#docker-setup">Docker Setup</a></li>
+<li><a href="#networking">Networking</a>
+<ul>
+<li><a href="#note-about-domains">Note About Domains</a></li>
+</ul></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#useful-tools">Useful Tools</a>
+<ul>
+<li><a href="#portainer">Portainer</a></li>
+<li><a href="#netdata">Netdata</a></li>
+</ul></li>
+<li><a href="#backups">Backups</a>
+<ul>
+<li><a href="#docker-compose-files">Docker Compose files</a></li>
+<li><a href="#docker-secrets">Docker Secrets</a></li>
+<li><a href="#data">Data</a></li>
+</ul></li>
+<li><a href="#automation">Automation</a>
+<ul>
+<li><a href="#docker-container-updates">Docker Container Updates</a></li>
+<li><a href="#host-os-updates">Host OS Updates</a></li>
+<li><a href="#automated-backups">Automated Backups</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a>
+<ul>
+<li><a href="#things-i-m-happy-with">Things I&rsquo;m Happy With</a></li>
+<li><a href="#things-i-m-not-happy-with">Things I&rsquo;m Not Happy With</a>
+<ul>
+<li><a href="#docker-mysql">Docker MySQL</a></li>
+<li><a href="#docker-secrets-1">Docker Secrets</a></li>
+<li><a href="#argo-pricing">Argo Pricing</a></li>
+</ul></li>
+<li><a href="#future-work">Future Work</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav></aside>
       
       
 

@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 <meta name="description" content="Background I&amp;rsquo;m currently working on a Flask project and I wanted to combine two packages (Flask-CDN and Flask-Static-Digest) that both modify Flask&amp;rsquo;s url_for function.
 Problem However, these two packages are not made to work together. Flask-CDN overrides the url_for function in the context of templates. Once that function is called, it applies its processing and then calls Flask&amp;rsquo;s underlying url_for function. Flask-Static-Digest works similarly, but instead defines a new function static_url_for."/>
-<meta name="keywords" content="[programming tech]"/>
+<meta name="keywords" content="[programming tech Nathan Vaughn blog]"/>
 <meta name="robots" content="noodp"/>
 <link rel="canonical" href="https://blog.nathanv.me/posts/faking-python-imports/" />
 
@@ -148,6 +148,26 @@ Problem However, these two packages are not made to work together. Flask-CDN ove
     
 
     <div class="post-content">
+      
+        <h2>Table of Contents</h2>
+        <aside class="table-of-contents"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#background">Background</a></li>
+<li><a href="#problem">Problem</a></li>
+<li><a href="#solution">Solution</a>
+<ul>
+<li><a href="#a-py">a.py</a></li>
+<li><a href="#b-py">b.py</a></li>
+<li><a href="#c-py">c.py</a></li>
+<li><a href="#main-py">main.py</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+</nav></aside>
       
       
 
