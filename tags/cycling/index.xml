@@ -2,6 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>cycling on Nathan Vaughn</title>
+    
+    
+    
     <link>https://blog.nathanv.me/tags/cycling/</link>
     <description>Recent content in cycling on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
@@ -17,9 +20,17 @@
       <pubDate>Thu, 26 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/schwinn-bicycle-update/</guid>
-      <description>Background I just wanted to give a small update on my 1973 Schwinn Varsity that I&amp;rsquo;ve been working on.
-Light Mounts As mentioned in the previous post, I got some little silicon wrap-on lights for the bike at night. However, there&amp;rsquo;s not many convenient places to put them on the bike, especially in the rear. To fix this, I designed some new mounts to replace the current reflectors.
- These were the new mounts I designed in Solidworks.</description>
+      <description>
+        
+          &lt;img src=&#34;https://blog.nathanv.me/posts/schwinn-bicycle-update/img/fun-in-the-sun-v2.jpg&#34;/&gt;
+          
+        
+        
+        
+          Short update on my repaired 1973 Schwinn bike
+          
+        
+        </description>
     </item>
     
     <item>
@@ -28,8 +39,17 @@ Light Mounts As mentioned in the previous post, I got some little silicon wrap-o
       <pubDate>Wed, 26 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/fixing-schwinn-bicycle/</guid>
-      <description>Background While I was working at Collins my roommate unexpectedly left, and gave me his bicycle for free.
- The bike how I got it.  After closer inspection, the bike was a 27&amp;rdquo; 1973 Schwinn Varsity 10-speed. It was in pretty rough shape. The front tire didn&amp;rsquo;t hold air, neither tire had any tread left (if there was any to begin with), and just in general, the bike looked neglected.</description>
+      <description>
+        
+          &lt;img src=&#34;https://blog.nathanv.me/posts/fixing-schwinn-bicycle/img/fun-in-the-sun.jpg&#34;/&gt;
+          
+        
+        
+        
+          Repairing an old 27&#34; 1973 Schwinn Varsity 10-speed bicycle to rideable condition
+          
+        
+        </description>
     </item>
     
   </channel>

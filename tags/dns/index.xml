@@ -2,6 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DNS on Nathan Vaughn</title>
+    
+    
+    
     <link>https://blog.nathanv.me/tags/dns/</link>
     <description>Recent content in DNS on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
@@ -17,7 +20,18 @@
       <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/replacing-mailgun/</guid>
-      <description>Background For the past few years, I&amp;rsquo;ve used Mailgun to send and receive email for my nathanv.me domain. I intentionally signed up Mailgun because it was part of the GitHub Student Developer Pack and it worked great. I could send email from applications and my personal Gmail account using SMTP credentials and forward any inbound mail to my Gmail account, all in the free tier. This allowed me to send receive email to and from the @nathanv.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Replacing Mailgun with SendGrid and ForwardEmail
+          
+        
+        </description>
     </item>
     
   </channel>

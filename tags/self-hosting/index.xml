@@ -2,6 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>self-hosting on Nathan Vaughn</title>
+    
+    
+    
     <link>https://blog.nathanv.me/tags/self-hosting/</link>
     <description>Recent content in self-hosting on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
@@ -17,7 +20,17 @@
       <pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/sun-ultra-24-build/</guid>
-      <description>Background Early last year, I went to my university&amp;rsquo;s surplus store. I was looking to purchase an old Mac Pro tower with the intent to do a case mod with it, since I knew the surplus store had a few available for cheap and I thought it would be a fun project. However, while looking around, I spotted a beautiful Sun Ultra 24 on the shelf. I quickly decided to purchase that instead for two reasons.</description>
+      <description>
+        
+          &lt;img src=&#34;https://blog.nathanv.me/posts/sun-ultra-24-build/img/new_home.jpg&#34;/&gt;
+          
+        
+        
+        
+          Building a server inside an old Sun Ultra 24 case
+          
+        
+        </description>
     </item>
     
     <item>
@@ -26,8 +39,18 @@
       <pubDate>Sun, 07 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/self-host-docker/</guid>
-      <description>Background For the past few years, I&amp;rsquo;ve rented a VPS to host some web apps for myself. I&amp;rsquo;ve done this since I&amp;rsquo;ve lived in college apartments behind a NAT and I wanted to be able to access these services from the outside world. Also, running locally, I wouldn&amp;rsquo;t be able to setup HTTPS other than self-signed certs. Yuck.
-However, with Cloudflare&amp;rsquo;s new service, Argo Tunnel, and poor financial decisions a server I bought on Craigslist, I decided to move my apps to be hosted on-premise.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Moving my personal web apps from the cloud to self-hosted infrastructure
+          
+        
+        </description>
     </item>
     
   </channel>

@@ -2,6 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bash on Nathan Vaughn</title>
+    
+    
+    
     <link>https://blog.nathanv.me/tags/bash/</link>
     <description>Recent content in bash on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
@@ -17,7 +20,18 @@
       <pubDate>Sat, 23 Nov 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/docker-hub-multiple-tags/</guid>
-      <description>Background While working on my Docker image for webtrees, I ran into a peculiar issue. I had setup automated builds in Docker Hub for every tagged commit in my git repository. At first, I wanted to be able to have multiple tags for each image build, so that each build could be version tagged (like 1.7.15) and have the latest tag applied as well. Using an undocumented feature, I was able to get that to work.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Writing a custom build hook for Docker Hub to apply multiple tags to a Docker image
+          
+        
+        </description>
     </item>
     
     <item>
@@ -26,7 +40,17 @@
       <pubDate>Sat, 20 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/docker-mysql-to-mariadb/</guid>
-      <description>Background Recently, when I setup a number of Docker Compose stacks for myself, I naively used MySQL 8 databases. I had heard of MariaDB in the past, and knew it was a drop-in replacement to MySQL, but I didn&amp;rsquo;t really know much about it. After recently reading about some of MariaDB&amp;rsquo;s features and speed-improvements over MySQL Community Edition (and many people including myself really hate Oracle), I decided I wanted to swap out my MySQL databases.</description>
+      <description>
+        
+          &lt;img src=&#34;https://blog.nathanv.me/posts/docker-mysql-to-mariadb/img/mysql_to_mariadb.jpg&#34;/&gt;
+          
+        
+        
+        
+          Replacing existing MySQL 8 containers in Docker Compose stacks with MariaDB
+          
+        
+        </description>
     </item>
     
     <item>
@@ -35,7 +59,18 @@
       <pubDate>Fri, 05 Jul 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/boinc-with-sge/</guid>
-      <description>Background Recently, I setup a small High-Performance Computing (HPC) cluster for Iowa State&amp;rsquo;s solar car team. This cluster was primarily used for running Computational Fluid Dynamics (CFD) and MATLAB code. However, whenever the team was in the build phase and not actively designing the next car, the cluster sat idle the vast majority of the time. We decided that we should donate the extra compute time to scientific research.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Getting BOINC to work on a High-Performance Cluster that uses Sun Grid Engine for job scheduling to donate extra compute time
+          
+        
+        </description>
     </item>
     
   </channel>

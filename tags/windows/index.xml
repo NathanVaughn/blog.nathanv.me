@@ -2,6 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Windows on Nathan Vaughn</title>
+    
+    
+    
     <link>https://blog.nathanv.me/tags/windows/</link>
     <description>Recent content in Windows on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
@@ -17,8 +20,18 @@
       <pubDate>Thu, 19 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/windows-mouse-lagging/</guid>
-      <description>Background For a while lately, I&amp;rsquo;ve been dealing with a very frustrating issue on my Windows 10 desktop and laptop. Whenever I would turn on my computer, the mouse cursor would lag horribly for around 20 seconds.
- Apologies for the poor recording, it&amp;rsquo;s difficult to get with screen capture software.  Weirdly, the mouse would almost always return to normal after pressing Ctrl+Alt+Del or Ctrl+Shift+Esc (which opens Task Manager).</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Discovering that Synergy was causing my mouse cursor to lag on Windows
+          
+        
+        </description>
     </item>
     
     <item>
@@ -27,7 +40,18 @@
       <pubDate>Mon, 03 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/armoury-crate-wake/</guid>
-      <description>Background On Black Friday, I got a new Ryzen 7 2700X with the fancy included RGB cooler, and an Asus motherboard that had Aura Sync. &amp;ldquo;Cool&amp;rdquo;, I thought, &amp;ldquo;I can have synced RGB lighting&amp;rdquo;. While the control software provided on the Aura Sync page would completely refuse to launch for me once it was installed, I was able to get the &amp;ldquo;Armoury Crate&amp;rdquo; Microsoft Store app to work and control the RGB.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Fixing Asus Armoury Crate from waking my Windows computer from sleep
+          
+        
+        </description>
     </item>
     
   </channel>

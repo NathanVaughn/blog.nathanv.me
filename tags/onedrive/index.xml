@@ -2,6 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>OneDrive on Nathan Vaughn</title>
+    
+    
+    
     <link>https://blog.nathanv.me/tags/onedrive/</link>
     <description>Recent content in OneDrive on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
@@ -17,7 +20,17 @@
       <pubDate>Mon, 24 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/posts/google-drive-bad/</guid>
-      <description>Background To start off with, I&amp;rsquo;m incredibly invested in the Google ecosystem. My Gmail account is my main email account. I love Google Photos. I live by my Google Calendar. I use Google Keep extensively for making lists. I use Google Pixel phones. I register all of my domain names through Google Domains. You get the idea. So why don&amp;rsquo;t I use Google Drive? Because it&amp;rsquo;s just not that great&amp;hellip;</description>
+      <description>
+        
+          &lt;img src=&#34;https://blog.nathanv.me/posts/google-drive-bad/img/cover.jpg&#34;/&gt;
+          
+        
+        
+        
+          My experience moving from Google Drive to OneDrive.
+          
+        
+        </description>
     </item>
     
   </channel>
