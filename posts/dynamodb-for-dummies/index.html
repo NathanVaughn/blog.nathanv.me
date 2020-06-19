@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>DynamoDB for Dummies :: Nathan Vaughn — Adventures in programming and tech</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Background I&amp;rsquo;ve been dealing with DynamoDB lately, and it took me a while to wrap my head around it, so I thought I would make this guide for others.
+Relational Databases To understand DynamoDB, it might first be best to understand traditional relational databases (If you&amp;rsquo;re reading this, I assume you have some familiarity with SQL, so this will be quick). Relational databases such as MySQL, Oracle DB, and Microsoft SQL Server store highly-structured data in tables with rows and columns."/>
+<meta name="keywords" content="[programming tech Nathan Vaughn blog]"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://blog.nathanv.me/posts/dynamodb-for-dummies/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css">
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/img/favicon.png"/>
+
+<meta name="twitter:title" content="DynamoDB for Dummies"/>
+<meta name="twitter:description" content="An introductory guide to using AWS DynamoDB"/>
+
+
+
+<meta property="og:title" content="DynamoDB for Dummies" />
+<meta property="og:description" content="An introductory guide to using AWS DynamoDB" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/dynamodb-for-dummies/" />
+<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png"/>
+<meta property="article:published_time" content="2020-06-19T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-06-19T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
+
+
+<meta name="theme-color" content="#7ec699">
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">nathanv@blog</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://nathanv.me">Homepage</a></li>
+        
+      
+        
+          <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://nathanv.me">Homepage</a></li>
+      
+    
+      
+        <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title"><a href="https://blog.nathanv.me/posts/dynamodb-for-dummies/">DynamoDB for Dummies</a></h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-06-19
+        </span>
+
+        
+          
+        
+      
+
+      <span class="post-author">— Written by Nathan Vaughn</span>
+      
+        <span class="post-read-time">— 6 min read</span>
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://blog.nathanv.me/tags/aws/">AWS</a>&nbsp;
+        
+          #<a href="https://blog.nathanv.me/tags/dynamodb/">DynamoDB</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+        <h2>Table of Contents</h2>
+        <aside class="table-of-contents"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#background">Background</a></li>
+<li><a href="#relational-databases">Relational Databases</a></li>
+<li><a href="#dynamodb">DynamoDB</a>
+<ul>
+<li><a href="#basics">Basics</a></li>
+<li><a href="#keys">Keys</a>
+<ul>
+<li><a href="#partition-key-only">Partition Key Only</a></li>
+<li><a href="#partition-key-and-sort-key">Partition Key and Sort Key</a></li>
+</ul></li>
+<li><a href="#querying">Querying</a></li>
+<li><a href="#scanning">Scanning</a></li>
+<li><a href="#indexes">Indexes</a>
+<ul>
+<li><a href="#global-secondary-index">Global Secondary Index</a></li>
+<li><a href="#local-secondary-index">Local Secondary Index</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+</nav></aside>
+      
+      
+
+<h2 id="background">Background</h2>
+
+<p>I&rsquo;ve been dealing with DynamoDB lately, and it took me a while to wrap my head around
+it, so I thought I would make this guide for others.</p>
+
+<h2 id="relational-databases">Relational Databases</h2>
+
+<p>To understand DynamoDB, it might first be best to understand traditional relational
+databases (If you&rsquo;re reading this, I assume you have some familiarity with SQL,
+so this will be quick).
+Relational databases such as MySQL, Oracle DB, and Microsoft SQL Server
+store highly-structured data in tables with rows and columns.
+These tables can relate to each other allowing for very powerful data access patterns.</p>
+
+<p>For example, let&rsquo;s say you have a database with a table for customers and orders.</p>
+
+<p>Customers:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Customer ID</th>
+<th align="left">Name</th>
+<th align="left">Email</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">0</td>
+<td align="left">Joe Smith</td>
+<td align="left">joe@example.com</td>
+</tr>
+
+<tr>
+<td align="left">1</td>
+<td align="left">Bob Jones</td>
+<td align="left">bob@example.com</td>
+</tr>
+</tbody>
+</table>
+
+<p>Orders:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Order ID</th>
+<th align="left">Customer ID</th>
+<th align="left">Item</th>
+<th align="left">Amount</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">0</td>
+<td align="left">1</td>
+<td align="left">Chair</td>
+<td align="left">24.99</td>
+</tr>
+
+<tr>
+<td align="left">1</td>
+<td align="left">0</td>
+<td align="left">Table</td>
+<td align="left">14.99</td>
+</tr>
+
+<tr>
+<td align="left">2</td>
+<td align="left">1</td>
+<td align="left">Lamp</td>
+<td align="left">44.99</td>
+</tr>
+</tbody>
+</table>
+
+<p>Now, let&rsquo;s say you want to figure out which items were
+purchased by Bob Jones over $30. This can be done with SQL like so:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="color:#66d9ef">SELECT</span> orders.item <span style="color:#66d9ef">FROM</span> customers
+<span style="color:#66d9ef">INNER</span> <span style="color:#66d9ef">JOIN</span> orders <span style="color:#66d9ef">ON</span> customers.id<span style="color:#f92672">=</span>orders.customer
+<span style="color:#66d9ef">WHERE</span> customers.id <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">AND</span> orders.amount <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">20</span>;</code></pre></div>
+<p>This would output:</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Items</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Lamp</td>
+</tr>
+</tbody>
+</table>
+
+<p>As you can see, traditional SQL-based databases provide a lot of flexibility with
+how data can be accessed. However, this comes at a cost. These types of databases
+don&rsquo;t scale
+<a href="https://en.wikipedia.org/wiki/Scalability#Horizontal_(Scale_Out)_and_Vertical_Scaling_(Scale_Up)" rel="noreferrer" target="_blank">horizontally, but rather vertically</a>.
+This can become a challenge for high-throughput applications.</p>
+
+<p>Most of the effort going into designing a database like this is figuring
+out how to most effectively represent the data in the database schema. How this
+data is queried and accessed is generally less important.</p>
+
+<h2 id="dynamodb">DynamoDB</h2>
+
+<p>DynamoDB is a proprietary NoSQL database offered by Amazon AWS that
+allows for near-infinite horizontal scalability. In contrast to relational databases,
+a lot of thought needs to be put into how the data is accessed rather than its
+representation.</p>
+
+<h3 id="basics">Basics</h3>
+
+<p>Here are the basics parts of DynamoDB:</p>
+
+<ul>
+<li>Tables - A table holds items, much like relational databases. However,
+tables are entirely independent of one another and are not part
+of any &ldquo;database&rdquo;. Tables do <em>not</em> have a rigid column structure.</li>
+<li>Items - Items are what actually contain data with various attributes.
+This is like a table row. Items are uniquely identified by their primary key.</li>
+<li>Attributes - These are the data elements of items. These do not have to be consistent
+with other items in the same table. They are like table columns.
+An item in a &ldquo;Albums&rdquo; table would have attributes like &ldquo;Year&rdquo;, &ldquo;Artist&rdquo;, etc.</li>
+</ul>
+
+
+  <figure class="center" >
+    <a href="img/table-items-attributes.jpg" target="_blank">
+      <img src="img/table-items-attributes.jpg"  alt="DynamoDB elements"   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >DynamoDB elements</figcaption>
+    
+  </figure>
+
+
+
+<p>In terms of pricing, DynamoDB charges for both data storage, and read and write
+operations. Read and write operations use &ldquo;read units&rdquo; and &ldquo;write units&rdquo;
+which are pretty much just arbitrary units to quantify how much
+bandwidth/processing/etc. you used to perform an operation. You can either choose
+an on-demand pricing model, or a provisioned capacity model. More info is on the
+pricing page:
+<a href="https://aws.amazon.com/dynamodb/pricing/" rel="noreferrer" target="_blank">https://aws.amazon.com/dynamodb/pricing/</a></p>
+
+<h3 id="keys">Keys</h3>
+
+<p>In DynamoDB, there are two ways of accessing items by their primary key.</p>
+
+<h4 id="partition-key-only">Partition Key Only</h4>
+
+<p>Items can have a unique partition key (also sometimes called &ldquo;hash key&rdquo;). No two
+items can have the same partition key. In order to query an item, one <em>must</em> know
+the partition key.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Album ID (PK)</th>
+<th align="left">Album Name</th>
+<th align="left">Artist</th>
+<th align="left">Year</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">0</td>
+<td align="left">Moving Pictures</td>
+<td align="left">Rush</td>
+<td align="left">1981</td>
+</tr>
+
+<tr>
+<td align="left">1</td>
+<td align="left">Dark Side of the Moon</td>
+<td align="left">Pink Floyd</td>
+<td align="left">1973</td>
+</tr>
+
+<tr>
+<td align="left">2</td>
+<td align="left">Led Zeppelin IV</td>
+<td align="left">Led Zeppelin</td>
+<td align="left">1971</td>
+</tr>
+</tbody>
+</table>
+
+<p>In this example, the <code>Album ID</code> field is acting as the primary key.</p>
+
+<h4 id="partition-key-and-sort-key">Partition Key and Sort Key</h4>
+
+<p>Items can have a unique combination of the partition key and sort key
+(also sometimes called &ldquo;range key&rdquo;). This combination
+is called a &ldquo;composite primary key&rdquo;. No two items can have the same
+combination of the partition key and sort key. However, the partition key does <em>not</em>
+need to be unique. The sort key, must still be unique.
+In order to query a single item, one <em>must</em> know
+both the partition key and sort key.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Artist (PK)</th>
+<th align="left">Album Name (SK)</th>
+<th align="left">Year</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Rush</td>
+<td align="left">Moving Pictures</td>
+<td align="left">1981</td>
+</tr>
+
+<tr>
+<td align="left">Pink Floyd</td>
+<td align="left">Dark Side of the Moon</td>
+<td align="left">1973</td>
+</tr>
+
+<tr>
+<td align="left">Led Zeppelin</td>
+<td align="left">Led Zeppelin IV</td>
+<td align="left">1971</td>
+</tr>
+</tbody>
+</table>
+
+<p>In this example, the <code>Artist</code> field is acting as the partition key and the <code>Album Name</code>
+as the sort key. This example would work, assuming no two artists release an album with
+the same name.</p>
+
+<h3 id="querying">Querying</h3>
+
+<p>In a partition key only scenario, only single items can be queried. This is because
+each item needs a single unique identifier, and that is the only query-able attribute.</p>
+
+<p>On the other hand, composite key scenarios are exceptionally powerful, as sort keys
+can be queried with
+<a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.KeyConditionExpressions" rel="noreferrer" target="_blank">comparisons</a>
+like equals, less than, and starts with. For example, lets say you have a table of
+different buildings.</p>
+
+<table>
+<thead>
+<tr>
+<th align="left">Type (PK)</th>
+<th align="left">Location (SK)</th>
+<th align="left">Name</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">office</td>
+<td align="left">US:NY:NYC</td>
+<td align="left">HQ</td>
+</tr>
+
+<tr>
+<td align="left">office</td>
+<td align="left">US:TX:DFW</td>
+<td align="left">Dallas Office</td>
+</tr>
+
+<tr>
+<td align="left">warehouse</td>
+<td align="left">US:CO:DNV</td>
+<td align="left">Denver Warehouse</td>
+</tr>
+
+<tr>
+<td align="left">warehouse</td>
+<td align="left">US:CO:BLD</td>
+<td align="left">Boulder Warehouse</td>
+</tr>
+</tbody>
+</table>
+
+<p>With a table structure like this, you could query for all warehouses in Colorado
+with a query partition key of <code>warehouse</code> and a query sort key of <code>startswith('US:CO')</code>.
+You can see how this can be very powerful, especially if you use a timestamp as the
+sort key. You could easily filter for certain time ranges.</p>
+
+<h3 id="scanning">Scanning</h3>
+
+<p>Sometimes, you just need to get all the data in a table. With DynamoDB, this is called
+scanning. This really should be avoided if at all possible as it will consume a <em>LOT</em>
+of read units. You can optionally filter the results by any attribute, but it
+will not reduce the number of read units used.</p>
+
+<h3 id="indexes">Indexes</h3>
+
+<p>Everything above really covers all the basics of DynamoDB. The core functionality is
+pretty straight-forward.</p>
+
+<p>However, DynamoDB has more functionality. Another major feature is secondary indexes.
+Sometimes, you just need to lookup values based off another column.
+Maybe it&rsquo;s a username instead of the normal user ID. This is where secondary indexes
+come in.</p>
+
+<h4 id="global-secondary-index">Global Secondary Index</h4>
+
+<p>The first option is a Global Secondary Index. This is the most flexible option.
+It does not need to be defined at table creation and there is no limit on data size.
+However, it uses additional read and write capacity units, so will cost you more.
+Additionally, a major caveat is that it is <em>not</em> read-consistent. What this means,
+is that if you write data to a global secondary index, and then immediately
+try to read that data, you may not receive that data back for a while.
+It will eventually propagate, but it is not guaranteed to be immediate.</p>
+
+<h4 id="local-secondary-index">Local Secondary Index</h4>
+
+<p>The other option is a Local Secondary Index. This is a lot more restrictive, but
+can make sense for the right use-case. It <em>has</em> to be defined at table creation
+(can&rsquo;t update the schema later), each hash key can&rsquo;t contain more than 10GB of data,
+and it shares the read and write capacity units of the underlying table.
+It also optionally allows you enable read and write consistency if desired.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>That&rsquo;s about it! DynamoDB can be very inexpensive and flexible as a database.
+However, you really need to think through your database design and access patterns
+before you get started. It&rsquo;s really best suited for large amounts of low-complexity
+data (such as logging events). Use the tool that suits your application best.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://www.dynamodbguide.com/" rel="noreferrer" target="_blank">https://www.dynamodbguide.com/</a></li>
+<li><a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html" rel="noreferrer" target="_blank">https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html</a></li>
+</ul>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="https://blog.nathanv.me/posts/faking-python-imports/">
+                  <span class="button__text">Faking Python Imports</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+
+    
+      
+        <script src="https://utteranc.es/client.js"
+        repo="nathanvaughn/blog.nathanv.me"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+      
+    
+
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">nathanv@blog</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
+        <span>Theme created by <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-91853319-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+  </body>
+</html>
