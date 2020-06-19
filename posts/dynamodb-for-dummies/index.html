@@ -27,7 +27,7 @@ Relational Databases To understand DynamoDB, it might first be best to understan
 
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://blog.nathanv.me/img/favicon.png"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/posts/dynamodb-for-dummies/img/dynamodb-dummies.png"/>
 
 <meta name="twitter:title" content="DynamoDB for Dummies"/>
 <meta name="twitter:description" content="An introductory guide to using AWS DynamoDB"/>
@@ -38,7 +38,7 @@ Relational Databases To understand DynamoDB, it might first be best to understan
 <meta property="og:description" content="An introductory guide to using AWS DynamoDB" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.nathanv.me/posts/dynamodb-for-dummies/" />
-<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png"/>
+<meta property="og:image" content="https://blog.nathanv.me/posts/dynamodb-for-dummies/img/dynamodb-dummies.png" />
 <meta property="article:published_time" content="2020-06-19T00:00:00+00:00" />
 <meta property="article:modified_time" content="2020-06-19T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
 
@@ -147,6 +147,10 @@ Relational Databases To understand DynamoDB, it might first be best to understan
       </span>
     
 
+    
+      
+        <img src="https://blog.nathanv.me/img/dynamodb-dummies.png" class="post-cover" />
+      
     
 
     <div class="post-content">
@@ -488,14 +492,15 @@ will not reduce the number of read units used.</p>
 pretty straight-forward.</p>
 
 <p>However, DynamoDB has more functionality. Another major feature is secondary indexes.
-Sometimes, you just need to lookup values based off another column.
-Maybe it&rsquo;s a username instead of the normal user ID. This is where secondary indexes
-come in.</p>
+Sometimes, you just need to look up values based on another attribute.
+Maybe it&rsquo;s a username instead of the normal user ID.
+Secondary indexes let you query by attributes other than what you normally can.</p>
 
 <h4 id="global-secondary-index">Global Secondary Index</h4>
 
 <p>The first option is a Global Secondary Index. This is the most flexible option.
 It does not need to be defined at table creation and there is no limit on data size.
+It behaves just like an additional partition key.
 However, it uses additional read and write capacity units, so will cost you more.
 Additionally, a major caveat is that it is <em>not</em> read-consistent. What this means,
 is that if you write data to a global secondary index, and then immediately
@@ -507,7 +512,10 @@ It will eventually propagate, but it is not guaranteed to be immediate.</p>
 <p>The other option is a Local Secondary Index. This is a lot more restrictive, but
 can make sense for the right use-case. It <em>has</em> to be defined at table creation
 (can&rsquo;t update the schema later), each hash key can&rsquo;t contain more than 10GB of data,
-and it shares the read and write capacity units of the underlying table.
+and it shares the read and write capacity units of the underlying table. It also
+can <em>only</em> be used on tables with a partition key and sort key, as it
+behaves like an additional sort key. You still need to use the original
+partition key.
 It also optionally allows you enable read and write consistency if desired.</p>
 
 <h2 id="conclusion">Conclusion</h2>
