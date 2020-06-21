@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.nathanv.me/</loc>
+    <lastmod>2020-06-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/posts/</loc>
+    <lastmod>2020-06-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/tags/</loc>
+    <lastmod>2020-06-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/tags/wearables/</loc>
+    <lastmod>2020-06-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/tags/wyze/</loc>
+    <lastmod>2020-06-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.nathanv.me/posts/wyze-band-review/</loc>
+    <lastmod>2020-06-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.nathanv.me/tags/aws/</loc>
     <lastmod>2020-06-19T00:00:00+00:00</lastmod>
   </url>
@@ -14,21 +44,6 @@
   
   <url>
     <loc>https://blog.nathanv.me/posts/dynamodb-for-dummies/</loc>
-    <lastmod>2020-06-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.nathanv.me/</loc>
-    <lastmod>2020-06-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.nathanv.me/posts/</loc>
-    <lastmod>2020-06-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.nathanv.me/tags/</loc>
     <lastmod>2020-06-19T00:00:00+00:00</lastmod>
   </url>
   
