@@ -249,7 +249,7 @@ container, it&rsquo;s like they are in their own OS. The filesystem is sandboxed
 from the host (unless you decide to provide access to specific directories)
 and containers even get their own network interface. Compared to VMs, containers
 have a <strong>much</strong> lower memory footprint, and are super fast to start. Neat!</p>
-<pre><code>nathan@zeus:[~]$ sudo /usr/bin/landscape-sysinfo
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">nathan@zeus:[~]$ sudo /usr/bin/landscape-sysinfo
 
   System load:                    0.15
   Usage of /:                     18.1% of 133.52GB
@@ -268,7 +268,7 @@ have a <strong>much</strong> lower memory footprint, and are super fast to start
   IP address for br-87cfeddb1a48: 172.31.0.1
   IP address for br-47045830e86b: 192.168.0.1
   IP address for br-7799754001bc: 192.168.32.1
-  IP address for br-3780ddef1e2f: 192.168.64.1</code></pre>
+  IP address for br-3780ddef1e2f: 192.168.64.1</code></pre></div>
 
   <figure class="center" >
     <a href="img/docker_vs_vm.png" target="_blank">
@@ -320,7 +320,7 @@ defining your configuration in a file rather than the command line.</p>
 <p>Working off some examples, I made a Docker Compose file for each
 of my applications, each in their own folder. For security, I have every app restricted
 to their own network (which Docker Compose will do by default).</p>
-<pre><code>~/dockerfiles
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">~/dockerfiles
 │
 └───app1
 │   │   docker-compose.yml
@@ -329,7 +329,7 @@ to their own network (which Docker Compose will do by default).</p>
 │   │   docker-compose.yml
 │   │   .env
 │
-...</code></pre>
+...</code></pre></div>
 <p>For applications that need it, I also opted to create an environment file which contains
 secrets like the MySQL account password, rather putting secrets in the actual config
 files which are tracked by Git. This is easily done with the <code>env_file</code>
@@ -442,7 +442,7 @@ workaround. Simply create the tunnel on your main domain to whatever subdomain y
 want, then just <code>CNAME</code> your second domain to the tunnel subdomain.</p>
 
 <p>Example:</p>
-<pre><code>Link Shortener (app) -&gt; linkshortener.example.com (Tunnel) -&gt; xmpl.com  (CNAME DNS)</code></pre>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Link Shortener (app) -&gt; linkshortener.example.com (Tunnel) -&gt; xmpl.com  (CNAME DNS)</code></pre></div>
 <h2 id="security">Security</h2>
 
 <p>Now that I have my applications accessible from the outside world, I would like to

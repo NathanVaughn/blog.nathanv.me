@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CFD on Nathan Vaughn</title>
+    
+    
+    
+    <link>https://blog.nathanv.me/tags/cfd/</link>
+    <description>Recent content in CFD on Nathan Vaughn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 24 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.nathanv.me/tags/cfd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Feasibility of Using a Corncob as a Football</title>
+      <link>https://blog.nathanv.me/posts/corncob-football/</link>
+      <pubDate>Wed, 24 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/corncob-football/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          A humorous analysis of the practicality of using a corncob as a football
+          
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

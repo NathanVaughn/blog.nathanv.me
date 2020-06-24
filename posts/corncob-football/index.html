@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>Feasibility of Using a Corncob as a Football :: Nathan Vaughn — Adventures in programming and tech</title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<meta name="description" content="Background I had written this a while ago to be a humorous post on /r/CFB, but due to COVID-19, I totally forgot to post it. This is not meant to be serious. Enjoy.
+Football Reference To begin with, we need to gather actual data from real footballs. This is to help with our calculations for corncobs, and to provide as a reference to ensure our process is correct.
+Size and Mass First, we need the mass and frontal area of a football."/>
+<meta name="keywords" content="[programming tech Nathan Vaughn blog]"/>
+<meta name="robots" content="noodp"/>
+<link rel="canonical" href="https://blog.nathanv.me/posts/corncob-football/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css">
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css">
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png">
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/img/favicon.png"/>
+
+<meta name="twitter:title" content="Feasibility of Using a Corncob as a Football"/>
+<meta name="twitter:description" content="A humorous analysis of the practicality of using a corncob as a football"/>
+
+
+
+<meta property="og:title" content="Feasibility of Using a Corncob as a Football" />
+<meta property="og:description" content="A humorous analysis of the practicality of using a corncob as a football" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/corncob-football/" />
+<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png"/>
+<meta property="article:published_time" content="2020-06-24T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-06-24T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
+
+
+<meta name="theme-color" content="#7ec699">
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">nathanv@blog</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://nathanv.me">Homepage</a></li>
+        
+      
+        
+          <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+        
+      
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://nathanv.me">Homepage</a></li>
+      
+    
+      
+        <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title"><a href="https://blog.nathanv.me/posts/corncob-football/">Feasibility of Using a Corncob as a Football</a></h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-06-24
+        </span>
+
+        
+          
+        
+      
+
+      <span class="post-author">— Written by Nathan Vaughn</span>
+      
+        <span class="post-read-time">— 11 min read</span>
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          #<a href="https://blog.nathanv.me/tags/humor/">humor</a>&nbsp;
+        
+          #<a href="https://blog.nathanv.me/tags/cfd/">CFD</a>&nbsp;
+        
+          #<a href="https://blog.nathanv.me/tags/solidworks/">SOLIDWORKS</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+        <h2>Table of Contents</h2>
+        <aside class="table-of-contents"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#background">Background</a></li>
+<li><a href="#football-reference">Football Reference</a>
+<ul>
+<li><a href="#size-and-mass">Size and Mass</a></li>
+<li><a href="#throwing-velocity">Throwing Velocity</a></li>
+<li><a href="#throwing-height">Throwing Height</a></li>
+<li><a href="#air-properties">Air Properties</a></li>
+<li><a href="#coefficient-of-drag">Coefficient of Drag</a>
+<ul>
+<li><a href="#3d-model">3D Model</a></li>
+<li><a href="#cfd">CFD</a></li>
+</ul></li>
+<li><a href="#reference-calculations">Reference Calculations</a></li>
+</ul></li>
+<li><a href="#corncob">Corncob</a>
+<ul>
+<li><a href="#size-and-mass-1">Size and Mass</a></li>
+<li><a href="#throwing-velocity-1">Throwing Velocity</a></li>
+<li><a href="#coefficient-of-drag-1">Coefficient of Drag</a>
+<ul>
+<li><a href="#3d-model-1">3D Model</a></li>
+<li><a href="#cfd-1">CFD</a></li>
+</ul></li>
+<li><a href="#throwing-distance">Throwing Distance</a></li>
+<li><a href="#catching-feasibility">Catching Feasibility</a></li>
+<li><a href="#economic-considerations">Economic Considerations</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+</nav></aside>
+      
+      
+
+<h2 id="background">Background</h2>
+
+<p>I had written this a while ago to be a humorous post on
+<a href="https://www.reddit.com/r/cfb" rel="noreferrer" target="_blank">/r/CFB</a>, but due to COVID-19, I totally
+forgot to post it. This is not meant to be serious. Enjoy.</p>
+
+<h2 id="football-reference">Football Reference</h2>
+
+<p>To begin with, we need to gather actual data from real footballs.
+This is to help with our calculations for corncobs, and to provide as a reference
+to ensure our process is correct.</p>
+
+<h3 id="size-and-mass">Size and Mass</h3>
+
+<p>First, we need the mass and frontal area of a football.
+I don&rsquo;t know if college footballs are different from NFL footballs, but I was able to
+find that a NFL football should be between 14 to 15 ounces in weight and have
+a circumference of 22 inches.
+<a href="https://www.sportsrec.com/6560043/what-is-the-official-size-of-the-nfl-football" rel="noreferrer" target="_blank">Source.</a>
+We&rsquo;ll meet the weight half-way and
+call it 14.5 ounces or 0.41 kg. With a circumference of 22 inches,
+that means (assuming the football front is perfectly circular)
+the frontal area is 38.52 in<sup>2</sup> or 0.0248 m<sup>2</sup>.</p>
+
+<h3 id="throwing-velocity">Throwing Velocity</h3>
+
+<p>So, how fast can a quarterback <em>actually</em> throw a football? More importantly, how much
+<em>force</em> can a quarterback impart on a football? (you&rsquo;ll see why later)
+Based on some research, a fast throw is around 60 mph (26.82 m/s)
+with a rotation of about 600 rpm (62.83 rad/s).
+<a href="https://www.sportsrec.com/6938474/maximum-speed-of-a-football" rel="noreferrer" target="_blank">Source.</a>
+However, that still doesn&rsquo;t provide us
+the force of the throw, as force equals mass times acceleration. In order to figure out
+acceleration, we need to know how long the throw takes.
+Using <a href="https://youtu.be/tVoqA-LKGb4?t=206" rel="noreferrer" target="_blank">this clip</a>,
+I counted the throw taking 11 frames, from winding back,
+to the ball leaving Drew&rsquo;s hand. In that 30fps video, that&rsquo;s 0.36 seconds,
+which means the ball experienced about 74.5 m/s<sup>2</sup> of acceleration.
+This means that about 30.545 Newtons of force was imparted onto the ball.</p>
+
+<h3 id="throwing-height">Throwing Height</h3>
+
+<p>Another important factor is at what height the football is thrown from. Someone taller
+will be able to throw the ball farther. I don&rsquo;t know much about football,
+but it seems that when throwing the football, it&rsquo;s released around head-height,
+so we&rsquo;ll estimate it as that. Therefore, we need an idea of idea of how tall
+our average quarterback is. Thankfully, a quick search reveals that to be around
+6&rsquo;1&rdquo; or about 1.55 meters.
+<a href="https://www.ncsasports.org/football/recruiting-guidelines" rel="noreferrer" target="_blank">Source.</a></p>
+
+<h3 id="air-properties">Air Properties</h3>
+
+<p>Next, we need to figure out the properties of air (density, temperature, pressure)
+that footballs are being thrown in,
+as this affects the drag and trajectory. While we could just assume sea-level, let&rsquo;s
+find the average altitude of every college football stadium, and use a
+standard atmosphere lookup table to find the air properties.</p>
+
+<p>Unfortunately, I was unable to find a list of altitudes of college football stadiums.
+Instead, I had to get creative. I <em>did</em> manage to find a list of
+every college football stadium.
+<a href="http://www.collegegridirons.com/comparisons.htm" rel="noreferrer" target="_blank">Source.</a>
+From there, I wrote a script that ran each
+stadium through the Google Maps API to get an elevation.
+<a href="https://developers.google.com/maps/documentation/elevation/start" rel="noreferrer" target="_blank">Source.</a>
+Just average all the values together, and ta-da, the average elevation
+of every US college football stadium is around 285 meters.</p>
+
+<p>With the average elevation, we can now determine the standard air density. This comes
+out to:
+- Density: 1.19183 kg/m<sup>3</sup>
+- Temperature: 286.297 K
+- Pressure: 97947.8 Pa</p>
+
+<p><a href="https://www.digitaldutch.com/atmoscalc/" rel="noreferrer" target="_blank">Source.</a></p>
+
+<h3 id="coefficient-of-drag">Coefficient of Drag</h3>
+
+<p>A crucial number in determining the trajectory of a flying object is it&rsquo;s
+&ldquo;coefficient of drag&rdquo;. This is a unitless coefficient that represents how much
+drag an object experiences. This is a very difficult number to calculate,
+and is usually found experimentally.</p>
+
+<p>Research shows that the coefficient of drag of a football is around 0.05-0.06.
+<a href="http://users.df.uba.ar/sgil/physics_paper_doc/papers_phys/fluids/drag_football.pdf" rel="noreferrer" target="_blank">Source.</a>
+However, to ensure our process is correct, I&rsquo;d like to replicate this result with CFD
+(computational fluid dynamics) software.</p>
+
+<h4 id="3d-model">3D Model</h4>
+
+<p>In order to compute our own coefficient of drag, we need a 3D model. Thankfully
+a quick search on GrabCAD found the
+<a href="https://grabcad.com/library/american-football-5" rel="noreferrer" target="_blank">perfect candidate</a>.
+This model was hollow, so to avoid any weird effects in CFD, I filled in the model.</p>
+
+<h4 id="cfd">CFD</h4>
+
+<p>I setup a fluid simulation in SOLIDWORKS (my CAD program of choice), with the following
+parameters, and an equation goal to compute the drag coefficient from the
+drag force imparted on the football.
+<a href="https://www.grc.nasa.gov/WWW/K-12/airplane/dragco.html" rel="noreferrer" target="_blank">Source.</a></p>
+
+<p>Parameters:
+- External Analysis
+    - Exclude cavities without flow conditions
+    - Exclude internal space
+- Gravity on
+- Global rotation @ 62.83 rad/s
+- Air preset
+- Laminar and turbulent flow
+- Humidity effects on (default settings)
+- Turbulence effects on (default settings)
+- Adiabatic wall with 100 micrometer roughness
+- 97947.8 Pa pressure
+- 286.297 K temperature
+- -26.82 m/s flow velocity relative to rotating frame
+- Level 6 density global mesh
+- Computational Domain +/- 0.2 m on sides, +/- 0.3 m front-to-back.</p>
+
+<p>After it was done, I was pleasantly surprised to find my coefficient of drag to
+come out to 0.0953. This means we&rsquo;re in the right ballpark. (I didn&rsquo;t expect to
+hit the value exactly as CFD inherently has some error, and SOLIDWORKS flow
+simulation isn&rsquo;t a top-tier product)</p>
+
+
+  <figure class="center" >
+    <a href="img/football_cfd.png" target="_blank">
+      <img src="img/football_cfd.png"  alt="Football CFD"   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >Football CFD</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="reference-calculations">Reference Calculations</h3>
+
+<p>Finally, with all of this data, we can now plot theoretical trajectories.
+<a href="https://www.grc.nasa.gov/www/k-12/airplane/flteqs.html" rel="noreferrer" target="_blank">Source.</a></p>
+
+
+  <figure class="center" >
+    <a href="img/football_flights.png" target="_blank">
+      <img src="img/football_flights.png"  alt="Football Trajectories"   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >Football Trajectories</figcaption>
+    
+  </figure>
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Thrown at 5 degrees, a football will fly for 0.85 seconds, landing 21.85 meters downfield.
+Thrown at 10 degrees, a football will fly for 1.21 seconds, landing 30.28 meters downfield.
+Thrown at 15 degrees, a football will fly for 1.6 seconds, landing 38.85 meters downfield.
+Thrown at 20 degrees, a football will fly for 2.01 seconds, landing 46.67 meters downfield.
+Thrown at 25 degrees, a football will fly for 2.41 seconds, landing 53.32 meters downfield.
+Thrown at 30 degrees, a football will fly for 2.79 seconds, landing 58.52 meters downfield.
+Thrown at 35 degrees, a football will fly for 3.15 seconds, landing 62.14 meters downfield.
+Thrown at 40 degrees, a football will fly for 3.49 seconds, landing 64.08 meters downfield.
+Thrown at 45 degrees, a football will fly for 3.8 seconds, landing 64.34 meters downfield.
+Thrown at 50 degrees, a football will fly for 4.07 seconds, landing 62.93 meters downfield.
+Thrown at 55 degrees, a football will fly for 4.32 seconds, landing 59.87 meters downfield.
+Thrown at 60 degrees, a football will fly for 4.53 seconds, landing 55.23 meters downfield.
+Thrown at 65 degrees, a football will fly for 4.72 seconds, landing 49.07 meters downfield.
+Thrown at 70 degrees, a football will fly for 4.86 seconds, landing 41.51 meters downfield.
+Thrown at 75 degrees, a football will fly for 4.98 seconds, landing 32.66 meters downfield.
+Thrown at 80 degrees, a football will fly for 5.06 seconds, landing 22.66 meters downfield.
+Thrown at 85 degrees, a football will fly for 5.11 seconds, landing 11.71 meters downfield.</code></pre></div>
+<p>Thrown at an optimal 45 degrees, our theoretical football calculations say the
+ball will fly about 64 meters. Based on record throw data from
+<a href="https://www.topendsports.com/sport/gridiron/longest-throw.htm" rel="noreferrer" target="_blank">this site</a>
+it looks like our data is pretty feasible, though maybe a bit on the short side.</p>
+
+<h2 id="corncob">Corncob</h2>
+
+<p>Time to perform the same analysis with a corncob.</p>
+
+<h3 id="size-and-mass-1">Size and Mass</h3>
+
+<p>Once again, we first need the
+size and mass of a corncob. Research shows that the average ear of corn
+was between 156.80 mm and 178.13 mm in length, depending on when it was picked.
+<a href="https://www.researchgate.net/publication/303010127_Azospirillum_brasilense_promotes_increment_in_corn_production" rel="noreferrer" target="_blank">Source.</a>
+(I know this research is from Africa. It&rsquo;s best I could come up with
+without going to the grocery store with a ruler looking like an idiot.)</p>
+
+<p>Finding the mass of an average corncob was a bit trickier. I was able to find
+that a pound of corn is about 1300 kernels, and that an ear of corn averages
+800 kernels. This means that we can estimate that an ear of corn is about 0.615 pounds
+or 0.279kg.
+<a href="https://www.nefbfoundation.org/Images/FOUndation/Educators/Enriching-Activities/Corn-Calculations.pdf" rel="noreferrer" target="_blank">Source.</a></p>
+
+<h3 id="throwing-velocity-1">Throwing Velocity</h3>
+
+<p>So, how fast can you throw a corncob?
+Given that the corncob has a mass of only 0.279 kg, this means with 30.545 Newtons
+of force, the corncob can be accelerated at a rate of 109.48 m/s<sup>2</sup>. Over the same
+0.36 second period, that&rsquo;s 39.413 m/s or a little over 88 mph (where we&rsquo;re going,
+we don&rsquo;t need roads).</p>
+
+<h3 id="coefficient-of-drag-1">Coefficient of Drag</h3>
+
+<h4 id="3d-model-1">3D Model</h4>
+
+<p>I didn&rsquo;t have any desire to 3D model an ear of corn, so I went looking for a model
+I could download for free. Surprisingly, there weren&rsquo;t many options. Thankfully,
+I did manage to find one
+<a href="https://free3d.com/3d-model/cornoncob-v01--775846.html" rel="noreferrer" target="_blank">free model</a>.
+A quick measurement shows the length of the model falls within our acceptable range,
+so no scaling required.</p>
+
+
+  <figure class="center" >
+    <a href="img/corn_length.png" target="_blank">
+      <img src="img/corn_length.png"  alt="Corncob Length"   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >Corncob Length</figcaption>
+    
+  </figure>
+
+
+
+<p>In order to get the frontal area of our selected corncob, I simply measured
+the diameter of the model, which happened to be a near-perfect circle with
+a diameter of 35.49 mm.</p>
+
+
+  <figure class="center" >
+    <a href="img/corn_diameter.png" target="_blank">
+      <img src="img/corn_diameter.png"  alt="Corncob Diameter"   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >Corncob Diameter</figcaption>
+    
+  </figure>
+
+
+
+<p>This gives the corncob a frontal area of 989.24 mm<sup>2</sup> or 0.00098924 m<sup>2</sup>.</p>
+
+<h4 id="cfd-1">CFD</h4>
+
+<p>I setup a very similar simulation as described above, just with a higher velocity
+and smoother walls. I then fired off the simulation and let my processor chug
+for about 20 minutes. This simulation took significantly longer as the model
+was not a native SOLIDWORKS file, but a very complex imported geometry. Meshing
+the model alone took about 5 minutes.</p>
+
+
+  <figure class="center" >
+    <a href="img/cpu_usage.png" target="_blank">
+      <img src="img/cpu_usage.png"  alt="CPU Usage"   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >CPU Usage</figcaption>
+    
+  </figure>
+
+
+
+<p>After the simulation was finished, I was very surprised to have the coefficient of drag
+come out to 0.184 (almost twice that of the football).
+My best guess for this is despite the corncob&rsquo;s small size,
+the higher velocity and rougher surface contributed to more relative drag.
+Another theory I have is that the kernels protruding create a lot of low-pressure areas,
+increasing drag, as you can see in the image below with the sort of &ldquo;ripples&rdquo; of
+pressure values.</p>
+
+
+  <figure class="center" >
+    <a href="img/corncob_cfd.png" target="_blank">
+      <img src="img/corncob_cfd.png"  alt="Corncob CFD"   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >Corncob CFD</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="throwing-distance">Throwing Distance</h3>
+
+<p>Now, we bring it all together. How far can you actually throw a corncob? I plotted
+theoretical trajectories using the same math as before.</p>
+
+
+  <figure class="center" >
+    <a href="img/corncob_flights.png" target="_blank">
+      <img src="img/corncob_flights.png"  alt="Corncob Trajectories"   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >Corncob Trajectories</figcaption>
+    
+  </figure>
+
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">Thrown at 5 degrees, a corncob will fly for 1.01 seconds, landing 39.47 meters downfield.
+Thrown at 10 degrees, a corncob will fly for 1.59 seconds, landing 61.1 meters downfield.
+Thrown at 15 degrees, a corncob will fly for 2.22 seconds, landing 83.16 meters downfield.
+Thrown at 20 degrees, a corncob will fly for 2.85 seconds, landing 103.55 meters downfield.
+Thrown at 25 degrees, a corncob will fly for 3.48 seconds, landing 121.23 meters downfield.
+Thrown at 30 degrees, a corncob will fly for 4.08 seconds, landing 135.46 meters downfield.
+Thrown at 35 degrees, a corncob will fly for 4.65 seconds, landing 145.79 meters downfield.
+Thrown at 40 degrees, a corncob will fly for 5.18 seconds, landing 151.91 meters downfield.
+Thrown at 45 degrees, a corncob will fly for 5.68 seconds, landing 153.62 meters downfield.
+Thrown at 50 degrees, a corncob will fly for 6.14 seconds, landing 150.89 meters downfield.
+Thrown at 55 degrees, a corncob will fly for 6.54 seconds, landing 143.8 meters downfield.
+Thrown at 60 degrees, a corncob will fly for 6.9 seconds, landing 132.5 meters downfield.
+Thrown at 65 degrees, a corncob will fly for 7.21 seconds, landing 117.33 meters downfield.
+Thrown at 70 degrees, a corncob will fly for 7.46 seconds, landing 98.65 meters downfield.
+Thrown at 75 degrees, a corncob will fly for 7.66 seconds, landing 76.97 meters downfield.
+Thrown at 80 degrees, a corncob will fly for 7.8 seconds, landing 52.84 meters downfield.
+Thrown at 85 degrees, a corncob will fly for 7.89 seconds, landing 26.95 meters downfield.</code></pre></div>
+<p>These results are very promising. At an optimal 45 degree angle, a good throw
+could chunk a corncob over 150 meters, 138.76% farther! And our analysis has tended
+to be a bit conservative, so the actual results may even be farther!</p>
+
+<h3 id="catching-feasibility">Catching Feasibility</h3>
+
+<p>An important question you may be wondering is &ldquo;How feasible is it to actually
+<em>catch</em> a corncob flying at you?&rdquo; Well, as an engineering student, I can&rsquo;t
+catch a regular football to save my life. I was also unable to convince
+any of friends to stand in a field and let me throw corncobs at them, and
+I doubt I could catch any 80 mph corncobs thrown at me. Therefore, I&rsquo;ll
+consider this as &ldquo;equivalent&rdquo;.</p>
+
+<h3 id="economic-considerations">Economic Considerations</h3>
+
+<p>Trying to estimate how many corncobs will be needed is a difficult task
+(since I&rsquo;m assuming the corncobs won&rsquo;t survive more than one throw).
+I&rsquo;ll try to get a rough estimate with some
+<a href="https://en.wikipedia.org/wiki/Fermi_problem" rel="noreferrer" target="_blank">Fermi estimation</a>
+(basically, make wild estimations and hope we land in the right order of magnitude).</p>
+
+<p>Let&rsquo;s say there&rsquo;s about 500 college football teams in the United States. Each team
+plays about 12 games every season. In each game, about 40 passes are attempted.
+<a href="https://www.teamrankings.com/nfl/stat/pass-attempts-per-game" rel="noreferrer" target="_blank">Source.</a>
+Just actual games comes out to shy of a quarter million corncobs. Accounting
+for practice is pretty difficult, so let&rsquo;s just make a wild guess that for
+every attempted pass in a game, 100 were practiced. So our total comes out
+to 24 million corncobs needed annually.</p>
+
+<p>Iowa produces 2.7 billion bushels of corn each year on 13.5 million acres.
+However, only 3400 acres is used for sweet corn. At 56 pounds per bushel, and
+corncobs weighing about 0.615 pounds each, that&rsquo;s about 62 million corncobs annually.
+<a href="https://www.iowacorn.org/education/faqs" rel="noreferrer" target="_blank">Source.</a></p>
+
+<p>So while Iowa annual corn production could probably cope, and extra 39% percent
+in growing capacity would really be needed. Considering five dozen ears
+of sweet corn costs about $4.00,
+this would be around a million and a half dollar stimulus to the Iowa corn economy.
+<a href="https://www.agmrc.org/media/cms/budgetsheets_sweetcorn2FINAL_697315E3311E0.pdf" rel="noreferrer" target="_blank">Source.</a></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Pros:
+- Longer passes
+- More Hail Mary&rsquo;s
+- More environmentally friendly
+- Economic stimulus
+- Delicious
+- No &ldquo;deflategate&rdquo; scandals</p>
+
+<p>Cons:
+-   None</p>
+
+<p>Overall, analysis has shown that corncobs replacing footballs is an incredible
+idea and should be considered by the NCAA.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://github.com/NathanVaughn/corncob-football" rel="noreferrer" target="_blank">https://github.com/NathanVaughn/corncob-football</a></li>
+<li><a href="https://www.sportsrec.com/6560043/what-is-the-official-size-of-the-nfl-football" rel="noreferrer" target="_blank">https://www.sportsrec.com/6560043/what-is-the-official-size-of-the-nfl-football</a></li>
+<li><a href="https://www.sportsrec.com/6938474/maximum-speed-of-a-football" rel="noreferrer" target="_blank">https://www.sportsrec.com/6938474/maximum-speed-of-a-football</a></li>
+<li><a href="https://youtu.be/tVoqA-LKGb4?t=206" rel="noreferrer" target="_blank">https://youtu.be/tVoqA-LKGb4?t=206</a></li>
+<li><a href="https://www.ncsasports.org/football/recruiting-guidelines" rel="noreferrer" target="_blank">https://www.ncsasports.org/football/recruiting-guidelines</a></li>
+<li><a href="http://www.collegegridirons.com/comparisons.htm" rel="noreferrer" target="_blank">http://www.collegegridirons.com/comparisons.htm</a></li>
+<li><a href="https://developers.google.com/maps/documentation/elevation/start" rel="noreferrer" target="_blank">https://developers.google.com/maps/documentation/elevation/start</a></li>
+<li><a href="https://www.digitaldutch.com/atmoscalc/" rel="noreferrer" target="_blank">https://www.digitaldutch.com/atmoscalc/</a></li>
+<li><a href="http://users.df.uba.ar/sgil/physics_paper_doc/papers_phys/fluids/drag_football.pdf" rel="noreferrer" target="_blank">http://users.df.uba.ar/sgil/physics_paper_doc/papers_phys/fluids/drag_football.pdf</a></li>
+<li><a href="https://grabcad.com/library/american-football-5" rel="noreferrer" target="_blank">https://grabcad.com/library/american-football-5</a></li>
+<li><a href="https://www.grc.nasa.gov/WWW/K-12/airplane/dragco.html" rel="noreferrer" target="_blank">https://www.grc.nasa.gov/WWW/K-12/airplane/dragco.html</a></li>
+<li><a href="https://www.grc.nasa.gov/www/k-12/airplane/flteqs.html" rel="noreferrer" target="_blank">https://www.grc.nasa.gov/www/k-12/airplane/flteqs.html</a></li>
+<li><a href="https://www.topendsports.com/sport/gridiron/longest-throw.htm" rel="noreferrer" target="_blank">https://www.topendsports.com/sport/gridiron/longest-throw.htm</a></li>
+<li><a href="https://www.researchgate.net/publication/303010127_Azospirillum_brasilense_promotes_increment_in_corn_production" rel="noreferrer" target="_blank">https://www.researchgate.net/publication/303010127_Azospirillum_brasilense_promotes_increment_in_corn_production</a></li>
+<li><a href="https://www.nefbfoundation.org/Images/FOUndation/Educators/Enriching-Activities/Corn-Calculations.pdf" rel="noreferrer" target="_blank">https://www.nefbfoundation.org/Images/FOUndation/Educators/Enriching-Activities/Corn-Calculations.pdf</a></li>
+<li><a href="https://free3d.com/3d-model/cornoncob-v01--775846.html" rel="noreferrer" target="_blank">https://free3d.com/3d-model/cornoncob-v01--775846.html</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Fermi_problem" rel="noreferrer" target="_blank">https://en.wikipedia.org/wiki/Fermi_problem</a></li>
+<li><a href="https://www.teamrankings.com/nfl/stat/pass-attempts-per-game" rel="noreferrer" target="_blank">https://www.teamrankings.com/nfl/stat/pass-attempts-per-game</a></li>
+<li><a href="https://www.iowacorn.org/education/faqs" rel="noreferrer" target="_blank">https://www.iowacorn.org/education/faqs</a></li>
+<li><a href="https://www.agmrc.org/media/cms/budgetsheets_sweetcorn2FINAL_697315E3311E0.pdf" rel="noreferrer" target="_blank">https://www.agmrc.org/media/cms/budgetsheets_sweetcorn2FINAL_697315E3311E0.pdf</a></li>
+</ul>
+
+<p><a href="https://github.com/NathanVaughn/blog.nathanv.me/tree/master/content/posts/corncob-football/code/" rel="noreferrer" target="_blank">Code</a></p>
+
+<p><a href="https://github.com/NathanVaughn/blog.nathanv.me/tree/master/content/posts/corncob-football/cad/" rel="noreferrer" target="_blank">CAD Files</a></p>
+
+<p><em>This is not meant to be a serious engineering analysis. This is purely
+for entertainment purposes.</em></p>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h">Read other posts</span>
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="https://blog.nathanv.me/posts/wyze-band-review/">
+                  <span class="button__text">Wyze Band Review</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+
+    
+      
+        <script src="https://utteranc.es/client.js"
+        repo="nathanvaughn/blog.nathanv.me"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+      
+    
+
+    </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a href="/" class="logo" style="text-decoration: none;">
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+</svg>
+</span>
+    <span class="logo__text">nathanv@blog</span>
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span>© 2020 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
+        <span>Theme created by <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-91853319-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+  </body>
+</html>
