@@ -28,8 +28,192 @@
         
         
         
-          Replacing Mailgun with SendGrid and ForwardEmail
-          
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;For the past few years, I&amp;rsquo;ve used &lt;a href=&#34;https://www.mailgun.com&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Mailgun&lt;/a&gt; to send and
+receive email for my &lt;code&gt;nathanv.me&lt;/code&gt; domain. I intentionally signed up Mailgun because it
+was part of the
+&lt;a href=&#34;https://education.github.com/pack/offers&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;GitHub Student Developer Pack&lt;/a&gt;
+and it worked great. I could send email from applications and my personal
+Gmail account using SMTP credentials and forward
+any inbound mail to my Gmail account, all in the free tier. This allowed me to send
+receive email to and from the &lt;code&gt;@nathanv.me&lt;/code&gt; domain,
+all while never actually having an actual email account for it. I really liked this,
+since it gave me the vanity email address, &lt;code&gt;nathan@nathanv.me&lt;/code&gt;
+that I could put on my resume.
+However, just a few days ago, I received this email from Mailgun:&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/mailgun-email.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/mailgun-email.jpg&#34;  alt=&#34;Mailgun email&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Mailgun plan changes&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Okay&amp;hellip; does this affect me at all?&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/mailgun-plans.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/mailgun-plans.jpg&#34;  alt=&#34;Mailgun plans&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;&lt;i&gt;Crap&amp;hellip;&lt;/i&gt;&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;As you can see in the picture above, inbound emails are no longer included in the free
+plan (and now costs $75/month) and after 3 months I&amp;rsquo;ll have to actually pay for the
+emails I send. I don&amp;rsquo;t care about the cost of emails. They&amp;rsquo;re cheap after all, and
+I understand that running email servers costs money. However, now charging $75/month
+for the ability to receive email is not something I want to pay for. Time for a new
+solution.&lt;/p&gt;
+
+&lt;h2 id=&#34;options&#34;&gt;Options&lt;/h2&gt;
+
+&lt;p&gt;Here are some potential options I considered.&lt;/p&gt;
+
+&lt;h3 id=&#34;other-transactional-email-services&#34;&gt;Other Transactional Email Services&lt;/h3&gt;
+
+&lt;p&gt;I looked into a &lt;em&gt;bunch&lt;/em&gt; of different transactional email providers (SendGrid, AWS SES,
+PostSpark, etc.) and they all fell into a combination of three categories:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;No support for inbound email&lt;/li&gt;
+&lt;li&gt;Inbound email is an expensive tier&lt;/li&gt;
+&lt;li&gt;Inbound email can only be sent to webhook&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I couldn&amp;rsquo;t find any providers that could forward email like Mailgun lets you.
+The closest thing I could find was a
+&lt;a href=&#34;https://aws.amazon.com/blogs/messaging-and-targeting/forward-incoming-email-to-an-external-destination/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;blog post from AWS&lt;/a&gt;,
+explaining how to setup inbound email forwarding, but this requires additional code,
+setup, and AWS services.&lt;/p&gt;
+
+&lt;h3 id=&#34;google-domains-email-forwarding&#34;&gt;Google Domains Email Forwarding&lt;/h3&gt;
+
+&lt;p&gt;As I register all of my domain names through Google Domains,
+another option I considered was using Google Domain&amp;rsquo;s free inbound email forwarding.
+However, this only works if you set the domain&amp;rsquo;s name servers to Google&amp;rsquo;s, so they
+can setup the records.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/google-domains-email-forwarding.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/google-domains-email-forwarding.jpg&#34;  alt=&#34;Google Domains email forwarding&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Google Domains email forwarding&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Unfortunately, I really like Cloudflare for DNS and caching. While I think I could just
+swap the name server to Google, setup the email forward, and then swap it back to
+Cloudflare, I don&amp;rsquo;t want to run the risk of Google figuring out my ruse, and stop
+delivering my emails.&lt;/p&gt;
+
+&lt;p&gt;Also, this still doesn&amp;rsquo;t solve my problem for outbound emails.&lt;/p&gt;
+
+&lt;h3 id=&#34;forwardemail-net-improvmx&#34;&gt;ForwardEmail.net/ImprovMX&lt;/h3&gt;
+
+&lt;p&gt;While researching my problem, I also discovered
+&lt;a href=&#34;https://forwardemail.net/en&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;ForwardEmail.net&lt;/a&gt; and
+&lt;a href=&#34;https://improvmx.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;ImprovMX&lt;/a&gt;, which both offer free email forwarding.
+Again though, these only forward inbound emails, and don&amp;rsquo;t offer a way to send email.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-i-went-with&#34;&gt;What I Went With&lt;/h2&gt;
+
+&lt;p&gt;I initially attempted to get things setup with AWS using SES, S3, and Lambda.
+However, after discovering that by default, you can only send emails to verified
+addresses without contacting support, and I had a lot of trouble dealing with IAM
+and permissions, I gave up and went with ForwardEmail and SendGrid.&lt;/p&gt;
+
+&lt;p&gt;I choose SendGrid for outbound emails as it was part of the GitHub Student Developer
+Pack. It was very simple to setup with just a few &lt;code&gt;CNAME&lt;/code&gt; records to setup DKIM/SPF.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/sendgrid_dns.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/sendgrid_dns.jpg&#34;  alt=&#34;SendGrid dNS&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;SendGrid DNS&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Setting up ForwardEmail was a little bit harder. There are a lot more
+&lt;a href=&#34;https://forwardemail.net/en/faq#how-do-i-get-started-and-set-up-email-forwarding&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;DNS records&lt;/a&gt;
+you need to setup.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/fordwardemail_dns.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/fordwardemail_dns.jpg&#34;  alt=&#34;ForwardEmail DNS&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;ForwardEmail DNS&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;The actual DNS records makes sense. I understand why they need
+a &lt;code&gt;MX&lt;/code&gt; record for the incoming mail servers and a
+&lt;code&gt;TXT&lt;/code&gt; record for what email address to forward to.
+I&amp;rsquo;m very confused why they want you to add a &lt;code&gt;TXT&lt;/code&gt; record for SPF, as I thought
+it was only needed for &lt;em&gt;sending&lt;/em&gt; emails which this service doesn&amp;rsquo;t do.
+ImprovMX &lt;a href=&#34;https://improvmx.com/guides/improvmx-spf-support/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;explains this&lt;/a&gt; for
+their similar service. ForwardEmail has
+&lt;a href=&#34;https://forwardemail.net/en/faq#how-to-send-mail-as-using-gmail&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;a guide&lt;/a&gt;
+on how to &amp;ldquo;Send Mail As&amp;rdquo; with Gmail, but my understanding of that is it is still
+being sent by Google&amp;rsquo;s email servers, so I still don&amp;rsquo;t understand why this is needed.
+If someone can explain this better, please leave a comment below.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;While I&amp;rsquo;m sad to see Mailgun go, since it did everything I wanted for free,
+I was able to replace it with multiple services, with just DNS changes.
+The most painful part of this change will be changing all of my SMTP
+credentials on all of my servers and applications that send emails.
+The setup was more complicated, but hopefully it&amp;rsquo;ll work better longer term,
+and will be easier to replace an individual component if it ever needs to
+change in the future.&lt;/p&gt;
+
+&lt;p&gt;As always, it was DNS.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/its_always_dns.png&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/its_always_dns.png&#34;  alt=&#34;DNS Haiku&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;It was DNS&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.mailgun.com&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.mailgun.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://forwardemail.net/en&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://forwardemail.net/en&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://improvmx.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://improvmx.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://sendgrid.com/docs/ui/account-and-settings/how-to-set-up-domain-authentication/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
         
         </description>
     </item>

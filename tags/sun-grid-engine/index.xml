@@ -28,8 +28,158 @@
         
         
         
-          Getting BOINC to work on a High-Performance Cluster that uses Sun Grid Engine for job scheduling to donate extra compute time
-          
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;Recently, I setup a small High-Performance Computing (HPC) cluster for Iowa State&amp;rsquo;s
+solar car team. This cluster was primarily used for running
+Computational Fluid Dynamics (CFD) and MATLAB code. However, whenever the team
+was in the build phase and not actively designing the next car, the cluster
+sat idle the vast majority of the time. We decided that we should donate the extra
+compute time to scientific research.&lt;/p&gt;
+
+&lt;h2 id=&#34;introducing-boinc&#34;&gt;Introducing BOINC&lt;/h2&gt;
+
+&lt;p&gt;We decided that BOINC would be the best way to donate our extra compute time.
+In case you&amp;rsquo;re not aware, &lt;a href=&#34;https://boinc.berkeley.edu/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;BOINC&lt;/a&gt; stands for
+Berkeley Open Infrastructure for Network Computing. Basically,
+it&amp;rsquo;s a way for people to have their personal computers
+donate extra computational capacity to various scientific research projects and
+is run by University of California, Berkeley. Being designed for home computers
+will prove to be problematic.&lt;/p&gt;
+
+&lt;h2 id=&#34;installing-boinc&#34;&gt;Installing BOINC&lt;/h2&gt;
+
+&lt;p&gt;The first challenge was simply installing BOINC. To avoid as many configuration changes
+as possible, we prefer to install applications to our network file share rather than
+locally on each compute node. Also, all of our compute nodes are headless, and BOINC
+usually ships with a GUI manager. This quickly rules out simply using the
+package manager and the prebuilt binaries available are severely out-of date. This
+leaves us with compiling from source.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# change directories to network file share&lt;/span&gt;
+cd /share/apps
+&lt;span style=&#34;color:#75715e&#34;&gt;# clone repo&lt;/span&gt;
+git clone https://github.com/BOINC/boinc
+&lt;span style=&#34;color:#75715e&#34;&gt;# move into repo&lt;/span&gt;
+cd boinc
+&lt;span style=&#34;color:#75715e&#34;&gt;# run setup script&lt;/span&gt;
+./_autosetup
+&lt;span style=&#34;color:#75715e&#34;&gt;# run configure script with file share path, and disable GUI BOINC manager&lt;/span&gt;
+./configure --prefix&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/share/apps/boinc&amp;#34;&lt;/span&gt; --disable-manager
+&lt;span style=&#34;color:#75715e&#34;&gt;# run make multithreaded&lt;/span&gt;
+make -j&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;creating-account-s&#34;&gt;Creating Account(s)&lt;/h2&gt;
+
+&lt;p&gt;In order to use BOINC, you need to create an account with each project you want
+to contribute to and attach your hosts to it. This can be extremely tedious,
+so using a service like &lt;a href=&#34;https://boincstats.com/en/bam/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;BOINC Account Manager&lt;/a&gt; (BAM)
+is highly recommended. Once you select some projects, you can also check the option
+&amp;ldquo;Attach new host by default?&amp;rdquo; so that everything is automatic.&lt;/p&gt;
+
+&lt;p&gt;The only issue I&amp;rsquo;ve had with BAM, is that my work profile was not being added to new
+hosts by default.&lt;/p&gt;
+
+&lt;h2 id=&#34;configuring-sge&#34;&gt;Configuring SGE&lt;/h2&gt;
+
+&lt;p&gt;The next challenge was that BOINC is designed to only be run on a single computer
+and is &lt;em&gt;not&lt;/em&gt; built around Message Passing Interface (MPI) like most applications that
+run on HPC clusters. To get around this, we created a separate queue in our job
+scheduler (Son of Grid Engine (SGE, an open-source fork of Sun Grid Engine)) with a
+single slot per compute node, so that if a BOINC job got scheduled on a node,
+it would be reserved the entire node. Make sure that the user account you will be
+using for BOINC has access to this queue and the compute nodes.&lt;/p&gt;
+
+&lt;h3 id=&#34;important-setting&#34;&gt;Important Setting&lt;/h3&gt;
+
+&lt;p&gt;An important setting needs to be set in SGE so that other jobs have higher priority.
+For every other queue that you have, set the BOINC-specific queue to be a subordinate
+with a max slot count as 1. That way, if &lt;strong&gt;any&lt;/strong&gt; other jobs come into the queue, they
+will take priority over the BOINC job.&lt;/p&gt;
+
+&lt;h2 id=&#34;starting-boinc&#34;&gt;Starting BOINC&lt;/h2&gt;
+
+&lt;p&gt;Next, we need to setup how BOINC will be launched.&lt;/p&gt;
+
+&lt;h3 id=&#34;array-job&#34;&gt;Array Job&lt;/h3&gt;
+
+&lt;p&gt;Launching a job across multiple hosts is easy with SGE with array jobs. We can write
+a small Bash script to parse how many slots are available in the BOINC queue
+and launch an array job for that many:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+BOINC_SLOTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;qstat -g c -q boinc.q | tail -1 | sed -e &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;s/ [ ]*/ /g&amp;#34;&lt;/span&gt; | cut --delim&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;\ &lt;/span&gt; -f 5&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+
+qsub -q boinc.q -t 1-&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;BOINC_SLOTS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt; -o boinc_out.txt -j y -cwd -N Boinc /home/boinc/runBoinc.sh&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;boinc-client&#34;&gt;BOINC Client&lt;/h3&gt;
+
+&lt;p&gt;Launching the client is trickier. BOINC doesn&amp;rsquo;t like sharing a directory with other
+running instances, so each host needs it&amp;rsquo;s own directory to work out of. Also, we want
+to attach each instance to our account manager. Lastly, we need to launch the client
+in interactive mode so the job is considered running by SGE. If you let BOINC
+launch in the background like it wants to by default, SGE will think the job
+has completed and mark the node as available.&lt;/p&gt;
+
+&lt;p&gt;Example script:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+USERNAME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;yourusername
+PASSWORD&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;yourpassword
+HOST&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;hostname -s&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;
+
+CLIENT_BASE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/share/apps/boinc/client/
+DATA_BASE&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;/home/boinc/boinc_data
+
+DATA_DIR&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;$DATA_BASE/$HOST
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# stop any existing instances&lt;/span&gt;
+pkill boinc_client
+
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Creating data directory &lt;/span&gt;$DATA_DIR&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+mkdir -p $DATA_DIR
+
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Clearing lockfile&amp;#34;&lt;/span&gt;
+rm -f $DATA_DIR/lockfile
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# start the client&lt;/span&gt;
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Starting BOINC client&amp;#34;&lt;/span&gt;
+$CLIENT_BASE/boinc_client --daemon --dir $DATA_DIR
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# wait for client to start&lt;/span&gt;
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Waiting for BOINC client to start&amp;#34;&lt;/span&gt;
+sleep &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;
+
+cd $DATA_DIR
+&lt;span style=&#34;color:#75715e&#34;&gt;# make sure account is joined&lt;/span&gt;
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Attaching account manager&amp;#34;&lt;/span&gt;
+$CLIENT_BASE/boinccmd --join_acct_mgr http://bam.boincstats.com $USERNAME $PASSWORD &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; true
+&lt;span style=&#34;color:#75715e&#34;&gt;# sync&lt;/span&gt;
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Syncing account manager&amp;#34;&lt;/span&gt;
+$CLIENT_BASE/boinccmd --acct_mgr sync
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# stop client from daemon mode and restart on interactive&lt;/span&gt;
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Stopping BOINC client&amp;#34;&lt;/span&gt;
+$CLIENT_BASE/boinccmd --quit
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# give the client time to stop&lt;/span&gt;
+sleep &lt;span style=&#34;color:#ae81ff&#34;&gt;60&lt;/span&gt;
+pkill boinc_client
+
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Restarting BOINC client in interactive mode&amp;#34;&lt;/span&gt;
+$CLIENT_BASE/boinc_client --dir $DATA_DIR&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;That&amp;rsquo;s it! You should now be able to run your array job submission script which will
+start a BOINC process on each available host. If any new jobs come in, the BOINC
+jobs will be paused until the entire host is available again.&lt;/p&gt;
+
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boinc.berkeley.edu/wiki/Boinccmd_tool#Miscellaneous&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://boinc.berkeley.edu/wiki/Boinccmd_tool#Miscellaneous&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://web.archive.org/web/20151225051901/http://wiki.gridengine.info/wiki/index.php/Integrating_BOINC_and_Grid_Engine&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;http://wiki.gridengine.info/wiki/index.php/Integrating_BOINC_and_Grid_Engine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boinc.berkeley.edu/wiki/Client_configuration_#Command-line_options&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://boinc.berkeley.edu/wiki/Client_configuration_#Command-line_options&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
         
         </description>
     </item>

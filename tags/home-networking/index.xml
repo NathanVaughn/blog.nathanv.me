@@ -27,8 +27,184 @@
         
         
         
-          This is the first time I&#39;ve lived somewhere where I can setup my own network. I just wanted to write up how I&#39;ve done it.
-          
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;At the time of writing, I&amp;rsquo;m currently co-oping at Collins Aerospace, whom are
+nice enough to provide me a 3-floor townhouse. Since this is the first time I&amp;rsquo;ve
+lived somewhere where I can setup my own network, I just wanted to write up
+how I&amp;rsquo;ve done it.&lt;/p&gt;
+
+&lt;h2 id=&#34;network-infrastructure&#34;&gt;Network Infrastructure&lt;/h2&gt;
+
+&lt;p&gt;Here are the components of my home network infrastructure.&lt;/p&gt;
+
+&lt;h3 id=&#34;technicolor-modem-11-50-month&#34;&gt;Technicolor Modem - $11.50/Month&lt;/h3&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/technicolor-modem.png&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/technicolor-modem.png&#34;  alt=&#34;Some crappy Technicolor (I didn&amp;#39;t know they were even still around) modem provided by my ISP.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Some crappy Technicolor (I didn&amp;rsquo;t know they were even still around) modem provided by my ISP.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;This is modem/router combo provided by my ISP (Mediacom).
+While I would normally buy my own equipment,
+since I&amp;rsquo;m only going to be at this place for a few months,
+I decided to just rent it instead from my ISP instead.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately, despite
+my best efforts, I have yet to figure out how to even login to the web management
+portal to disable it&amp;rsquo;s WiFi, since I just want to use it as a modem, and not a router.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/homewifi.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/homewifi.jpg&#34;  alt=&#34;The online control panel doesn&amp;#39;t seem to work, and I don&amp;#39;t care enough to call support.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;The online control panel doesn&amp;rsquo;t seem to work, and I don&amp;rsquo;t care enough to call support.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/account_dashboard.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/account_dashboard.jpg&#34;  alt=&#34;It doesn&amp;#39;t work on my account dashboard either.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;It doesn&amp;rsquo;t work on my account dashboard either.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;tp-link-archer-c1900-34-99&#34;&gt;TP-Link Archer C1900 - $34.99&lt;/h3&gt;
+
+
+  &lt;img src=&#34;img/tplink-archer.jpg&#34;  alt=&#34;TP-Link Archer C1900&#34;  class=&#34;center&#34;  style=&#34;border-radius: 8px;&#34;  /&gt;
+
+
+
+&lt;p&gt;I managed to snag a refurbished unit in a Newegg flash deal for $34.99.&lt;/p&gt;
+
+&lt;p&gt;This is my WiFi access point for my network along with my DHCP server. Unfortunately,
+as mentioned above, since I haven&amp;rsquo;t been able to get into my ISP modem/router,
+I&amp;rsquo;m currently broadcasting multiple WiFi networks right next to each other.
+I got this because I wanted more control (like changing DNS servers) than I
+was positive the ISP provided router would allow.&lt;/p&gt;
+
+&lt;p&gt;Also, very usefully, this router has a USB port on it. I believe it&amp;rsquo;s for setting
+up a printer, but it does provide enough amperage to power a Raspberry Pi (see below).&lt;/p&gt;
+
+&lt;h3 id=&#34;raspberry-pi-3-model-b-free&#34;&gt;Raspberry Pi 3 Model B - Free&lt;/h3&gt;
+
+
+  &lt;img src=&#34;img/rpi3.jpg&#34;  alt=&#34;Raspberry Pi 3 Model B&#34;  class=&#34;center&#34;  style=&#34;border-radius: 8px;&#34;  /&gt;
+
+
+
+&lt;p&gt;I got a free Raspberry Pi 3 a few years back when Arrow was running a promotion for
+Pi day (March 14), where they were selling Raspberry Pi&amp;rsquo;s for $3.14. Well, their
+website crashed under the load, and the next day they gave a bunch away for free
+to people like me who tried to place an order.&lt;/p&gt;
+
+&lt;p&gt;I now have my Pi 3 acting as DNS server for my network with
+&lt;a href=&#34;https://pi-hole.net&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Pi-hole&lt;/a&gt; (I really like the
+&lt;a href=&#34;https://dbl.oisd.nl/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://dbl.oisd.nl/&lt;/a&gt; blocklist). Thanks to the USB port on my
+router, I just have it sitting physically right next to my router and directly
+plugged in.&lt;/p&gt;
+
+&lt;h3 id=&#34;netgear-gs305-19-99&#34;&gt;Netgear GS305 - $19.99&lt;/h3&gt;
+
+
+  &lt;img src=&#34;img/netgear-gs305.jpg&#34;  alt=&#34;Netgear GS305&#34;  class=&#34;center&#34;  style=&#34;border-radius: 8px;&#34;  /&gt;
+
+
+
+&lt;p&gt;Not much to say about this. It&amp;rsquo;s a basic 5-port gigabit unmanaged switch.
+I&amp;rsquo;ve had it for a few years.&lt;/p&gt;
+
+&lt;h3 id=&#34;netgear-powerline-1200-79-99&#34;&gt;Netgear Powerline 1200 - $79.99&lt;/h3&gt;
+
+
+  &lt;img src=&#34;img/PL1200_NA_Hero_Transparent.png&#34;  alt=&#34;Netgear Powerline 1200&#34;  class=&#34;center&#34;  style=&#34;border-radius: 8px;&#34;  /&gt;
+
+
+
+&lt;p&gt;This one hurt the most to purchase. For best WiFi coverage, I have my router
+sitting on the main floor of my townhouse. My desktop computer and
+server, however, are both located downstairs.
+As I didn&amp;rsquo;t want to use WiFi for those, there weren&amp;rsquo;t many options
+to get ethernet down into the basement.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Run 200ft ethernet cable across and over living room, down staircase, around corner,
+and down hallway.&lt;/li&gt;
+&lt;li&gt;Punch holes in the floor and run cable.&lt;/li&gt;
+&lt;li&gt;Powerline adapters.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Option #1 is not practical, and I don&amp;rsquo;t think my landlord would really like option #2.
+I had heard of powerline adapters before, but just had never used them before.
+I really wanted to get my server back up and running, so I decided to give it a shot
+and went to my local Best Buy and bought a pair of Netgear Powerline 1200.&lt;/p&gt;
+
+&lt;p&gt;So far, I&amp;rsquo;ve been satisficed. The bandwidth is a bit less than my 5Ghz WiFi, but the
+latency is noticeably less. I use the Netgear switch mentioned above to split the
+connection to my desktop and server.&lt;/p&gt;
+
+&lt;h2 id=&#34;diagram&#34;&gt;Diagram&lt;/h2&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/network_diagram.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/network_diagram.jpg&#34;  alt=&#34;Diagram of my home network.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Diagram of my home network.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Quick summary:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Technicolor Modem: Modem&lt;/li&gt;
+&lt;li&gt;TP-Link Archer: Router, DHCP, WiFi&lt;/li&gt;
+&lt;li&gt;Raspberry Pi: DNS&lt;/li&gt;
+&lt;li&gt;Powerline Adapters: Getting ethernet into basement&lt;/li&gt;
+&lt;li&gt;Netgear Switch: Splitting powerline connection&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For $34.99 and $11.50 monthly (and miscellaneous cables), I have a pretty solid
+home network with 2.4 and 5GHz WiFi (though I don&amp;rsquo;t use the 2.4GHz since
+everything these days supports 5GHz AC), an isolated guest network, and network-wide
+ad-blocking via Pi-hole. I also have true gigabit for everything within the network
+(very helpful for my local Nextcloud instance).
+For another $100, I have ethernet in my basement
+for all of my fixed devices (a cost I don&amp;rsquo;t like thinking about).&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m a bit of a statistics nerd, so I would love a way to see which devices
+are connecting to what domains, how much bandwidth they&amp;rsquo;re using, etc.,
+but I have not found a software solution to this. My router does
+allow you to see how many bytes each device sends and receives, but that&amp;rsquo;s it.
+I know I can sort of estimate it with Pi-hole and seeing what DNS queries
+devices are making, and how often, but I&amp;rsquo;d love a solution similar to
+&lt;a href=&#34;https://www.glasswire.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Glasswire&lt;/a&gt;, but for the whole network. Unfortunately,
+I don&amp;rsquo;t think there&amp;rsquo;s a way to accomplish this without using a different
+router (like a pfSense box) completely (a step I&amp;rsquo;m not willing to take yet).&lt;/p&gt;
+
         
         </description>
     </item>

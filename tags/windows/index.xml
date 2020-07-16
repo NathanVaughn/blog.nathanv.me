@@ -28,8 +28,57 @@
         
         
         
-          Discovering that Synergy was causing my mouse cursor to lag on Windows
-          
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;For a while lately, I&amp;rsquo;ve been dealing with a very frustrating issue on my Windows 10
+desktop and laptop. Whenever I would turn on my computer, the mouse cursor
+would lag horribly for around 20 seconds.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;video src=&#34;vid/mouse-lag.mp4&#34;  alt=&#34;Mouse lag&#34;   style=&#34;border-radius: 8px;&#34;   autoplay loop  /&gt;
+    &lt;/video&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Apologies for the poor recording, it&amp;rsquo;s difficult to get with screen capture software.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+
+&lt;p&gt;Weirdly, the mouse would almost
+always return to normal after pressing &lt;code&gt;Ctrl+Alt+Del&lt;/code&gt; or &lt;code&gt;Ctrl+Shift+Esc&lt;/code&gt; (which opens
+Task Manager). While I&amp;rsquo;m not familiar with how Windows works, I know that &lt;code&gt;Ctrl+Alt+Del&lt;/code&gt;
+produces a kernel interrupt which may be why it fixes it. I don&amp;rsquo;t know
+what&amp;rsquo;s special about opening Task Manager which would fix it. Anywho, this is was
+getting annoying and I couldn&amp;rsquo;t figure out why.&lt;/p&gt;
+
+&lt;h2 id=&#34;culprit&#34;&gt;Culprit&lt;/h2&gt;
+
+&lt;p&gt;The culprit ended up being &lt;a href=&#34;https://symless.com/synergy&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Synergy 2&lt;/a&gt;. How did I figure
+this out? Nothing more than an educated guess really. Why is it causing this?
+Not a clue.&lt;/p&gt;
+
+&lt;p&gt;To disable Synergy until you need it, you need to go into Services. Simply
+killing all the running executables isn&amp;rsquo;t enough, as Synergy registers a service which
+will automatically restart them. Find &amp;ldquo;Synergy&amp;rdquo; in the list, right-click and go to
+Properties -&amp;gt; Startup type -&amp;gt; Manual.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/synergy-service-manual.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/synergy-service-manual.jpg&#34;  alt=&#34;Synergy Windows service&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Set the Synergy service to start manually&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;You&amp;rsquo;ll just need to manually start and stop the Synergy service now whenever you want to use it.&lt;/p&gt;
+
         
         </description>
     </item>
@@ -48,8 +97,74 @@
         
         
         
-          Fixing Asus Armoury Crate from waking my Windows computer from sleep
-          
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;On Black Friday, I got a new Ryzen 7 2700X with the fancy included RGB cooler,
+and an Asus motherboard that had
+&lt;a href=&#34;https://www.asus.com/campaign/aura/global/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Aura Sync&lt;/a&gt;.
+&amp;ldquo;Cool&amp;rdquo;, I thought, &amp;ldquo;I can have synced RGB lighting&amp;rdquo;. While the control software
+provided on the Aura Sync page would completely refuse to launch
+for me once it was installed, I was able to get the
+&lt;a href=&#34;https://www.microsoft.com/store/productId/9PM9DFQRDH3F&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;&amp;ldquo;Armoury Crate&amp;rdquo;&lt;/a&gt;
+Microsoft Store app to work and control the RGB. I was happy (or so I thought).&lt;/p&gt;
+
+&lt;h2 id=&#34;problem&#34;&gt;Problem&lt;/h2&gt;
+
+&lt;p&gt;Lately, my computer has been waking itself up from Sleep mode in the middle of the
+night. Getting increasingly frustrated by this, I decided to investigate.&lt;/p&gt;
+
+&lt;p&gt;The simplest way to find the culprit is to run the following command after the computer
+has woken itself up:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-powershell&#34; data-lang=&#34;powershell&#34;&gt;powercfg -lastwake&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This shows what woke up the current Windows session. If the current Windows session
+was started from a cold boot or restart, it simply returns blank info.&lt;/p&gt;
+
+&lt;p&gt;The other way (and only way to view wake history)
+is to open Event Viewer, go to &amp;ldquo;Windows Logs&amp;rdquo; -&amp;gt; &amp;ldquo;System&amp;rdquo;, and filter by
+&amp;ldquo;Power-Troubleshooter&amp;rdquo;. From there, you can just click through the events to see
+which scheduled tasks or executables last woke your computer.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/event-viewer-culprit.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/event-viewer-culprit.jpg&#34;  alt=&#34;Windows Event Viewer&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Windows Event Viewer showing the Power-Troubleshooter filter and the culprit&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;As you can see in the screenshot, the culprit was &lt;code&gt;ArmouryCrate.UserSessionHelper.exe&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;fix&#34;&gt;Fix&lt;/h2&gt;
+
+&lt;p&gt;To fix this, you need to disable wake timers in your power settings. This is buried
+deep in the legacy power plan settings in Control Panel.
+Within the Settings app, go to &amp;ldquo;Power &amp;amp; sleep&amp;rdquo; -&amp;gt; &amp;ldquo;Changing power mode&amp;rdquo; -&amp;gt;
+&amp;ldquo;Change plan settings&amp;rdquo; -&amp;gt; &amp;ldquo;Change advanced power settings&amp;rdquo; -&amp;gt; &amp;ldquo;Sleep&amp;rdquo; -&amp;gt;
+&amp;ldquo;Allow wake timers&amp;rdquo; and set it to &amp;ldquo;Disable&amp;rdquo;.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/power-settings.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/power-settings.jpg&#34;  alt=&#34;Power plan settings&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Holy settings menu nesting Batman!&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.ghacks.net/2013/12/31/find-pc-wakes-stop/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.ghacks.net/2013/12/31/find-pc-wakes-stop/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
         
         </description>
     </item>

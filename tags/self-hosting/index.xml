@@ -27,8 +27,396 @@
         
         
         
-          Building a server inside an old Sun Ultra 24 case
-          
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;Early last year, I went to my university&amp;rsquo;s surplus store. I was looking to
+purchase an
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Mac_Pro#1st_generation_(Tower)&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;old Mac Pro tower&lt;/a&gt;
+with the intent to do a case mod with it, since I knew the surplus store had a
+few available for cheap and I thought it would be a fun project.
+However, while looking around, I spotted a beautiful
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Ultra_24&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Sun Ultra 24&lt;/a&gt; on the shelf. I quickly
+decided to purchase that instead for two reasons.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The novelty value, as Sun Microsystems is long-gone.&lt;/li&gt;
+&lt;li&gt;It has standard ATX parts, while a Mac Pro was going to require liberal application
+of a Dremel.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/from_surplus.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/from_surplus.jpg&#34;  alt=&#34;Sun Ultra 24 from surplus&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;My Sun Ultra 24 after taking it home from surplus.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;build&#34;&gt;Build&lt;/h2&gt;
+
+&lt;p&gt;Before I started my build, I did notice
+&lt;a href=&#34;https://www.servethehome.com/introducing-the-ultra-epyc-amd-powered-sun-ultra-24-workstation/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;ServeTheHome&amp;rsquo;s build&lt;/a&gt;
+in the exact same case. While I like their build a lot, I also wanted to
+shoot for an as original appearance as possible with mine.&lt;/p&gt;
+
+&lt;h3 id=&#34;pre-build-configuration&#34;&gt;Pre-Build Configuration&lt;/h3&gt;
+
+&lt;p&gt;I kind of forgot to take pictures before I gutted the case, so below is
+what a Sun Ultra 24 is supposed to look like. Mine looked about the same,
+except a lot more dust, scratches, and missing parts.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/old_insides.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/old_insides.jpg&#34;  alt=&#34;Brand-new Sun Ultra 24 insides&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Brand-new Sun Ultra 24 insides&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/old_exterior.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/old_exterior.jpg&#34;  alt=&#34;Sun Ultra 24 exterior&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Sun Ultra 24 exterior&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;parts&#34;&gt;Parts&lt;/h3&gt;
+
+&lt;p&gt;While I initially was planning on swapping out the components of my desktop into
+this case, I ended up building a server inside of it. I was getting &lt;em&gt;real&lt;/em&gt; tired
+of the constant noise from my &lt;a href=&#34;https://blog.nathanv.me/posts/self-host-docker/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;HP ProLiant DL 360&lt;/a&gt;
+and thought it would be best to build a &amp;ldquo;new&amp;rdquo; machine. The perfect opportunity came
+during Black Friday this year with a Ryzen 7 2700x for $159.00. I decided replace my
+old i7-4790k with that, and use the old parts from my desktop to build a new server.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://pcpartpicker.com/list/C7kfmg&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;PCPartPicker Part List&lt;/a&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Type&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Item&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Status&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;CPU&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/6vzv6h/intel-cpu-bx80646i74790k&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Intel Core i7-4790K 4 GHz Quad-Core Processor&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Already Owned&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;CPU Cooler&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/hmtCmG/cooler-master-cpu-cooler-rr212e20pkr2&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Cooler Master Hyper 212 EVO 82.9 CFM Sleeve Bearing CPU Cooler&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Purchased&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;Motherboard&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/VfK7YJ/asus-motherboard-z97ar&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Asus Z97-AR ATX LGA1150 Motherboard&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Already Owned&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;Memory&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/bQFPxr/patriot-memory-pvl38g160c0kb&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Patriot Viper 3 Low Profile Blue 8 GB (2 x 4 GB) DDR3-1600 Memory&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Already Owned&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;Memory&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/kBNp99/patriot-memory-pvl38g160c0k&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Patriot Viper 3 Low Profile Black 8 GB (2 x 4 GB) DDR3-1600 Memory&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Already Owned&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;Storage&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/rd7wrH/western-digital-internal-hard-drive-wd3200aajs&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Western Digital Caviar Blue 320 GB 3.5&amp;rdquo; 7200RPM Internal Hard Drive&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Purchased&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;Power Supply&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/xDMwrH/evga-br-450w-80-bronze-certified-atx-power-supply-100-br-0450-k1&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;EVGA BR 450 W 80+ Bronze Certified ATX Power Supply&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Purchased&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;Case&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Sun Ultra 24&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Already Owned&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;I also liberated the 4-port gigabit network card from my ProLiant.&lt;/p&gt;
+
+&lt;h3 id=&#34;post-build-configuration&#34;&gt;Post-Build Configuration&lt;/h3&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the result, since I also forgot to take pictures during the build.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/new_insides.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/new_insides.jpg&#34;  alt=&#34;Post-build computer&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;My &amp;lsquo;new&amp;rsquo; Sun Ultra 24&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;I know there&amp;rsquo;s a mess of power supply cables at the top, but there&amp;rsquo;s no window
+on this case so I don&amp;rsquo;t care.&lt;/p&gt;
+
+&lt;h2 id=&#34;problems&#34;&gt;Problems&lt;/h2&gt;
+
+&lt;p&gt;Oh my goodness, this was the most frustrating computer build I have ever done.
+There were so many problems. Some, I had the foresight to anticipate. Some, not.
+Here they are in no particular order.&lt;/p&gt;
+
+&lt;h3 id=&#34;power-supply-cable-length&#34;&gt;Power Supply Cable Length&lt;/h3&gt;
+
+&lt;p&gt;I was initially hoping to use the power supply that came with the computer
+since it was a perfectly adequate 530W supply. Unfortunately, it was made
+specifically for that chassis, and the 24-pin ATX power cable was about 3 inches too
+short. Thankfully, I had already purchased a new EVGA 450W power supply in the event
+I wasn&amp;rsquo;t able to use the old power supply.&lt;/p&gt;
+
+&lt;h3 id=&#34;power-supply-orientation&#34;&gt;Power Supply Orientation&lt;/h3&gt;
+
+&lt;p&gt;This wasn&amp;rsquo;t really a problem, but I was surprised that unlike most modern cases,
+the power supply only fits one direction. Thankfully, I didn&amp;rsquo;t have
+&lt;a href=&#34;https://www.servethehome.com/introducing-the-ultra-epyc-amd-powered-sun-ultra-24-workstation/5/#attachment_32156&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;the problem&lt;/a&gt;
+that ServeTheHome did with their power supply.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/new_power_supply.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/new_power_supply.jpg&#34;  alt=&#34;New power supply installed&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;New power supply installed&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;motherboard-rubber-spacer&#34;&gt;Motherboard Rubber Spacer&lt;/h3&gt;
+
+&lt;p&gt;Unfortunately, I didn&amp;rsquo;t get a picture of this, but behind the motherboard are
+two rubber spacers. Well, with a new Hyper 212 EVO installed, one of these
+rubber spacers interferes with the mounting bracket. Thankfully, it was easily
+ripped off.&lt;/p&gt;
+
+&lt;h3 id=&#34;front-panel-connector-cables&#34;&gt;Front Panel Connector Cables&lt;/h3&gt;
+
+&lt;p&gt;Most of the front panel connectors ended up being useless. My motherboard
+doesn&amp;rsquo;t even have FireWire headers so I removed those cables completely. The USB header
+cable was barely long enough, but made it. On the other hand, the audio header cable was
+nowhere near long enough. However, since I was only planning on using this
+machine as a server, and this motherboard already had some audio issues from
+a previous ESD incident, I decided to just remove this cable too.&lt;/p&gt;
+
+&lt;h3 id=&#34;missing-pcie-slot-covers&#34;&gt;Missing PCIe Slot Covers&lt;/h3&gt;
+
+&lt;p&gt;I already knew about this when I bought the system, but it was missing some PCIe
+slot covers. Since I don&amp;rsquo;t like missing pieces, I bought
+&lt;a href=&#34;https://www.amazon.com/gp/product/B07TXBGGDM&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;some spares&lt;/a&gt; on Amazon,
+but unfortunately they don&amp;rsquo;t quite match.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/new_pcie_slots.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/new_pcie_slots.jpg&#34;  alt=&#34;Mismatched PCIe slot covers&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Mismatched PCIe slot covers&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;missing-drive-sleds&#34;&gt;Missing Drive Sleds&lt;/h3&gt;
+
+&lt;p&gt;I was also disappointed when I bought the system that either the computer never came
+with all the drive sleds, or they were removed at some point. Either way, if I ever
+want to add more hard drives, I&amp;rsquo;ll need to source
+&lt;a href=&#34;https://www.ebay.com/itm/Lot-of-5-Sun-Microsystems-HDD-Hot-Swap-3-5-Hard-Drive-Disk-Tray-Caddy-20-screw/153755065494&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;some from eBay&lt;/a&gt;
+or something. I haven&amp;rsquo;t purchased any yet, since the cost of them would nearly equal
+what I paid for the original computer.&lt;/p&gt;
+
+&lt;h3 id=&#34;missing-ultra-24-badge&#34;&gt;Missing Ultra 24 Badge&lt;/h3&gt;
+
+&lt;p&gt;As you can see in the &lt;a href=&#34;img/from_surplus.jpg&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;old exterior photo&lt;/a&gt;,
+at the bottom, the
+&lt;a href=&#34;https://www.servethehome.com/wp-content/uploads/2019/01/The-Ultra-EPYC-Cover.jpg&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Ultra 24 badge&lt;/a&gt;
+is missing. I&amp;rsquo;m going to try and 3D print a replacement at some point.&lt;/p&gt;
+
+&lt;h3 id=&#34;fan-noise&#34;&gt;Fan Noise&lt;/h3&gt;
+
+&lt;p&gt;The whole point of this build was to have a quieter computer. I quickly discovered that
+the rear case fan is &lt;em&gt;bloody&lt;/em&gt; loud, which defeated the entire purpose of this project.
+This fan has a very weird mount which doesn&amp;rsquo;t make it easy to just replace with a
+new fan.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/old_fan.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/old_fan.jpg&#34;  alt=&#34;Sun Ultra 24 rear case fan mount&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Sun Ultra 24 rear case fan mount&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Thankfully, I was able to go into the BIOS and disable the fan until
+the CPU reaches a pretty high temperature. Otherwise, I was just going to unplug it.
+With the minimal CPU load of this machine,
+and the Hyper 212 EVO cooling the processor, the fan has yet to come on.&lt;/p&gt;
+
+&lt;h3 id=&#34;front-panel-header&#34;&gt;Front Panel Header&lt;/h3&gt;
+
+&lt;p&gt;This was the worst thing by far. I hadn&amp;rsquo;t realized that the front panel header
+(power switch, power LED, etc.) is not standardized.&lt;/p&gt;
+
+&lt;p&gt;This is the front panel header for the Sun Ultra 24.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/old_header.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/old_header.jpg&#34;  alt=&#34;Sun Ultra 24 front panel header&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Sun Ultra 24 front panel header&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;This is the front panel header for my Asus Z97-AR.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/asus_z97-ar_header.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/asus_z97-ar_header.jpg&#34;  alt=&#34;Asus Z97-AR front panel header&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Asus Z97-AR front panel header&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;As you can see, the Asus motherboard header is &lt;strong&gt;wider&lt;/strong&gt; than the Ultra 24.
+In order to rectify this, I bought some
+&lt;a href=&#34;https://www.amazon.com/gp/product/B07BVS3FX7&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;jumper wire extensions&lt;/a&gt; from Amazon
+and used some trial-and-error and help from
+&lt;a href=&#34;https://forums.tomshardware.com/threads/front-panel-connector-pin-outs.3236564/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;this forum post&lt;/a&gt;
+to connect everything.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/new_header.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/new_header.jpg&#34;  alt=&#34;New front panel header connection&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;New front panel header connection&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;It&amp;rsquo;s ugly but it works.&lt;/p&gt;
+
+&lt;p&gt;Here is the pinout I figured out for reference:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Ultra 24&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Connection&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Red&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Probably +12V&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Black&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Probably GND&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Green&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;PWR LED +&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Blue&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;PWR LED -&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Yellow&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;PWR SW&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;White&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;PWR SW&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The power switch is just shorting two pins, so positive versus negative doesn&amp;rsquo;t matter.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Overall, I&amp;rsquo;m happy with the build. Despite all the problems, it has ended up working
+well, and it&amp;rsquo;s nearly dead-silent. My only complaint is the power LED is
+incredibly bright, especially at night. I had some problems transferring my data
+from my old server to it, but that&amp;rsquo;s beyond the scope of this post.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m very glad I didn&amp;rsquo;t transfer my desktop into this case, with the number of problems
+I encountered. How tight the case is, the lack of cable management,
+no 2.5&amp;rdquo; drive support (for my SSD),
+only one 5.25&amp;rdquo; bay, etc. would have all been major challenges.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/new_home.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/new_home.jpg&#34;  alt=&#34;Post-build computer&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;The computer in it&amp;rsquo;s new home&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
         
         </description>
     </item>
@@ -47,8 +435,448 @@
         
         
         
-          Moving my personal web apps from the cloud to self-hosted infrastructure
-          
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;For the past few years, I&amp;rsquo;ve rented a VPS to host some web apps for myself. I&amp;rsquo;ve done
+this since I&amp;rsquo;ve lived in college apartments behind a NAT and I wanted to be able
+to access these services from the outside world. Also, running locally, I wouldn&amp;rsquo;t
+be able to setup HTTPS other than self-signed certs. Yuck.&lt;/p&gt;
+
+&lt;p&gt;However, with Cloudflare&amp;rsquo;s new service,
+&lt;a href=&#34;https://www.cloudflare.com/products/argo-tunnel/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Argo Tunnel&lt;/a&gt;,
+and &lt;del&gt;poor financial decisions&lt;/del&gt; a server I bought on Craigslist,
+I decided to move my apps to be hosted on-premise.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/hp_dl_360_g5.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/hp_dl_360_g5.jpg&#34;  alt=&#34;HP DL360 G5 with dual Xeon E5410s and 64GB of RAM&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;HP DL360 G5 with dual Xeon E5410s and 64GB of RAM&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;decision-to-use-docker&#34;&gt;Decision to Use Docker&lt;/h2&gt;
+
+&lt;p&gt;Previously, my $5/month Linode VPS only had 1GB of RAM, so memory was at a premium.
+Because of this, I exclusively used applications built on a LAMP stack
+so they could share each other&amp;rsquo;s stack.
+While this did help with memory, security wasn&amp;rsquo;t great, and incompatibilities
+between things like MySQL and PHP versions made life difficult. This is also
+significantly limited what apps I could use for myself.&lt;/p&gt;
+
+&lt;p&gt;Now that I have a server with more memory than I know what to do with, I wanted to
+try out some virtualization technologies. I figured if the experiment went well,
+I would move all my applications to my server. I decided to try out Docker and
+containerization first since that&amp;rsquo;s all the rage now. If Docker didn&amp;rsquo;t
+work out, I would try traditional VMs with VSphere, ESXi, Proxmox, or something.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-are-containers&#34;&gt;What Are Containers&lt;/h2&gt;
+
+&lt;p&gt;Docker containers behave a lot like Virtual Machines (VMs). However, under-the-hood,
+they&amp;rsquo;re completely different. Instead of running a full-blown operating system,
+they actually share the host&amp;rsquo;s kernel, and run off of that. The processes inside a
+container are actually processes under the host OS. However, to the processes in the
+container, it&amp;rsquo;s like they are in their own OS. The filesystem is sandboxed
+from the host (unless you decide to provide access to specific directories)
+and containers even get their own network interface. Compared to VMs, containers
+have a &lt;strong&gt;much&lt;/strong&gt; lower memory footprint, and are super fast to start. Neat!&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;nathan@zeus:[~]$ sudo /usr/bin/landscape-sysinfo
+
+  System load:                    0.15
+  Usage of /:                     18.1% of 133.52GB
+  Memory usage:                   10%
+  Swap usage:                     0%
+  Processes:                      377
+  Users logged in:                1
+  IP address for enp22s0f1:       172.20.1.193
+  IP address for br-d99eb9eae6a2: 172.22.0.1
+  IP address for docker0:         172.17.0.1
+  IP address for br-48843a63cc0c: 172.24.0.1
+  IP address for br-b799383b2034: 172.26.0.1
+  IP address for br-ab6f5666082e: 172.27.0.1
+  IP address for br-e2cb99d7f99f: 172.28.0.1
+  IP address for br-fb8873ceab0c: 172.30.0.1
+  IP address for br-87cfeddb1a48: 172.31.0.1
+  IP address for br-47045830e86b: 192.168.0.1
+  IP address for br-7799754001bc: 192.168.32.1
+  IP address for br-3780ddef1e2f: 192.168.64.1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/docker_vs_vm.png&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/docker_vs_vm.png&#34;  alt=&#34;Docker vs VM diagram&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Docker vs VM diagram (from &lt;a href=&#34;https://blog.docker.com/2018/08/containers-replacing-virtual-machines/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://blog.docker.com/2018/08/containers-replacing-virtual-machines/&lt;/a&gt;)&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;docker-setup&#34;&gt;Docker Setup&lt;/h2&gt;
+
+&lt;p&gt;After choosing to try out containers with Docker,
+I quickly decided upon using &lt;a href=&#34;https://docs.docker.com/compose/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Docker Compose&lt;/a&gt; rather
+than standard Docker. As far as I can tell, Docker Compose and Docker will let you
+do the same things, but Docker Compose allows you to create defined &lt;code&gt;.yml&lt;/code&gt; files
+to run multi-container applications. To me, it seems like the difference is really just
+defining your configuration in a file rather than the command line.&lt;/p&gt;
+
+&lt;p&gt;Instead of this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;docker run -d --restart unless-stopped --log-opt max-size&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;10m &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  -v freshrss-data:/var/www/FreshRSS/data &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  -e CRON_MIN&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;4,34 &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  -e TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Europe/Paris &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --label traefik.port&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --label traefik.frontend.rule&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Host:freshrss.example.net &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --label traefik.frontend.headers.forceSTSHeader&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;true &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --label traefik.frontend.headers.STSSeconds&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;31536000&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;\
+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;&lt;/span&gt;  --name freshrss freshrss/freshrss&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You have this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-docker&#34; data-lang=&#34;docker&#34;&gt;version: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;3&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;services:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;  freshrss:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    container_name: freshrss&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    image: freshrss/freshrss&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    environment:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - CRON_MIN&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;4,34&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - TZ&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Europe/Paris&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    volumes:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;freshrss-data:/var/www/FreshRSS/data&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    restart: unless-stopped&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    labels:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - traefik.port&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - traefik.frontend.rule&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;Host:freshrss.example.net&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - traefik.frontend.headers.forceSTSHeader&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;true&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - traefik.frontend.headers.STSSeconds&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;31536000&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Working off some examples, I made a Docker Compose file for each
+of my applications, each in their own folder. For security, I have every app restricted
+to their own network (which Docker Compose will do by default).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;~/dockerfiles
+│
+└───app1
+│   │   docker-compose.yml
+│
+└───app2
+│   │   docker-compose.yml
+│   │   .env
+│
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;For applications that need it, I also opted to create an environment file which contains
+secrets like the MySQL account password, rather putting secrets in the actual config
+files which are tracked by Git. This is easily done with the &lt;code&gt;env_file&lt;/code&gt;
+parameter in the &lt;code&gt;docker-compose.yml&lt;/code&gt; file. I go into this more below.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-docker&#34; data-lang=&#34;docker&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;env&lt;/span&gt;_file:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;  - ./.env&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In order to start or stop them all quickly, I wrote a small Python script which will
+&lt;code&gt;sudo docker-compose up -d&lt;/code&gt; or &lt;code&gt;sudo docker-compose down&lt;/code&gt; all the
+various Compose stacks.&lt;/p&gt;
+
+&lt;h2 id=&#34;networking&#34;&gt;Networking&lt;/h2&gt;
+
+&lt;p&gt;This is where the real key is. Since my server lives behind a university firewall,
+and I want to access applications running on it from the outside world, I need
+to use some sort of tunnel.
+I opted to use Cloudflare&amp;rsquo;s new service, Argo Tunnel to accomplish this. Basically,
+you install the command-line client on your server. You connect it to your locally
+running application, it automatically creates a persistent tunnel into Cloudflare&amp;rsquo;s
+network, and creates the appropriate DNS record for your domain. Argo Tunnel is included
+free with &lt;a href=&#34;https://www.cloudflare.com/products/argo-smart-routing/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Argo&lt;/a&gt; which is
+$5/month/domain. It&amp;rsquo;s also $0.10/GB of bandwidth after the first gigabyte per month.
+The only limit is a hard cap of 1000 tunnels per account.
+So far so good.&lt;/p&gt;
+
+&lt;p&gt;However, Cloudflare&amp;rsquo;s &lt;a href=&#34;https://developers.cloudflare.com/argo-tunnel/reference/docker/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;official instructions&lt;/a&gt;
+of how to use Argo Tunnel with Docker containers kind of suck and is very manual. No good.
+I initially tried to use an &lt;a href=&#34;https://github.com/jwilder/nginx-proxy&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;nginx reverse proxy&lt;/a&gt;
+and have a single tunnel coming out of the Docker host, but wasn&amp;rsquo;t able to get it to work.
+Then, I came across &lt;a href=&#34;https://github.com/aschzero/hera&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Hera&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Hera is a Docker container which automatically monitors your containers and creates
+tunnels based on two labels you apply to your containers. This was perfect!
+Every application could have it&amp;rsquo;s own tunnel independent of each other and it was
+completely automated. The only two labels you need to apply to each container
+is the desired hostname and the port the service runs on &lt;strong&gt;inside the container&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;To make this work, I put all the containers that had a web server into a shared
+network with the Hera container. I kept web servers and database servers in a stack
+sharing their own private network like before. As I didn&amp;rsquo;t really want to create one
+&lt;strong&gt;mega&lt;/strong&gt; &lt;code&gt;docker-compose.yml&lt;/code&gt; file, I have the Hera container create the network,
+then all the web servers reference it as an external network.&lt;/p&gt;
+
+&lt;p&gt;Hera &lt;code&gt;docker-compose.yml&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-docker&#34; data-lang=&#34;docker&#34;&gt;version: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;3&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;services:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;  app:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    image: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;aschzero/hera:latest&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    networks:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - tunnel&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    restart: unless-stopped&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    volumes:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/var/run/docker.sock:/var/run/docker.sock&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;/home/nathan/certs:/certs&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;networks:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;  tunnel:&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Sample application &lt;code&gt;docker-compose.yml&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-docker&#34; data-lang=&#34;docker&#34;&gt;version: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;3&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;services:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;  app:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    depends_on:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - db&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    image: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;app/app:latest&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    labels:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      hera.hostname: app.example.com&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      hera.port: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;80&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    networks:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - default&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - hera_tunnel&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    ports:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;127.0.0.1:1001:80&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    restart: unless-stopped&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    volumes:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;app_data:/var/www/&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;  db:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    image: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;mysql:latest&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    networks:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - default&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    restart: unless-stopped&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    volumes:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;db_data:/var/lib/mysql&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;networks:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;  default:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    internal: true&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;  hera_tunnel:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    external: true&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;volumes:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;  app_data:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    driver: local&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;  db_data:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    driver: local&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The port being exposed to the host (&lt;code&gt;1001&lt;/code&gt; in the example above) isn&amp;rsquo;t important
+as Hera only cares about the port &lt;strong&gt;inside&lt;/strong&gt; the container. It just needs to be unique
+as you can&amp;rsquo;t have duplicates. I simply started at 1000 and started counting up.&lt;/p&gt;
+
+&lt;p&gt;Yes, I could probably also just run a container with the &lt;code&gt;cloudflared&lt;/code&gt; daemon as part of
+each stack, but I didn&amp;rsquo;t see a regularly updated image available.&lt;/p&gt;
+
+&lt;h3 id=&#34;note-about-domains&#34;&gt;Note About Domains&lt;/h3&gt;
+
+&lt;p&gt;Cloudflare Argo is billed per &lt;strong&gt;domain&lt;/strong&gt;. This means without doubling your monthly cost,
+you can&amp;rsquo;t create tunnels for two domains. I have a short domain I like to use for
+image hosting and link shortening, so this sucked. However, I figured out a simple
+workaround. Simply create the tunnel on your main domain to whatever subdomain you
+want, then just &lt;code&gt;CNAME&lt;/code&gt; your second domain to the tunnel subdomain.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-txt&#34; data-lang=&#34;txt&#34;&gt;Link Shortener (app) -&amp;gt; linkshortener.example.com (Tunnel) -&amp;gt; xmpl.com  (CNAME DNS)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;security&#34;&gt;Security&lt;/h2&gt;
+
+&lt;p&gt;Now that I have my applications accessible from the outside world, I would like to
+secure them more than their built-in login forms. Niche software developed by amateur
+programmers isn&amp;rsquo;t always the most secure. For this, I opted to go with
+&lt;a href=&#34;https://www.cloudflare.com/products/cloudflare-access/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Cloudflare Access&lt;/a&gt;. This
+is a pretty cool service. Basically, this allows you to add authentication via
+a multitude of providers, in front of any application you have using Cloudflare DNS,
+with extremely granular control. The great thing is that it&amp;rsquo;s free for up to
+5 users/month, even for the Premium offering. Yes, this does create a single point
+of failure for all of my applications, but Cloudflare outages are pretty rare and
+minimal.&lt;/p&gt;
+
+&lt;p&gt;Using Cloudflare Access, I&amp;rsquo;ve basically whitelisted all my services to only be able
+to be accessed by my Google Account. However, many applications have their own
+API routes with their own authentication, and can&amp;rsquo;t handle Cloudflare Access
+in front of it, so I have to create bypass rules for those.&lt;/p&gt;
+
+&lt;p&gt;Lastly, I bind the host port of each container to only the host so that it can&amp;rsquo;t
+be accessed even from the local network (my only exception to this right now is
+Nextcloud while I sync a bunch of data the first time to avoid paying for Argo
+bandwidth).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-docker&#34; data-lang=&#34;docker&#34;&gt;ports:&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;127.0.0.1:1001:80&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;useful-tools&#34;&gt;Useful Tools&lt;/h2&gt;
+
+&lt;h3 id=&#34;portainer&#34;&gt;Portainer&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.portainer.io&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Portainer&lt;/a&gt; is an absolutely incredible tool for
+managing Docker. You can easily view container logs,
+launch a console connected to a container, start and stop containers,
+manage volumes and networks, and more all from a web interface. It makes interacting
+with Docker so much easier.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/portainer.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/portainer.jpg&#34;  alt=&#34;Screenshot of Portainer interface&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Screenshot of Portainer interface&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;netdata&#34;&gt;Netdata&lt;/h3&gt;
+
+&lt;p&gt;While not specifically Docker-related, I recently found out about
+&lt;a href=&#34;https://www.netdata.cloud/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Netdata&lt;/a&gt;. Netdata is an all-in-one performance monitoring
+tool for Linux servers. While similar to Grafana + Prometheus, the appeal is that
+everything is configured out-of-the-box.
+It&amp;rsquo;s a really beautiful interface with a &lt;strong&gt;ton&lt;/strong&gt; of statistics available. While not
+particularly customizable, the amount of information is immense, and it integrates
+well with Docker so you can see which container specifically is hogging all your
+CPU.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/netdata.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/netdata.jpg&#34;  alt=&#34;Screenshot of Netdata statistics&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Screenshot of Netdata statstics&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;backups&#34;&gt;Backups&lt;/h2&gt;
+
+&lt;p&gt;One of the most important parts of any hosting operation is backups. I backup the data
+and configurations I use for Docker in 3 places.&lt;/p&gt;
+
+&lt;h3 id=&#34;docker-compose-files&#34;&gt;Docker Compose files&lt;/h3&gt;
+
+&lt;p&gt;The Docker Compose files I&amp;rsquo;ve built are stored in a private Git repository on
+my GitHub account.&lt;/p&gt;
+
+&lt;h3 id=&#34;docker-secrets&#34;&gt;Docker Secrets&lt;/h3&gt;
+
+&lt;p&gt;All of my secrets (MySQL passwords, SMTP login, etc.) are stored as secure notes
+in my &lt;a href=&#34;https://lastpass.com/f?14012062&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;LastPass&lt;/a&gt; account.&lt;/p&gt;
+
+&lt;h3 id=&#34;data&#34;&gt;Data&lt;/h3&gt;
+
+&lt;p&gt;Every night, I have setup an instance of &lt;a href=&#34;https://www.duplicati.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Duplicati&lt;/a&gt;
+to backup the entire contents of &lt;code&gt;/var/lib/docker/volumes&lt;/code&gt; to a
+&lt;a href=&#34;https://www.backblaze.com/b2/cloud-storage.html&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Backblaze B2&lt;/a&gt; bucket,
+and email me a report.
+While I probably &lt;em&gt;should&lt;/em&gt; stop all containers before doing this, in a low
+usage-scenario like mine, I&amp;rsquo;ve never had any issues. I chose to use Backblaze B2
+versus AWS S3 or Google Cloud because I&amp;rsquo;ve been a big fan of their
+service for a long time, and their pricing is really good
+($0.005/GB/month with the first 10GB free).&lt;/p&gt;
+
+&lt;h2 id=&#34;automation&#34;&gt;Automation&lt;/h2&gt;
+
+&lt;p&gt;As much as I love tinkering with things, I do like making the machines work for me.&lt;/p&gt;
+
+&lt;h3 id=&#34;docker-container-updates&#34;&gt;Docker Container Updates&lt;/h3&gt;
+
+&lt;p&gt;Every night, an instance of &lt;a href=&#34;https://github.com/containrrr/watchtower&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Watchtower&lt;/a&gt;
+runs and updates any container which has a new image version available.
+While probably not the best for a true production environment,
+as this is just for myself, I don&amp;rsquo;t mind living life dangerously.&lt;/p&gt;
+
+&lt;h3 id=&#34;host-os-updates&#34;&gt;Host OS Updates&lt;/h3&gt;
+
+&lt;p&gt;I setup both &lt;code&gt;apticron&lt;/code&gt; and &lt;code&gt;unattended-upgrades&lt;/code&gt; on the Ubuntu Server host
+so that I get emails about available package updates, and automatic security
+update reports.&lt;/p&gt;
+
+&lt;h3 id=&#34;automated-backups&#34;&gt;Automated Backups&lt;/h3&gt;
+
+&lt;p&gt;As mentioned above, a Duplicati container creates a backup every night and emails
+a report.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/server_diagram.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/server_diagram.jpg&#34;  alt=&#34;Rough diagram of final setup&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Rough diagram of final setup&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;things-i-m-happy-with&#34;&gt;Things I&amp;rsquo;m Happy With&lt;/h3&gt;
+
+&lt;p&gt;Overall, I&amp;rsquo;m extremely pleased with how everything turned out. I understand all the
+hype of containers now. Containers make it so easy to quickly run applications
+in a consistent way in a pseudo virtual machine. I&amp;rsquo;ve really come to love them just for
+trying things out. Instead of launching a new VM just to try to
+&lt;a href=&#34;https://xkcd.com/1168/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;remember the proper flags for a &lt;code&gt;tar&lt;/code&gt; command&lt;/a&gt;, I can quickly
+launch a disposable Ubuntu container and be immediately dumped into a shell.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-docker&#34; data-lang=&#34;docker&#34;&gt;sudo docker run -it ubuntu&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;All in all, my applications now are running on my server in my apartment while being securely
+accessible from the outside world, while costing nearly the same as before. Everything
+is automatically updated along with nightly off-site backups with email reports.&lt;/p&gt;
+
+&lt;h3 id=&#34;things-i-m-not-happy-with&#34;&gt;Things I&amp;rsquo;m Not Happy With&lt;/h3&gt;
+
+&lt;h4 id=&#34;docker-mysql&#34;&gt;Docker MySQL&lt;/h4&gt;
+
+&lt;p&gt;With hosting all my apps on the same stack in the past, they all shared the same
+MySQL server. Now, with Docker, every application has its own MySQL server, as there
+is no easy way to have multiple databases and users created automatically with the
+MySQL Docker image without creating some special bash scripts.
+This just seems strange to me, as SQL servers are meant to
+handle multiple databases, and running a bunch of extra instances is a lot of
+unnecessary memory overhead.&lt;/p&gt;
+
+&lt;h4 id=&#34;docker-secrets-1&#34;&gt;Docker Secrets&lt;/h4&gt;
+
+&lt;p&gt;I feel like Docker doesn&amp;rsquo;t really have a &lt;em&gt;great&lt;/em&gt; way to manage secrets. Right now, you can
+&lt;a href=&#34;https://docs.docker.com/engine/swarm/secrets/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;create secrets with Docker&lt;/a&gt;,
+but they are only made available to containers via files and are only
+available for Docker Swarms.
+This sucks, because nearly every container uses environment variables to handle secrets.
+Unless you add some shims to your Dockerfiles to support loading values from
+files into environment variables, you&amp;rsquo;re out of luck. This essentially forces you
+to either pass them on the command-line, or put them into environment files.&lt;/p&gt;
+
+&lt;h4 id=&#34;argo-pricing&#34;&gt;Argo Pricing&lt;/h4&gt;
+
+&lt;p&gt;Cloudflare Argo charges $0.10/GB after the first gigabyte of data. This means I
+have be &lt;strong&gt;very&lt;/strong&gt; careful in what I upload/download from my server via the tunnels,
+especially with bandwidth heavy stuff like Nextcloud. Unfortunately, really
+solving this problem would require me to use a different service
+which charges differently, or hosting my own solution, which I talk about more below.&lt;/p&gt;
+
+&lt;h3 id=&#34;future-work&#34;&gt;Future Work&lt;/h3&gt;
+
+&lt;p&gt;The biggest limitation that bothers me is that Argo Tunnel only works for HTTP traffic.
+This means that I can&amp;rsquo;t run any sort of game servers that work over TCP traffic
+without using a service like &lt;a href=&#34;https://serveo.net&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Serveo&lt;/a&gt; or &lt;a href=&#34;https://ngrok.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;ngrok&lt;/a&gt;
+on an ad-hoc basis. I could use a &lt;code&gt;f1-micro&lt;/code&gt; instance in the free-tier of
+&lt;a href=&#34;https://cloud.google.com/free/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Google Cloud&lt;/a&gt; to run
+a server with Serveo or &lt;a href=&#34;https://github.com/fatedier/frp&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;frp&lt;/a&gt; or something.
+However, I really like how well Argo Tunnel &lt;i&gt;Just Works&lt;/i&gt;™ with Hera. I could
+also potentially restructure everything with a Traefik reverse-proxy on the Docker
+host, and then use an ngrok tunnel for the same price, as ngrok allows
+tunneling TCP traffic, and doesn&amp;rsquo;t charge based on bandwidth usage.
+However, I have more faith in Cloudflare as a significantly larger company with a
+long history.&lt;/p&gt;
+
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.ubuntu.com/lts/serverguide/automatic-updates.html&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://help.ubuntu.com/lts/serverguide/automatic-updates.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.linode.com/docs/email/postfix/postfix-smtp-debian7/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.linode.com/docs/email/postfix/postfix-smtp-debian7/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
         
         </description>
     </item>

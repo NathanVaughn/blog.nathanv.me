@@ -27,8 +27,396 @@
         
         
         
-          Building a server inside an old Sun Ultra 24 case
-          
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;Early last year, I went to my university&amp;rsquo;s surplus store. I was looking to
+purchase an
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Mac_Pro#1st_generation_(Tower)&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;old Mac Pro tower&lt;/a&gt;
+with the intent to do a case mod with it, since I knew the surplus store had a
+few available for cheap and I thought it would be a fun project.
+However, while looking around, I spotted a beautiful
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Ultra_24&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Sun Ultra 24&lt;/a&gt; on the shelf. I quickly
+decided to purchase that instead for two reasons.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The novelty value, as Sun Microsystems is long-gone.&lt;/li&gt;
+&lt;li&gt;It has standard ATX parts, while a Mac Pro was going to require liberal application
+of a Dremel.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/from_surplus.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/from_surplus.jpg&#34;  alt=&#34;Sun Ultra 24 from surplus&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;My Sun Ultra 24 after taking it home from surplus.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;build&#34;&gt;Build&lt;/h2&gt;
+
+&lt;p&gt;Before I started my build, I did notice
+&lt;a href=&#34;https://www.servethehome.com/introducing-the-ultra-epyc-amd-powered-sun-ultra-24-workstation/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;ServeTheHome&amp;rsquo;s build&lt;/a&gt;
+in the exact same case. While I like their build a lot, I also wanted to
+shoot for an as original appearance as possible with mine.&lt;/p&gt;
+
+&lt;h3 id=&#34;pre-build-configuration&#34;&gt;Pre-Build Configuration&lt;/h3&gt;
+
+&lt;p&gt;I kind of forgot to take pictures before I gutted the case, so below is
+what a Sun Ultra 24 is supposed to look like. Mine looked about the same,
+except a lot more dust, scratches, and missing parts.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/old_insides.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/old_insides.jpg&#34;  alt=&#34;Brand-new Sun Ultra 24 insides&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Brand-new Sun Ultra 24 insides&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/old_exterior.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/old_exterior.jpg&#34;  alt=&#34;Sun Ultra 24 exterior&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Sun Ultra 24 exterior&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;parts&#34;&gt;Parts&lt;/h3&gt;
+
+&lt;p&gt;While I initially was planning on swapping out the components of my desktop into
+this case, I ended up building a server inside of it. I was getting &lt;em&gt;real&lt;/em&gt; tired
+of the constant noise from my &lt;a href=&#34;https://blog.nathanv.me/posts/self-host-docker/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;HP ProLiant DL 360&lt;/a&gt;
+and thought it would be best to build a &amp;ldquo;new&amp;rdquo; machine. The perfect opportunity came
+during Black Friday this year with a Ryzen 7 2700x for $159.00. I decided replace my
+old i7-4790k with that, and use the old parts from my desktop to build a new server.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://pcpartpicker.com/list/C7kfmg&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;PCPartPicker Part List&lt;/a&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Type&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Item&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Status&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;CPU&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/6vzv6h/intel-cpu-bx80646i74790k&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Intel Core i7-4790K 4 GHz Quad-Core Processor&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Already Owned&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;CPU Cooler&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/hmtCmG/cooler-master-cpu-cooler-rr212e20pkr2&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Cooler Master Hyper 212 EVO 82.9 CFM Sleeve Bearing CPU Cooler&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Purchased&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;Motherboard&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/VfK7YJ/asus-motherboard-z97ar&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Asus Z97-AR ATX LGA1150 Motherboard&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Already Owned&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;Memory&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/bQFPxr/patriot-memory-pvl38g160c0kb&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Patriot Viper 3 Low Profile Blue 8 GB (2 x 4 GB) DDR3-1600 Memory&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Already Owned&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;Memory&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/kBNp99/patriot-memory-pvl38g160c0k&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Patriot Viper 3 Low Profile Black 8 GB (2 x 4 GB) DDR3-1600 Memory&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Already Owned&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;Storage&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/rd7wrH/western-digital-internal-hard-drive-wd3200aajs&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Western Digital Caviar Blue 320 GB 3.5&amp;rdquo; 7200RPM Internal Hard Drive&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Purchased&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;Power Supply&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;a href=&#34;https://pcpartpicker.com/product/xDMwrH/evga-br-450w-80-bronze-certified-atx-power-supply-100-br-0450-k1&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;EVGA BR 450 W 80+ Bronze Certified ATX Power Supply&lt;/a&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Purchased&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;strong&gt;Case&lt;/strong&gt;&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Sun Ultra 24&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Already Owned&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;I also liberated the 4-port gigabit network card from my ProLiant.&lt;/p&gt;
+
+&lt;h3 id=&#34;post-build-configuration&#34;&gt;Post-Build Configuration&lt;/h3&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the result, since I also forgot to take pictures during the build.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/new_insides.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/new_insides.jpg&#34;  alt=&#34;Post-build computer&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;My &amp;lsquo;new&amp;rsquo; Sun Ultra 24&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;I know there&amp;rsquo;s a mess of power supply cables at the top, but there&amp;rsquo;s no window
+on this case so I don&amp;rsquo;t care.&lt;/p&gt;
+
+&lt;h2 id=&#34;problems&#34;&gt;Problems&lt;/h2&gt;
+
+&lt;p&gt;Oh my goodness, this was the most frustrating computer build I have ever done.
+There were so many problems. Some, I had the foresight to anticipate. Some, not.
+Here they are in no particular order.&lt;/p&gt;
+
+&lt;h3 id=&#34;power-supply-cable-length&#34;&gt;Power Supply Cable Length&lt;/h3&gt;
+
+&lt;p&gt;I was initially hoping to use the power supply that came with the computer
+since it was a perfectly adequate 530W supply. Unfortunately, it was made
+specifically for that chassis, and the 24-pin ATX power cable was about 3 inches too
+short. Thankfully, I had already purchased a new EVGA 450W power supply in the event
+I wasn&amp;rsquo;t able to use the old power supply.&lt;/p&gt;
+
+&lt;h3 id=&#34;power-supply-orientation&#34;&gt;Power Supply Orientation&lt;/h3&gt;
+
+&lt;p&gt;This wasn&amp;rsquo;t really a problem, but I was surprised that unlike most modern cases,
+the power supply only fits one direction. Thankfully, I didn&amp;rsquo;t have
+&lt;a href=&#34;https://www.servethehome.com/introducing-the-ultra-epyc-amd-powered-sun-ultra-24-workstation/5/#attachment_32156&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;the problem&lt;/a&gt;
+that ServeTheHome did with their power supply.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/new_power_supply.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/new_power_supply.jpg&#34;  alt=&#34;New power supply installed&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;New power supply installed&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;motherboard-rubber-spacer&#34;&gt;Motherboard Rubber Spacer&lt;/h3&gt;
+
+&lt;p&gt;Unfortunately, I didn&amp;rsquo;t get a picture of this, but behind the motherboard are
+two rubber spacers. Well, with a new Hyper 212 EVO installed, one of these
+rubber spacers interferes with the mounting bracket. Thankfully, it was easily
+ripped off.&lt;/p&gt;
+
+&lt;h3 id=&#34;front-panel-connector-cables&#34;&gt;Front Panel Connector Cables&lt;/h3&gt;
+
+&lt;p&gt;Most of the front panel connectors ended up being useless. My motherboard
+doesn&amp;rsquo;t even have FireWire headers so I removed those cables completely. The USB header
+cable was barely long enough, but made it. On the other hand, the audio header cable was
+nowhere near long enough. However, since I was only planning on using this
+machine as a server, and this motherboard already had some audio issues from
+a previous ESD incident, I decided to just remove this cable too.&lt;/p&gt;
+
+&lt;h3 id=&#34;missing-pcie-slot-covers&#34;&gt;Missing PCIe Slot Covers&lt;/h3&gt;
+
+&lt;p&gt;I already knew about this when I bought the system, but it was missing some PCIe
+slot covers. Since I don&amp;rsquo;t like missing pieces, I bought
+&lt;a href=&#34;https://www.amazon.com/gp/product/B07TXBGGDM&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;some spares&lt;/a&gt; on Amazon,
+but unfortunately they don&amp;rsquo;t quite match.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/new_pcie_slots.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/new_pcie_slots.jpg&#34;  alt=&#34;Mismatched PCIe slot covers&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Mismatched PCIe slot covers&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;missing-drive-sleds&#34;&gt;Missing Drive Sleds&lt;/h3&gt;
+
+&lt;p&gt;I was also disappointed when I bought the system that either the computer never came
+with all the drive sleds, or they were removed at some point. Either way, if I ever
+want to add more hard drives, I&amp;rsquo;ll need to source
+&lt;a href=&#34;https://www.ebay.com/itm/Lot-of-5-Sun-Microsystems-HDD-Hot-Swap-3-5-Hard-Drive-Disk-Tray-Caddy-20-screw/153755065494&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;some from eBay&lt;/a&gt;
+or something. I haven&amp;rsquo;t purchased any yet, since the cost of them would nearly equal
+what I paid for the original computer.&lt;/p&gt;
+
+&lt;h3 id=&#34;missing-ultra-24-badge&#34;&gt;Missing Ultra 24 Badge&lt;/h3&gt;
+
+&lt;p&gt;As you can see in the &lt;a href=&#34;img/from_surplus.jpg&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;old exterior photo&lt;/a&gt;,
+at the bottom, the
+&lt;a href=&#34;https://www.servethehome.com/wp-content/uploads/2019/01/The-Ultra-EPYC-Cover.jpg&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Ultra 24 badge&lt;/a&gt;
+is missing. I&amp;rsquo;m going to try and 3D print a replacement at some point.&lt;/p&gt;
+
+&lt;h3 id=&#34;fan-noise&#34;&gt;Fan Noise&lt;/h3&gt;
+
+&lt;p&gt;The whole point of this build was to have a quieter computer. I quickly discovered that
+the rear case fan is &lt;em&gt;bloody&lt;/em&gt; loud, which defeated the entire purpose of this project.
+This fan has a very weird mount which doesn&amp;rsquo;t make it easy to just replace with a
+new fan.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/old_fan.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/old_fan.jpg&#34;  alt=&#34;Sun Ultra 24 rear case fan mount&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Sun Ultra 24 rear case fan mount&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Thankfully, I was able to go into the BIOS and disable the fan until
+the CPU reaches a pretty high temperature. Otherwise, I was just going to unplug it.
+With the minimal CPU load of this machine,
+and the Hyper 212 EVO cooling the processor, the fan has yet to come on.&lt;/p&gt;
+
+&lt;h3 id=&#34;front-panel-header&#34;&gt;Front Panel Header&lt;/h3&gt;
+
+&lt;p&gt;This was the worst thing by far. I hadn&amp;rsquo;t realized that the front panel header
+(power switch, power LED, etc.) is not standardized.&lt;/p&gt;
+
+&lt;p&gt;This is the front panel header for the Sun Ultra 24.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/old_header.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/old_header.jpg&#34;  alt=&#34;Sun Ultra 24 front panel header&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Sun Ultra 24 front panel header&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;This is the front panel header for my Asus Z97-AR.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/asus_z97-ar_header.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/asus_z97-ar_header.jpg&#34;  alt=&#34;Asus Z97-AR front panel header&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Asus Z97-AR front panel header&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;As you can see, the Asus motherboard header is &lt;strong&gt;wider&lt;/strong&gt; than the Ultra 24.
+In order to rectify this, I bought some
+&lt;a href=&#34;https://www.amazon.com/gp/product/B07BVS3FX7&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;jumper wire extensions&lt;/a&gt; from Amazon
+and used some trial-and-error and help from
+&lt;a href=&#34;https://forums.tomshardware.com/threads/front-panel-connector-pin-outs.3236564/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;this forum post&lt;/a&gt;
+to connect everything.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/new_header.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/new_header.jpg&#34;  alt=&#34;New front panel header connection&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;New front panel header connection&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;It&amp;rsquo;s ugly but it works.&lt;/p&gt;
+
+&lt;p&gt;Here is the pinout I figured out for reference:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Ultra 24&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Connection&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Red&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Probably +12V&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Black&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Probably GND&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Green&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;PWR LED +&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Blue&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;PWR LED -&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Yellow&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;PWR SW&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;White&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;PWR SW&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The power switch is just shorting two pins, so positive versus negative doesn&amp;rsquo;t matter.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Overall, I&amp;rsquo;m happy with the build. Despite all the problems, it has ended up working
+well, and it&amp;rsquo;s nearly dead-silent. My only complaint is the power LED is
+incredibly bright, especially at night. I had some problems transferring my data
+from my old server to it, but that&amp;rsquo;s beyond the scope of this post.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m very glad I didn&amp;rsquo;t transfer my desktop into this case, with the number of problems
+I encountered. How tight the case is, the lack of cable management,
+no 2.5&amp;rdquo; drive support (for my SSD),
+only one 5.25&amp;rdquo; bay, etc. would have all been major challenges.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/new_home.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/new_home.jpg&#34;  alt=&#34;Post-build computer&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;The computer in it&amp;rsquo;s new home&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
         
         </description>
     </item>

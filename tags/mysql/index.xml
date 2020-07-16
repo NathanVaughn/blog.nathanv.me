@@ -27,8 +27,139 @@
         
         
         
-          Replacing existing MySQL 8 containers in Docker Compose stacks with MariaDB
-          
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;Recently, when I setup a number of Docker Compose stacks for myself, I naively
+used MySQL 8 databases. I had heard of MariaDB in the past, and knew it was a
+drop-in replacement to MySQL, but I didn&amp;rsquo;t really know much about it.
+After recently reading about some of MariaDB&amp;rsquo;s
+&lt;a href=&#34;https://mariadb.com/kb/en/library/mariadb-vs-mysql-features/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;features and speed-improvements&lt;/a&gt;
+over MySQL Community Edition
+(and &lt;a href=&#34;https://www.reddit.com/r/sysadmin/search/?q=flair_name%3A%22Rant%22%20oracle&amp;amp;restrict_sr=1&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;many people&lt;/a&gt;
+including myself &lt;strong&gt;&lt;em&gt;really&lt;/em&gt;&lt;/strong&gt; hate Oracle),
+I decided I wanted to swap out my MySQL databases.
+This ended up being more complicated than I initially hoped.&lt;/p&gt;
+
+&lt;h2 id=&#34;challenge&#34;&gt;Challenge&lt;/h2&gt;
+
+&lt;p&gt;The challenge was that I had previously used MySQL 8 for my databases.
+This presented the problem that I simply couldn&amp;rsquo;t stop the old MySQL container,
+and start a new MariaDB container with the existing volume of the &lt;code&gt;/var/lib/mysql&lt;/code&gt;
+folder (which contains MySQL&amp;rsquo;s data) as is supported
+with &lt;a href=&#34;https://mariadb.com/kb/en/library/upgrading-from-mysql-to-mariadb/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;older versions of MySQL&lt;/a&gt;.
+This meant that I would need to export the data from each database, delete the volume,
+start a new MariaDB database, and reimport the data. While it sounds simple enough,
+it quickly became very tedious.&lt;/p&gt;
+
+&lt;h2 id=&#34;process&#34;&gt;Process&lt;/h2&gt;
+
+&lt;p&gt;The general process was as follows:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Dump the MySQL database of the current database container.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;sudo docker exec -i container_name mysqldump -u username -p database &amp;gt; database_db.sql&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Stop the Docker Compose stack.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;sudo docker-compose down&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Change the &lt;code&gt;docker-compose.yml&lt;/code&gt; file to use MariaDB.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-diff&#34; data-lang=&#34;diff&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-   command: &amp;#39;--default-authentication-plugin=mysql_native_password&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&lt;/span&gt;    env_file:
+        - ./.env
+&lt;span style=&#34;color:#f92672&#34;&gt;-   image: &amp;#39;mysql:latest&amp;#39;
+&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;+   image: &amp;#39;mariadb:latest&amp;#39;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Delete the old data volume.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;sudo docker volume rm volume_name&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Start the modified Docker Compose stack.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;sudo docker-compose up -d&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Wait for the MariaDB container to become ready, and load in the data.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code&gt;sudo docker exec -i container_name mysql -u username -p database &amp;lt; database_db.sql&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;automating&#34;&gt;Automating&lt;/h2&gt;
+
+&lt;p&gt;After doing this process by hand twice, I quickly decided to write a script to do it
+for me as I use a standard naming convention for all of my Docker Compose stacks and really
+wanted to speed up the process&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;WARNING: DON&amp;rsquo;T USE THIS SCRIPT WITHOUT GOOD BACKUPS&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#!/bin/bash
+&lt;/span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# inputs&lt;/span&gt;
+
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Enter application name (lower case):&amp;#34;&lt;/span&gt;
+read APPNAME
+
+read -p &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Enter the directory with the docker-compose.yml file: &amp;#34;&lt;/span&gt; -e -i &lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;pwd&lt;span style=&#34;color:#e6db74&#34;&gt;`&lt;/span&gt;/$APPNAME DOCKERDIR
+read -p &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Enter the container name: &amp;#34;&lt;/span&gt; -e -i &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;APPNAME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;_db_1 CONTAINERNAME
+read -p &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Enter the container volume name: &amp;#34;&lt;/span&gt; -e -i &lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;APPNAME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;_db_data VOLUMENAME
+read -p &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Enter the MySQL database: &amp;#34;&lt;/span&gt; -e -i $APPNAME DATABASE
+read -p &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Enter the MySQL username: &amp;#34;&lt;/span&gt; -e -i $APPNAME USERNAME
+read -p &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Enter the MySQL password: &amp;#34;&lt;/span&gt; -s PASSWORD
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# -----------------&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Data export&lt;/span&gt;
+
+FILENAME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;DATABASE&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;_db.sql
+
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Changing directories to &lt;/span&gt;$DOCKERDIR&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+cd $DOCKERDIR
+
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Dumping MySQL database to &lt;/span&gt;$FILENAME&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+sudo docker exec -i $CONTAINERNAME mysqldump -u $USERNAME -p$PASSWORD $DATABASE &amp;gt; $FILENAME
+
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Stopping containers&amp;#34;&lt;/span&gt;
+sudo docker-compose down
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# -----------------&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Wait for user to modify compose file&lt;/span&gt;
+
+read -p &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Press enter once you have modified the docker-compose.yml file&amp;#34;&lt;/span&gt;
+
+&lt;span style=&#34;color:#75715e&#34;&gt;# -----------------&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# Data import&lt;/span&gt;
+
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Changing directories to &lt;/span&gt;$DOCKERDIR&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+cd $DOCKERDIR
+
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Deleting old volume &lt;/span&gt;$VOLUMENAME&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+sudo docker volume rm $VOLUMENAME
+
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Starting containers&amp;#34;&lt;/span&gt;
+sudo docker-compose up -d
+
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Waiting 90 seconds&amp;#34;&lt;/span&gt;
+sleep &lt;span style=&#34;color:#ae81ff&#34;&gt;90&lt;/span&gt;
+
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Loading MySQL database from &lt;/span&gt;$FILENAME&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sudo docker exec -i &lt;/span&gt;$CONTAINERNAME&lt;span style=&#34;color:#e6db74&#34;&gt; mysql -u &lt;/span&gt;$USERNAME&lt;span style=&#34;color:#e6db74&#34;&gt; -p&lt;/span&gt;$PASSWORD&lt;span style=&#34;color:#e6db74&#34;&gt; &lt;/span&gt;$DATABASE&lt;span style=&#34;color:#e6db74&#34;&gt; &amp;lt; &lt;/span&gt;$FILENAME&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
+sudo docker exec -i $CONTAINERNAME mysql -u $USERNAME -p$PASSWORD $DATABASE &amp;lt; $FILENAME
+
+&lt;span style=&#34;color:#75715e&#34;&gt;#echo &amp;#34;Removing $DOCKERDIR/$FILENAME&amp;#34;&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;#rm $DOCKERDIR/$FILENAME&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;With a bit of time and effort, I&amp;rsquo;ve now converted all my MySQL databases to MariaDB
+as part of my goal of &lt;a href=&#34;https://www.cnbc.com/2018/08/01/amazon-plans-to-move-off-oracle-software-by-early-2020.html&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;ridding myself&lt;/a&gt; of all Oracle software.&lt;/p&gt;
+
         
         </description>
     </item>

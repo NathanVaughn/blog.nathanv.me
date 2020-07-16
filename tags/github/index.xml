@@ -28,8 +28,253 @@
         
         
         
-          How I used GitHub Actions to completely automate the building and deployment of my personal site (and this blog)
-          
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;A little while back, GitHub released their
+&lt;a href=&#34;https://github.com/features/actions&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Actions&lt;/a&gt;
+integrated CI/CD (continuous integration and delivery) platform.
+I signed up for the beta and managed to get in. This article will cover
+how I used GitHub Actions to completely automate the building and deployment
+of my personal site (and this blog).&lt;/p&gt;
+
+&lt;h2 id=&#34;actions-introduction&#34;&gt;Actions Introduction&lt;/h2&gt;
+
+&lt;p&gt;GitHub Actions is a continuous
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Continuous_integration&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;integration&lt;/a&gt; and
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Continuous_delivery&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;delivery&lt;/a&gt; product. It&amp;rsquo;s
+similar to &lt;a href=&#34;https://travis-ci.org/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Travis CI&lt;/a&gt; or
+&lt;a href=&#34;https://circleci.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Circle CI&lt;/a&gt; or other similar existing providers.
+In simple terms, it means that on every commit, pull request,
+or whatever else you setup, scripts run. These can be to run tests to make sure
+your commit doesn&amp;rsquo;t break anything (integration), or to automatically format code,
+or to deploy your software (delivery), or anything else you want.&lt;/p&gt;
+
+&lt;p&gt;In the case of GitHub Actions,
+&lt;a href=&#34;https://help.github.com/en/articles/configuring-a-workflow&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;these scripts&lt;/a&gt;
+are defined in &lt;code&gt;.yml&lt;/code&gt; files placed
+in the folder &lt;code&gt;.github/workflows/&lt;/code&gt; in the root of your repository
+(&lt;a href=&#34;https://github.com/NathanVaughn/nathanv.me/blob/master/.github/workflows/main.yml&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;example&lt;/a&gt;).
+The workflows you setup can be run on repository events (push, pull request, etc.),
+webhook events (forking, wiki update, etc.), scheduled events (a cron schedule),
+or external events (external webhook). These workflows run on
+&lt;a href=&#34;https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;premade Docker containers&lt;/a&gt;
+for a variety of operating systems, which include a lot of useful
+software already installed (like Python 3, webpack, MySQL, etc.).&lt;/p&gt;
+
+&lt;p&gt;However, if you need more functionality than what is available in the workflows,
+or want to make something reusable, you can create your own
+&lt;a href=&#34;https://help.github.com/en/articles/creating-a-docker-container-action&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Docker container&lt;/a&gt;
+or &lt;a href=&#34;https://help.github.com/en/articles/creating-a-javascript-action&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;JavaScript&lt;/a&gt;
+action. These are automatically executed within the existing Docker container your
+action runs in, seamlessly.&lt;/p&gt;
+
+&lt;p&gt;Arguably, the best part of Actions, is the
+&lt;a href=&#34;https://github.com/marketplace?type=actions&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Marketplace&lt;/a&gt;. With the GitHub marketplace,
+people can make their custom actions available for others to use, and you can import
+them into your workflows easily. GitHub also publishes some of
+&lt;a href=&#34;https://github.com/actions&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;their own actions&lt;/a&gt;
+with some basic, yet widely used functionality.&lt;/p&gt;
+
+&lt;h2 id=&#34;my-website-setup&#34;&gt;My Website Setup&lt;/h2&gt;
+
+&lt;p&gt;My website is built with the
+&lt;a href=&#34;https://gohugo.io&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Hugo&lt;/a&gt; static site generator, using a theme I made for myself.
+I admit, my website doesn&amp;rsquo;t exactly have the cleanest structure. While Hugo is meant
+to be used with Markdown files (like this blog), I wanted &lt;em&gt;extremely&lt;/em&gt; structured
+content for my website. In order to do this, I used Hugo&amp;rsquo;s
+&lt;a href=&#34;https://gohugo.io/templates/data-templates/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;data templates&lt;/a&gt;
+(&lt;a href=&#34;https://github.com/NathanVaughn/nathanv.me/blob/master/data/workexperience.yml&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;example&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Because the theme and actual content are extremely coupled together,
+I decided not to release the theme separately, and just tie it into my
+main Hugo site repo. This means that I&amp;rsquo;m not using git submodules,
+and my npm scripts for the HTML/CSS are in the same &lt;code&gt;package.json&lt;/code&gt; file as
+my scripts for Hugo.&lt;/p&gt;
+
+&lt;p&gt;Anyways, this was my build process for my site previously:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Make content/theme update&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;npm run svgmin&lt;/code&gt; to minify SVG files (if needed)&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;npm run critical&lt;/code&gt; to generate new &lt;a href=&#34;https://www.sitelocity.com/critical-path-css-generator&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;critical CSS&lt;/a&gt; (if needed)&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;npm run build:css&lt;/code&gt; to polyfill and minify the CSS (if needed)&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;npm run build:js&lt;/code&gt; to minify the JS (if needed)&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;hugo&lt;/code&gt; to actually build the site&amp;rsquo;s contents&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;npm run beautify&lt;/code&gt; to beautify the output HTML because whitespace with HTML
+templates is surprisingly difficult&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;npm run deploy&lt;/code&gt; to actually commit and push the changes&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;While I did basically have steps 4-7 clumped together into a single &lt;code&gt;build&lt;/code&gt; script,
+it was clunky and I&amp;rsquo;d always inevitably forget to run something. No more!&lt;/p&gt;
+
+&lt;h2 id=&#34;my-website-actions-workflow&#34;&gt;My Website Actions Workflow&lt;/h2&gt;
+
+&lt;p&gt;With the help of GitHub Actions, I was able to automate every single step of this
+process, plus steps I hadn&amp;rsquo;t even automated previously.&lt;/p&gt;
+
+&lt;p&gt;My workflow file (at time of writing):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Build
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt;:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;push&lt;/span&gt;:
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;branches&lt;/span&gt;:
+    - master
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;jobs&lt;/span&gt;:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;build&lt;/span&gt;:
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;runs-on&lt;/span&gt;: ubuntu-latest
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;steps&lt;/span&gt;:
+    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Checkout code
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: actions/checkout@master
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt;:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;submodules&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Install Node
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: actions/setup-node@master
+    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Install dependencies
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: npm install
+    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Build Critical CSS
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: npm run critical
+    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Build Site
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: npm run build
+    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Deploy Site
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: peaceiris/actions-gh-pages@master
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;: success()
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;env&lt;/span&gt;:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;ACTIONS_DEPLOY_KEY&lt;/span&gt;: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;PUBLISH_BRANCH&lt;/span&gt;: gh-pages
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;PUBLISH_DIR&lt;/span&gt;: ./public
+    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Purge Cache
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: nathanvaughn/actions-cloudflare-purge@master
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;: success()
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;env&lt;/span&gt;:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;CLOUDFLARE_ZONE&lt;/span&gt;: ${{ secrets.CLOUDFLARE_ZONE }}
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;CLOUDFLARE_AUTH_KEY&lt;/span&gt;: ${{ secrets.CLOUDFLARE_AUTH_KEY }}
+    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Load Site
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: curl $(echo $GITHUB_REPOSITORY | cut -d &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt; -f &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;-) --location --output /dev/&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&#34;breakdown&#34;&gt;Breakdown&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt;:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;push&lt;/span&gt;:
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;branches&lt;/span&gt;:
+    - master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I want this workflow to run on every single push to the master branch. I don&amp;rsquo;t have
+this set to &lt;em&gt;every&lt;/em&gt; branch, because I publish the output HTML to the &lt;code&gt;gh-pages&lt;/code&gt; branch
+for &lt;a href=&#34;https://pages.github.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;GitHub Pages&lt;/a&gt; (how I host the site). Plus, if I want to work on a separate branch and not have the changes deployed, I can do so.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;jobs&lt;/span&gt;:
+  &lt;span style=&#34;color:#66d9ef&#34;&gt;build&lt;/span&gt;:
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;runs-on&lt;/span&gt;: ubuntu-latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You can define multiple &amp;ldquo;jobs&amp;rdquo; per workflow, but mine just has one called &amp;ldquo;build&amp;rdquo;.
+I want it to run on the latest build of Ubuntu.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;steps&lt;/span&gt;:
+    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Checkout code
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: actions/checkout@master
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt;:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;submodules&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This is where the steps of the job start. To begin, I use the latest copy of the premade
+&lt;a href=&#34;https://github.com/actions/checkout&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;checkout&lt;/a&gt; action to &lt;code&gt;git clone&lt;/code&gt; my repository
+and initialize all submodules (though I don&amp;rsquo;t use any submodules currently for my main
+site).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Install Node
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: actions/setup-node@master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Next I use the premade &lt;a href=&#34;https://github.com/actions/setup-node&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;setup-node&lt;/a&gt; action
+to setup NodeJS and npm.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Install dependencies
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: npm install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;After that, I simply run the &lt;code&gt;npm install&lt;/code&gt; command to install all the dependencies.
+Since I&amp;rsquo;m using the &lt;a href=&#34;https://www.npmjs.com/package/hugo-bin&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;hugo-bin&lt;/a&gt; package,
+this also sets up Hugo for me. While I &lt;em&gt;could&lt;/em&gt; run a different script
+to download and install Hugo, doing it in one shot with npm just makes things easier.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Build Critical CSS
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: npm run critical&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Next, I run my npm script to start the Hugo server, and generate the critical CSS.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Build Site
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: npm run build&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Then, I run my npm script to build the site (CSS, JS, Hugo) as described above.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Deploy Site
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: peaceiris/actions-gh-pages@master
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;: success()
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;env&lt;/span&gt;:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;ACTIONS_DEPLOY_KEY&lt;/span&gt;: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;PUBLISH_BRANCH&lt;/span&gt;: gh-pages
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;PUBLISH_DIR&lt;/span&gt;: ./public&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Afterwards, I use &lt;a href=&#34;https://github.com/peaceiris/actions-gh-pages&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;an action&lt;/a&gt;
+from the Marketplace to automatically commit and push all the changes to the &lt;code&gt;./public&lt;/code&gt; directory
+to my &lt;code&gt;gh-pages&lt;/code&gt; branch. The &lt;code&gt;if: success()&lt;/code&gt; statements means this step will only run
+if the previous step ran successfully. This is important, as I don&amp;rsquo;t want to commit a
+broken site build.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Purge Cache
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: nathanvaughn/actions-cloudflare-purge@master
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;: success()
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;env&lt;/span&gt;:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;CLOUDFLARE_ZONE&lt;/span&gt;: ${{ secrets.CLOUDFLARE_ZONE }}
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;CLOUDFLARE_AUTH_KEY&lt;/span&gt;: ${{ secrets.CLOUDFLARE_AUTH_KEY }}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This uses a custom action
+&lt;a href=&#34;https://github.com/nathanvaughn/actions-cloudflare-purge&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;I made&lt;/a&gt; to purge
+Cloudflare&amp;rsquo;s cache of my site. Otherwise, old CSS or JS can get cached for too
+long leading to things breaking. This uses
+&lt;a href=&#34;https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;repository secrets&lt;/a&gt;
+passed in as environment variables to securely store important tokens.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Load Site
+      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: curl $(echo $GITHUB_REPOSITORY | cut -d &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt; -f &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;-) --location --output /dev/&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;To finish it off, I do a &lt;code&gt;curl&lt;/code&gt; pull of my site to ensure it&amp;rsquo;s working properly.
+This should also make sure Cloudflare refreshes their cache of my site.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;echo $GITHUB_REPOSITORY | cut -d &amp;quot;/&amp;quot; -f 2-&lt;/code&gt; command is simply taking the
+&lt;code&gt;GITHUB_REPOSITORY&lt;/code&gt; environment variable, which gives the author and repository name
+as a single string (like &lt;code&gt;nathanvaughn/nathanv.me&lt;/code&gt;) and returns everything
+past the first &lt;code&gt;/&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;--location&lt;/code&gt; flag tells &lt;code&gt;curl&lt;/code&gt; to follow redirects
+(since my site redirects to HTTPS) and &lt;code&gt;--output /dev/null&lt;/code&gt; just prevents
+the return HTML from being spit out to the console.&lt;/p&gt;
+
+&lt;h2 id=&#34;my-blog-actions-workflow&#34;&gt;My Blog Actions Workflow&lt;/h2&gt;
+
+&lt;p&gt;While the above covered how I setup my website with Actions, the workflow for
+my blog is extremely similar. As I don&amp;rsquo;t use my own theme for my blog,
+I don&amp;rsquo;t use any npm scripts. Therefore, to build the site with Hugo,
+I use someone else&amp;rsquo;s &lt;a href=&#34;https://github.com/peaceiris/actions-hugo&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;custom action&lt;/a&gt;.
+The other steps are all the same.&lt;/p&gt;
+
+&lt;h2 id=&#34;other-uses&#34;&gt;Other Uses&lt;/h2&gt;
+
+&lt;p&gt;There&amp;rsquo;s all sorts of stuff you can do with Actions too.&lt;/p&gt;
+
+&lt;p&gt;I currently have a repository for a Dockerfile of a web app I use.
+I have a &lt;a href=&#34;https://github.com/NathanVaughn/webtrees-docker/blob/master/.github/workflows/main.yml&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;workflow setup&lt;/a&gt;
+which checks the latest version
+of the underlying web app, and if a new version
+has been released (stable, beta, or alpha), it automatically updates the Dockerfile
+to reflect the new version on the appropriate branch of my repo, and commits
+the change. This will cause Docker Hub to automatically build, tag, and publish the
+image. No more subscribing to RSS release feeds and doing updates manually
+(to be fair, most of this is done with a Python script run on a schedule by Actions).&lt;/p&gt;
+
+&lt;p&gt;Another example is my main website again. I have a &lt;a href=&#34;https://github.com/NathanVaughn/nathanv.me/blob/master/.github/workflows/linkchecker.yml&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;separate workflow&lt;/a&gt;
+setup which runs weekly, and checks all the links on the site to see if they&amp;rsquo;re broken,
+and automatically creates GitHub issues for the links that don&amp;rsquo;t work.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;GitHub Actions is extremely powerful, flexible, and best of all, &lt;strong&gt;free&lt;/strong&gt;
+(for public repos).
+There are tons of possibilities, such as running tests, automating administrative tasks,
+doing deployments, or anything else. I&amp;rsquo;m excited to see where GitHub and the community
+take the product.&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.github.com/en/categories/automating-your-workflow-with-github-actions&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://help.github.com/en/categories/automating-your-workflow-with-github-actions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.github.com/en/articles/events-that-trigger-workflows&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://help.github.com/en/articles/events-that-trigger-workflows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://help.github.com/en/articles/contexts-and-expression-syntax-for-github-actions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/sdras/awesome-actions&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://github.com/sdras/awesome-actions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
         
         </description>
     </item>
