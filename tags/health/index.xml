@@ -9,10 +9,97 @@
     <description>Recent content in health on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 24 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 22 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/tags/health/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Wyze Products Update</title>
+      <link>https://blog.nathanv.me/posts/wyze-update/</link>
+      <pubDate>Sat, 22 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/wyze-update/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;A few months ago I posted my reviews of the new Wyze Band and Scale.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Band review &lt;a href=&#34;https://blog.nathanv.me/posts/wyze-band-review/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Scale review &lt;a href=&#34;https://blog.nathanv.me/posts/wyze-scale-review/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Since then, there&amp;rsquo;s been a few things I&amp;rsquo;ve noticed that I&amp;rsquo;d like to share.&lt;/p&gt;
+
+&lt;h2 id=&#34;band-build-quality&#34;&gt;Band Build Quality&lt;/h2&gt;
+
+&lt;p&gt;The build quality of the Band has not been great. The two tabs on each side of the Band
+that hold on the wristband are beginning to crack.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/band-cracking.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/band-cracking.jpg&#34;  alt=&#34;The tabs are starting to crack&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;The tabs are starting to crack&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;I wear the Band at a comfortable setting for me, if anything, a little loose,
+so I don&amp;rsquo;t feel that there is too much pressure being exerted. It&amp;rsquo;s disappointing
+that it&amp;rsquo;s beginning to break so soon into owning it.&lt;/p&gt;
+
+&lt;h2 id=&#34;syncing&#34;&gt;Syncing&lt;/h2&gt;
+
+&lt;p&gt;This is, by far, the most infuriating thing. I can absolutely confirm that the Scale
+and Band &lt;em&gt;do not&lt;/em&gt; whatsoever, unless you manually open up the page for each in the
+Wyze app. Why this is, I have not a clue. The app is already always running in the
+background (there&amp;rsquo;s a persistent notification that tells you as much). Why can&amp;rsquo;t it
+try to automatically sync every 24 hours on its own? I haven&amp;rsquo;t experimented
+enough to confirm this, but if you forget to sync often enough, you may lose
+data.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/missing-sleep.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/missing-sleep.jpg&#34;  alt=&#34;Monday&amp;#39;s sleep data is mysteriously missing in Google Fit&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Monday&amp;rsquo;s sleep data is mysteriously missing in Google Fit&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;I found that I need to remember to manually sync both devices at least once every 24 hours
+to not lose any data.&lt;/p&gt;
+
+&lt;h2 id=&#34;google-fit&#34;&gt;Google Fit&lt;/h2&gt;
+
+&lt;p&gt;On the bright side, Google Fit integration &lt;em&gt;finally&lt;/em&gt; got added to the Band, which is
+fantastic. I complained about this in my review
+&lt;a href=&#34;https://blog.nathanv.me/posts/wyze-band-review/#fitness-apps&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I don&amp;rsquo;t think my reviews really changed. The price points are still unbeatable.
+These are just annoyances to be aware of longer-term.&lt;/p&gt;
+
+        
+        </description>
+    </item>
     
     <item>
       <title>Wyze Scale Review</title>
