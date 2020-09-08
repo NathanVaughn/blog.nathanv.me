@@ -9,10 +9,186 @@
     <description>Recent content in Windows on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 19 Mar 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 08 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/tags/windows/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spin Model Checker on Windows</title>
+      <link>https://blog.nathanv.me/posts/spin-windows/</link>
+      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/spin-windows/</guid>
+      <description>
+        
+          &lt;img src=&#34;https://blog.nathanv.me/posts/spin-windows/img/cover.png&#34;/&gt;
+          
+        
+        
+        
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;For a class, I was trying to install the &lt;a href=&#34;https://spinroot.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Spin&lt;/a&gt;
+formal verification tool &lt;em&gt;somehow&lt;/em&gt; on my Windows computer. I couldn&amp;rsquo;t find
+a good guide, so this is what I figured out.&lt;/p&gt;
+
+&lt;p&gt;While you &lt;em&gt;can&lt;/em&gt; do this with WSL or Cygwin, Spin now has prebuilt Windows
+binaries available, so I think this is way easier.&lt;/p&gt;
+
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;p&gt;You&amp;rsquo;ll need the following software installed&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.7-zip.org/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;7zip&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The following will make life easier&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/download/win&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Git for Windows&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.voidtools.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Everything&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;downloading-extracting-spin&#34;&gt;Downloading/Extracting Spin&lt;/h2&gt;
+
+&lt;p&gt;First, go to Spin &lt;a href=&#34;https://github.com/nimble-code&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;GitHub page&lt;/a&gt;. If you have
+Git already installed, you can just clone this. Or, if you&amp;rsquo;d like,
+you can go to &lt;code&gt;Bin&lt;/code&gt; directory, and click on the latest version of
+&lt;code&gt;spin&amp;lt;ver&amp;gt;_windows64.exe.gz&lt;/code&gt;. Click &amp;ldquo;Download&amp;rdquo; on the right side to get
+only this file.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/download_spin.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/download_spin.jpg&#34;  alt=&#34;Download the latest prebuilt version of Spin&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Download the latest prebuilt version of Spin&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Once that&amp;rsquo;s downloaded, use 7zip to extract the archive.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/extract_spin.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/extract_spin.jpg&#34;  alt=&#34;Extract the archive with 7zip&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Extract the archive with 7zip&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Inside the directory it extracted into will be an executable. Rename this to &lt;code&gt;spin.exe&lt;/code&gt;.
+Now, if you only want the command-line version of Spin, you&amp;rsquo;re basically done.
+You&amp;rsquo;ll just need to use the full path to the &lt;code&gt;spin.exe&lt;/code&gt; executable (unless you
+&lt;a href=&#34;https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;add Spin to your PATH&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h2 id=&#34;gui&#34;&gt;GUI&lt;/h2&gt;
+
+&lt;p&gt;Now, you&amp;rsquo;re probably here to learn how to get the GUI to work on Windows, since
+the above was pretty straight forward.&lt;/p&gt;
+
+&lt;p&gt;First, you&amp;rsquo;ll need to download
+&lt;a href=&#34;https://github.com/nimble-code/Spin/blob/master/optional_gui/ispin.tcl&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;ispin.tcl&lt;/code&gt;&lt;/a&gt;
+from the &lt;code&gt;optional_gui&lt;/code&gt; directory on the Spin GitHub page. The easiest way to do
+this is to right-click &amp;ldquo;Raw&amp;rdquo; and then &amp;ldquo;Save link as&amp;rdquo;.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/download_ispin.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/download_ispin.jpg&#34;  alt=&#34;Download the GUI file for Spin&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Download the GUI file for Spin&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Place this file in the &lt;em&gt;same&lt;/em&gt; directory as &lt;code&gt;spin.exe&lt;/code&gt;. It will not work otherwise.&lt;/p&gt;
+
+&lt;p&gt;The next problem is getting &lt;a href=&#34;https://www.tcl.tk/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Tcl/Tk&lt;/a&gt; installed,
+which is needed to run this file.&lt;/p&gt;
+
+&lt;h3 id=&#34;git-for-windows&#34;&gt;Git for Windows&lt;/h3&gt;
+
+&lt;p&gt;If you have installed Git for Windows,
+it likely already has Tcl/Tk installed
+(or any other programs you may have that come with it, not just Git).
+An easy way to check, is to open up Everything, and look for &lt;code&gt;wish.exe&lt;/code&gt; .&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/everything_wish.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/everything_wish.jpg&#34;  alt=&#34;wish.exe showing up in Everything&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Tcl/tk is often included with Git for Windows&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;All you need to do is right-click on &lt;code&gt;ispin.tcl&lt;/code&gt;, say &amp;ldquo;Open With&amp;rdquo;,
+and select the &lt;code&gt;wish.exe&lt;/code&gt; you found. Make sure to set
+&amp;ldquo;Always use this app to open .tcl files&amp;rdquo;.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/tcl_wish.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/tcl_wish.jpg&#34;  alt=&#34;Selecting a default program association for .tcl files&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Selecting a default program association for .tcl files&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;With that, you should be able to launch the GUI for Spin
+by double-clicking on &lt;code&gt;ispin.tcl&lt;/code&gt;.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/ispin.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/ispin.jpg&#34;  alt=&#34;Spin GUI&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Spin GUI&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;tcl-tk-distributions&#34;&gt;Tcl/Tk Distributions&lt;/h3&gt;
+
+&lt;p&gt;Let&amp;rsquo;s say you don&amp;rsquo;t have Git installed. There&amp;rsquo;s other ways to get Tcl/Tk.
+The easiest is &lt;a href=&#34;https://www.activestate.com/products/tcl/downloads/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;ActiveTCL&lt;/a&gt; as
+this will automatically setup all the proper file associations. However, they require
+you to create an account to download it.&lt;/p&gt;
+
+&lt;p&gt;Another option is
+&lt;a href=&#34;https://www.magicsplat.com/tcl-installer/index.html#downloads&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Magicsplat&lt;/a&gt;,
+but this does not setup the file associations, so you&amp;rsquo;ll have to do it manually, like
+I described above, after finding &lt;code&gt;wish.exe&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;This is all you need to run Spin with the GUI on Windows! While it may
+seem a bit complicated, this is likely far easier than trying to deal with Cygwin,
+or setting up all the prerequisites on WSL and configuring an X11 server.&lt;/p&gt;
+
+        
+        </description>
+    </item>
     
     <item>
       <title>Windows Mouse Lagging</title>
