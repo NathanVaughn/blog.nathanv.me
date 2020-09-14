@@ -4018,111 +4018,111 @@ it was clunky and I&amp;rsquo;d always inevitably forget to run something. No mo
 process, plus steps I hadn&amp;rsquo;t even automated previously.&lt;/p&gt;
 
 &lt;p&gt;My workflow file (at time of writing):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Build
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Build&lt;/span&gt;
 
-&lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt;:
-  &lt;span style=&#34;color:#66d9ef&#34;&gt;push&lt;/span&gt;:
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;branches&lt;/span&gt;:
-    - master
+&lt;span style=&#34;color:#f92672&#34;&gt;on&lt;/span&gt;:
+  &lt;span style=&#34;color:#f92672&#34;&gt;push&lt;/span&gt;:
+    &lt;span style=&#34;color:#f92672&#34;&gt;branches&lt;/span&gt;:
+    - &lt;span style=&#34;color:#ae81ff&#34;&gt;master&lt;/span&gt;
 
-&lt;span style=&#34;color:#66d9ef&#34;&gt;jobs&lt;/span&gt;:
-  &lt;span style=&#34;color:#66d9ef&#34;&gt;build&lt;/span&gt;:
+&lt;span style=&#34;color:#f92672&#34;&gt;jobs&lt;/span&gt;:
+  &lt;span style=&#34;color:#f92672&#34;&gt;build&lt;/span&gt;:
 
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;runs-on&lt;/span&gt;: ubuntu-latest
+    &lt;span style=&#34;color:#f92672&#34;&gt;runs-on&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;ubuntu-latest&lt;/span&gt;
 
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;steps&lt;/span&gt;:
-    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Checkout code
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: actions/checkout@master
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt;:
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;submodules&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
-    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Install Node
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: actions/setup-node@master
-    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Install dependencies
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: npm install
-    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Build Critical CSS
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: npm run critical
-    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Build Site
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: npm run build
-    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Deploy Site
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: peaceiris/actions-gh-pages@master
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;: success()
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;env&lt;/span&gt;:
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;ACTIONS_DEPLOY_KEY&lt;/span&gt;: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;PUBLISH_BRANCH&lt;/span&gt;: gh-pages
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;PUBLISH_DIR&lt;/span&gt;: ./public
-    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Purge Cache
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: nathanvaughn/actions-cloudflare-purge@master
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;: success()
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;env&lt;/span&gt;:
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;CLOUDFLARE_ZONE&lt;/span&gt;: ${{ secrets.CLOUDFLARE_ZONE }}
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;CLOUDFLARE_AUTH_KEY&lt;/span&gt;: ${{ secrets.CLOUDFLARE_AUTH_KEY }}
-    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Load Site
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: curl $(echo $GITHUB_REPOSITORY | cut -d &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt; -f &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;-) --location --output /dev/&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;steps&lt;/span&gt;:
+    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Checkout code&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;actions/checkout@master&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:
+        &lt;span style=&#34;color:#f92672&#34;&gt;submodules&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Install Node&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;actions/setup-node@master&lt;/span&gt;
+    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Install dependencies&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;npm install&lt;/span&gt;
+    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Build Critical CSS&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;npm run critical&lt;/span&gt;
+    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Build Site&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;npm run build&lt;/span&gt;
+    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Deploy Site&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;peaceiris/actions-gh-pages@master&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;if&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;success()&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;env&lt;/span&gt;:
+        &lt;span style=&#34;color:#f92672&#34;&gt;ACTIONS_DEPLOY_KEY&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;${{ secrets.ACTIONS_DEPLOY_KEY }}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;PUBLISH_BRANCH&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;gh-pages&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;PUBLISH_DIR&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;./public&lt;/span&gt;
+    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Purge Cache&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;nathanvaughn/actions-cloudflare-purge@master&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;if&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;success()&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;env&lt;/span&gt;:
+        &lt;span style=&#34;color:#f92672&#34;&gt;CLOUDFLARE_ZONE&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;${{ secrets.CLOUDFLARE_ZONE }}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;CLOUDFLARE_AUTH_KEY&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;${{ secrets.CLOUDFLARE_AUTH_KEY }}&lt;/span&gt;
+    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Load Site&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;curl $(echo $GITHUB_REPOSITORY | cut -d &amp;#34;/&amp;#34; -f 2-) --location --output /dev/null&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&#34;breakdown&#34;&gt;Breakdown&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;on&lt;/span&gt;:
-  &lt;span style=&#34;color:#66d9ef&#34;&gt;push&lt;/span&gt;:
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;branches&lt;/span&gt;:
-    - master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;on&lt;/span&gt;:
+  &lt;span style=&#34;color:#f92672&#34;&gt;push&lt;/span&gt;:
+    &lt;span style=&#34;color:#f92672&#34;&gt;branches&lt;/span&gt;:
+    - &lt;span style=&#34;color:#ae81ff&#34;&gt;master&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;I want this workflow to run on every single push to the master branch. I don&amp;rsquo;t have
 this set to &lt;em&gt;every&lt;/em&gt; branch, because I publish the output HTML to the &lt;code&gt;gh-pages&lt;/code&gt; branch
 for &lt;a href=&#34;https://pages.github.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;GitHub Pages&lt;/a&gt; (how I host the site). Plus, if I want to work on a separate branch and not have the changes deployed, I can do so.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;jobs&lt;/span&gt;:
-  &lt;span style=&#34;color:#66d9ef&#34;&gt;build&lt;/span&gt;:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;jobs&lt;/span&gt;:
+  &lt;span style=&#34;color:#f92672&#34;&gt;build&lt;/span&gt;:
 
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;runs-on&lt;/span&gt;: ubuntu-latest&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;runs-on&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;ubuntu-latest&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You can define multiple &amp;ldquo;jobs&amp;rdquo; per workflow, but mine just has one called &amp;ldquo;build&amp;rdquo;.
 I want it to run on the latest build of Ubuntu.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;steps&lt;/span&gt;:
-    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Checkout code
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: actions/checkout@master
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt;:
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;submodules&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    &lt;span style=&#34;color:#f92672&#34;&gt;steps&lt;/span&gt;:
+    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Checkout code&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;actions/checkout@master&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;with&lt;/span&gt;:
+        &lt;span style=&#34;color:#f92672&#34;&gt;submodules&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This is where the steps of the job start. To begin, I use the latest copy of the premade
 &lt;a href=&#34;https://github.com/actions/checkout&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;checkout&lt;/a&gt; action to &lt;code&gt;git clone&lt;/code&gt; my repository
 and initialize all submodules (though I don&amp;rsquo;t use any submodules currently for my main
 site).&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Install Node
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: actions/setup-node@master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Install Node&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;actions/setup-node@master&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Next I use the premade &lt;a href=&#34;https://github.com/actions/setup-node&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;setup-node&lt;/a&gt; action
 to setup NodeJS and npm.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Install dependencies
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: npm install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Install dependencies&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;npm install&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;After that, I simply run the &lt;code&gt;npm install&lt;/code&gt; command to install all the dependencies.
 Since I&amp;rsquo;m using the &lt;a href=&#34;https://www.npmjs.com/package/hugo-bin&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;hugo-bin&lt;/a&gt; package,
 this also sets up Hugo for me. While I &lt;em&gt;could&lt;/em&gt; run a different script
 to download and install Hugo, doing it in one shot with npm just makes things easier.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Build Critical CSS
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: npm run critical&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Build Critical CSS&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;npm run critical&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Next, I run my npm script to start the Hugo server, and generate the critical CSS.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Build Site
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: npm run build&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Build Site&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;npm run build&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Then, I run my npm script to build the site (CSS, JS, Hugo) as described above.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Deploy Site
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: peaceiris/actions-gh-pages@master
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;: success()
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;env&lt;/span&gt;:
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;ACTIONS_DEPLOY_KEY&lt;/span&gt;: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;PUBLISH_BRANCH&lt;/span&gt;: gh-pages
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;PUBLISH_DIR&lt;/span&gt;: ./public&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Deploy Site&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;peaceiris/actions-gh-pages@master&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;if&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;success()&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;env&lt;/span&gt;:
+        &lt;span style=&#34;color:#f92672&#34;&gt;ACTIONS_DEPLOY_KEY&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;${{ secrets.ACTIONS_DEPLOY_KEY }}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;PUBLISH_BRANCH&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;gh-pages&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;PUBLISH_DIR&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;./public&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Afterwards, I use &lt;a href=&#34;https://github.com/peaceiris/actions-gh-pages&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;an action&lt;/a&gt;
 from the Marketplace to automatically commit and push all the changes to the &lt;code&gt;./public&lt;/code&gt; directory
 to my &lt;code&gt;gh-pages&lt;/code&gt; branch. The &lt;code&gt;if: success()&lt;/code&gt; statements means this step will only run
 if the previous step ran successfully. This is important, as I don&amp;rsquo;t want to commit a
 broken site build.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Purge Cache
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;uses&lt;/span&gt;: nathanvaughn/actions-cloudflare-purge@master
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;: success()
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;env&lt;/span&gt;:
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;CLOUDFLARE_ZONE&lt;/span&gt;: ${{ secrets.CLOUDFLARE_ZONE }}
-        &lt;span style=&#34;color:#66d9ef&#34;&gt;CLOUDFLARE_AUTH_KEY&lt;/span&gt;: ${{ secrets.CLOUDFLARE_AUTH_KEY }}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Purge Cache&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;uses&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;nathanvaughn/actions-cloudflare-purge@master&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;if&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;success()&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;env&lt;/span&gt;:
+        &lt;span style=&#34;color:#f92672&#34;&gt;CLOUDFLARE_ZONE&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;${{ secrets.CLOUDFLARE_ZONE }}&lt;/span&gt;
+        &lt;span style=&#34;color:#f92672&#34;&gt;CLOUDFLARE_AUTH_KEY&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;${{ secrets.CLOUDFLARE_AUTH_KEY }}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This uses a custom action
 &lt;a href=&#34;https://github.com/nathanvaughn/actions-cloudflare-purge&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;I made&lt;/a&gt; to purge
 Cloudflare&amp;rsquo;s cache of my site. Otherwise, old CSS or JS can get cached for too
 long leading to things breaking. This uses
 &lt;a href=&#34;https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;repository secrets&lt;/a&gt;
 passed in as environment variables to securely store important tokens.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#66d9ef&#34;&gt;name&lt;/span&gt;: Load Site
-      &lt;span style=&#34;color:#66d9ef&#34;&gt;run&lt;/span&gt;: curl $(echo $GITHUB_REPOSITORY | cut -d &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/&amp;#34;&lt;/span&gt; -f &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;-) --location --output /dev/&lt;span style=&#34;color:#66d9ef&#34;&gt;null&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yml&#34; data-lang=&#34;yml&#34;&gt;    - &lt;span style=&#34;color:#f92672&#34;&gt;name&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;Load Site&lt;/span&gt;
+      &lt;span style=&#34;color:#f92672&#34;&gt;run&lt;/span&gt;: &lt;span style=&#34;color:#ae81ff&#34;&gt;curl $(echo $GITHUB_REPOSITORY | cut -d &amp;#34;/&amp;#34; -f 2-) --location --output /dev/null&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;To finish it off, I do a &lt;code&gt;curl&lt;/code&gt; pull of my site to ensure it&amp;rsquo;s working properly.
 This should also make sure Cloudflare refreshes their cache of my site.&lt;/p&gt;
 

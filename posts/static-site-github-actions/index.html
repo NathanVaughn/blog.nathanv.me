@@ -2,27 +2,48 @@
 <html lang="en">
   <head>
     
-      <title>Deploying a Static Site with GitHub Actions :: Nathan Vaughn — Adventures in programming and tech</title>
+      <title>
+        Deploying a Static Site with GitHub Actions ::
+        Nathan Vaughn — Adventures in programming and tech
+      </title>
     
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Background A little while back, GitHub released their Actions integrated CI/CD (continuous integration and delivery) platform. I signed up for the beta and managed to get in. This article will cover how I used GitHub Actions to completely automate the building and deployment of my personal site (and this blog).
-Actions Introduction GitHub Actions is a continuous integration and delivery product. It&amp;rsquo;s similar to Travis CI or Circle CI or other similar existing providers."/>
-<meta name="keywords" content="[programming tech Nathan Vaughn blog]"/>
-<meta name="robots" content="noodp"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Background A little while back, GitHub released their Actions integrated CI/CD (continuous integration and delivery) platform. I signed up for the beta and managed to get in. This article will cover how I used GitHub Actions to completely automate the building and deployment of my personal site (and this blog).
+Actions Introduction GitHub Actions is a continuous integration and delivery product. It&amp;rsquo;s similar to Travis CI or Circle CI or other similar existing providers."
+/>
+<meta
+  name="keywords"
+  content="[programming tech Nathan Vaughn blog]"
+/>
+<meta name="robots" content="noodp" />
 <link rel="canonical" href="https://blog.nathanv.me/posts/static-site-github-actions/" />
 
 
 
 
 
-<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css">
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css" />
 
-<link rel="stylesheet" href="https://blog.nathanv.me/style.css">
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css" />
 
 
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png">
-<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png">
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png" />
+
+
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
 
 
 <meta name="twitter:card" content="summary_large_image"/>
@@ -50,13 +71,19 @@ Actions Introduction GitHub Actions is a continuous integration and delivery pro
     <div class="container">
       <header class="header">
   <span class="header__inner">
-    <a href="/" class="logo" style="text-decoration: none;">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
   
     <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
-  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
 </svg>
 </span>
-    <span class="logo__text">nathanv@blog</span>
+    <span class="logo__text"
+      >nathanv@blog</span
+    >
     <span class="logo__cursor"></span>
   
 </a>
@@ -76,7 +103,7 @@ Actions Introduction GitHub Actions is a continuous integration and delivery pro
         
       
       
-    
+      
   </ul>
 
   <ul class="menu__inner menu__inner--mobile">
@@ -94,16 +121,25 @@ Actions Introduction GitHub Actions is a continuous integration and delivery pro
 
         <span class="menu-trigger">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
           </svg>
         </span>
       
       <span class="theme-toggle">
-        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
 </svg>
 
       </span>
@@ -118,7 +154,7 @@ Actions Introduction GitHub Actions is a continuous integration and delivery pro
   
 
   <div class="post">
-    <h1 class="post-title"><a href="https://blog.nathanv.me/posts/static-site-github-actions/">Deploying a Static Site with GitHub Actions</a></h1>
+    <h1 class="post-title">Deploying a Static Site with GitHub Actions</h1>
     <div class="post-meta">
       
         <span class="post-date">
@@ -130,22 +166,29 @@ Actions Introduction GitHub Actions is a continuous integration and delivery pro
         
       
 
-      <span class="post-author">— Written by Nathan Vaughn</span>
       
-        <span class="post-read-time">— 7 min read</span>
+        <span class="post-author"
+          >— Written by Nathan Vaughn</span
+        >
+
+
+      
+        <span class="post-read-time"
+          >— 7 min read</span
+        >
       
     </div>
 
     
       <span class="post-tags">
         
-          #<a href="https://blog.nathanv.me/tags/github/">GitHub</a>&nbsp;
+          <a href="https://blog.nathanv.me/tags/github/">#GitHub</a>&nbsp;
         
-          #<a href="https://blog.nathanv.me/tags/github-actions/">GitHub Actions</a>&nbsp;
+          <a href="https://blog.nathanv.me/tags/github-actions/">#GitHub Actions</a>&nbsp;
         
-          #<a href="https://blog.nathanv.me/tags/continuous-delivery/">continuous delivery</a>&nbsp;
+          <a href="https://blog.nathanv.me/tags/continuous-delivery/">#continuous delivery</a>&nbsp;
         
-          #<a href="https://blog.nathanv.me/tags/hugo/">Hugo</a>&nbsp;
+          <a href="https://blog.nathanv.me/tags/hugo/">#Hugo</a>&nbsp;
         
       </span>
     
@@ -262,111 +305,111 @@ it was clunky and I&rsquo;d always inevitably forget to run something. No more!<
 process, plus steps I hadn&rsquo;t even automated previously.</p>
 
 <p>My workflow file (at time of writing):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">name</span>: Build
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build</span>
 
-<span style="color:#66d9ef">on</span>:
-  <span style="color:#66d9ef">push</span>:
-    <span style="color:#66d9ef">branches</span>:
-    - master
+<span style="color:#f92672">on</span>:
+  <span style="color:#f92672">push</span>:
+    <span style="color:#f92672">branches</span>:
+    - <span style="color:#ae81ff">master</span>
 
-<span style="color:#66d9ef">jobs</span>:
-  <span style="color:#66d9ef">build</span>:
+<span style="color:#f92672">jobs</span>:
+  <span style="color:#f92672">build</span>:
 
-    <span style="color:#66d9ef">runs-on</span>: ubuntu-latest
+    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span>
 
-    <span style="color:#66d9ef">steps</span>:
-    - <span style="color:#66d9ef">name</span>: Checkout code
-      <span style="color:#66d9ef">uses</span>: actions/checkout@master
-      <span style="color:#66d9ef">with</span>:
-        <span style="color:#66d9ef">submodules</span>: <span style="color:#66d9ef">true</span>
-    - <span style="color:#66d9ef">name</span>: Install Node
-      <span style="color:#66d9ef">uses</span>: actions/setup-node@master
-    - <span style="color:#66d9ef">name</span>: Install dependencies
-      <span style="color:#66d9ef">run</span>: npm install
-    - <span style="color:#66d9ef">name</span>: Build Critical CSS
-      <span style="color:#66d9ef">run</span>: npm run critical
-    - <span style="color:#66d9ef">name</span>: Build Site
-      <span style="color:#66d9ef">run</span>: npm run build
-    - <span style="color:#66d9ef">name</span>: Deploy Site
-      <span style="color:#66d9ef">uses</span>: peaceiris/actions-gh-pages@master
-      <span style="color:#66d9ef">if</span>: success()
-      <span style="color:#66d9ef">env</span>:
-        <span style="color:#66d9ef">ACTIONS_DEPLOY_KEY</span>: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        <span style="color:#66d9ef">PUBLISH_BRANCH</span>: gh-pages
-        <span style="color:#66d9ef">PUBLISH_DIR</span>: ./public
-    - <span style="color:#66d9ef">name</span>: Purge Cache
-      <span style="color:#66d9ef">uses</span>: nathanvaughn/actions-cloudflare-purge@master
-      <span style="color:#66d9ef">if</span>: success()
-      <span style="color:#66d9ef">env</span>:
-        <span style="color:#66d9ef">CLOUDFLARE_ZONE</span>: ${{ secrets.CLOUDFLARE_ZONE }}
-        <span style="color:#66d9ef">CLOUDFLARE_AUTH_KEY</span>: ${{ secrets.CLOUDFLARE_AUTH_KEY }}
-    - <span style="color:#66d9ef">name</span>: Load Site
-      <span style="color:#66d9ef">run</span>: curl $(echo $GITHUB_REPOSITORY | cut -d <span style="color:#e6db74">&#34;/&#34;</span> -f <span style="color:#ae81ff">2</span>-) --location --output /dev/<span style="color:#66d9ef">null</span></code></pre></div>
+    <span style="color:#f92672">steps</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout code</span>
+      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@master</span>
+      <span style="color:#f92672">with</span>:
+        <span style="color:#f92672">submodules</span>: <span style="color:#66d9ef">true</span>
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Install Node</span>
+      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-node@master</span>
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Install dependencies</span>
+      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">npm install</span>
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build Critical CSS</span>
+      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">npm run critical</span>
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build Site</span>
+      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">npm run build</span>
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Site</span>
+      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@master</span>
+      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+      <span style="color:#f92672">env</span>:
+        <span style="color:#f92672">ACTIONS_DEPLOY_KEY</span>: <span style="color:#ae81ff">${{ secrets.ACTIONS_DEPLOY_KEY }}</span>
+        <span style="color:#f92672">PUBLISH_BRANCH</span>: <span style="color:#ae81ff">gh-pages</span>
+        <span style="color:#f92672">PUBLISH_DIR</span>: <span style="color:#ae81ff">./public</span>
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Purge Cache</span>
+      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">nathanvaughn/actions-cloudflare-purge@master</span>
+      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+      <span style="color:#f92672">env</span>:
+        <span style="color:#f92672">CLOUDFLARE_ZONE</span>: <span style="color:#ae81ff">${{ secrets.CLOUDFLARE_ZONE }}</span>
+        <span style="color:#f92672">CLOUDFLARE_AUTH_KEY</span>: <span style="color:#ae81ff">${{ secrets.CLOUDFLARE_AUTH_KEY }}</span>
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Load Site</span>
+      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">curl $(echo $GITHUB_REPOSITORY | cut -d &#34;/&#34; -f 2-) --location --output /dev/null</span></code></pre></div>
 <h3 id="breakdown">Breakdown</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">on</span>:
-  <span style="color:#66d9ef">push</span>:
-    <span style="color:#66d9ef">branches</span>:
-    - master</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">on</span>:
+  <span style="color:#f92672">push</span>:
+    <span style="color:#f92672">branches</span>:
+    - <span style="color:#ae81ff">master</span></code></pre></div>
 <p>I want this workflow to run on every single push to the master branch. I don&rsquo;t have
 this set to <em>every</em> branch, because I publish the output HTML to the <code>gh-pages</code> branch
 for <a href="https://pages.github.com/" rel="noreferrer" target="_blank">GitHub Pages</a> (how I host the site). Plus, if I want to work on a separate branch and not have the changes deployed, I can do so.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#66d9ef">jobs</span>:
-  <span style="color:#66d9ef">build</span>:
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml"><span style="color:#f92672">jobs</span>:
+  <span style="color:#f92672">build</span>:
 
-    <span style="color:#66d9ef">runs-on</span>: ubuntu-latest</code></pre></div>
+    <span style="color:#f92672">runs-on</span>: <span style="color:#ae81ff">ubuntu-latest</span></code></pre></div>
 <p>You can define multiple &ldquo;jobs&rdquo; per workflow, but mine just has one called &ldquo;build&rdquo;.
 I want it to run on the latest build of Ubuntu.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    <span style="color:#66d9ef">steps</span>:
-    - <span style="color:#66d9ef">name</span>: Checkout code
-      <span style="color:#66d9ef">uses</span>: actions/checkout@master
-      <span style="color:#66d9ef">with</span>:
-        <span style="color:#66d9ef">submodules</span>: <span style="color:#66d9ef">true</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    <span style="color:#f92672">steps</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Checkout code</span>
+      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/checkout@master</span>
+      <span style="color:#f92672">with</span>:
+        <span style="color:#f92672">submodules</span>: <span style="color:#66d9ef">true</span></code></pre></div>
 <p>This is where the steps of the job start. To begin, I use the latest copy of the premade
 <a href="https://github.com/actions/checkout" rel="noreferrer" target="_blank">checkout</a> action to <code>git clone</code> my repository
 and initialize all submodules (though I don&rsquo;t use any submodules currently for my main
 site).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Install Node
-      <span style="color:#66d9ef">uses</span>: actions/setup-node@master</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Install Node</span>
+      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">actions/setup-node@master</span></code></pre></div>
 <p>Next I use the premade <a href="https://github.com/actions/setup-node" rel="noreferrer" target="_blank">setup-node</a> action
 to setup NodeJS and npm.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Install dependencies
-      <span style="color:#66d9ef">run</span>: npm install</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Install dependencies</span>
+      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">npm install</span></code></pre></div>
 <p>After that, I simply run the <code>npm install</code> command to install all the dependencies.
 Since I&rsquo;m using the <a href="https://www.npmjs.com/package/hugo-bin" rel="noreferrer" target="_blank">hugo-bin</a> package,
 this also sets up Hugo for me. While I <em>could</em> run a different script
 to download and install Hugo, doing it in one shot with npm just makes things easier.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Build Critical CSS
-      <span style="color:#66d9ef">run</span>: npm run critical</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build Critical CSS</span>
+      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">npm run critical</span></code></pre></div>
 <p>Next, I run my npm script to start the Hugo server, and generate the critical CSS.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Build Site
-      <span style="color:#66d9ef">run</span>: npm run build</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Build Site</span>
+      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">npm run build</span></code></pre></div>
 <p>Then, I run my npm script to build the site (CSS, JS, Hugo) as described above.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Deploy Site
-      <span style="color:#66d9ef">uses</span>: peaceiris/actions-gh-pages@master
-      <span style="color:#66d9ef">if</span>: success()
-      <span style="color:#66d9ef">env</span>:
-        <span style="color:#66d9ef">ACTIONS_DEPLOY_KEY</span>: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-        <span style="color:#66d9ef">PUBLISH_BRANCH</span>: gh-pages
-        <span style="color:#66d9ef">PUBLISH_DIR</span>: ./public</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Deploy Site</span>
+      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">peaceiris/actions-gh-pages@master</span>
+      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+      <span style="color:#f92672">env</span>:
+        <span style="color:#f92672">ACTIONS_DEPLOY_KEY</span>: <span style="color:#ae81ff">${{ secrets.ACTIONS_DEPLOY_KEY }}</span>
+        <span style="color:#f92672">PUBLISH_BRANCH</span>: <span style="color:#ae81ff">gh-pages</span>
+        <span style="color:#f92672">PUBLISH_DIR</span>: <span style="color:#ae81ff">./public</span></code></pre></div>
 <p>Afterwards, I use <a href="https://github.com/peaceiris/actions-gh-pages" rel="noreferrer" target="_blank">an action</a>
 from the Marketplace to automatically commit and push all the changes to the <code>./public</code> directory
 to my <code>gh-pages</code> branch. The <code>if: success()</code> statements means this step will only run
 if the previous step ran successfully. This is important, as I don&rsquo;t want to commit a
 broken site build.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Purge Cache
-      <span style="color:#66d9ef">uses</span>: nathanvaughn/actions-cloudflare-purge@master
-      <span style="color:#66d9ef">if</span>: success()
-      <span style="color:#66d9ef">env</span>:
-        <span style="color:#66d9ef">CLOUDFLARE_ZONE</span>: ${{ secrets.CLOUDFLARE_ZONE }}
-        <span style="color:#66d9ef">CLOUDFLARE_AUTH_KEY</span>: ${{ secrets.CLOUDFLARE_AUTH_KEY }}</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Purge Cache</span>
+      <span style="color:#f92672">uses</span>: <span style="color:#ae81ff">nathanvaughn/actions-cloudflare-purge@master</span>
+      <span style="color:#f92672">if</span>: <span style="color:#ae81ff">success()</span>
+      <span style="color:#f92672">env</span>:
+        <span style="color:#f92672">CLOUDFLARE_ZONE</span>: <span style="color:#ae81ff">${{ secrets.CLOUDFLARE_ZONE }}</span>
+        <span style="color:#f92672">CLOUDFLARE_AUTH_KEY</span>: <span style="color:#ae81ff">${{ secrets.CLOUDFLARE_AUTH_KEY }}</span></code></pre></div>
 <p>This uses a custom action
 <a href="https://github.com/nathanvaughn/actions-cloudflare-purge" rel="noreferrer" target="_blank">I made</a> to purge
 Cloudflare&rsquo;s cache of my site. Otherwise, old CSS or JS can get cached for too
 long leading to things breaking. This uses
 <a href="https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables" rel="noreferrer" target="_blank">repository secrets</a>
 passed in as environment variables to securely store important tokens.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#66d9ef">name</span>: Load Site
-      <span style="color:#66d9ef">run</span>: curl $(echo $GITHUB_REPOSITORY | cut -d <span style="color:#e6db74">&#34;/&#34;</span> -f <span style="color:#ae81ff">2</span>-) --location --output /dev/<span style="color:#66d9ef">null</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yml" data-lang="yml">    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">Load Site</span>
+      <span style="color:#f92672">run</span>: <span style="color:#ae81ff">curl $(echo $GITHUB_REPOSITORY | cut -d &#34;/&#34; -f 2-) --location --output /dev/null</span></code></pre></div>
 <p>To finish it off, I do a <code>curl</code> pull of my site to ensure it&rsquo;s working properly.
 This should also make sure Cloudflare refreshes their cache of my site.</p>
 
@@ -427,7 +470,9 @@ take the product.</p>
       
         <div class="pagination">
           <div class="pagination__title">
-            <span class="pagination__title-h">Read other posts</span>
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
             <hr />
           </div>
           <div class="pagination__buttons">
@@ -452,7 +497,6 @@ take the product.</p>
       
     
 
-
     
       
         <script src="https://utteranc.es/client.js"
@@ -466,8 +510,7 @@ take the product.</p>
 
       
     
-
-    </div>
+  </div>
 
       </div>
 
@@ -475,20 +518,32 @@ take the product.</p>
         <footer class="footer">
   <div class="footer__inner">
     
-      <a href="/" class="logo" style="text-decoration: none;">
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
   
     <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
-  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
 </svg>
 </span>
-    <span class="logo__text">nathanv@blog</span>
+    <span class="logo__text"
+      >nathanv@blog</span
+    >
     <span class="logo__cursor"></span>
   
 </a>
 
       <div class="copyright">
-        <span>© 2020 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
-        <span>Theme created by <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+        <span
+          >© 2020 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
       </div>
     
   </div>
