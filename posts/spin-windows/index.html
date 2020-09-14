@@ -7,7 +7,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Introduction For a class, I was trying to install the Spin formal verification tool somehow on my Windows computer. I couldn&amp;rsquo;t find a good guide, so this is what I figured out.
-While you can do this with WSL or Cygwin, Spin now has prebuilt Windows binaries available, so I think this is way easier.
+While you can do this with WSL or Cygwin, Spin now has prebuilt Windows binaries available, so I think this is easier.
 Prerequisites You&amp;rsquo;ll need the following software installed:
  7zip  The following will make life easier:"/>
 <meta name="keywords" content="[programming tech Nathan Vaughn blog]"/>
@@ -166,6 +166,7 @@ Prerequisites You&amp;rsquo;ll need the following software installed:
 <li><a href="#introduction">Introduction</a></li>
 <li><a href="#prerequisites">Prerequisites</a></li>
 <li><a href="#downloading-extracting-spin">Downloading/Extracting Spin</a></li>
+<li><a href="#gcc">gcc</a></li>
 <li><a href="#gui">GUI</a>
 <ul>
 <li><a href="#git-for-windows">Git for Windows</a></li>
@@ -185,7 +186,7 @@ formal verification tool <em>somehow</em> on my Windows computer. I couldn&rsquo
 a good guide, so this is what I figured out.</p>
 
 <p>While you <em>can</em> do this with WSL or Cygwin, Spin now has prebuilt Windows
-binaries available, so I think this is way easier.</p>
+binaries available, so I think this is easier.</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
@@ -240,6 +241,13 @@ only this file.</p>
 Now, if you only want the command-line version of Spin, you&rsquo;re basically done.
 You&rsquo;ll just need to use the full path to the <code>spin.exe</code> executable (unless you
 <a href="https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/" rel="noreferrer" target="_blank">add Spin to your PATH</a>).</p>
+
+<h2 id="gcc">gcc</h2>
+
+<p>Next, Spin needs a <code>gcc</code> compiler in order to turn your Promela code into C.
+The easiest way to get this is with <a href="https://osdn.net/projects/mingw/releases/" rel="noreferrer" target="_blank">MinGW</a>
+which is a project that has ported <code>gcc</code> to Windows. Just download
+and run the installer.</p>
 
 <h2 id="gui">GUI</h2>
 

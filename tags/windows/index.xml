@@ -35,7 +35,7 @@ formal verification tool &lt;em&gt;somehow&lt;/em&gt; on my Windows computer. I 
 a good guide, so this is what I figured out.&lt;/p&gt;
 
 &lt;p&gt;While you &lt;em&gt;can&lt;/em&gt; do this with WSL or Cygwin, Spin now has prebuilt Windows
-binaries available, so I think this is way easier.&lt;/p&gt;
+binaries available, so I think this is easier.&lt;/p&gt;
 
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 
@@ -90,6 +90,13 @@ only this file.&lt;/p&gt;
 Now, if you only want the command-line version of Spin, you&amp;rsquo;re basically done.
 You&amp;rsquo;ll just need to use the full path to the &lt;code&gt;spin.exe&lt;/code&gt; executable (unless you
 &lt;a href=&#34;https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;add Spin to your PATH&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h2 id=&#34;gcc&#34;&gt;gcc&lt;/h2&gt;
+
+&lt;p&gt;Next, Spin needs a &lt;code&gt;gcc&lt;/code&gt; compiler in order to turn your Promela code into C.
+The easiest way to get this is with &lt;a href=&#34;https://osdn.net/projects/mingw/releases/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;MinGW&lt;/a&gt;
+which is a project that has ported &lt;code&gt;gcc&lt;/code&gt; to Windows. Just download
+and run the installer.&lt;/p&gt;
 
 &lt;h2 id=&#34;gui&#34;&gt;GUI&lt;/h2&gt;
 
