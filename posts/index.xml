@@ -97,7 +97,8 @@ If you want to use spin with the GUI, you &lt;strong&gt;&lt;em&gt;MUST&lt;/em&gt
 &lt;p&gt;Next, Spin needs a &lt;code&gt;gcc&lt;/code&gt; compiler in order to turn your Promela code into C.
 The easiest way to get this is with &lt;a href=&#34;https://osdn.net/projects/mingw/releases/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;MinGW&lt;/a&gt;
 which is a project that has ported &lt;code&gt;gcc&lt;/code&gt; to Windows. Just download
-and run the installer.&lt;/p&gt;
+and run the installer, and select the base MinGW package (this includes GCC).
+You may need to add &lt;code&gt;C:\MinGW\bin\&lt;/code&gt; to your path after it installs GCC.&lt;/p&gt;
 
 &lt;h2 id=&#34;gui&#34;&gt;GUI&lt;/h2&gt;
 
