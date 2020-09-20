@@ -54,8 +54,8 @@ binaries available, so I think this is easier.&lt;/p&gt;
 
 &lt;h2 id=&#34;downloading-extracting-spin&#34;&gt;Downloading/Extracting Spin&lt;/h2&gt;
 
-&lt;p&gt;First, go to the Spin &lt;a href=&#34;https://github.com/nimble-code&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;GitHub page&lt;/a&gt;. If you
-already have Got installed, you can just clone this. Or, if you&amp;rsquo;d like,
+&lt;p&gt;First, go to the Spin &lt;a href=&#34;https://github.com/nimble-code/Spin&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;GitHub page&lt;/a&gt;. If you
+already have Git installed, you can just clone this. Or, if you&amp;rsquo;d like,
 you can go to &lt;code&gt;Bin&lt;/code&gt; directory, and click on the latest version of
 &lt;code&gt;spin&amp;lt;ver&amp;gt;_windows64.exe.gz&lt;/code&gt;. Click &amp;ldquo;Download&amp;rdquo; on the right side to get
 only this file.&lt;/p&gt;
