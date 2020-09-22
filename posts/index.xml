@@ -111,7 +111,7 @@ and run the installer, and select the base MinGW package (this includes GCC).&lt
 
 
 
-&lt;p&gt;You may need to add &lt;code&gt;C:\MinGW\bin\&lt;/code&gt; to your path after it installs GCC.&lt;/p&gt;
+&lt;p&gt;You may need to &lt;a href=&#34;https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;add &lt;code&gt;C:\MinGW\bin\&lt;/code&gt; to your PATH&lt;/a&gt; after it installs GCC.&lt;/p&gt;
 
 &lt;h2 id=&#34;gui&#34;&gt;GUI&lt;/h2&gt;
 
