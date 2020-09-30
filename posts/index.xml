@@ -93,7 +93,7 @@ only this file.&lt;/p&gt;
 
 &lt;p&gt;Inside the directory it extracted into will be an executable. Rename this to &lt;code&gt;spin.exe&lt;/code&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;gcc&#34;&gt;gcc&lt;/h2&gt;
+&lt;h2 id=&#34;gcc&#34;&gt;GCC&lt;/h2&gt;
 
 &lt;p&gt;Next, Spin needs the GCC compiler in order to turn your Promela code into a C verifier.
 The easiest way to get this is with &lt;a href=&#34;http://www.mingw.org/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;MinGW&lt;/a&gt;
