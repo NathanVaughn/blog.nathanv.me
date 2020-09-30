@@ -35,7 +35,7 @@ formal verification tool &lt;em&gt;somehow&lt;/em&gt; on my Windows computer. I 
 a good guide, so this is what I figured out.&lt;/p&gt;
 
 &lt;p&gt;While you &lt;em&gt;can&lt;/em&gt; do this with WSL, Spin has prebuilt Windows
-binaries available, so I think this is easier that trying to get
+binaries available, so I think this is easier than trying to get
 X11 working (&lt;a href=&#34;https://devblogs.microsoft.com/commandline/whats-new-in-the-windows-subsystem-for-linux-september-2020/#gui-apps&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;as of Sept 2020&lt;/a&gt;).&lt;/p&gt;
 
 &lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
@@ -157,7 +157,7 @@ this is to right-click &amp;ldquo;Raw&amp;rdquo; and then &amp;ldquo;Save link a
 &lt;li&gt;&lt;p&gt;Edit &lt;code&gt;ispin.tcl&lt;/code&gt; on line 19 to replace&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;set SPIN    spin   ;&lt;span style=&#34;color:#75715e&#34;&gt;# essential&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;with something like&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;set SPIN    &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C:/Program\ Files\ \(x86\)/spin650_windows64/bin/spin&amp;#34;&lt;/span&gt;;&lt;span style=&#34;color:#75715e&#34;&gt;# essential&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;set SPIN	&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;C:/Program\ Files\ \(x86\)/spin650_windows64/bin/spin&amp;#34;&lt;/span&gt;;&lt;span style=&#34;color:#75715e&#34;&gt;# essential&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;to point where ever you put &lt;code&gt;spin.exe&lt;/code&gt;. Make sure properly escape the Windows path characters.&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 

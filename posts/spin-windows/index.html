@@ -12,7 +12,7 @@
 <meta
   name="description"
   content="Introduction For a class, I was trying to install the Spin formal verification tool somehow on my Windows computer. I couldn&amp;rsquo;t find a good guide, so this is what I figured out.
-While you can do this with WSL, Spin has prebuilt Windows binaries available, so I think this is easier that trying to get X11 working (as of Sept 2020).
+While you can do this with WSL, Spin has prebuilt Windows binaries available, so I think this is easier than trying to get X11 working (as of Sept 2020).
 Prerequisites You&amp;rsquo;ll need the following software installed:
  7zip  The following will make life easier:"
 />
@@ -230,7 +230,7 @@ formal verification tool <em>somehow</em> on my Windows computer. I couldn&rsquo
 a good guide, so this is what I figured out.</p>
 
 <p>While you <em>can</em> do this with WSL, Spin has prebuilt Windows
-binaries available, so I think this is easier that trying to get
+binaries available, so I think this is easier than trying to get
 X11 working (<a href="https://devblogs.microsoft.com/commandline/whats-new-in-the-windows-subsystem-for-linux-september-2020/#gui-apps" rel="noreferrer" target="_blank">as of Sept 2020</a>).</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
@@ -352,7 +352,7 @@ this is to right-click &ldquo;Raw&rdquo; and then &ldquo;Save link as&rdquo;.</p
 <li><p>Edit <code>ispin.tcl</code> on line 19 to replace</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">set SPIN    spin   ;<span style="color:#75715e"># essential</span></code></pre></div>
 <p>with something like</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">set SPIN    <span style="color:#e6db74">&#34;C:/Program\ Files\ \(x86\)/spin650_windows64/bin/spin&#34;</span>;<span style="color:#75715e"># essential</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">set SPIN	<span style="color:#e6db74">&#34;C:/Program\ Files\ \(x86\)/spin650_windows64/bin/spin&#34;</span>;<span style="color:#75715e"># essential</span></code></pre></div>
 <p>to point where ever you put <code>spin.exe</code>. Make sure properly escape the Windows path characters.</p></li>
 </ol>
 
