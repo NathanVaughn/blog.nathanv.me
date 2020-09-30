@@ -2,33 +2,50 @@
 <html lang="en">
   <head>
     
-      <title>Spin Model Checker on Windows :: Nathan Vaughn — Adventures in programming and tech</title>
+      <title>
+        Spin Model Checker on Windows ::
+        Nathan Vaughn — Adventures in programming and tech
+      </title>
     
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Introduction For a class, I was trying to install the Spin formal verification tool somehow on my Windows computer. I couldn&amp;rsquo;t find a good guide, so this is what I figured out.
-While you can do this with WSL or Cygwin, Spin now has prebuilt Windows binaries available, so I think this is easier.
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Introduction For a class, I was trying to install the Spin formal verification tool somehow on my Windows computer. I couldn&amp;rsquo;t find a good guide, so this is what I figured out.
+While you can do this with WSL, Spin has prebuilt Windows binaries available, so I think this is easier that trying to get X11 working (as of Sept 2020).
 Prerequisites You&amp;rsquo;ll need the following software installed:
- 7zip  The following will make life easier:"/>
-<meta name="keywords" content="[programming tech Nathan Vaughn blog]"/>
-<meta name="robots" content="noodp"/>
+ 7zip  The following will make life easier:"
+/>
+<meta
+  name="keywords"
+  content="[programming tech Nathan Vaughn blog]"
+/>
+<meta name="robots" content="noodp" />
 <link rel="canonical" href="https://blog.nathanv.me/posts/spin-windows/" />
 
 
 
 
 
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css" />
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css" />
 
 
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png" />
 
-<link rel="stylesheet" href="https://blog.nathanv.me/css/style.min.css">
 
-
-<link rel="stylesheet" href="https://blog.nathanv.me/style.css">
-
-
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png">
-<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
 
 
 <meta name="twitter:card" content="summary_large_image"/>
@@ -56,13 +73,19 @@ Prerequisites You&amp;rsquo;ll need the following software installed:
     <div class="container">
       <header class="header">
   <span class="header__inner">
-    <a href="/" class="logo" style="text-decoration: none;">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
   
     <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
-  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
 </svg>
 </span>
-    <span class="logo__text">nathanv@blog</span>
+    <span class="logo__text"
+      >nathanv@blog</span
+    >
     <span class="logo__cursor"></span>
   
 </a>
@@ -82,7 +105,7 @@ Prerequisites You&amp;rsquo;ll need the following software installed:
         
       
       
-    
+      
   </ul>
 
   <ul class="menu__inner menu__inner--mobile">
@@ -100,16 +123,25 @@ Prerequisites You&amp;rsquo;ll need the following software installed:
 
         <span class="menu-trigger">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
           </svg>
         </span>
       
       <span class="theme-toggle">
-        <svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
   3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
 </svg>
 
       </span>
@@ -124,7 +156,7 @@ Prerequisites You&amp;rsquo;ll need the following software installed:
   
 
   <div class="post">
-    <h1 class="post-title"><a href="https://blog.nathanv.me/posts/spin-windows/">Spin Model Checker on Windows</a></h1>
+    <h1 class="post-title">Spin Model Checker on Windows</h1>
     <div class="post-meta">
       
         <span class="post-date">
@@ -136,16 +168,23 @@ Prerequisites You&amp;rsquo;ll need the following software installed:
         
       
 
-      <span class="post-author">— Written by Nathan Vaughn</span>
       
-        <span class="post-read-time">— 3 min read</span>
+        <span class="post-author"
+          >— Written by Nathan Vaughn</span
+        >
+
+
+      
+        <span class="post-read-time"
+          >— 5 min read</span
+        >
       
     </div>
 
     
       <span class="post-tags">
         
-          #<a href="https://blog.nathanv.me/tags/windows/">Windows</a>&nbsp;
+          <a href="https://blog.nathanv.me/tags/windows/">#Windows</a>&nbsp;
         
       </span>
     
@@ -175,6 +214,7 @@ Prerequisites You&amp;rsquo;ll need the following software installed:
 <ul>
 <li><a href="#git-for-windows">Git for Windows</a></li>
 <li><a href="#tcl-tk-distributions">Tcl/Tk Distributions</a></li>
+<li><a href="#graphviz">Graphviz</a></li>
 </ul></li>
 <li><a href="#conclusion">Conclusion</a></li>
 </ul></li>
@@ -189,8 +229,9 @@ Prerequisites You&amp;rsquo;ll need the following software installed:
 formal verification tool <em>somehow</em> on my Windows computer. I couldn&rsquo;t find
 a good guide, so this is what I figured out.</p>
 
-<p>While you <em>can</em> do this with WSL or Cygwin, Spin now has prebuilt Windows
-binaries available, so I think this is easier.</p>
+<p>While you <em>can</em> do this with WSL, Spin has prebuilt Windows
+binaries available, so I think this is easier that trying to get
+X11 working (<a href="https://devblogs.microsoft.com/commandline/whats-new-in-the-windows-subsystem-for-linux-september-2020/#gui-apps" rel="noreferrer" target="_blank">as of Sept 2020</a>).</p>
 
 <h2 id="prerequisites">Prerequisites</h2>
 
@@ -207,11 +248,15 @@ binaries available, so I think this is easier.</p>
 <li><a href="https://www.voidtools.com/" rel="noreferrer" target="_blank">Everything</a></li>
 </ul>
 
+<p>If you&rsquo;re using <a href="https://chocolatey.org/" rel="noreferrer" target="_blank">Chocolately</a>,
+this can all be installed with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">choco install 7zip git everything</code></pre></div>
 <h2 id="downloading-extracting-spin">Downloading/Extracting Spin</h2>
 
 <p>First, go to the Spin <a href="https://github.com/nimble-code/Spin" rel="noreferrer" target="_blank">GitHub page</a>. If you
 already have Git installed, you can just clone this. Or, if you&rsquo;d like,
-you can go to <code>Bin</code> directory, and click on the latest version of
+you can go to <a href="https://github.com/nimble-code/Spin/tree/master/Bin" rel="noreferrer" target="_blank"><code>Bin</code></a> directory,
+and click on the latest version of
 <code>spin&lt;ver&gt;_windows64.exe.gz</code>. Click &ldquo;Download&rdquo; on the right side to get
 only this file.</p>
 
@@ -227,7 +272,7 @@ only this file.</p>
 
 
 
-<p>Once that&rsquo;s downloaded, use 7zip to extract the archive.</p>
+<p>Once that&rsquo;s downloaded, use <a href="https://www.7-zip.org/" rel="noreferrer" target="_blank">7zip</a> to extract the archive.</p>
 
 
   <figure class="center" >
@@ -241,18 +286,15 @@ only this file.</p>
 
 
 
-<p>Inside the directory it extracted into will be an executable. Rename this to <code>spin.exe</code>.
-Now, if you only want the command-line version of Spin, you&rsquo;re basically done.
-You&rsquo;ll just need to use the full path to the <code>spin.exe</code> executable (unless you
-<a href="https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/" rel="noreferrer" target="_blank">add <code>spin.exe</code> to your PATH</a>).
-If you want to use Spin with the GUI, you <strong><em>MUST</em></strong> add it to your PATH.</p>
+<p>Inside the directory it extracted into will be an executable. Rename this to <code>spin.exe</code>.</p>
 
 <h2 id="gcc">gcc</h2>
 
-<p>Next, Spin needs a <code>gcc</code> compiler in order to turn your Promela code into C.
-The easiest way to get this is with <a href="https://osdn.net/projects/mingw/releases/" rel="noreferrer" target="_blank">MinGW</a>
-which is a project that has ported <code>gcc</code> to Windows. Just download
-and run the installer, and select the base MinGW package (this includes GCC).</p>
+<p>Next, Spin needs the GCC compiler in order to turn your Promela code into a C verifier.
+The easiest way to get this is with <a href="http://www.mingw.org/" rel="noreferrer" target="_blank">MinGW</a>
+which is a project that has ported GCC to Windows.
+Download and run <a href="https://osdn.net/projects/mingw/releases/" rel="noreferrer" target="_blank">the installer</a>,
+and select the base MinGW package (this includes GCC).</p>
 
 
   <figure class="center" >
@@ -266,11 +308,22 @@ and run the installer, and select the base MinGW package (this includes GCC).</p
 
 
 
-<p>You may need to <a href="https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/" rel="noreferrer" target="_blank">add <code>C:\MinGW\bin\</code> to your PATH</a> after it installs GCC.</p>
+<p>You may need to <a href="https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/" rel="noreferrer" target="_blank">add <code>C:\MinGW\bin\</code> to your PATH</a> after it installs GCC.
+You can verify it is setup correctly by running <code>gcc</code> in a shell and making sure
+you don&rsquo;t get a &ldquo;gcc not found&rdquo; error.</p>
+
+<p>If you&rsquo;re using <a href="https://chocolatey.org/" rel="noreferrer" target="_blank">Chocolately</a>,
+this can alternatively be installed with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">choco install mingw</code></pre></div>
+<p>This will setup your PATH for you.</p>
+
+<p>Now, if you only want the command-line version of Spin, you&rsquo;re basically done.
+You&rsquo;ll need to use the full path to the <code>spin.exe</code> executable (unless you
+<a href="https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/" rel="noreferrer" target="_blank">add <code>spin.exe</code> to your PATH</a>).</p>
 
 <h2 id="gui">GUI</h2>
 
-<p>Now, if you&rsquo;d like to use the GUI, complete the following steps.</p>
+<p>Now, if you&rsquo;d like to use the GUI, complete the following steps. Buckle up.</p>
 
 <p>First, you&rsquo;ll need to download
 <a href="https://github.com/nimble-code/Spin/blob/master/optional_gui/ispin.tcl" rel="noreferrer" target="_blank"><code>ispin.tcl</code></a>
@@ -289,16 +342,29 @@ this is to right-click &ldquo;Raw&rdquo; and then &ldquo;Save link as&rdquo;.</p
 
 
 
-<p>Save this wherever you like.
-The next problem is getting <a href="https://www.tcl.tk/" rel="noreferrer" target="_blank">Tcl/Tk</a> installed,
+<p>Save this wherever you like.</p>
+
+<p>Now, the GUI needs to know where <code>spin.exe</code> is. There are two options.</p>
+
+<ol>
+<li><a href="https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/" rel="noreferrer" target="_blank">Add <code>spin.exe</code> to your PATH</a>. <strong>Recommended</strong></li>
+
+<li><p>Edit <code>ispin.tcl</code> on line 19 to replace</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">set SPIN    spin   ;<span style="color:#75715e"># essential</span></code></pre></div>
+<p>with something like</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">set SPIN    <span style="color:#e6db74">&#34;C:/Program\ Files\ \(x86\)/spin650_windows64/bin/spin&#34;</span>;<span style="color:#75715e"># essential</span></code></pre></div>
+<p>to point where ever you put <code>spin.exe</code>. Make sure properly escape the Windows path characters.</p></li>
+</ol>
+
+<p>The next problem is getting <a href="https://www.tcl.tk/" rel="noreferrer" target="_blank">Tcl/Tk</a> installed,
 which is needed to run this file.</p>
 
 <h3 id="git-for-windows">Git for Windows</h3>
 
-<p>If you have installed Git for Windows,
-it likely already has Tcl/Tk installed
+<p>If you have installed Git for Windows, it likely already has already installed Tcl/Tk
 (or another program may have installed it).
-An easy way to check is to open up Everything, and look for <code>wish.exe</code>.</p>
+An easy way to check is to open up <a href="https://www.voidtools.com/" rel="noreferrer" target="_blank">Everything</a>,
+and look for <code>wish.exe</code>.</p>
 
 
   <figure class="center" >
@@ -345,7 +411,7 @@ by double-clicking on <code>ispin.tcl</code>.</p>
 
 <h3 id="tcl-tk-distributions">Tcl/Tk Distributions</h3>
 
-<p>Let&rsquo;s say you don&rsquo;t have Git installed. There&rsquo;s other ways to get Tcl/Tk.
+<p>Let&rsquo;s say you don&rsquo;t have Git installed. There are other ways to get Tcl/Tk.
 The easiest is <a href="https://www.activestate.com/products/tcl/downloads/" rel="noreferrer" target="_blank">ActiveTCL</a> as
 this will automatically setup all the proper file associations. However, they require
 you to create an account to download it.</p>
@@ -355,18 +421,62 @@ you to create an account to download it.</p>
 but this does not setup the file associations, so you&rsquo;ll have to do it manually, like
 I described above, after finding <code>wish.exe</code>.</p>
 
+<h3 id="graphviz">Graphviz</h3>
+
+<p>This last part is optional. If you want the automata view to work, you&rsquo;ll need
+to install <a href="https://graphviz.org/" rel="noreferrer" target="_blank">Graphviz</a>. Go to the
+<a href="https://graphviz.org/download/" rel="noreferrer" target="_blank">downloads</a> page and get the
+<a href="https://www2.graphviz.org/Packages/stable/windows/10/msbuild/Release/Win32/" rel="noreferrer" target="_blank">latest .zip file</a>.</p>
+
+<p>Extract this and put it somewhere useful like <code>C:\Program Files (x86)\</code>.
+You can add the <code>bin</code> directory to your PATH if you like.</p>
+
+<p>If you&rsquo;re using <a href="https://chocolatey.org/" rel="noreferrer" target="_blank">Chocolately</a>,
+this can alternatively be installed with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">choco install graphviz</code></pre></div>
+<p>Lastly, you&rsquo;ll need to edit <code>ispin.tcl</code> again. Comment out line 21, and uncomment
+line 22, and adjust the path to <code>dot</code> as needed. For example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#	set DOT     dot    ;# recommended, for automata view</span>
+	set DOT		<span style="color:#e6db74">&#34;C:/Program\ Files\ \(x86\)/graphviz-2.44.1-win32/Graphviz/bin/dot&#34;</span>;</code></pre></div>
+<p><em>(Even if <code>dot.exe</code> is added to your PATH, I&rsquo;ve found it will still not work without doing this)</em></p>
+
+<p>You should be all set now.</p>
+
+
+  <figure class="center" >
+    <a href="img/automata_view.jpg" target="_blank">
+      <img src="img/automata_view.jpg"  alt="Spin GUI automata view"   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >Spin GUI automata view</figcaption>
+    
+  </figure>
+
+
+
 <h2 id="conclusion">Conclusion</h2>
 
 <p>This is all you need to run Spin with the GUI on Windows! While it may
-seem a bit complicated, this is likely far easier than trying to deal with Cygwin,
-or setting up all the prerequisites on WSL and configuring an X11 server.</p>
+seem a bit complicated, you should really only have to do this once.</p>
+
+<p>I really do recommend using <a href="https://chocolatey.org/" rel="noreferrer" target="_blank">Chocolately</a> to make
+installing everything easier. Installing the vast majority of the dependencies
+becomes one command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">choco install 7zip git everything mingw graphviz</code></pre></div>
+<p>If this seems like a lot of work, I&rsquo;ve found another Spin GUI
+available: <a href="https://github.com/motib/jspin" rel="noreferrer" target="_blank">jspin</a>.
+This has its own installation challenges (needing a Java runtime and requiring
+some PATH configuration in its <code>config.cfg</code> file), but it seems
+to work similarly and be far easier to get setup.</p>
 
     </div>
     
       
         <div class="pagination">
           <div class="pagination__title">
-            <span class="pagination__title-h">Read other posts</span>
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
             <hr />
           </div>
           <div class="pagination__buttons">
@@ -384,7 +494,6 @@ or setting up all the prerequisites on WSL and configuring an X11 server.</p>
       
     
 
-
     
       
         <script src="https://utteranc.es/client.js"
@@ -398,8 +507,7 @@ or setting up all the prerequisites on WSL and configuring an X11 server.</p>
 
       
     
-
-    </div>
+  </div>
 
       </div>
 
@@ -407,32 +515,39 @@ or setting up all the prerequisites on WSL and configuring an X11 server.</p>
         <footer class="footer">
   <div class="footer__inner">
     
-      <a href="/" class="logo" style="text-decoration: none;">
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
   
     <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
-  <path fill="none" d="M15 8l14.729 14.382L15 35.367"/>
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
 </svg>
 </span>
-    <span class="logo__text">nathanv@blog</span>
+    <span class="logo__text"
+      >nathanv@blog</span
+    >
     <span class="logo__cursor"></span>
   
 </a>
 
       <div class="copyright">
-        <span>© 2020 Powered by <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span>
-        <span>Theme created by <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span>
+        <span
+          >© 2020 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
       </div>
     
   </div>
 </footer>
 
-
-
-
-
-<script src="https://blog.nathanv.me/js/menu.js"></script>
-<script src="https://blog.nathanv.me/js/theme.js"></script>
-<script src="https://blog.nathanv.me/js/prism.js"></script>
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
 
 
       
