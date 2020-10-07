@@ -106,7 +106,6 @@ gfx.ms
 globalsign.com
 globalsign.net
 identrust.com
-identrust.com
 letsencrypt.org
 live.com
 live.net
@@ -127,7 +126,6 @@ msftconnecttest.com
 msftidentity.com
 msidentity.com
 msn.com
-msocdn.com
 msocdn.com
 mstea.ms
 o365weve.com
@@ -161,6 +159,7 @@ windows.com
 windows.net
 windowsazure.com
 windowsupdate.com
+xbox.com
 xboxlive.com
 xboxservices.com&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Clearly, not all of these are owned/controlled by Microsoft, such as the certificate
