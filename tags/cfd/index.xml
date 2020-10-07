@@ -109,7 +109,7 @@ out to:&lt;/p&gt;
 
 &lt;h3 id=&#34;coefficient-of-drag&#34;&gt;Coefficient of Drag&lt;/h3&gt;
 
-&lt;p&gt;A crucial number in determining the trajectory of a flying object is it&amp;rsquo;s
+&lt;p&gt;A crucial number in determining the trajectory of a flying object is its
 &amp;ldquo;coefficient of drag&amp;rdquo;. This is a unitless coefficient that represents how much
 drag an object experiences. This is a very difficult number to calculate,
 and is usually found experimentally.&lt;/p&gt;
