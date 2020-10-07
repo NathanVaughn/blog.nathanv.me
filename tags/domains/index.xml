@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>domains on Nathan Vaughn</title>
+    
+    
+    
+    <link>https://blog.nathanv.me/tags/domains/</link>
+    <description>Recent content in domains on Nathan Vaughn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 06 Oct 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.nathanv.me/tags/domains/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Stop Using So Many Domain Names</title>
+      <link>https://blog.nathanv.me/posts/domain-abuse/</link>
+      <pubDate>Tue, 06 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/domain-abuse/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        &lt;p&gt;One thing that frustrates me endlessly is major companies&amp;rsquo; obsession with using
+countless domain names for public-facing websites and services.
+What do I mean by this? Companies should be using one root domain
+for public services and stick with it.&lt;/p&gt;
+
+&lt;p&gt;For example, I think Google does a great job at this (for the most part).
+If I want to view my Google email, I go to &lt;code&gt;mail.google.com&lt;/code&gt;. If
+I want to look at my Google photos, I go to &lt;code&gt;photos.google.com&lt;/code&gt;. If I want
+shop Google hardware, I go to &lt;code&gt;store.google.com&lt;/code&gt;.
+This builds trust that if you&amp;rsquo;re visiting a Google service, the root domain should
+be &lt;code&gt;google.com&lt;/code&gt;, and helps to easily point out phishing attempts. A URL like
+&lt;code&gt;mygooglemail.com&lt;/code&gt; immediately stands out as being phishy (pun intended)
+as it doesn&amp;rsquo;t contain &lt;code&gt;google.com&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, let me login to my university Office 365 account portal, and
+tally up the root domain names of the services listed:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;sharepoint.com
+dynamics.com
+office.com
+kaiza.la
+windowsazure.com
+powerapps.com
+microsoft.com
+microsoftstream.com
+aka.ms
+yammer.com&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Some of these even &lt;em&gt;look&lt;/em&gt; like phishing domains. &lt;code&gt;microsoftstream.com&lt;/code&gt;?
+Just for fun, I looked at similar domains for sale to see how easy it would
+be to just buy a similar looking domain.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/microsoft_phishing_domains.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/microsoft_phishing_domains.jpg&#34;  alt=&#34;A list of Microsoft video-related domains for sale&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Just a quick search on Google Domains.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;While &lt;code&gt;microsoftvideo.com&lt;/code&gt; is taken
+(and fun fact, does not take you to a Microsoft site)
+many similar domains like &lt;code&gt;microsoftvid.com&lt;/code&gt; are for sale and could easily be
+abused by phishers. Who could blame users? It looks just as official as a real
+Microsoft site.&lt;/p&gt;
+
+&lt;p&gt;My point is, this seems ridiculous. How are normal users supposed to remember
+that all these different domains are controlled by Microsoft and are actually safe?
+Now, I understand the need for
+&lt;a href=&#34;https://gtmetrix.com/serve-static-content-from-a-cookieless-domain.html&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;cookie-less CDN domains&lt;/a&gt;.
+But all the domains I just listed for Microsoft are right on the Office 365 portal
+as the &amp;ldquo;official&amp;rdquo; link to get to various services.&lt;/p&gt;
+
+&lt;p&gt;Microsoft has so many domains, they even have documentation on the lists of them for
+&lt;a href=&#34;https://docs.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-ip-web-service&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Office 365&lt;/a&gt;
+and &lt;a href=&#34;https://docs.microsoft.com/en-us/windows/privacy/manage-connections-from-windows-operating-system-components-to-microsoft-services&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Windows&lt;/a&gt;
+so that administrators know what to whitelist in their firewalls.
+A brief selection of root domains:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;aadrm.com
+aka.ms
+akamaihd.net
+akamaized.net
+aspnetcdn.com
+azure-apim.net
+azure.com
+azure.net
+azurerms.com
+bing.com
+cloudappsecurity.com
+digicert.com
+edgesuite.net
+entrust.net
+geotrust.com
+gfx.ms
+globalsign.com
+globalsign.net
+identrust.com
+identrust.com
+letsencrypt.org
+live.com
+live.net
+lync.com
+microsoft.com
+microsoftazuread-sso.com
+microsoftonline-p.com
+microsoftonline-p.net
+microsoftonline.com
+msauth.net
+msauthimages.net
+msecnd.net
+msedge.net
+msft.net
+msftauth.net
+msftauthimages.net
+msftconnecttest.com
+msftidentity.com
+msidentity.com
+msn.com
+msocdn.com
+msocdn.com
+mstea.ms
+o365weve.com
+office.com
+office.net
+office365.com
+omniroot.com
+onenote.com
+onenote.net
+onestore.ms
+onmicrosoft.com
+optimizely.com
+outlook.com
+phonefactor.net
+powerapps.com
+public-trust.com
+sfbassets.com
+sharepoint.com
+sharepointonline.com
+skype.com
+skypeassets.com
+skypeforbusiness.com
+svc.ms
+symcb.com
+symcd.com
+trafficmanager.net
+verisign.com
+verisign.net
+virtualearth.net
+windows.com
+windows.net
+windowsazure.com
+windowsupdate.com
+xboxlive.com
+xboxservices.com&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Clearly, not all of these are owned/controlled by Microsoft, such as the certificate
+domains like &lt;code&gt;letsencrypt.org&lt;/code&gt; or vendors like &lt;code&gt;optimizely.com&lt;/code&gt;, but the
+vast majority are definitely owned by Microsoft.
+And good lord, is that a lot of different domain names.&lt;/p&gt;
+
+&lt;p&gt;While Google is certainly better (especially for their consumer services), they still
+have their fair share of confusing domains. Off the top of my head:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;google.com
+withgoogle.com
+goo.gl
+goo.gle
+g.co
+docs.new
+sheets.new
+slides.new
+tv.google
+domains.google
+googleblog.com
+blog.google
+blogspot.com
+android.com
+chromecast.com
+web.dev
+googlemail.com
+googleapis.com
+doubleclick.net
+google-analytics.com (only domain with a dash?)
+googleadservices.com
+googletagmanager.com
+googleusercontent.com
+gstatic.com
+gvt1.com
+ggpht.com
+chromium.org
+crbug.com&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(I&amp;rsquo;m ignoring their public cloud domains like &lt;code&gt;appspot.com&lt;/code&gt; and &lt;code&gt;firebase.com&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;In conclusion, please use just one root domain for public services.
+It decreases phishing potential, promoted brand consistency,
+and makes it easier for regular users to identify
+official sites.&lt;/p&gt;
+
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

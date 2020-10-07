@@ -95,7 +95,7 @@ only this file.&lt;/p&gt;
 
 &lt;h2 id=&#34;gcc&#34;&gt;GCC&lt;/h2&gt;
 
-&lt;p&gt;Next, Spin needs the GCC compiler in order to turn your Promela code into a C verifier.
+&lt;p&gt;Next, Spin needs the GCC compiler in order to compile the generated C verifier.
 The easiest way to get this is with &lt;a href=&#34;http://www.mingw.org/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;MinGW&lt;/a&gt;
 which is a project that has ported GCC to Windows.
 Download and run &lt;a href=&#34;https://osdn.net/projects/mingw/releases/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;the installer&lt;/a&gt;,
