@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        Fixing Weird a Python Permission Issue ::
+        Nathan Vaughn — Adventures in programming and tech
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Introduction A while back, I was working on my mod manager for the new Microsoft Flight Simulator. While testing my mod manager, I ran into a scenario where Python couldn&amp;rsquo;t delete a mod&amp;rsquo;s folder with the error: Permission Error: [WinError 5] Access is denied. I thought this was strange as the files were owned by my account, and Python should have permission to delete them (and I hadn&amp;rsquo;t had this issue with any other mods)."
+/>
+<meta
+  name="keywords"
+  content="[programming tech Nathan Vaughn blog]"
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://blog.nathanv.me/posts/python-permission-issue/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css" />
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css" />
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png" />
+
+
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/img/favicon.png"/>
+
+<meta name="twitter:title" content="Fixing Weird a Python Permission Issue"/>
+<meta name="twitter:description" content="How to deal with an extremely strange Python file permission issue"/>
+
+
+
+<meta property="og:title" content="Fixing Weird a Python Permission Issue" />
+<meta property="og:description" content="How to deal with an extremely strange Python file permission issue" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/python-permission-issue/" />
+<meta property="og:image" content="https://blog.nathanv.me/img/favicon.png"/>
+<meta property="article:published_time" content="2020-10-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-10-26T00:00:00+00:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
+
+
+<meta name="theme-color" content="#7ec699">
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >nathanv@blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://nathanv.me">Homepage</a></li>
+        
+      
+        
+          <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+        
+      
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://nathanv.me">Homepage</a></li>
+      
+    
+      
+        <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Fixing Weird a Python Permission Issue</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-10-26
+        </span>
+
+        
+          
+        
+      
+
+      
+        <span class="post-author"
+          >— Written by Nathan Vaughn</span
+        >
+
+
+      
+        <span class="post-read-time"
+          >— 2 min read</span
+        >
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="https://blog.nathanv.me/tags/python/">#Python</a>&nbsp;
+        
+          <a href="https://blog.nathanv.me/tags/windows/">#Windows</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+        <h2>Table of Contents</h2>
+        <aside class="table-of-contents"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#solution">Solution</a></li>
+</ul></li>
+</ul>
+</nav></aside>
+      
+      
+
+<h2 id="introduction">Introduction</h2>
+
+<p>A while back, I was working on
+<a href="https://github.com/NathanVaughn/msfs-mod-manager/" rel="noreferrer" target="_blank">my mod manager</a>
+for the new <a href="https://www.flightsimulator.com/" rel="noreferrer" target="_blank">Microsoft Flight Simulator</a>.
+While testing my mod manager, I ran into a scenario where Python
+couldn&rsquo;t delete a mod&rsquo;s folder with the error:
+<code>Permission Error: [WinError 5] Access is denied</code>.
+I thought this was strange as the files were owned by my account, and Python
+<em>should</em> have permission to delete them (and I hadn&rsquo;t had this issue with
+any other mods). I even tried relaunching the Python process
+as an administrator, and Python still couldn&rsquo;t delete it.</p>
+
+
+  <figure class="center" >
+    <a href="img/original_error.jpg" target="_blank">
+      <img src="img/original_error.jpg"  alt="Recreation of the error."   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >Recreation of the error. As you can see boxed in red, the Python process is running with Administrator privileges.</figcaption>
+    
+  </figure>
+
+
+
+<p>Even weirder, the folder was completely empty
+(as Python was able to delete all of the contents), yet it couldn&rsquo;t delete
+the 0-byte folder itself.</p>
+
+
+  <figure class="center" >
+    <a href="img/folder_size.jpg" target="_blank">
+      <img src="img/folder_size.jpg"  alt="Windows dialog showing folder size."   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >The folder is completely empty. Deselecting the read-only checkbox does not affect anything.</figcaption>
+    
+  </figure>
+
+
+
+<h2 id="solution">Solution</h2>
+
+<p>Unfortunately, I don&rsquo;t know enough about the NTFS filesystem and Windows to understand
+why this is happening, but I did figure out how to fix it. You need to apply
+the <a href="https://docs.python.org/3/library/stat.html#stat.S_IWUSR" rel="noreferrer" target="_blank"><code>stat.S_IWUSR</code></a>
+(write by owner) mode to the folder with
+<a href="https://docs.python.org/3/library/os.html#os.chmod" rel="noreferrer" target="_blank"><code>os.chmod</code></a>.</p>
+
+
+  <figure class="center" >
+    <a href="img/fixed_error.jpg" target="_blank">
+      <img src="img/fixed_error.jpg"  alt="Example of fixing the error."   style="border-radius: 8px;"  />
+    </a>
+    
+      <figcaption class="center" >Example of fixing the error. As you can see boxed in red, the Python process is <em>NOT</em> running with Administrator privileges, yet can now delete the folder.</figcaption>
+    
+  </figure>
+
+
+
+<p>Here is a very simple implementation for recursively fixing permissions:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> shutil<span style="color:#f92672">,</span> os<span style="color:#f92672">,</span> stat
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fix_perm</span>(folder):
+    <span style="color:#66d9ef">for</span> root, dirs, files <span style="color:#f92672">in</span> os<span style="color:#f92672">.</span>walk(folder):
+        <span style="color:#66d9ef">for</span> d <span style="color:#f92672">in</span> dirs:
+            <span style="color:#75715e"># recursively fix directories</span>
+            os<span style="color:#f92672">.</span>chmod(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(root, d), stat<span style="color:#f92672">.</span>S_IWUSR)
+        <span style="color:#66d9ef">for</span> f <span style="color:#f92672">in</span> files:
+            <span style="color:#75715e"># recursively fix files</span>
+            os<span style="color:#f92672">.</span>chmod(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(root, f), stat<span style="color:#f92672">.</span>S_IWUSR)
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rm_tree_perm</span>(folder, first<span style="color:#f92672">=</span>True):
+    <span style="color:#66d9ef">try</span>:
+        <span style="color:#75715e"># attempt to delete normally</span>
+        shutil<span style="color:#f92672">.</span>rmtree(folder)
+    <span style="color:#66d9ef">except</span> PermissionError:
+        <span style="color:#66d9ef">if</span> first:
+            <span style="color:#75715e"># if first time, fix permissions and try again</span>
+            fix_perm(folder)
+            rm_tree_perm(folder, first<span style="color:#f92672">=</span>False)
+        <span style="color:#66d9ef">else</span>:
+            <span style="color:#75715e"># raise error with second failure</span>
+            <span style="color:#66d9ef">raise</span> PermissionError</code></pre></div>
+<p>You could also just always try to fix the permissions before attempting
+to delete the folder. I&rsquo;m not sure of the performance implications.</p>
+
+<p>If you&rsquo;d like to see this for yourself, I&rsquo;ve included a minimum working example
+of this in a Zip file, below. Just extract the file and inside
+there will be two 0-byte folders. The folder <code>TEXTURE.REDBULL</code> will have this
+mysterious issue and the folder <code>TEXTURE.YELLOW</code> will not.</p>
+
+<p><a href="files/Asobo_E330.zip" rel="noreferrer" target="_blank">Asobo_E330.zip</a></p>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="https://blog.nathanv.me/posts/domain-abuse/">
+                  <span class="button__text">Stop Using So Many Domain Names</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        <script src="https://utteranc.es/client.js"
+        repo="nathanvaughn/blog.nathanv.me"
+        issue-term="pathname"
+        label="comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >nathanv@blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2020 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-91853319-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+  </body>
+</html>

@@ -9,10 +9,124 @@
     <description>Recent content on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Fixing Weird a Python Permission Issue</title>
+      <link>https://blog.nathanv.me/posts/python-permission-issue/</link>
+      <pubDate>Mon, 26 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/python-permission-issue/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+
+&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;A while back, I was working on
+&lt;a href=&#34;https://github.com/NathanVaughn/msfs-mod-manager/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;my mod manager&lt;/a&gt;
+for the new &lt;a href=&#34;https://www.flightsimulator.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Microsoft Flight Simulator&lt;/a&gt;.
+While testing my mod manager, I ran into a scenario where Python
+couldn&amp;rsquo;t delete a mod&amp;rsquo;s folder with the error:
+&lt;code&gt;Permission Error: [WinError 5] Access is denied&lt;/code&gt;.
+I thought this was strange as the files were owned by my account, and Python
+&lt;em&gt;should&lt;/em&gt; have permission to delete them (and I hadn&amp;rsquo;t had this issue with
+any other mods). I even tried relaunching the Python process
+as an administrator, and Python still couldn&amp;rsquo;t delete it.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/original_error.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/original_error.jpg&#34;  alt=&#34;Recreation of the error.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Recreation of the error. As you can see boxed in red, the Python process is running with Administrator privileges.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Even weirder, the folder was completely empty
+(as Python was able to delete all of the contents), yet it couldn&amp;rsquo;t delete
+the 0-byte folder itself.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/folder_size.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/folder_size.jpg&#34;  alt=&#34;Windows dialog showing folder size.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;The folder is completely empty. Deselecting the read-only checkbox does not affect anything.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;solution&#34;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Unfortunately, I don&amp;rsquo;t know enough about the NTFS filesystem and Windows to understand
+why this is happening, but I did figure out how to fix it. You need to apply
+the &lt;a href=&#34;https://docs.python.org/3/library/stat.html#stat.S_IWUSR&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;stat.S_IWUSR&lt;/code&gt;&lt;/a&gt;
+(write by owner) mode to the folder with
+&lt;a href=&#34;https://docs.python.org/3/library/os.html#os.chmod&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;os.chmod&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/fixed_error.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/fixed_error.jpg&#34;  alt=&#34;Example of fixing the error.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Example of fixing the error. As you can see boxed in red, the Python process is &lt;em&gt;NOT&lt;/em&gt; running with Administrator privileges, yet can now delete the folder.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Here is a very simple implementation for recursively fixing permissions:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; shutil&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; os&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; stat
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;fix_perm&lt;/span&gt;(folder):
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; root, dirs, files &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;walk(folder):
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; d &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; dirs:
+            &lt;span style=&#34;color:#75715e&#34;&gt;# recursively fix directories&lt;/span&gt;
+            os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;chmod(os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;path&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(root, d), stat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;S_IWUSR)
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; f &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; files:
+            &lt;span style=&#34;color:#75715e&#34;&gt;# recursively fix files&lt;/span&gt;
+            os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;chmod(os&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;path&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(root, f), stat&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;S_IWUSR)
+
+&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;rm_tree_perm&lt;/span&gt;(folder, first&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;True):
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;try&lt;/span&gt;:
+        &lt;span style=&#34;color:#75715e&#34;&gt;# attempt to delete normally&lt;/span&gt;
+        shutil&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;rmtree(folder)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;except&lt;/span&gt; PermissionError:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; first:
+            &lt;span style=&#34;color:#75715e&#34;&gt;# if first time, fix permissions and try again&lt;/span&gt;
+            fix_perm(folder)
+            rm_tree_perm(folder, first&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;False)
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;:
+            &lt;span style=&#34;color:#75715e&#34;&gt;# raise error with second failure&lt;/span&gt;
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; PermissionError&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;You could also just always try to fix the permissions before attempting
+to delete the folder. I&amp;rsquo;m not sure of the performance implications.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;d like to see this for yourself, I&amp;rsquo;ve included a minimum working example
+of this in a Zip file, below. Just extract the file and inside
+there will be two 0-byte folders. The folder &lt;code&gt;TEXTURE.REDBULL&lt;/code&gt; will have this
+mysterious issue and the folder &lt;code&gt;TEXTURE.YELLOW&lt;/code&gt; will not.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;files/Asobo_E330.zip&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Asobo_E330.zip&lt;/a&gt;&lt;/p&gt;
+
+        
+        </description>
+    </item>
     
     <item>
       <title>Stop Using So Many Domain Names</title>

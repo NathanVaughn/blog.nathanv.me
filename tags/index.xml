@@ -9,10 +9,46 @@
     <description>Recent content in Tags on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Python</title>
+      <link>https://blog.nathanv.me/tags/python/</link>
+      <pubDate>Mon, 26 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/python/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>Windows</title>
+      <link>https://blog.nathanv.me/tags/windows/</link>
+      <pubDate>Mon, 26 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/windows/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+        
+        </description>
+    </item>
     
     <item>
       <title>domains</title>
@@ -74,24 +110,6 @@
       <pubDate>Tue, 06 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/tags/rant/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>Windows</title>
-      <link>https://blog.nathanv.me/tags/windows/</link>
-      <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.nathanv.me/tags/windows/</guid>
       <description>
         
           
@@ -254,24 +272,6 @@
       <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/tags/dynamodb/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>https://blog.nathanv.me/tags/python/</link>
-      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.nathanv.me/tags/python/</guid>
       <description>
         
           
