@@ -38,7 +38,7 @@ While testing my mod manager, I ran into a scenario where Python
 couldn&amp;rsquo;t delete a mod&amp;rsquo;s folder with the error:
 &lt;code&gt;Permission Error: [WinError 5] Access is denied&lt;/code&gt;.
 I thought this was strange as the files were owned by my account, and Python
-&lt;em&gt;should&lt;/em&gt; have permission to delete them (and I hadn&amp;rsquo;t had this issue with
+&lt;em&gt;should&lt;/em&gt; have had permission to delete them (and I hadn&amp;rsquo;t had this issue with
 any other mods). I even tried relaunching the Python process
 as an administrator, and Python still couldn&amp;rsquo;t delete it.&lt;/p&gt;
 
