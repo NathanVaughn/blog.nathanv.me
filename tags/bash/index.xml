@@ -57,7 +57,7 @@ docker build --build-arg VCS_REF&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/build_fail.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/build_fail.jpg&#34;  alt=&#34;Docker Hub build failure&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/build_fail.jpg&#34;  alt=&#34;Docker Hub build failure&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Oh no&lt;/figcaption&gt;
@@ -118,7 +118,7 @@ fine.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/build_success.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/build_success.jpg&#34;  alt=&#34;Docker Hub build success&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/build_success.jpg&#34;  alt=&#34;Docker Hub build success&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Success!&lt;/figcaption&gt;
@@ -136,7 +136,7 @@ to build automatically on Docker Hub with all of the
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/microbadger_labels.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/microbadger_labels.jpg&#34;  alt=&#34;Microbadger labels&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/microbadger_labels.jpg&#34;  alt=&#34;Microbadger labels&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Microbadger labels&lt;/figcaption&gt;

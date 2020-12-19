@@ -45,7 +45,7 @@ as an administrator, and Python still couldn&amp;rsquo;t delete it.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/original_error.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/original_error.jpg&#34;  alt=&#34;Recreation of the error.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/original_error.jpg&#34;  alt=&#34;Recreation of the error.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Recreation of the error. As you can see boxed in red, the Python process is running with Administrator privileges.&lt;/figcaption&gt;
@@ -61,7 +61,7 @@ the 0-byte folder itself.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/folder_size.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/folder_size.jpg&#34;  alt=&#34;Windows dialog showing folder size.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/folder_size.jpg&#34;  alt=&#34;Windows dialog showing folder size.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The folder is completely empty. Deselecting the read-only checkbox does not affect anything.&lt;/figcaption&gt;
@@ -84,7 +84,7 @@ the &lt;a href=&#34;https://docs.python.org/3/library/stat.html#stat.S_IWUSR&#34
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/fixed_error.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/fixed_error.jpg&#34;  alt=&#34;Example of fixing the error.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/fixed_error.jpg&#34;  alt=&#34;Example of fixing the error.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Example of fixing the error. As you can see boxed in red, the Python process is &lt;em&gt;NOT&lt;/em&gt; running with Administrator privileges, yet can now delete the folder.&lt;/figcaption&gt;
@@ -164,7 +164,7 @@ function &lt;code&gt;static_url_for&lt;/code&gt;. This function still ends up ca
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/original-diagram.svg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/original-diagram.svg&#34;  alt=&#34;How everything originally works.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/original-diagram.svg&#34;  alt=&#34;How everything originally works.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;How everything originally works.&lt;/figcaption&gt;
@@ -179,7 +179,7 @@ so that I could combine the features of both.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/desired-diagram.svg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/desired-diagram.svg&#34;  alt=&#34;How I want it to work.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/desired-diagram.svg&#34;  alt=&#34;How I want it to work.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;How I want it to work.&lt;/figcaption&gt;

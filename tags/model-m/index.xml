@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Model M on Nathan Vaughn</title>
+    
+    
+    
+    <link>https://blog.nathanv.me/tags/model-m/</link>
+    <description>Recent content in Model M on Nathan Vaughn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 18 Dec 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.nathanv.me/tags/model-m/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>IBM Model M cleaning</title>
+      <link>https://blog.nathanv.me/posts/ibm-model-m-cleaning/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/ibm-model-m-cleaning/</guid>
+      <description>
+        
+          &lt;img src=&#34;https://blog.nathanv.me/posts/ibm-model-m-cleaning/img/model-m-angle.jpg&#34;/&gt;
+          
+        
+        
+        
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;As a graduation gift, a friend gave me an IBM Model M keyboard that he snagged
+from the university surplus store
+(not the &lt;a href=&#34;https://blog.nathanv.me/posts/sun-ultra-24-build/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;first time&lt;/a&gt; that the surplus
+store has made an appearance with vintage tech).&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/model-m-main.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/model-m-main.jpg&#34;  alt=&#34;1986 IBM Model M&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;1986 IBM Model M&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;This keyboard is absolutely delightful, and I wanted to make a post outlining
+my process of cleaning the board.&lt;/p&gt;
+
+&lt;h2 id=&#34;ibm-model-m-history&#34;&gt;IBM Model M History&lt;/h2&gt;
+
+&lt;p&gt;First, a history lesson.&lt;/p&gt;
+
+&lt;p&gt;The year is 1981. IBM has just released the first IBM Personal Computer.
+With each IBM PC came a &lt;a href=&#34;https://en.wikipedia.org/wiki/Buckling_spring&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;buckling spring&lt;/a&gt;
+IBM Model F keyboard. Now, the standard keyboard
+layout we know today has not been developed yet. These Model F keyboards,
+while well-built and pleasant to type on, had a strange layout (by today&amp;rsquo;s standards).&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/model-f-wiki.png&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/model-f-wiki.png&#34;  alt=&#34;1984 IBM Model F&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;1984 IBM Model F&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;The function keys were in columns on the left side and the numpad had a weird layout
+with no addition or division keys. While the IBM PC was revolutionary for its time,
+IBM realized it could develop a more ergonomic keyboard, and sought out to improve
+their Model F. Hence, in 1984, the IBM Model M was born.&lt;/p&gt;
+
+&lt;p&gt;The IBM Model M (also known as the &amp;ldquo;IBM Enhanced Keyboard&amp;rdquo;) is the grandfather of
+all modern keyboards.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/model-m-wiki.png&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/model-m-wiki.png&#34;  alt=&#34;1986 IBM Model M&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;1986 IBM Model M&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;With what IBM learned from their ergonomics studies in the years
+prior, they moved the function keys to be above the number keys, in groups of four.
+They also rearranged the numpad, added the arrow keys, and added the six key block
+of &lt;kbd&gt;Insert&lt;/kbd&gt;, &lt;kbd&gt;Home&lt;/kbd&gt;, &lt;kbd&gt;Delete&lt;/kbd&gt;, &lt;kbd&gt;End&lt;/kbd&gt;, &lt;kbd&gt;Page Up&lt;/kbd&gt;, and &lt;kbd&gt;Page Down&lt;/kbd&gt; keys. However, they refused
+to add the increasingly common &lt;kbd&gt;⊞ Win&lt;/kbd&gt; key to their keyboard, opting to leave a blank
+space on either side of the Alt keys instead.&lt;/p&gt;
+
+&lt;p&gt;Now, in order to reduce costs from the Model F,
+IBM made some compromises with the Model M. Primarily, these were to change the
+Model F&amp;rsquo;s design with a capacitive membrane and full
+&lt;a href=&#34;https://en.wikipedia.org/wiki/N-key_rollover&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;N-key rollover&lt;/a&gt;, to a
+membrane design and losing the N-key rollover support.&lt;/p&gt;
+
+&lt;p&gt;The history of the Model M is long and complicated as well over
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Model_M_keyboard#Features_by_part_number&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;100 different variants&lt;/a&gt;
+were produced (different colors, keyboard layouts, design improvements,
+connectors, logo style, etc.). The short version is that in 1991, IBM decided
+it didn&amp;rsquo;t want to continue manufacturing keyboards, and sold its keyboard business
+to Lexmark. Lexmark continuing making Model Ms until 1996 when they stopped production.
+After this, a group of ex-Lexmark employees bought the rights
+and manufacturing tooling, and formed the company
+&lt;a href=&#34;https://www.pckeyboard.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Unicomp&lt;/a&gt;, who continues to manufacture
+brand-new Model M&amp;rsquo;s to this day in different colors, with Windows keys, and USB support
+(just without the IBM branding).&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/model-m-unicomp.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/model-m-unicomp.jpg&#34;  alt=&#34;A new Unicomp Model M&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;A new Unicomp Model M&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Over the years, to decrease manufacturing costs, the Model M&amp;rsquo;s were made cheaper
+by using lower quality plastics, and thinner components. This means that generally, the
+older a Model M is, the better built it is. This unfortunately means that Unicomp
+keyboards, while as close to real thing as you can get new, are based off the molds
+and manufacturing at the end of production, resulting in the lowest-quality of
+the Model M series.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/model-m-gens.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/model-m-gens.jpg&#34;  alt=&#34;Table of the Model M generational differences&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Table of the generational differences of the Model Ms from &lt;a href=&#34;https://youtu.be/r5H58uudo1Y?t=545&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Chyrosran22&amp;rsquo;s fantastic video&lt;/a&gt;.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;my-specific-keyboard&#34;&gt;My Specific Keyboard&lt;/h2&gt;
+
+&lt;p&gt;With all that out of the way, let&amp;rsquo;s look at the exact keyboard I have.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/birth-certificate.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/birth-certificate.jpg&#34;  alt=&#34;My IBM Model M&amp;#39;s birth certificate&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;My IBM Model M&amp;rsquo;s birth certificate&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;My Model M is a part number 1390120 and was built on January 14, 1986. There&amp;rsquo;s a few
+notable features about this part number compared to most.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/tramp-stamp.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/tramp-stamp.jpg&#34;  alt=&#34;My Model M has no lock lights and a square badge&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;My Model M has no lock lights and a square badge&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Two of the most notable things are that&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;There are no lock lights&lt;/li&gt;
+&lt;li&gt;It has a square IBM badge&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This tells us that the keyboard was one of the original generations produced, as
+the square IBM badges were only made for a few years before being replaced
+by oval badges. Additionally, the keyboard has no lock lights. This means that it must
+have been bundled with a PC or terminal that displayed the lock light status on
+the monitor rather than keyboard.&lt;/p&gt;
+
+&lt;p&gt;There are two more things that stand out to me. First, is the connector.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/sdl-connector.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/sdl-connector.jpg&#34;  alt=&#34;Removable SDL connector on the keyboard&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Removable SDL connector on the keyboard&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;This keyboard has a removable
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Shielded_data_link_connector&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;SDL&lt;/a&gt; connector. As this
+keyboard actually predates the &lt;a href=&#34;https://en.wikipedia.org/wiki/PS/2_port&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;PS/2 protocol&lt;/a&gt;
+by a year, this keyboard likely came with a SDL to
+&lt;a href=&#34;https://deskthority.net/wiki/AT_keyboard_interface&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;AT&lt;/a&gt;
+(basically a 5-pin DIN connector) cable from the factory.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/sdl-cable.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/sdl-cable.jpg&#34;  alt=&#34;SDL to PS/2 cable given to me&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;SDL to PS/2 cable given to me&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;However, the keyboard was still compatible with the PS/2 protocol once
+it had been developed. While the original cable for the keyboard is long-gone, with
+the keyboard itself, I was given a SDL to PS/2 cable that works perfectly fine on modern
+motherboards.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/relegendable.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/relegendable.jpg&#34;  alt=&#34;Relegendable keycaps&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Relegendable keycaps. Here, I&amp;rsquo;ve pulled off the top keycaps with the legends from the arrow keys.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Lastly, this keyboard also features relegendable keycaps. The keycap on each key is
+actually two pieces. The top piece comes off fairly easily with just your fingers,
+while the bottom piece is more firmly attached to the spring of each switch. This
+was done to make different localizations of the keyboards easier, as the keyboards
+and bottom keycaps could be mass produced, and only a secondary top keycap set
+produced for each localization.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/side-legends.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/side-legends.jpg&#34;  alt=&#34;Keycap side legends&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Interestingly, some keycaps have side legends, and some in different colors. The colors got removed from later models, but I find these interesting as not many keyboards have this today.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;cleaning&#34;&gt;Cleaning&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s get &lt;a href=&#34;https://youtu.be/TVcLIfSC4OE&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;down to business&lt;/a&gt;. This keyboard had
+almost 35 years of grime on it. It wasn&amp;rsquo;t &lt;em&gt;bad&lt;/em&gt; considering its age,
+but it wasn&amp;rsquo;t &lt;em&gt;good&lt;/em&gt; either.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/grime.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/grime.jpg&#34;  alt=&#34;Keyboard grime&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;30+ years in an academic environment has left its residue&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;To clean my Model M I used the following tools:&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/cleaning-tools.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/cleaning-tools.jpg&#34;  alt=&#34;Tools needed for cleaning&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Tools needed for cleaning&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.maxkeyboard.com/max-wire-key-cap-puller-tool.html&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Keycap puller&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/gp/product/B000BQ4XP6&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;5.5mm nut driver&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Flat-head screwdriver&lt;/li&gt;
+&lt;li&gt;Tweezers&lt;/li&gt;
+&lt;li&gt;Isopropyl alcohol&lt;/li&gt;
+&lt;li&gt;Lots of paper towels&lt;/li&gt;
+&lt;li&gt;Small bin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The nut driver was a real pain. The 4 bolts required to disassemble the Model M
+are &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;32&lt;/sub&gt;&amp;rdquo;. My universal socket set was too wide to fit into the recesses to actually
+reach the head of each bolt. Finding an individual &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;32&lt;/sub&gt;&amp;rdquo; nut driver online was
+expensive so I ended up ordering the linked 5.5mm nut driver for cheap instead.
+The sizes are nearly identical and it works fine.&lt;/p&gt;
+
+&lt;p&gt;First, flip the keyboard upside down and remove these 4 bolts with your nut driver.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/bolt-removal.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/bolt-removal.jpg&#34;  alt=&#34;Removing the 4 primary bolts&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Removing the 4 primary bolts&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;After you&amp;rsquo;ve done that, flip the keyboard right side up, and remove the top shell.
+It should unsnap pretty easily.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/top-shell-removed.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/top-shell-removed.jpg&#34;  alt=&#34;Top shell removed&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Top shell removed&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;With the top shell taken off, I could see how dirty the keyboard really was.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/under-grime.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/under-grime.jpg&#34;  alt=&#34;Grime under the top shell&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;All the grime the top shell was hiding&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Before the backplate can be removed, you first need to undo a small grounding
+strap located in the top left of the keyboard. This is held on by a flat-head bolt
+with a washer and a nut.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/grounding-strap.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/grounding-strap.jpg&#34;  alt=&#34;Grounding strap disconnection&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Remove the bolt holding the grounding strap&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Before you can take out the backplate, there are two ribbon cables connecting
+the keyboard&amp;rsquo;s controller. I found the ribbon cables in my keyboard
+were pretty well attached, so I disconnected them outside of the case.
+Either way, you can lift out the backplate. Tilt it forwards to the front and lift
+gently (especially if the controller is still connected). It might need a little
+wiggle to free it.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/full-disassembly.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/full-disassembly.jpg&#34;  alt=&#34;Keyboard fully disassembled&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Now all the major components are removed&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Now is a good time to inspect the rivets on the backside of the backplate.
+While the Model Ms were a great keyboard,
+they had one major design flaw. To save cost, IBM used plastic rivets
+to connect the steel backplate to the membrane and plastic housing for the switches.
+Over time, these rivets tend to break from becoming brittle with age, and everyday
+typing forces.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/broken-rivets.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/broken-rivets.jpg&#34;  alt=&#34;Two broken plastic rivets&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Two plastic rivets pictured here have had their heads sheared off&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;If too many of these rivets are sheared off, you will
+likely need to
+&lt;a href=&#34;https://wiki.geekhack.org/index.php?title=Modifications:IBM_Model_M:Nut_and_Bolt_Mod&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;bolt&lt;/a&gt;
+&lt;a href=&#34;https://deskthority.net/viewtopic.php?t=9169&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;mod&lt;/a&gt;
+your keyboard to permanently replace the plastic rivets. In my case, only 4
+were broken so I left it.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/rivet-head.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/rivet-head.jpg&#34;  alt=&#34;Broken plastic rivet head&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;One of many plastic rivet heads found rattling around inside the keyboard&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Also on the backside of the backplate are two inspection stickers from the factory.
+Notice the absolutely gorgeous shiny rainbow finish of the backplate.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/serial-sticker.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/serial-sticker.jpg&#34;  alt=&#34;Serial number sticker&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Serial number sticker. Curiously, the person who initialed it has the same initials as me.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/qa-sticker.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/qa-sticker.jpg&#34;  alt=&#34;QA sticker&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;QA sticker&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;The controller PCB was very clean so I left it alone.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/pcb.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/pcb.jpg&#34;  alt=&#34;Three photos of the controller PCB&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Controller PCB pictures for anyone interested. You can see the connector on the right side of the board for a daughter board for the lock lights.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;shell&#34;&gt;Shell&lt;/h3&gt;
+
+&lt;p&gt;Now, time to clean the keyboard. For the two shell halves, I used isopropyl alcohol
+along with soap to clean as much grime as I could off the surface of the plastic.
+For some of the tough to reach areas like the grooves on the top shell,
+I used a small flat-head screwdriver with the tip wrapped with some paper towels soaked
+in alcohol, and ran it back and forth. Worked pretty well, though I may have
+scraped a little bit of plastic off.&lt;/p&gt;
+
+&lt;p&gt;Now, there were some nicks on the upper shell. I decided to just leave them as-is.
+I was afraid trying to sand them down at all would do more harm than good.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/nicks.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/nicks.jpg&#34;  alt=&#34;Nicks on the keyboard shell&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Just a few nicks on the edges of the shell&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;As for the Iowa State University tramp stamp on the top, I also decided to leave that.
+After all, that&amp;rsquo;s how I got the keyboard, the badge itself is in fine shape,
+and it gives the keyboard a special uniqueness to it.&lt;/p&gt;
+
+&lt;h3 id=&#34;keycaps&#34;&gt;Keycaps&lt;/h3&gt;
+
+&lt;p&gt;To clean the keycaps, I first removed all the top layer keycaps and put them in small
+tub.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/top-keycaps-removed.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/top-keycaps-removed.jpg&#34;  alt=&#34;All of the top keycaps removed&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;This is after removing all the top keycaps. Note: I took this picture &lt;em&gt;after&lt;/em&gt; cleaning. The keycap on the numpad &lt;kbd&gt;+&lt;/kbd&gt; key should actually be on the stem for right &lt;kbd&gt;Ctrl&lt;/kbd&gt;.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Be careful when removing the spacebar, and numpad &lt;kbd&gt;+&lt;/kbd&gt; and &lt;kbd&gt;Enter&lt;/bkd&gt;
+keys, as they have stabilizers. The stabilizers for the two numpad keys have a slight
+bend in them as well that follows the curve of the keycap, so remember this
+when putting the keycaps back on.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/stabilizier.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/stabilizier.jpg&#34;  alt=&#34;Numpad key stabilizer&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;The stabilizer matches the curve of the keycap so it is directional&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;For all the keycaps in my tub, I filled it with warm soapy water and let them soak
+for an hour.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/keycap-bath.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/keycap-bath.jpg&#34;  alt=&#34;Keycaps soaking in soapy water&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;This doesn&amp;rsquo;t hurt the legends at all as they are
+&lt;a href=&#34;https://deskthority.net/wiki/Keycap_printing#Dye_sublimation&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;dye-sublimated&lt;/a&gt;.
+The grime came right off with just a wipe of paper towel.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/dirty-keycap-bath.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/dirty-keycap-bath.jpg&#34;  alt=&#34;Dirty keycap water after soaking&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;This water was clean when I put the keycaps in&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;To reassemble, I found it easier to put the keycaps with stabilizer on the spring first,
+then feed the stabilizer into its slot rather than the other way around.&lt;/p&gt;
+
+&lt;h3 id=&#34;baseplate&#34;&gt;Baseplate&lt;/h3&gt;
+
+&lt;p&gt;To clean the baseplate, I also took off all the bottom keycaps.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/bottom-keycaps-removed.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/bottom-keycaps-removed.jpg&#34;  alt=&#34;Bottom keycaps removed&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Bottom keycaps removed&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;I initially tried to clean the baseplate without removing these, as I knew getting
+junk into the switch stems is very bad, but they&amp;rsquo;re just too much in the way.
+Just be careful to not drop anything down the switch stems.&lt;/p&gt;
+
+&lt;p&gt;Unlike most keyboards, you don&amp;rsquo;t need to keep track of which row which keycap came from.
+On a Model M, the profile of every keycap is identical. To achieve per-row sculpting,
+the switches themselves are put on a curve.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/keycap-profiles.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/keycap-profiles.jpg&#34;  alt=&#34;Standard keycap profiles versus Model M keycap profiles&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Top: &lt;a href=&#34;https://drop.com/buy/ascii-sa-pbt-dye-subbed-custom-keycap-set&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;SA profile keycaps&lt;/a&gt; on a straight keyboard. Bottom: Model M keycaps on its curved backplate.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;In terms of cleaning the backplate, I used a &lt;em&gt;lot&lt;/em&gt; of paper towels soaked with alcohol.
+To get in some of the tighter spaces, I again used a screwdriver tip wrapped in paper
+towels to run through the spaces.&lt;/p&gt;
+
+&lt;h3 id=&#34;result&#34;&gt;Result&lt;/h3&gt;
+
+&lt;p&gt;Reassembly is straightforward, just do everything in reverse.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m extremely pleased with the result. While not perfect, it&amp;rsquo;s way better than
+I originally got it, and looks absolutely magnificent.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/clean-1.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/clean-1.jpg&#34;  alt=&#34;Picture of cleaned keyboard reassembled&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+  &lt;/figure&gt;
+
+
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/clean-2.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/clean-2.jpg&#34;  alt=&#34;Closeup picture of cleaned keyboard reassembled&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;This keyboard hasn&amp;rsquo;t been this clean since it left the factory&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;review&#34;&gt;Review&lt;/h2&gt;
+
+&lt;p&gt;Here&amp;rsquo;s my thoughts on the keyboard. Mind you, I usually typed on Cherry MX Blues and
+Browns prior. I don&amp;rsquo;t have the time or money to be a true keyboard aficionado like
+some on &lt;a href=&#34;https://www.reddit.com/r/MechanicalKeyboards&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;/r/MechanicalKeyboards&lt;/a&gt;.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/reddit-rant.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/reddit-rant.jpg&#34;  alt=&#34;/u/SolitaryEgg has some strong feeling towards the /r/MechanicalKeyboards community&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;/u/SolitaryEgg has some strong feeling towards the /r/MechanicalKeyboards community&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;feel&#34;&gt;Feel&lt;/h3&gt;
+
+&lt;p&gt;Overall, I like the board a lot. The tactileness of the switches is lovely, though
+I usually bottom out keycaps anyways. The switches are far heavier than I was used to
+with Blues and at first left my fingers feeling tired after lots of typing.&lt;/p&gt;
+
+&lt;h3 id=&#34;sound&#34;&gt;Sound&lt;/h3&gt;
+
+&lt;p&gt;The sound of the Model is definitely lower-pitched than Cherry switches, but a lot
+more &amp;ldquo;pingy&amp;rdquo;, which makes sense as the keys are directly connected to a spring.
+I recorded samples of each for you to compare.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/audio-setup.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/audio-setup.jpg&#34;  alt=&#34;Microphone directly over my keyboard&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;I got my mic as close as possible to the keyboard while leaving room for my hands&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Each sample was done with no risers on the back deployed, and not modified in any way.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;audio controls&gt;
+        &lt;source src=&#34;audio/mxblues.mp3&#34; type=&#34;&#34;&gt;
+    &lt;/audio&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Cherry MX Blues&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;audio controls&gt;
+        &lt;source src=&#34;audio/modelm.mp3&#34; type=&#34;&#34;&gt;
+    &lt;/audio&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Model M Buckling Springs&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;issues&#34;&gt;Issues&lt;/h3&gt;
+
+&lt;p&gt;There&amp;rsquo;s a few things you have to deal with, with a keyboard this old.
+First is the size. This thing is a &lt;strong&gt;&lt;em&gt;monster&lt;/em&gt;&lt;/strong&gt;.
+It&amp;rsquo;s 19.25 inches long by 8.25 inches wide. It takes up a ton of desk space.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/desk-space.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/desk-space.jpg&#34;  alt=&#34;Model M on my desk&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;This thing consumes the majority of my &lt;a href=&#34;https://bitwit.tech/shop/ensemble1-blupnk&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;desk mat&lt;/a&gt;&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Additionally, the lack of Windows key can be problematic. I was able to get
+around this by using the program &lt;a href=&#34;https://github.com/randyrants/sharpkeys&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;SharpKeys&lt;/a&gt;
+and remapping the &lt;a href=&#34;https://ux.stackexchange.com/a/64709&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;&lt;kbd&gt;Scroll Lock&lt;/kbd&gt;&lt;/a&gt; key
+to act as a Windows key as I can&amp;rsquo;t think of a time I&amp;rsquo;ve ever
+actually needed the key.&lt;/p&gt;
+
+&lt;p&gt;Another thing is the PS/2 connector. While my motherboard does have a port, many
+computers nowadays (especially laptops) do not, and PS/2 is also not hot-swappable
+like USB. I went ahead bit the bullet and bought
+&lt;a href=&#34;https://ebay.us/oaGiIx&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;this $35 SDL to USB cable&lt;/a&gt;
+that has an nice adapter built in to the cable itself. Unfortunately, it hasn&amp;rsquo;t shown
+up yet due to USPS delays, but it should make using the keyboard a bit easier and
+more universal while not modifying the guts.&lt;/p&gt;
+
+&lt;p&gt;Lastly, with my specific keyboard not having any lock lights,
+knowing &lt;kbd&gt;Num Lock&lt;/kbd&gt; or &lt;kbd&gt;Caps Lock&lt;/kbd&gt; is on can frustrating.
+For this, I&amp;rsquo;ve found the program
+&lt;a href=&#34;https://www.traystatus.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;TrayStatus&lt;/a&gt; works wonderfully for this,
+by adding customizable icons in the Windows system tray.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/tray-lock-lights.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/tray-lock-lights.jpg&#34;  alt=&#34;TrayStatus virtual lock lights on the far left&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;TrayStatus virtual lock lights on the far left&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I love this keyboard. It&amp;rsquo;s loud, fun to type on, and built like a tank.
+It&amp;rsquo;s survived over 30 years in a university environment, and ready for 30 more.
+While it may not be my daily driver, and too loud for office use, I fully plan on using
+it frequently and  expect to be able to pass this down to my grandchildren.
+They sure don&amp;rsquo;t build &amp;lsquo;em like they used to.&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=r5H58uudo1Y&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.youtube.com/watch?v=r5H58uudo1Y&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=D7wmMZmMinM&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.youtube.com/watch?v=D7wmMZmMinM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Model_F_keyboard&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Model_F_keyboard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Model_M_keyboard&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Model_M_keyboard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Shielded_data_link_connector&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Shielded_data_link_connector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/PS/2_port&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/PS/2_port&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://deskthority.net/wiki/AT_keyboard_interface&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://deskthority.net/wiki/AT_keyboard_interface&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://deskthority.net/wiki/Keycap_printing#Dye_sublimation&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://deskthority.net/wiki/Keycap_printing#Dye_sublimation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.reddit.com/r/MechanicalKeyboards/comments/d43o11/this_subreddit_in_a_nutshell/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.reddit.com/r/MechanicalKeyboards/comments/d43o11/this_subreddit_in_a_nutshell/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/randyrants/sharpkeys&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://github.com/randyrants/sharpkeys&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.traystatus.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.traystatus.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

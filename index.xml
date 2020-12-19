@@ -9,10 +9,771 @@
     <description>Recent content on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 26 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 18 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>IBM Model M cleaning</title>
+      <link>https://blog.nathanv.me/posts/ibm-model-m-cleaning/</link>
+      <pubDate>Fri, 18 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/ibm-model-m-cleaning/</guid>
+      <description>
+        
+          &lt;img src=&#34;https://blog.nathanv.me/posts/ibm-model-m-cleaning/img/model-m-angle.jpg&#34;/&gt;
+          
+        
+        
+        
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;As a graduation gift, a friend gave me an IBM Model M keyboard that he snagged
+from the university surplus store
+(not the &lt;a href=&#34;https://blog.nathanv.me/posts/sun-ultra-24-build/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;first time&lt;/a&gt; that the surplus
+store has made an appearance with vintage tech).&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/model-m-main.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/model-m-main.jpg&#34;  alt=&#34;1986 IBM Model M&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;1986 IBM Model M&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;This keyboard is absolutely delightful, and I wanted to make a post outlining
+my process of cleaning the board.&lt;/p&gt;
+
+&lt;h2 id=&#34;ibm-model-m-history&#34;&gt;IBM Model M History&lt;/h2&gt;
+
+&lt;p&gt;First, a history lesson.&lt;/p&gt;
+
+&lt;p&gt;The year is 1981. IBM has just released the first IBM Personal Computer.
+With each IBM PC came a &lt;a href=&#34;https://en.wikipedia.org/wiki/Buckling_spring&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;buckling spring&lt;/a&gt;
+IBM Model F keyboard. Now, the standard keyboard
+layout we know today has not been developed yet. These Model F keyboards,
+while well-built and pleasant to type on, had a strange layout (by today&amp;rsquo;s standards).&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/model-f-wiki.png&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/model-f-wiki.png&#34;  alt=&#34;1984 IBM Model F&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;1984 IBM Model F&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;The function keys were in columns on the left side and the numpad had a weird layout
+with no addition or division keys. While the IBM PC was revolutionary for its time,
+IBM realized it could develop a more ergonomic keyboard, and sought out to improve
+their Model F. Hence, in 1984, the IBM Model M was born.&lt;/p&gt;
+
+&lt;p&gt;The IBM Model M (also known as the &amp;ldquo;IBM Enhanced Keyboard&amp;rdquo;) is the grandfather of
+all modern keyboards.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/model-m-wiki.png&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/model-m-wiki.png&#34;  alt=&#34;1986 IBM Model M&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;1986 IBM Model M&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;With what IBM learned from their ergonomics studies in the years
+prior, they moved the function keys to be above the number keys, in groups of four.
+They also rearranged the numpad, added the arrow keys, and added the six key block
+of &lt;kbd&gt;Insert&lt;/kbd&gt;, &lt;kbd&gt;Home&lt;/kbd&gt;, &lt;kbd&gt;Delete&lt;/kbd&gt;, &lt;kbd&gt;End&lt;/kbd&gt;, &lt;kbd&gt;Page Up&lt;/kbd&gt;, and &lt;kbd&gt;Page Down&lt;/kbd&gt; keys. However, they refused
+to add the increasingly common &lt;kbd&gt;⊞ Win&lt;/kbd&gt; key to their keyboard, opting to leave a blank
+space on either side of the Alt keys instead.&lt;/p&gt;
+
+&lt;p&gt;Now, in order to reduce costs from the Model F,
+IBM made some compromises with the Model M. Primarily, these were to change the
+Model F&amp;rsquo;s design with a capacitive membrane and full
+&lt;a href=&#34;https://en.wikipedia.org/wiki/N-key_rollover&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;N-key rollover&lt;/a&gt;, to a
+membrane design and losing the N-key rollover support.&lt;/p&gt;
+
+&lt;p&gt;The history of the Model M is long and complicated as well over
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Model_M_keyboard#Features_by_part_number&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;100 different variants&lt;/a&gt;
+were produced (different colors, keyboard layouts, design improvements,
+connectors, logo style, etc.). The short version is that in 1991, IBM decided
+it didn&amp;rsquo;t want to continue manufacturing keyboards, and sold its keyboard business
+to Lexmark. Lexmark continuing making Model Ms until 1996 when they stopped production.
+After this, a group of ex-Lexmark employees bought the rights
+and manufacturing tooling, and formed the company
+&lt;a href=&#34;https://www.pckeyboard.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Unicomp&lt;/a&gt;, who continues to manufacture
+brand-new Model M&amp;rsquo;s to this day in different colors, with Windows keys, and USB support
+(just without the IBM branding).&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/model-m-unicomp.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/model-m-unicomp.jpg&#34;  alt=&#34;A new Unicomp Model M&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;A new Unicomp Model M&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Over the years, to decrease manufacturing costs, the Model M&amp;rsquo;s were made cheaper
+by using lower quality plastics, and thinner components. This means that generally, the
+older a Model M is, the better built it is. This unfortunately means that Unicomp
+keyboards, while as close to real thing as you can get new, are based off the molds
+and manufacturing at the end of production, resulting in the lowest-quality of
+the Model M series.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/model-m-gens.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/model-m-gens.jpg&#34;  alt=&#34;Table of the Model M generational differences&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Table of the generational differences of the Model Ms from &lt;a href=&#34;https://youtu.be/r5H58uudo1Y?t=545&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Chyrosran22&amp;rsquo;s fantastic video&lt;/a&gt;.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;my-specific-keyboard&#34;&gt;My Specific Keyboard&lt;/h2&gt;
+
+&lt;p&gt;With all that out of the way, let&amp;rsquo;s look at the exact keyboard I have.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/birth-certificate.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/birth-certificate.jpg&#34;  alt=&#34;My IBM Model M&amp;#39;s birth certificate&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;My IBM Model M&amp;rsquo;s birth certificate&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;My Model M is a part number 1390120 and was built on January 14, 1986. There&amp;rsquo;s a few
+notable features about this part number compared to most.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/tramp-stamp.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/tramp-stamp.jpg&#34;  alt=&#34;My Model M has no lock lights and a square badge&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;My Model M has no lock lights and a square badge&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Two of the most notable things are that&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;There are no lock lights&lt;/li&gt;
+&lt;li&gt;It has a square IBM badge&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This tells us that the keyboard was one of the original generations produced, as
+the square IBM badges were only made for a few years before being replaced
+by oval badges. Additionally, the keyboard has no lock lights. This means that it must
+have been bundled with a PC or terminal that displayed the lock light status on
+the monitor rather than keyboard.&lt;/p&gt;
+
+&lt;p&gt;There are two more things that stand out to me. First, is the connector.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/sdl-connector.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/sdl-connector.jpg&#34;  alt=&#34;Removable SDL connector on the keyboard&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Removable SDL connector on the keyboard&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;This keyboard has a removable
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Shielded_data_link_connector&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;SDL&lt;/a&gt; connector. As this
+keyboard actually predates the &lt;a href=&#34;https://en.wikipedia.org/wiki/PS/2_port&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;PS/2 protocol&lt;/a&gt;
+by a year, this keyboard likely came with a SDL to
+&lt;a href=&#34;https://deskthority.net/wiki/AT_keyboard_interface&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;AT&lt;/a&gt;
+(basically a 5-pin DIN connector) cable from the factory.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/sdl-cable.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/sdl-cable.jpg&#34;  alt=&#34;SDL to PS/2 cable given to me&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;SDL to PS/2 cable given to me&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;However, the keyboard was still compatible with the PS/2 protocol once
+it had been developed. While the original cable for the keyboard is long-gone, with
+the keyboard itself, I was given a SDL to PS/2 cable that works perfectly fine on modern
+motherboards.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/relegendable.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/relegendable.jpg&#34;  alt=&#34;Relegendable keycaps&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Relegendable keycaps. Here, I&amp;rsquo;ve pulled off the top keycaps with the legends from the arrow keys.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Lastly, this keyboard also features relegendable keycaps. The keycap on each key is
+actually two pieces. The top piece comes off fairly easily with just your fingers,
+while the bottom piece is more firmly attached to the spring of each switch. This
+was done to make different localizations of the keyboards easier, as the keyboards
+and bottom keycaps could be mass produced, and only a secondary top keycap set
+produced for each localization.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/side-legends.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/side-legends.jpg&#34;  alt=&#34;Keycap side legends&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Interestingly, some keycaps have side legends, and some in different colors. The colors got removed from later models, but I find these interesting as not many keyboards have this today.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;cleaning&#34;&gt;Cleaning&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s get &lt;a href=&#34;https://youtu.be/TVcLIfSC4OE&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;down to business&lt;/a&gt;. This keyboard had
+almost 35 years of grime on it. It wasn&amp;rsquo;t &lt;em&gt;bad&lt;/em&gt; considering its age,
+but it wasn&amp;rsquo;t &lt;em&gt;good&lt;/em&gt; either.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/grime.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/grime.jpg&#34;  alt=&#34;Keyboard grime&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;30+ years in an academic environment has left its residue&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;To clean my Model M I used the following tools:&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/cleaning-tools.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/cleaning-tools.jpg&#34;  alt=&#34;Tools needed for cleaning&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Tools needed for cleaning&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.maxkeyboard.com/max-wire-key-cap-puller-tool.html&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Keycap puller&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.amazon.com/gp/product/B000BQ4XP6&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;5.5mm nut driver&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Flat-head screwdriver&lt;/li&gt;
+&lt;li&gt;Tweezers&lt;/li&gt;
+&lt;li&gt;Isopropyl alcohol&lt;/li&gt;
+&lt;li&gt;Lots of paper towels&lt;/li&gt;
+&lt;li&gt;Small bin&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The nut driver was a real pain. The 4 bolts required to disassemble the Model M
+are &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;32&lt;/sub&gt;&amp;rdquo;. My universal socket set was too wide to fit into the recesses to actually
+reach the head of each bolt. Finding an individual &lt;sup&gt;7&lt;/sup&gt;&amp;frasl;&lt;sub&gt;32&lt;/sub&gt;&amp;rdquo; nut driver online was
+expensive so I ended up ordering the linked 5.5mm nut driver for cheap instead.
+The sizes are nearly identical and it works fine.&lt;/p&gt;
+
+&lt;p&gt;First, flip the keyboard upside down and remove these 4 bolts with your nut driver.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/bolt-removal.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/bolt-removal.jpg&#34;  alt=&#34;Removing the 4 primary bolts&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Removing the 4 primary bolts&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;After you&amp;rsquo;ve done that, flip the keyboard right side up, and remove the top shell.
+It should unsnap pretty easily.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/top-shell-removed.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/top-shell-removed.jpg&#34;  alt=&#34;Top shell removed&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Top shell removed&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;With the top shell taken off, I could see how dirty the keyboard really was.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/under-grime.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/under-grime.jpg&#34;  alt=&#34;Grime under the top shell&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;All the grime the top shell was hiding&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Before the backplate can be removed, you first need to undo a small grounding
+strap located in the top left of the keyboard. This is held on by a flat-head bolt
+with a washer and a nut.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/grounding-strap.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/grounding-strap.jpg&#34;  alt=&#34;Grounding strap disconnection&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Remove the bolt holding the grounding strap&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Before you can take out the backplate, there are two ribbon cables connecting
+the keyboard&amp;rsquo;s controller. I found the ribbon cables in my keyboard
+were pretty well attached, so I disconnected them outside of the case.
+Either way, you can lift out the backplate. Tilt it forwards to the front and lift
+gently (especially if the controller is still connected). It might need a little
+wiggle to free it.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/full-disassembly.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/full-disassembly.jpg&#34;  alt=&#34;Keyboard fully disassembled&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Now all the major components are removed&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Now is a good time to inspect the rivets on the backside of the backplate.
+While the Model Ms were a great keyboard,
+they had one major design flaw. To save cost, IBM used plastic rivets
+to connect the steel backplate to the membrane and plastic housing for the switches.
+Over time, these rivets tend to break from becoming brittle with age, and everyday
+typing forces.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/broken-rivets.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/broken-rivets.jpg&#34;  alt=&#34;Two broken plastic rivets&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Two plastic rivets pictured here have had their heads sheared off&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;If too many of these rivets are sheared off, you will
+likely need to
+&lt;a href=&#34;https://wiki.geekhack.org/index.php?title=Modifications:IBM_Model_M:Nut_and_Bolt_Mod&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;bolt&lt;/a&gt;
+&lt;a href=&#34;https://deskthority.net/viewtopic.php?t=9169&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;mod&lt;/a&gt;
+your keyboard to permanently replace the plastic rivets. In my case, only 4
+were broken so I left it.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/rivet-head.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/rivet-head.jpg&#34;  alt=&#34;Broken plastic rivet head&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;One of many plastic rivet heads found rattling around inside the keyboard&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Also on the backside of the backplate are two inspection stickers from the factory.
+Notice the absolutely gorgeous shiny rainbow finish of the backplate.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/serial-sticker.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/serial-sticker.jpg&#34;  alt=&#34;Serial number sticker&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Serial number sticker. Curiously, the person who initialed it has the same initials as me.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/qa-sticker.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/qa-sticker.jpg&#34;  alt=&#34;QA sticker&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;QA sticker&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;The controller PCB was very clean so I left it alone.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/pcb.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/pcb.jpg&#34;  alt=&#34;Three photos of the controller PCB&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Controller PCB pictures for anyone interested. You can see the connector on the right side of the board for a daughter board for the lock lights.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;shell&#34;&gt;Shell&lt;/h3&gt;
+
+&lt;p&gt;Now, time to clean the keyboard. For the two shell halves, I used isopropyl alcohol
+along with soap to clean as much grime as I could off the surface of the plastic.
+For some of the tough to reach areas like the grooves on the top shell,
+I used a small flat-head screwdriver with the tip wrapped with some paper towels soaked
+in alcohol, and ran it back and forth. Worked pretty well, though I may have
+scraped a little bit of plastic off.&lt;/p&gt;
+
+&lt;p&gt;Now, there were some nicks on the upper shell. I decided to just leave them as-is.
+I was afraid trying to sand them down at all would do more harm than good.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/nicks.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/nicks.jpg&#34;  alt=&#34;Nicks on the keyboard shell&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Just a few nicks on the edges of the shell&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;As for the Iowa State University tramp stamp on the top, I also decided to leave that.
+After all, that&amp;rsquo;s how I got the keyboard, the badge itself is in fine shape,
+and it gives the keyboard a special uniqueness to it.&lt;/p&gt;
+
+&lt;h3 id=&#34;keycaps&#34;&gt;Keycaps&lt;/h3&gt;
+
+&lt;p&gt;To clean the keycaps, I first removed all the top layer keycaps and put them in small
+tub.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/top-keycaps-removed.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/top-keycaps-removed.jpg&#34;  alt=&#34;All of the top keycaps removed&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;This is after removing all the top keycaps. Note: I took this picture &lt;em&gt;after&lt;/em&gt; cleaning. The keycap on the numpad &lt;kbd&gt;+&lt;/kbd&gt; key should actually be on the stem for right &lt;kbd&gt;Ctrl&lt;/kbd&gt;.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Be careful when removing the spacebar, and numpad &lt;kbd&gt;+&lt;/kbd&gt; and &lt;kbd&gt;Enter&lt;/bkd&gt;
+keys, as they have stabilizers. The stabilizers for the two numpad keys have a slight
+bend in them as well that follows the curve of the keycap, so remember this
+when putting the keycaps back on.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/stabilizier.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/stabilizier.jpg&#34;  alt=&#34;Numpad key stabilizer&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;The stabilizer matches the curve of the keycap so it is directional&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;For all the keycaps in my tub, I filled it with warm soapy water and let them soak
+for an hour.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/keycap-bath.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/keycap-bath.jpg&#34;  alt=&#34;Keycaps soaking in soapy water&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;This doesn&amp;rsquo;t hurt the legends at all as they are
+&lt;a href=&#34;https://deskthority.net/wiki/Keycap_printing#Dye_sublimation&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;dye-sublimated&lt;/a&gt;.
+The grime came right off with just a wipe of paper towel.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/dirty-keycap-bath.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/dirty-keycap-bath.jpg&#34;  alt=&#34;Dirty keycap water after soaking&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;This water was clean when I put the keycaps in&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;To reassemble, I found it easier to put the keycaps with stabilizer on the spring first,
+then feed the stabilizer into its slot rather than the other way around.&lt;/p&gt;
+
+&lt;h3 id=&#34;baseplate&#34;&gt;Baseplate&lt;/h3&gt;
+
+&lt;p&gt;To clean the baseplate, I also took off all the bottom keycaps.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/bottom-keycaps-removed.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/bottom-keycaps-removed.jpg&#34;  alt=&#34;Bottom keycaps removed&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Bottom keycaps removed&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;I initially tried to clean the baseplate without removing these, as I knew getting
+junk into the switch stems is very bad, but they&amp;rsquo;re just too much in the way.
+Just be careful to not drop anything down the switch stems.&lt;/p&gt;
+
+&lt;p&gt;Unlike most keyboards, you don&amp;rsquo;t need to keep track of which row which keycap came from.
+On a Model M, the profile of every keycap is identical. To achieve per-row sculpting,
+the switches themselves are put on a curve.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/keycap-profiles.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/keycap-profiles.jpg&#34;  alt=&#34;Standard keycap profiles versus Model M keycap profiles&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Top: &lt;a href=&#34;https://drop.com/buy/ascii-sa-pbt-dye-subbed-custom-keycap-set&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;SA profile keycaps&lt;/a&gt; on a straight keyboard. Bottom: Model M keycaps on its curved backplate.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;In terms of cleaning the backplate, I used a &lt;em&gt;lot&lt;/em&gt; of paper towels soaked with alcohol.
+To get in some of the tighter spaces, I again used a screwdriver tip wrapped in paper
+towels to run through the spaces.&lt;/p&gt;
+
+&lt;h3 id=&#34;result&#34;&gt;Result&lt;/h3&gt;
+
+&lt;p&gt;Reassembly is straightforward, just do everything in reverse.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m extremely pleased with the result. While not perfect, it&amp;rsquo;s way better than
+I originally got it, and looks absolutely magnificent.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/clean-1.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/clean-1.jpg&#34;  alt=&#34;Picture of cleaned keyboard reassembled&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+  &lt;/figure&gt;
+
+
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/clean-2.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/clean-2.jpg&#34;  alt=&#34;Closeup picture of cleaned keyboard reassembled&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;This keyboard hasn&amp;rsquo;t been this clean since it left the factory&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;review&#34;&gt;Review&lt;/h2&gt;
+
+&lt;p&gt;Here&amp;rsquo;s my thoughts on the keyboard. Mind you, I usually typed on Cherry MX Blues and
+Browns prior. I don&amp;rsquo;t have the time or money to be a true keyboard aficionado like
+some on &lt;a href=&#34;https://www.reddit.com/r/MechanicalKeyboards&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;/r/MechanicalKeyboards&lt;/a&gt;.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/reddit-rant.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/reddit-rant.jpg&#34;  alt=&#34;/u/SolitaryEgg has some strong feeling towards the /r/MechanicalKeyboards community&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;/u/SolitaryEgg has some strong feeling towards the /r/MechanicalKeyboards community&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;feel&#34;&gt;Feel&lt;/h3&gt;
+
+&lt;p&gt;Overall, I like the board a lot. The tactileness of the switches is lovely, though
+I usually bottom out keycaps anyways. The switches are far heavier than I was used to
+with Blues and at first left my fingers feeling tired after lots of typing.&lt;/p&gt;
+
+&lt;h3 id=&#34;sound&#34;&gt;Sound&lt;/h3&gt;
+
+&lt;p&gt;The sound of the Model is definitely lower-pitched than Cherry switches, but a lot
+more &amp;ldquo;pingy&amp;rdquo;, which makes sense as the keys are directly connected to a spring.
+I recorded samples of each for you to compare.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/audio-setup.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/audio-setup.jpg&#34;  alt=&#34;Microphone directly over my keyboard&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;I got my mic as close as possible to the keyboard while leaving room for my hands&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Each sample was done with no risers on the back deployed, and not modified in any way.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;audio controls&gt;
+        &lt;source src=&#34;audio/mxblues.mp3&#34; type=&#34;&#34;&gt;
+    &lt;/audio&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Cherry MX Blues&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;audio controls&gt;
+        &lt;source src=&#34;audio/modelm.mp3&#34; type=&#34;&#34;&gt;
+    &lt;/audio&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Model M Buckling Springs&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;issues&#34;&gt;Issues&lt;/h3&gt;
+
+&lt;p&gt;There&amp;rsquo;s a few things you have to deal with, with a keyboard this old.
+First is the size. This thing is a &lt;strong&gt;&lt;em&gt;monster&lt;/em&gt;&lt;/strong&gt;.
+It&amp;rsquo;s 19.25 inches long by 8.25 inches wide. It takes up a ton of desk space.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/desk-space.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/desk-space.jpg&#34;  alt=&#34;Model M on my desk&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;This thing consumes the majority of my &lt;a href=&#34;https://bitwit.tech/shop/ensemble1-blupnk&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;desk mat&lt;/a&gt;&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Additionally, the lack of Windows key can be problematic. I was able to get
+around this by using the program &lt;a href=&#34;https://github.com/randyrants/sharpkeys&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;SharpKeys&lt;/a&gt;
+and remapping the &lt;a href=&#34;https://ux.stackexchange.com/a/64709&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;&lt;kbd&gt;Scroll Lock&lt;/kbd&gt;&lt;/a&gt; key
+to act as a Windows key as I can&amp;rsquo;t think of a time I&amp;rsquo;ve ever
+actually needed the key.&lt;/p&gt;
+
+&lt;p&gt;Another thing is the PS/2 connector. While my motherboard does have a port, many
+computers nowadays (especially laptops) do not, and PS/2 is also not hot-swappable
+like USB. I went ahead bit the bullet and bought
+&lt;a href=&#34;https://ebay.us/oaGiIx&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;this $35 SDL to USB cable&lt;/a&gt;
+that has an nice adapter built in to the cable itself. Unfortunately, it hasn&amp;rsquo;t shown
+up yet due to USPS delays, but it should make using the keyboard a bit easier and
+more universal while not modifying the guts.&lt;/p&gt;
+
+&lt;p&gt;Lastly, with my specific keyboard not having any lock lights,
+knowing &lt;kbd&gt;Num Lock&lt;/kbd&gt; or &lt;kbd&gt;Caps Lock&lt;/kbd&gt; is on can frustrating.
+For this, I&amp;rsquo;ve found the program
+&lt;a href=&#34;https://www.traystatus.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;TrayStatus&lt;/a&gt; works wonderfully for this,
+by adding customizable icons in the Windows system tray.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/tray-lock-lights.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/tray-lock-lights.jpg&#34;  alt=&#34;TrayStatus virtual lock lights on the far left&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;TrayStatus virtual lock lights on the far left&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;I love this keyboard. It&amp;rsquo;s loud, fun to type on, and built like a tank.
+It&amp;rsquo;s survived over 30 years in a university environment, and ready for 30 more.
+While it may not be my daily driver, and too loud for office use, I fully plan on using
+it frequently and  expect to be able to pass this down to my grandchildren.
+They sure don&amp;rsquo;t build &amp;lsquo;em like they used to.&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=r5H58uudo1Y&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.youtube.com/watch?v=r5H58uudo1Y&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=D7wmMZmMinM&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.youtube.com/watch?v=D7wmMZmMinM&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Model_F_keyboard&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Model_F_keyboard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Model_M_keyboard&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Model_M_keyboard&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Shielded_data_link_connector&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Shielded_data_link_connector&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/PS/2_port&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/PS/2_port&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://deskthority.net/wiki/AT_keyboard_interface&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://deskthority.net/wiki/AT_keyboard_interface&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://deskthority.net/wiki/Keycap_printing#Dye_sublimation&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://deskthority.net/wiki/Keycap_printing#Dye_sublimation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.reddit.com/r/MechanicalKeyboards/comments/d43o11/this_subreddit_in_a_nutshell/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.reddit.com/r/MechanicalKeyboards/comments/d43o11/this_subreddit_in_a_nutshell/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/randyrants/sharpkeys&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://github.com/randyrants/sharpkeys&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.traystatus.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.traystatus.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+        
+        </description>
+    </item>
     
     <item>
       <title>Fixing a Weird Python Permission Issue</title>
@@ -45,7 +806,7 @@ as an administrator, and Python still couldn&amp;rsquo;t delete it.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/original_error.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/original_error.jpg&#34;  alt=&#34;Recreation of the error.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/original_error.jpg&#34;  alt=&#34;Recreation of the error.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Recreation of the error. As you can see boxed in red, the Python process is running with Administrator privileges.&lt;/figcaption&gt;
@@ -61,7 +822,7 @@ the 0-byte folder itself.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/folder_size.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/folder_size.jpg&#34;  alt=&#34;Windows dialog showing folder size.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/folder_size.jpg&#34;  alt=&#34;Windows dialog showing folder size.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The folder is completely empty. Deselecting the read-only checkbox does not affect anything.&lt;/figcaption&gt;
@@ -84,7 +845,7 @@ the &lt;a href=&#34;https://docs.python.org/3/library/stat.html#stat.S_IWUSR&#34
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/fixed_error.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/fixed_error.jpg&#34;  alt=&#34;Example of fixing the error.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/fixed_error.jpg&#34;  alt=&#34;Example of fixing the error.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Example of fixing the error. As you can see boxed in red, the Python process is &lt;em&gt;NOT&lt;/em&gt; running with Administrator privileges, yet can now delete the folder.&lt;/figcaption&gt;
@@ -181,7 +942,7 @@ be to just buy a similar looking domain.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/microsoft_phishing_domains.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/microsoft_phishing_domains.jpg&#34;  alt=&#34;A list of Microsoft video-related domains for sale&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/microsoft_phishing_domains.jpg&#34;  alt=&#34;A list of Microsoft video-related domains for sale&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Just a quick search on Google Domains.&lt;/figcaption&gt;
@@ -387,7 +1148,7 @@ only this file.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/download_spin.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/download_spin.jpg&#34;  alt=&#34;Download the latest prebuilt version of Spin&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/download_spin.jpg&#34;  alt=&#34;Download the latest prebuilt version of Spin&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Download the latest prebuilt version of Spin&lt;/figcaption&gt;
@@ -401,7 +1162,7 @@ only this file.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/extract_spin.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/extract_spin.jpg&#34;  alt=&#34;Extract the archive with 7zip&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/extract_spin.jpg&#34;  alt=&#34;Extract the archive with 7zip&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Extract the archive with 7zip&lt;/figcaption&gt;
@@ -423,7 +1184,7 @@ and select the base MinGW package (this includes GCC).&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/mingw_install.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/mingw_install.jpg&#34;  alt=&#34;Install the base MinGW package&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/mingw_install.jpg&#34;  alt=&#34;Install the base MinGW package&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Install the base MinGW package&lt;/figcaption&gt;
@@ -457,7 +1218,7 @@ this is to right-click &amp;ldquo;Raw&amp;rdquo; and then &amp;ldquo;Save link a
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/download_ispin.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/download_ispin.jpg&#34;  alt=&#34;Download the GUI file for Spin&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/download_ispin.jpg&#34;  alt=&#34;Download the GUI file for Spin&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Download the GUI file for Spin&lt;/figcaption&gt;
@@ -493,7 +1254,7 @@ and look for &lt;code&gt;wish.exe&lt;/code&gt;.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/everything_wish.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/everything_wish.jpg&#34;  alt=&#34;wish.exe showing up in Everything&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/everything_wish.jpg&#34;  alt=&#34;wish.exe showing up in Everything&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Tcl/Tk is often included with Git for Windows&lt;/figcaption&gt;
@@ -509,7 +1270,7 @@ and select the &lt;code&gt;wish.exe&lt;/code&gt; you found. Make sure to set
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/tcl_wish.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/tcl_wish.jpg&#34;  alt=&#34;Selecting a default program association for .tcl files&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/tcl_wish.jpg&#34;  alt=&#34;Selecting a default program association for .tcl files&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Selecting a default program association for .tcl files&lt;/figcaption&gt;
@@ -524,7 +1285,7 @@ by double-clicking on &lt;code&gt;ispin.tcl&lt;/code&gt;.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/ispin.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/ispin.jpg&#34;  alt=&#34;Spin GUI&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/ispin.jpg&#34;  alt=&#34;Spin GUI&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Spin GUI&lt;/figcaption&gt;
@@ -569,7 +1330,7 @@ line 22, and adjust the path to &lt;code&gt;dot&lt;/code&gt; as needed. For exam
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/automata_view.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/automata_view.jpg&#34;  alt=&#34;Spin GUI automata view&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/automata_view.jpg&#34;  alt=&#34;Spin GUI automata view&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Spin GUI automata view&lt;/figcaption&gt;
@@ -631,7 +1392,7 @@ that hold on the wristband are beginning to crack.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/band-cracking.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/band-cracking.jpg&#34;  alt=&#34;The tabs are starting to crack&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/band-cracking.jpg&#34;  alt=&#34;The tabs are starting to crack&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The tabs are starting to crack&lt;/figcaption&gt;
@@ -657,7 +1418,7 @@ data.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/missing-sleep.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/missing-sleep.jpg&#34;  alt=&#34;Monday&amp;#39;s sleep data is mysteriously missing in Google Fit&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/missing-sleep.jpg&#34;  alt=&#34;Monday&amp;#39;s sleep data is mysteriously missing in Google Fit&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Monday&amp;rsquo;s sleep data is mysteriously missing in Google Fit&lt;/figcaption&gt;
@@ -834,7 +1595,7 @@ simulation isn&amp;rsquo;t a top-tier product)&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/football_cfd.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/football_cfd.png&#34;  alt=&#34;Football CFD&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/football_cfd.png&#34;  alt=&#34;Football CFD&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Football CFD&lt;/figcaption&gt;
@@ -851,7 +1612,7 @@ simulation isn&amp;rsquo;t a top-tier product)&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/football_flights.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/football_flights.png&#34;  alt=&#34;Football Trajectories&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/football_flights.png&#34;  alt=&#34;Football Trajectories&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Football Trajectories&lt;/figcaption&gt;
@@ -922,7 +1683,7 @@ so no scaling required.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/corn_length.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/corn_length.png&#34;  alt=&#34;Corncob Length&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/corn_length.png&#34;  alt=&#34;Corncob Length&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Corncob Length&lt;/figcaption&gt;
@@ -938,7 +1699,7 @@ a diameter of 35.49 mm.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/corn_diameter.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/corn_diameter.png&#34;  alt=&#34;Corncob Diameter&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/corn_diameter.png&#34;  alt=&#34;Corncob Diameter&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Corncob Diameter&lt;/figcaption&gt;
@@ -960,7 +1721,7 @@ the model alone took about 5 minutes.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/cpu_usage.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/cpu_usage.png&#34;  alt=&#34;CPU Usage&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/cpu_usage.png&#34;  alt=&#34;CPU Usage&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;CPU Usage&lt;/figcaption&gt;
@@ -980,7 +1741,7 @@ pressure values.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/corncob_cfd.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/corncob_cfd.png&#34;  alt=&#34;Corncob CFD&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/corncob_cfd.png&#34;  alt=&#34;Corncob CFD&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Corncob CFD&lt;/figcaption&gt;
@@ -997,7 +1758,7 @@ theoretical trajectories using the same math as before.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/corncob_flights.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/corncob_flights.png&#34;  alt=&#34;Corncob Trajectories&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/corncob_flights.png&#34;  alt=&#34;Corncob Trajectories&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Corncob Trajectories&lt;/figcaption&gt;
@@ -1276,7 +2037,7 @@ of a FitBit.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/in-the-box.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/in-the-box.jpg&#34;  alt=&#34;Wyze Band box and charger&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/in-the-box.jpg&#34;  alt=&#34;Wyze Band box and charger&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Wyze Band box and charger&lt;/figcaption&gt;
@@ -1294,7 +2055,7 @@ I like the basic band just fine.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/band-comparison.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/band-comparison.jpg&#34;  alt=&#34;Both bands side by side to show differences&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/band-comparison.jpg&#34;  alt=&#34;Both bands side by side to show differences&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The watch style band is on top, and the hole-punch band is attached to the Band on the bottom&lt;/figcaption&gt;
@@ -1311,7 +2072,7 @@ Pressing and holding this button triggers Amazon Alexa.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/band-front.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/band-front.jpg&#34;  alt=&#34;Front of the Wyze Band&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/band-front.jpg&#34;  alt=&#34;Front of the Wyze Band&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Front of the Band&lt;/figcaption&gt;
@@ -1326,7 +2087,7 @@ an etched Wyze logo.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/band-back.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/band-back.jpg&#34;  alt=&#34;Back of the Wyze Band&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/band-back.jpg&#34;  alt=&#34;Back of the Wyze Band&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Back of the Band&lt;/figcaption&gt;
@@ -1340,7 +2101,7 @@ an etched Wyze logo.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/band-right.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/band-right.jpg&#34;  alt=&#34;Right side of the Wyze Band&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/band-right.jpg&#34;  alt=&#34;Right side of the Wyze Band&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Right side of the Band&lt;/figcaption&gt;
@@ -1392,7 +2153,7 @@ background images. You can also import your own background image.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/watch-face-app.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/watch-face-app.jpg&#34;  alt=&#34;The watch face on the Band and in the Wyze app&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/watch-face-app.jpg&#34;  alt=&#34;The watch face on the Band and in the Wyze app&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The watch face on the Band and in the Wyze app&lt;/figcaption&gt;
@@ -1420,7 +2181,7 @@ can configure how often heart rate is collected.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/heart-rate-app.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/heart-rate-app.jpg&#34;  alt=&#34;The heart rate screen on the Band and in the Wyze app&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/heart-rate-app.jpg&#34;  alt=&#34;The heart rate screen on the Band and in the Wyze app&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The heart rate screen on the Band and in the Wyze app&lt;/figcaption&gt;
@@ -1440,7 +2201,7 @@ of steps, heart rate, and sleep tracking.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/activity-band.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/activity-band.jpg&#34;  alt=&#34;The activity graphs on the Band&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/activity-band.jpg&#34;  alt=&#34;The activity graphs on the Band&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The activity graphs on the Band&lt;/figcaption&gt;
@@ -1454,7 +2215,7 @@ of steps, heart rate, and sleep tracking.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/activity-app.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/activity-app.jpg&#34;  alt=&#34;The activity screen on the Band and in the Wyze app&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/activity-app.jpg&#34;  alt=&#34;The activity screen on the Band and in the Wyze app&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The activity screen on the Band and in the Wyze app&lt;/figcaption&gt;
@@ -1473,7 +2234,7 @@ place you can view this data outside of the Band.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/weather-band.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/weather-band.jpg&#34;  alt=&#34;The weather forecast on the Band&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/weather-band.jpg&#34;  alt=&#34;The weather forecast on the Band&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The weather forecast on the Band&lt;/figcaption&gt;
@@ -1487,7 +2248,7 @@ place you can view this data outside of the Band.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/weather-app.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/weather-app.jpg&#34;  alt=&#34;The weather screen on the Band and in the Wyze app&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/weather-app.jpg&#34;  alt=&#34;The weather screen on the Band and in the Wyze app&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The weather screen on the Band and in the Wyze app&lt;/figcaption&gt;
@@ -1510,7 +2271,7 @@ really dislike running (I much prefer biking), so I have this disabled.&lt;/p&gt
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/run-app.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/run-app.jpg&#34;  alt=&#34;The running screen on the Band and in the Wyze app&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/run-app.jpg&#34;  alt=&#34;The running screen on the Band and in the Wyze app&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The running screen on the Band and in the Wyze app&lt;/figcaption&gt;
@@ -1530,7 +2291,7 @@ I use my phone for alarms, so I have this disabled.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/alarms-app.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/alarms-app.jpg&#34;  alt=&#34;The alarm screen on the Band and in the Wyze app&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/alarms-app.jpg&#34;  alt=&#34;The alarm screen on the Band and in the Wyze app&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The alarm screen on the Band and in the Wyze app&lt;/figcaption&gt;
@@ -1554,7 +2315,7 @@ smart home products. It probably just lists the shortcuts available.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/shortcuts-app.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/shortcuts-app.jpg&#34;  alt=&#34;The shortcuts screen on the Band and in the Wyze app&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/shortcuts-app.jpg&#34;  alt=&#34;The shortcuts screen on the Band and in the Wyze app&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The shortcuts screen on the Band and in the Wyze app&lt;/figcaption&gt;
@@ -1573,7 +2334,7 @@ notifications.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/notifications-app.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/notifications-app.jpg&#34;  alt=&#34;The notifications screen on the Band and in the Wyze app&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/notifications-app.jpg&#34;  alt=&#34;The notifications screen on the Band and in the Wyze app&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The notifications screen on the Band and in the Wyze app&lt;/figcaption&gt;
@@ -1608,7 +2369,7 @@ it wake me up with a notification yet while I was asleep.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/find-device-app.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/find-device-app.jpg&#34;  alt=&#34;The find device screen on the Band and in the Wyze app&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/find-device-app.jpg&#34;  alt=&#34;The find device screen on the Band and in the Wyze app&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The find device screen on the Band and in the Wyze app&lt;/figcaption&gt;
@@ -1662,7 +2423,7 @@ if you&amp;rsquo;re into that kind of thing.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/alexa-app.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/alexa-app.jpg&#34;  alt=&#34;The Alexa screen on the Band and in the Wyze app&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/alexa-app.jpg&#34;  alt=&#34;The Alexa screen on the Band and in the Wyze app&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The Alexa screen on the Band and in the Wyze app&lt;/figcaption&gt;
@@ -1683,7 +2444,7 @@ if you&amp;rsquo;re into that kind of thing.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/settings-app.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/settings-app.jpg&#34;  alt=&#34;The settings screen on the Band and in the Wyze app&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/settings-app.jpg&#34;  alt=&#34;The settings screen on the Band and in the Wyze app&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The settings screen on the Band and in the Wyze app&lt;/figcaption&gt;
@@ -1700,7 +2461,7 @@ the top right which is super not-obvious.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/settings-app-2.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/settings-app-2.jpg&#34;  alt=&#34;The additional settings in the Wyze app&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/settings-app-2.jpg&#34;  alt=&#34;The additional settings in the Wyze app&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;WHY IS THIS NOT WITH THE OTHER SETTINGS?!&lt;/figcaption&gt;
@@ -1787,7 +2548,7 @@ for this review, my band shows the location as Seattle, despite being in Florida
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/bad-weather.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/bad-weather.jpg&#34;  alt=&#34;Seattle being displayed on the Band, despite being in Florida&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/bad-weather.jpg&#34;  alt=&#34;Seattle being displayed on the Band, despite being in Florida&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;We&amp;rsquo;re not in Florida anymore&amp;hellip;&lt;/figcaption&gt;
@@ -1961,7 +2722,7 @@ An item in a &amp;ldquo;Albums&amp;rdquo; table would have attributes like &amp;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/table-items-attributes.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/table-items-attributes.jpg&#34;  alt=&#34;DynamoDB elements&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/table-items-attributes.jpg&#34;  alt=&#34;DynamoDB elements&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;DynamoDB elements&lt;/figcaption&gt;
@@ -2210,7 +2971,7 @@ function &lt;code&gt;static_url_for&lt;/code&gt;. This function still ends up ca
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/original-diagram.svg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/original-diagram.svg&#34;  alt=&#34;How everything originally works.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/original-diagram.svg&#34;  alt=&#34;How everything originally works.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;How everything originally works.&lt;/figcaption&gt;
@@ -2225,7 +2986,7 @@ so that I could combine the features of both.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/desired-diagram.svg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/desired-diagram.svg&#34;  alt=&#34;How I want it to work.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/desired-diagram.svg&#34;  alt=&#34;How I want it to work.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;How I want it to work.&lt;/figcaption&gt;
@@ -2361,7 +3122,7 @@ the current reflectors.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/mounts.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/mounts.jpg&#34;  alt=&#34;New mounts&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/mounts.jpg&#34;  alt=&#34;New mounts&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;These were the new mounts I designed in Solidworks. Front mount is on the left, and the rear mount on the right.&lt;/figcaption&gt;
@@ -2376,7 +3137,7 @@ problems. They fit perfectly as designed.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/front-mount-installed.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/front-mount-installed.jpg&#34;  alt=&#34;Front mount with light&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/front-mount-installed.jpg&#34;  alt=&#34;Front mount with light&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Front mount with light&lt;/figcaption&gt;
@@ -2388,7 +3149,7 @@ problems. They fit perfectly as designed.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/rear-mount-installed.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/rear-mount-installed.jpg&#34;  alt=&#34;Rear mount with light&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/rear-mount-installed.jpg&#34;  alt=&#34;Rear mount with light&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Rear mount with light. This is huge improvement for rear visibility compared to before.&lt;/figcaption&gt;
@@ -2415,7 +3176,7 @@ then chained the bike to the nearest bike rack and let it dry.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/repaint-in-progress.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/repaint-in-progress.jpg&#34;  alt=&#34;Repainting the frame&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/repaint-in-progress.jpg&#34;  alt=&#34;Repainting the frame&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;It might be ugly, but it was effective.&lt;/figcaption&gt;
@@ -2432,7 +3193,7 @@ paint is much rougher and more orange-y.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/repaint-done.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/repaint-done.jpg&#34;  alt=&#34;Finished repainting&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/repaint-done.jpg&#34;  alt=&#34;Finished repainting&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;This &lt;i&gt;is&lt;/i&gt; ugly but it serves the purpose I wanted.&lt;/figcaption&gt;
@@ -2509,7 +3270,7 @@ Properties -&amp;gt; Startup type -&amp;gt; Manual.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/synergy-service-manual.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/synergy-service-manual.jpg&#34;  alt=&#34;Synergy Windows service&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/synergy-service-manual.jpg&#34;  alt=&#34;Synergy Windows service&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Set the Synergy service to start manually&lt;/figcaption&gt;
@@ -2547,7 +3308,7 @@ my roommate unexpectedly left, and gave me his bicycle for free.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/old-varsity.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/old-varsity.jpg&#34;  alt=&#34;1973 Schwinn Varsity&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/old-varsity.jpg&#34;  alt=&#34;1973 Schwinn Varsity&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The bike how I got it.&lt;/figcaption&gt;
@@ -2565,7 +3326,7 @@ the bike looked neglected.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/old-tires.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/old-tires.jpg&#34;  alt=&#34;Old bike tires&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/old-tires.jpg&#34;  alt=&#34;Old bike tires&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;I&amp;rsquo;m pretty sure this was the original tire that came with the bike from the factory.&lt;/figcaption&gt;
@@ -2601,7 +3362,7 @@ since they were inexpensive, highly rated on Amazon, and were Schrader valves.&l
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/bell-tube.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/bell-tube.jpg&#34;  alt=&#34;27in Bell standard bike tubes&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/bell-tube.jpg&#34;  alt=&#34;27in Bell standard bike tubes&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Yup. That&amp;rsquo;s a bike tube&amp;hellip;&lt;/figcaption&gt;
@@ -2624,7 +3385,7 @@ I decided not to. To me at least, that rubber just looks more
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/continental-tire.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/continental-tire.png&#34;  alt=&#34;Continental Ride Tour Tire&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/continental-tire.png&#34;  alt=&#34;Continental Ride Tour Tire&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Continental Ride Tour tire&lt;/figcaption&gt;
@@ -2640,7 +3401,7 @@ box they left at my door.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/big-tire-box.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/big-tire-box.jpg&#34;  alt=&#34;Large tire box&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/big-tire-box.jpg&#34;  alt=&#34;Large tire box&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;This is the box they arrived in.&lt;/figcaption&gt;
@@ -2657,7 +3418,7 @@ around the rim of the wheel so that the spokes don&amp;rsquo;t puncture the tube
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/rim-tape-example.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/rim-tape-example.jpg&#34;  alt=&#34;Rim tape example&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/rim-tape-example.jpg&#34;  alt=&#34;Rim tape example&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Rim tape example (from &lt;a href=&#34;https://www.parktool.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;parktool.com&lt;/a&gt;)&lt;/figcaption&gt;
@@ -2681,7 +3442,7 @@ I liked the most.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/handlebar-endcaps.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/handlebar-endcaps.png&#34;  alt=&#34;New handlebar endcaps&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/handlebar-endcaps.png&#34;  alt=&#34;New handlebar endcaps&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;New handlebar endcaps&lt;/figcaption&gt;
@@ -2697,7 +3458,7 @@ I liked the most.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/bell-brake-pads.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/bell-brake-pads.png&#34;  alt=&#34;Bell brake pads&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/bell-brake-pads.png&#34;  alt=&#34;Bell brake pads&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Just some Bell brand brake pads&lt;/figcaption&gt;
@@ -2720,7 +3481,7 @@ You can really tell by the shininess in this picture.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/old-handlebar-tape.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/old-handlebar-tape.jpg&#34;  alt=&#34;Old handlebar tape&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/old-handlebar-tape.jpg&#34;  alt=&#34;Old handlebar tape&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The old handlebar grip tape more closely resembled a hard plastic shell.&lt;/figcaption&gt;
@@ -2737,7 +3498,7 @@ because I didn&amp;rsquo;t trust my own abilities to wrap it well.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/new-grip-tape.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/new-grip-tape.png&#34;  alt=&#34;Orange grip tape&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/new-grip-tape.png&#34;  alt=&#34;Orange grip tape&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;I&amp;rsquo;m pretty sure this is what I bought at my bike shop.&lt;/figcaption&gt;
@@ -2754,7 +3515,7 @@ water bottle cage.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/water-bottle-cage.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/water-bottle-cage.png&#34;  alt=&#34;Water bottle cage&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/water-bottle-cage.png&#34;  alt=&#34;Water bottle cage&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;A water bottle cage pretty similar to what I purchased.&lt;/figcaption&gt;
@@ -2787,7 +3548,7 @@ orange-red, it looks close enough.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/chain-lube.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/chain-lube.png&#34;  alt=&#34;Chain lube&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/chain-lube.png&#34;  alt=&#34;Chain lube&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The lightning bolt makes it go faster.&lt;/figcaption&gt;
@@ -2805,7 +3566,7 @@ put a bike tire on a rim.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/tire-lever-usage.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/tire-lever-usage.jpg&#34;  alt=&#34;Tire lever usage&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/tire-lever-usage.jpg&#34;  alt=&#34;Tire lever usage&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;This is how you&amp;rsquo;re supposed to use a tire lever.&lt;/figcaption&gt;
@@ -2819,7 +3580,7 @@ put a bike tire on a rim.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/tire-levers.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/tire-levers.png&#34;  alt=&#34;Tire levers&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/tire-levers.png&#34;  alt=&#34;Tire levers&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;You might be beginning to realize that I like the color red.&lt;/figcaption&gt;
@@ -2840,7 +3601,7 @@ crescent wrenches. Nothing special about these at all.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/wire-brush.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/wire-brush.png&#34;  alt=&#34;Wire brush&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/wire-brush.png&#34;  alt=&#34;Wire brush&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Generic wire brush&lt;/figcaption&gt;
@@ -2856,7 +3617,7 @@ crescent wrenches. Nothing special about these at all.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/bell-air-pump.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/bell-air-pump.png&#34;  alt=&#34;Bell air pump&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/bell-air-pump.png&#34;  alt=&#34;Bell air pump&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;I bought an air pump that&amp;rsquo;s something like this.&lt;/figcaption&gt;
@@ -2875,7 +3636,7 @@ to work on the bike.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/bike-living-room.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/bike-living-room.jpg&#34;  alt=&#34;My bicycle being worked on in a living room&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/bike-living-room.jpg&#34;  alt=&#34;My bicycle being worked on in a living room&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;First time working on the bike in my friend&amp;rsquo;s living room.&lt;/figcaption&gt;
@@ -2906,7 +3667,7 @@ lube everything up.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/dirty-bike.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/dirty-bike.jpg&#34;  alt=&#34;Dirty bicycle&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/dirty-bike.jpg&#34;  alt=&#34;Dirty bicycle&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;This was &lt;i&gt;after&lt;/i&gt; trying to clean it.&lt;/figcaption&gt;
@@ -2924,7 +3685,7 @@ and just tightening it down really hard in order to get it roll straight.&lt;/p&
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/rear-wheel-alignment.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/rear-wheel-alignment.jpg&#34;  alt=&#34;Rear wheel alignment&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/rear-wheel-alignment.jpg&#34;  alt=&#34;Rear wheel alignment&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;I added the two blue lines to show that the wheel is not centered between the rear two forks. You can also tell by how the brake assembly is tilted a bit to the left.&lt;/figcaption&gt;
@@ -2936,7 +3697,7 @@ and just tightening it down really hard in order to get it roll straight.&lt;/p&
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/rear-tire-rubbing.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/rear-tire-rubbing.jpg&#34;  alt=&#34;Rear tire rubbing&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/rear-tire-rubbing.jpg&#34;  alt=&#34;Rear tire rubbing&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;It was hard to get my camera in a position to show it well, but you can kind of see where the tire was rubbing on the frame closest to the camera in the past.&lt;/figcaption&gt;
@@ -2948,7 +3709,7 @@ and just tightening it down really hard in order to get it roll straight.&lt;/p&
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/rear-wheel-mount.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/rear-wheel-mount.jpg&#34;  alt=&#34;Rear wheel mount&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/rear-wheel-mount.jpg&#34;  alt=&#34;Rear wheel mount&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;In order to get the wheel to track straight, we had to bring the left side very far forward. A few ugga duggas were used to keep it nice and snug. I swear there is some material holding it on.&lt;/figcaption&gt;
@@ -2976,7 +3737,7 @@ and wouldn&amp;rsquo;t budge.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/rear-cable-frayed.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/rear-cable-frayed.jpg&#34;  alt=&#34;Rear shifter cable frayed&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/rear-cable-frayed.jpg&#34;  alt=&#34;Rear shifter cable frayed&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;You can see at the bottom that it was frayed pretty bad.&lt;/figcaption&gt;
@@ -2991,7 +3752,7 @@ bastard that didn&amp;rsquo;t want to come out without a fight.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/rear-cable-removal.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/rear-cable-removal.jpg&#34;  alt=&#34;Rear shifter cable removal&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/rear-cable-removal.jpg&#34;  alt=&#34;Rear shifter cable removal&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;It went out swinging.&lt;/figcaption&gt;
@@ -3009,7 +3770,7 @@ problems.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/fun-in-less-sun.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/fun-in-less-sun.jpg&#34;  alt=&#34;Bike in the sun&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/fun-in-less-sun.jpg&#34;  alt=&#34;Bike in the sun&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;I was starting to ride the bike to class now.&lt;/figcaption&gt;
@@ -3026,7 +3787,7 @@ and add a water bottle holder for the sake of longer rides in the future.&lt;/p&
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/new-handlebar-tape.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/new-handlebar-tape.jpg&#34;  alt=&#34;New handlebar tape&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/new-handlebar-tape.jpg&#34;  alt=&#34;New handlebar tape&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The new handlebar tape matches really closely and the bike shop did a great job wrapping it.&lt;/figcaption&gt;
@@ -3041,7 +3802,7 @@ you normally screw it into. My road bike had no such holes so I had to get creat
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/water-bottle-cage-mounted.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/water-bottle-cage-mounted.jpg&#34;  alt=&#34;Water bottle cage mounted&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/water-bottle-cage-mounted.jpg&#34;  alt=&#34;Water bottle cage mounted&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Two hose clamps slipped under the shifting lines hold it nice and snug.&lt;/figcaption&gt;
@@ -3061,7 +3822,7 @@ that wrap around the handlebars and frame.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/schwinn-lights.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/schwinn-lights.png&#34;  alt=&#34;Schwinn lights&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/schwinn-lights.png&#34;  alt=&#34;Schwinn lights&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The Schwinn brand lights I got at Walmart.&lt;/figcaption&gt;
@@ -3077,7 +3838,7 @@ whenever I park the bike so they don&amp;rsquo;t get stolen.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/night-lights.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/night-lights.jpg&#34;  alt=&#34;Night lights&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/night-lights.jpg&#34;  alt=&#34;Night lights&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;I think it looks pretty good at night.&lt;/figcaption&gt;
@@ -3095,7 +3856,7 @@ mounts I can put these lights on instead.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/fun-in-the-sun.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/fun-in-the-sun.jpg&#34;  alt=&#34;Final result&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/fun-in-the-sun.jpg&#34;  alt=&#34;Final result&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;It looks really bright orange in the sun.&lt;/figcaption&gt;
@@ -3109,7 +3870,7 @@ mounts I can put these lights on instead.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/schwinn-badge.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/schwinn-badge.jpg&#34;  alt=&#34;Schwinn badge&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/schwinn-badge.jpg&#34;  alt=&#34;Schwinn badge&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The front Schwinn badge is in surprisingly good shape.&lt;/figcaption&gt;
@@ -3121,7 +3882,7 @@ mounts I can put these lights on instead.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/rusty-paint.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/rusty-paint.jpg&#34;  alt=&#34;Rusty paint&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/rusty-paint.jpg&#34;  alt=&#34;Rusty paint&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The Schwinn logo on the side isn&amp;rsquo;t doing so well, though.&lt;/figcaption&gt;
@@ -3155,7 +3916,7 @@ and started over on the top.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/old-phone-number.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/old-phone-number.jpg&#34;  alt=&#34;Rusty paint&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/old-phone-number.jpg&#34;  alt=&#34;Rusty paint&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The phone number is 11 digits???&lt;/figcaption&gt;
@@ -3237,7 +3998,7 @@ as a location to save settings and gamesaves.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/documents-games.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/documents-games.png&#34;  alt=&#34;Game save folders generated in my Documents&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/documents-games.png&#34;  alt=&#34;Game save folders generated in my Documents&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;I didn&amp;rsquo;t create any of these folders manually.&lt;/figcaption&gt;
@@ -3301,7 +4062,7 @@ file formats are pictures when they are actually not.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/high-quality.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/high-quality.png&#34;  alt=&#34;Can&amp;#39;t convert photos to high quality&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/high-quality.png&#34;  alt=&#34;Can&amp;#39;t convert photos to high quality&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;WHY NOT??&lt;/figcaption&gt;
@@ -3336,7 +4097,7 @@ why not try that?&amp;ldquo;. I did and wow was I impressed.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/onedrive-folders.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/onedrive-folders.png&#34;  alt=&#34;OneDrive sync folders&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/onedrive-folders.png&#34;  alt=&#34;OneDrive sync folders&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;I created a &amp;lsquo;My Files&amp;rsquo; folder to distinguish my actual documents from the Documents folder which is filled with stuff from programs.&lt;/figcaption&gt;
@@ -3351,7 +4112,7 @@ so files that aren&amp;rsquo;t used within a certain number of days are removed 
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/onedrive-files-on-demand.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/onedrive-files-on-demand.png&#34;  alt=&#34;OneDrive files on demand&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/onedrive-files-on-demand.png&#34;  alt=&#34;OneDrive files on demand&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Recently used files are stored locally, while others are only available with an internet connection.&lt;/figcaption&gt;
@@ -3381,7 +4142,7 @@ and need to download some file that you forgot to put in the OneDrive folder.&lt
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/onedrive-remote-pcs.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/onedrive-remote-pcs.png&#34;  alt=&#34;OneDrive remote PCs&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/onedrive-remote-pcs.png&#34;  alt=&#34;OneDrive remote PCs&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Browsing a folder on my computer that isn&amp;rsquo;t in OneDrive and synced.&lt;/figcaption&gt;
@@ -3398,7 +4159,7 @@ as of July 31, 2020.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/office-autosave.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/office-autosave.png&#34;  alt=&#34;Office Autosave&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/office-autosave.png&#34;  alt=&#34;Office Autosave&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;No more losing work in Office from forgetting to save and crashes.&lt;/figcaption&gt;
@@ -3447,7 +4208,7 @@ since that&amp;rsquo;s built-in to the phone (and it has really saved my ass rec
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/pixel-backup.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/pixel-backup.png&#34;  alt=&#34;Google Pixel Backup&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/pixel-backup.png&#34;  alt=&#34;Google Pixel Backup&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Google Pixel Backup&lt;/figcaption&gt;
@@ -3503,7 +4264,7 @@ However, just a few days ago, I received this email from Mailgun:&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/mailgun-email.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/mailgun-email.jpg&#34;  alt=&#34;Mailgun email&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/mailgun-email.jpg&#34;  alt=&#34;Mailgun email&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Mailgun plan changes&lt;/figcaption&gt;
@@ -3517,7 +4278,7 @@ However, just a few days ago, I received this email from Mailgun:&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/mailgun-plans.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/mailgun-plans.jpg&#34;  alt=&#34;Mailgun plans&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/mailgun-plans.jpg&#34;  alt=&#34;Mailgun plans&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;&lt;i&gt;Crap&amp;hellip;&lt;/i&gt;&lt;/figcaption&gt;
@@ -3564,7 +4325,7 @@ can setup the records.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/google-domains-email-forwarding.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/google-domains-email-forwarding.jpg&#34;  alt=&#34;Google Domains email forwarding&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/google-domains-email-forwarding.jpg&#34;  alt=&#34;Google Domains email forwarding&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Google Domains email forwarding&lt;/figcaption&gt;
@@ -3600,7 +4361,7 @@ Pack. It was very simple to setup with just a few &lt;code&gt;CNAME&lt;/code&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/sendgrid_dns.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/sendgrid_dns.jpg&#34;  alt=&#34;SendGrid dNS&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/sendgrid_dns.jpg&#34;  alt=&#34;SendGrid dNS&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;SendGrid DNS&lt;/figcaption&gt;
@@ -3616,7 +4377,7 @@ you need to setup.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/fordwardemail_dns.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/fordwardemail_dns.jpg&#34;  alt=&#34;ForwardEmail DNS&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/fordwardemail_dns.jpg&#34;  alt=&#34;ForwardEmail DNS&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;ForwardEmail DNS&lt;/figcaption&gt;
@@ -3652,7 +4413,7 @@ change in the future.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/its_always_dns.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/its_always_dns.png&#34;  alt=&#34;DNS Haiku&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/its_always_dns.png&#34;  alt=&#34;DNS Haiku&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;It was DNS&lt;/figcaption&gt;
@@ -3719,7 +4480,7 @@ which scheduled tasks or executables last woke your computer.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/event-viewer-culprit.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/event-viewer-culprit.jpg&#34;  alt=&#34;Windows Event Viewer&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/event-viewer-culprit.jpg&#34;  alt=&#34;Windows Event Viewer&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Windows Event Viewer showing the Power-Troubleshooter filter and the culprit&lt;/figcaption&gt;
@@ -3741,7 +4502,7 @@ Within the Settings app, go to &amp;ldquo;Power &amp;amp; sleep&amp;rdquo; -&amp
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/power-settings.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/power-settings.jpg&#34;  alt=&#34;Power plan settings&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/power-settings.jpg&#34;  alt=&#34;Power plan settings&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Holy settings menu nesting Batman!&lt;/figcaption&gt;
@@ -3794,7 +4555,7 @@ of a Dremel.&lt;/li&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/from_surplus.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/from_surplus.jpg&#34;  alt=&#34;Sun Ultra 24 from surplus&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/from_surplus.jpg&#34;  alt=&#34;Sun Ultra 24 from surplus&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;My Sun Ultra 24 after taking it home from surplus.&lt;/figcaption&gt;
@@ -3819,7 +4580,7 @@ except a lot more dust, scratches, and missing parts.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/old_insides.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/old_insides.jpg&#34;  alt=&#34;Brand-new Sun Ultra 24 insides&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/old_insides.jpg&#34;  alt=&#34;Brand-new Sun Ultra 24 insides&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Brand-new Sun Ultra 24 insides&lt;/figcaption&gt;
@@ -3831,7 +4592,7 @@ except a lot more dust, scratches, and missing parts.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/old_exterior.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/old_exterior.jpg&#34;  alt=&#34;Sun Ultra 24 exterior&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/old_exterior.jpg&#34;  alt=&#34;Sun Ultra 24 exterior&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Sun Ultra 24 exterior&lt;/figcaption&gt;
@@ -3920,7 +4681,7 @@ old i7-4790k with that, and use the old parts from my desktop to build a new ser
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/new_insides.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/new_insides.jpg&#34;  alt=&#34;Post-build computer&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/new_insides.jpg&#34;  alt=&#34;Post-build computer&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;My &amp;lsquo;new&amp;rsquo; Sun Ultra 24&lt;/figcaption&gt;
@@ -3956,7 +4717,7 @@ that ServeTheHome did with their power supply.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/new_power_supply.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/new_power_supply.jpg&#34;  alt=&#34;New power supply installed&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/new_power_supply.jpg&#34;  alt=&#34;New power supply installed&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;New power supply installed&lt;/figcaption&gt;
@@ -3991,7 +4752,7 @@ but unfortunately they don&amp;rsquo;t quite match.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/new_pcie_slots.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/new_pcie_slots.jpg&#34;  alt=&#34;Mismatched PCIe slot covers&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/new_pcie_slots.jpg&#34;  alt=&#34;Mismatched PCIe slot covers&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Mismatched PCIe slot covers&lt;/figcaption&gt;
@@ -4026,7 +4787,7 @@ new fan.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/old_fan.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/old_fan.jpg&#34;  alt=&#34;Sun Ultra 24 rear case fan mount&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/old_fan.jpg&#34;  alt=&#34;Sun Ultra 24 rear case fan mount&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Sun Ultra 24 rear case fan mount&lt;/figcaption&gt;
@@ -4050,7 +4811,7 @@ and the Hyper 212 EVO cooling the processor, the fan has yet to come on.&lt;/p&g
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/old_header.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/old_header.jpg&#34;  alt=&#34;Sun Ultra 24 front panel header&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/old_header.jpg&#34;  alt=&#34;Sun Ultra 24 front panel header&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Sun Ultra 24 front panel header&lt;/figcaption&gt;
@@ -4064,7 +4825,7 @@ and the Hyper 212 EVO cooling the processor, the fan has yet to come on.&lt;/p&g
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/asus_z97-ar_header.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/asus_z97-ar_header.jpg&#34;  alt=&#34;Asus Z97-AR front panel header&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/asus_z97-ar_header.jpg&#34;  alt=&#34;Asus Z97-AR front panel header&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Asus Z97-AR front panel header&lt;/figcaption&gt;
@@ -4083,7 +4844,7 @@ to connect everything.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/new_header.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/new_header.jpg&#34;  alt=&#34;New front panel header connection&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/new_header.jpg&#34;  alt=&#34;New front panel header connection&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;New front panel header connection&lt;/figcaption&gt;
@@ -4154,7 +4915,7 @@ only one 5.25&amp;rdquo; bay, etc. would have all been major challenges.&lt;/p&g
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/new_home.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/new_home.jpg&#34;  alt=&#34;Post-build computer&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/new_home.jpg&#34;  alt=&#34;Post-build computer&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The computer in it&amp;rsquo;s new home&lt;/figcaption&gt;
@@ -4210,7 +4971,7 @@ docker build --build-arg VCS_REF&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/build_fail.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/build_fail.jpg&#34;  alt=&#34;Docker Hub build failure&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/build_fail.jpg&#34;  alt=&#34;Docker Hub build failure&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Oh no&lt;/figcaption&gt;
@@ -4271,7 +5032,7 @@ fine.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/build_success.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/build_success.jpg&#34;  alt=&#34;Docker Hub build success&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/build_success.jpg&#34;  alt=&#34;Docker Hub build success&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Success!&lt;/figcaption&gt;
@@ -4289,7 +5050,7 @@ to build automatically on Docker Hub with all of the
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/microbadger_labels.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/microbadger_labels.jpg&#34;  alt=&#34;Microbadger labels&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/microbadger_labels.jpg&#34;  alt=&#34;Microbadger labels&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Microbadger labels&lt;/figcaption&gt;
@@ -4612,7 +5373,7 @@ how I&amp;rsquo;ve done it.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/technicolor-modem.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/technicolor-modem.png&#34;  alt=&#34;Some crappy Technicolor (I didn&amp;#39;t know they were even still around) modem provided by my ISP.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/technicolor-modem.png&#34;  alt=&#34;Some crappy Technicolor (I didn&amp;#39;t know they were even still around) modem provided by my ISP.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Some crappy Technicolor (I didn&amp;rsquo;t know they were even still around) modem provided by my ISP.&lt;/figcaption&gt;
@@ -4633,7 +5394,7 @@ portal to disable it&amp;rsquo;s WiFi, since I just want to use it as a modem, a
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/homewifi.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/homewifi.jpg&#34;  alt=&#34;The online control panel doesn&amp;#39;t seem to work, and I don&amp;#39;t care enough to call support.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/homewifi.jpg&#34;  alt=&#34;The online control panel doesn&amp;#39;t seem to work, and I don&amp;#39;t care enough to call support.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The online control panel doesn&amp;rsquo;t seem to work, and I don&amp;rsquo;t care enough to call support.&lt;/figcaption&gt;
@@ -4645,7 +5406,7 @@ portal to disable it&amp;rsquo;s WiFi, since I just want to use it as a modem, a
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/account_dashboard.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/account_dashboard.jpg&#34;  alt=&#34;It doesn&amp;#39;t work on my account dashboard either.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/account_dashboard.jpg&#34;  alt=&#34;It doesn&amp;#39;t work on my account dashboard either.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;It doesn&amp;rsquo;t work on my account dashboard either.&lt;/figcaption&gt;
@@ -4734,7 +5495,7 @@ connection to my desktop and server.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/network_diagram.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/network_diagram.jpg&#34;  alt=&#34;Diagram of my home network.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/network_diagram.jpg&#34;  alt=&#34;Diagram of my home network.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Diagram of my home network.&lt;/figcaption&gt;
@@ -5199,7 +5960,7 @@ I decided to move my apps to be hosted on-premise.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/hp_dl_360_g5.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/hp_dl_360_g5.jpg&#34;  alt=&#34;HP DL360 G5 with dual Xeon E5410s and 64GB of RAM&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/hp_dl_360_g5.jpg&#34;  alt=&#34;HP DL360 G5 with dual Xeon E5410s and 64GB of RAM&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;HP DL360 G5 with dual Xeon E5410s and 64GB of RAM&lt;/figcaption&gt;
@@ -5256,7 +6017,7 @@ have a &lt;strong&gt;much&lt;/strong&gt; lower memory footprint, and are super f
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/docker_vs_vm.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/docker_vs_vm.png&#34;  alt=&#34;Docker vs VM diagram&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/docker_vs_vm.png&#34;  alt=&#34;Docker vs VM diagram&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Docker vs VM diagram (from &lt;a href=&#34;https://blog.docker.com/2018/08/containers-replacing-virtual-machines/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://blog.docker.com/2018/08/containers-replacing-virtual-machines/&lt;/a&gt;)&lt;/figcaption&gt;
@@ -5464,7 +6225,7 @@ with Docker so much easier.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/portainer.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/portainer.jpg&#34;  alt=&#34;Screenshot of Portainer interface&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/portainer.jpg&#34;  alt=&#34;Screenshot of Portainer interface&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Screenshot of Portainer interface&lt;/figcaption&gt;
@@ -5487,7 +6248,7 @@ CPU.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/netdata.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/netdata.jpg&#34;  alt=&#34;Screenshot of Netdata statistics&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/netdata.jpg&#34;  alt=&#34;Screenshot of Netdata statistics&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Screenshot of Netdata statstics&lt;/figcaption&gt;
@@ -5550,7 +6311,7 @@ a report.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/server_diagram.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/server_diagram.jpg&#34;  alt=&#34;Rough diagram of final setup&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/server_diagram.jpg&#34;  alt=&#34;Rough diagram of final setup&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Rough diagram of final setup&lt;/figcaption&gt;

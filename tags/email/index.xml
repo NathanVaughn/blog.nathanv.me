@@ -47,7 +47,7 @@ However, just a few days ago, I received this email from Mailgun:&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/mailgun-email.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/mailgun-email.jpg&#34;  alt=&#34;Mailgun email&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/mailgun-email.jpg&#34;  alt=&#34;Mailgun email&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Mailgun plan changes&lt;/figcaption&gt;
@@ -61,7 +61,7 @@ However, just a few days ago, I received this email from Mailgun:&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/mailgun-plans.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/mailgun-plans.jpg&#34;  alt=&#34;Mailgun plans&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/mailgun-plans.jpg&#34;  alt=&#34;Mailgun plans&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;&lt;i&gt;Crap&amp;hellip;&lt;/i&gt;&lt;/figcaption&gt;
@@ -108,7 +108,7 @@ can setup the records.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/google-domains-email-forwarding.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/google-domains-email-forwarding.jpg&#34;  alt=&#34;Google Domains email forwarding&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/google-domains-email-forwarding.jpg&#34;  alt=&#34;Google Domains email forwarding&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Google Domains email forwarding&lt;/figcaption&gt;
@@ -144,7 +144,7 @@ Pack. It was very simple to setup with just a few &lt;code&gt;CNAME&lt;/code&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/sendgrid_dns.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/sendgrid_dns.jpg&#34;  alt=&#34;SendGrid dNS&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/sendgrid_dns.jpg&#34;  alt=&#34;SendGrid dNS&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;SendGrid DNS&lt;/figcaption&gt;
@@ -160,7 +160,7 @@ you need to setup.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/fordwardemail_dns.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/fordwardemail_dns.jpg&#34;  alt=&#34;ForwardEmail DNS&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/fordwardemail_dns.jpg&#34;  alt=&#34;ForwardEmail DNS&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;ForwardEmail DNS&lt;/figcaption&gt;
@@ -196,7 +196,7 @@ change in the future.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/its_always_dns.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/its_always_dns.png&#34;  alt=&#34;DNS Haiku&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/its_always_dns.png&#34;  alt=&#34;DNS Haiku&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;It was DNS&lt;/figcaption&gt;

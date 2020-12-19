@@ -162,7 +162,7 @@ An item in a &amp;ldquo;Albums&amp;rdquo; table would have attributes like &amp;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/table-items-attributes.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/table-items-attributes.jpg&#34;  alt=&#34;DynamoDB elements&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/table-items-attributes.jpg&#34;  alt=&#34;DynamoDB elements&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;DynamoDB elements&lt;/figcaption&gt;

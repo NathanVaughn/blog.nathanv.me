@@ -164,7 +164,7 @@ simulation isn&amp;rsquo;t a top-tier product)&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/football_cfd.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/football_cfd.png&#34;  alt=&#34;Football CFD&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/football_cfd.png&#34;  alt=&#34;Football CFD&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Football CFD&lt;/figcaption&gt;
@@ -181,7 +181,7 @@ simulation isn&amp;rsquo;t a top-tier product)&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/football_flights.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/football_flights.png&#34;  alt=&#34;Football Trajectories&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/football_flights.png&#34;  alt=&#34;Football Trajectories&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Football Trajectories&lt;/figcaption&gt;
@@ -252,7 +252,7 @@ so no scaling required.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/corn_length.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/corn_length.png&#34;  alt=&#34;Corncob Length&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/corn_length.png&#34;  alt=&#34;Corncob Length&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Corncob Length&lt;/figcaption&gt;
@@ -268,7 +268,7 @@ a diameter of 35.49 mm.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/corn_diameter.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/corn_diameter.png&#34;  alt=&#34;Corncob Diameter&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/corn_diameter.png&#34;  alt=&#34;Corncob Diameter&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Corncob Diameter&lt;/figcaption&gt;
@@ -290,7 +290,7 @@ the model alone took about 5 minutes.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/cpu_usage.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/cpu_usage.png&#34;  alt=&#34;CPU Usage&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/cpu_usage.png&#34;  alt=&#34;CPU Usage&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;CPU Usage&lt;/figcaption&gt;
@@ -310,7 +310,7 @@ pressure values.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/corncob_cfd.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/corncob_cfd.png&#34;  alt=&#34;Corncob CFD&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/corncob_cfd.png&#34;  alt=&#34;Corncob CFD&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Corncob CFD&lt;/figcaption&gt;
@@ -327,7 +327,7 @@ theoretical trajectories using the same math as before.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/corncob_flights.png&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/corncob_flights.png&#34;  alt=&#34;Corncob Trajectories&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/corncob_flights.png&#34;  alt=&#34;Corncob Trajectories&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Corncob Trajectories&lt;/figcaption&gt;

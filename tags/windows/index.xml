@@ -45,7 +45,7 @@ as an administrator, and Python still couldn&amp;rsquo;t delete it.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/original_error.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/original_error.jpg&#34;  alt=&#34;Recreation of the error.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/original_error.jpg&#34;  alt=&#34;Recreation of the error.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Recreation of the error. As you can see boxed in red, the Python process is running with Administrator privileges.&lt;/figcaption&gt;
@@ -61,7 +61,7 @@ the 0-byte folder itself.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/folder_size.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/folder_size.jpg&#34;  alt=&#34;Windows dialog showing folder size.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/folder_size.jpg&#34;  alt=&#34;Windows dialog showing folder size.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;The folder is completely empty. Deselecting the read-only checkbox does not affect anything.&lt;/figcaption&gt;
@@ -84,7 +84,7 @@ the &lt;a href=&#34;https://docs.python.org/3/library/stat.html#stat.S_IWUSR&#34
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/fixed_error.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/fixed_error.jpg&#34;  alt=&#34;Example of fixing the error.&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/fixed_error.jpg&#34;  alt=&#34;Example of fixing the error.&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Example of fixing the error. As you can see boxed in red, the Python process is &lt;em&gt;NOT&lt;/em&gt; running with Administrator privileges, yet can now delete the folder.&lt;/figcaption&gt;
@@ -185,7 +185,7 @@ only this file.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/download_spin.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/download_spin.jpg&#34;  alt=&#34;Download the latest prebuilt version of Spin&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/download_spin.jpg&#34;  alt=&#34;Download the latest prebuilt version of Spin&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Download the latest prebuilt version of Spin&lt;/figcaption&gt;
@@ -199,7 +199,7 @@ only this file.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/extract_spin.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/extract_spin.jpg&#34;  alt=&#34;Extract the archive with 7zip&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/extract_spin.jpg&#34;  alt=&#34;Extract the archive with 7zip&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Extract the archive with 7zip&lt;/figcaption&gt;
@@ -221,7 +221,7 @@ and select the base MinGW package (this includes GCC).&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/mingw_install.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/mingw_install.jpg&#34;  alt=&#34;Install the base MinGW package&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/mingw_install.jpg&#34;  alt=&#34;Install the base MinGW package&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Install the base MinGW package&lt;/figcaption&gt;
@@ -255,7 +255,7 @@ this is to right-click &amp;ldquo;Raw&amp;rdquo; and then &amp;ldquo;Save link a
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/download_ispin.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/download_ispin.jpg&#34;  alt=&#34;Download the GUI file for Spin&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/download_ispin.jpg&#34;  alt=&#34;Download the GUI file for Spin&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Download the GUI file for Spin&lt;/figcaption&gt;
@@ -291,7 +291,7 @@ and look for &lt;code&gt;wish.exe&lt;/code&gt;.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/everything_wish.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/everything_wish.jpg&#34;  alt=&#34;wish.exe showing up in Everything&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/everything_wish.jpg&#34;  alt=&#34;wish.exe showing up in Everything&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Tcl/Tk is often included with Git for Windows&lt;/figcaption&gt;
@@ -307,7 +307,7 @@ and select the &lt;code&gt;wish.exe&lt;/code&gt; you found. Make sure to set
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/tcl_wish.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/tcl_wish.jpg&#34;  alt=&#34;Selecting a default program association for .tcl files&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/tcl_wish.jpg&#34;  alt=&#34;Selecting a default program association for .tcl files&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Selecting a default program association for .tcl files&lt;/figcaption&gt;
@@ -322,7 +322,7 @@ by double-clicking on &lt;code&gt;ispin.tcl&lt;/code&gt;.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/ispin.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/ispin.jpg&#34;  alt=&#34;Spin GUI&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/ispin.jpg&#34;  alt=&#34;Spin GUI&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Spin GUI&lt;/figcaption&gt;
@@ -367,7 +367,7 @@ line 22, and adjust the path to &lt;code&gt;dot&lt;/code&gt; as needed. For exam
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/automata_view.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/automata_view.jpg&#34;  alt=&#34;Spin GUI automata view&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/automata_view.jpg&#34;  alt=&#34;Spin GUI automata view&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Spin GUI automata view&lt;/figcaption&gt;
@@ -449,7 +449,7 @@ Properties -&amp;gt; Startup type -&amp;gt; Manual.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/synergy-service-manual.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/synergy-service-manual.jpg&#34;  alt=&#34;Synergy Windows service&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/synergy-service-manual.jpg&#34;  alt=&#34;Synergy Windows service&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Set the Synergy service to start manually&lt;/figcaption&gt;
@@ -509,7 +509,7 @@ which scheduled tasks or executables last woke your computer.&lt;/p&gt;
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/event-viewer-culprit.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/event-viewer-culprit.jpg&#34;  alt=&#34;Windows Event Viewer&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/event-viewer-culprit.jpg&#34;  alt=&#34;Windows Event Viewer&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Windows Event Viewer showing the Power-Troubleshooter filter and the culprit&lt;/figcaption&gt;
@@ -531,7 +531,7 @@ Within the Settings app, go to &amp;ldquo;Power &amp;amp; sleep&amp;rdquo; -&amp
 
   &lt;figure class=&#34;center&#34; &gt;
     &lt;a href=&#34;img/power-settings.jpg&#34; target=&#34;_blank&#34;&gt;
-      &lt;img src=&#34;img/power-settings.jpg&#34;  alt=&#34;Power plan settings&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+      &lt;img src=&#34;img/power-settings.jpg&#34;  alt=&#34;Power plan settings&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
       &lt;figcaption class=&#34;center&#34; &gt;Holy settings menu nesting Batman!&lt;/figcaption&gt;
