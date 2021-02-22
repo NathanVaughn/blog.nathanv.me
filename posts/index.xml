@@ -9,10 +9,424 @@
     <description>Recent content in Posts on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Building a Home Network on a Not-So-Budget</title>
+      <link>https://blog.nathanv.me/posts/not-so-budget-home-network/</link>
+      <pubDate>Sun, 21 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/not-so-budget-home-network/</guid>
+      <description>
+        
+          &lt;img src=&#34;https://blog.nathanv.me/posts/not-so-budget-home-network/img/cover.jpg&#34;/&gt;
+          
+        
+        
+        
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;After graduating college, I&amp;rsquo;m move into an apartment more permanently than 3-4 months
+at a time in the past. Because of this, I finally built myself a small
+&lt;a href=&#34;https://www.reddit.com/r/homelab/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;homelab&lt;/a&gt; in a proper server rack,
+which I&amp;rsquo;ve been wanting to do for a long time. This is sort of a follow-up to
+&amp;ldquo;&lt;a href=&#34;https://blog.nathanv.me/posts/budget-home-network/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Building a Home Network on a Budget&lt;/a&gt;&amp;rdquo;.&lt;/p&gt;
+
+&lt;h2 id=&#34;apartment-internet&#34;&gt;Apartment Internet&lt;/h2&gt;
+
+&lt;p&gt;For a little bit of background before we dive in,
+my apartment&amp;rsquo;s internet is a bit atypical. I don&amp;rsquo;t have service directly through
+my ISP. Instead, the internet is provided by my apartment complex through
+&lt;a href=&#34;https://www.spectrum.com/communitysolutions/home&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Spectrum Community Solutions&lt;/a&gt;.
+Only WiFi is available, and I have to go into a web portal and manually add
+the MAC address of every device I have to my account so that they can connect.
+Even after doing this, many of devices would still just refuse to connect:&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/failed-to-connect.png&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/failed-to-connect.png&#34;  alt=&#34;Failed to connect to network message on Android&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;My phone would almost always fail to connect&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;This was infuriating to say the least. I found the 5mbps guest WiFi more reliable.
+The good news is, my apartment has a WiFi router in it, and it&amp;rsquo;s plugged into the wall.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/wifi-before.png&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/wifi-before.png&#34;  alt=&#34;Diagram of apartment WiFi as provided&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Small diagram of apartment WiFi as it is provided&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;With a bit of experimentation, I discovered that just unplugging the Spectrum WiFi
+access point, and plugging the wall jack directly into my laptop resulted in an
+internet connection! No Spectrum authentication bullshit, and it was full gigabit
+both ways (better than the 300mbps promised number)! So as to not disturb the internet
+for my neighbors, I put a switch between the wall jack and the Spectrum WiFi access
+point so that I could connect my own devices via Ethernet. I did have to go out
+and buy a PoE switch, as the existing access point was PoE and I didn&amp;rsquo;t own a
+PoE switch.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/wifi-after.png&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/wifi-after.png&#34;  alt=&#34;Diagram of apartment WiFi after slight modification&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Small diagram of apartment WiFi after a slight modification&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;network-infrastructure&#34;&gt;Network Infrastructure&lt;/h2&gt;
+
+&lt;p&gt;Here are the components of my home network infrastructure.&lt;/p&gt;
+
+&lt;h3 id=&#34;tp-link-tl-sg1005p-49-99&#34;&gt;TP-Link TL-SG1005P - $49.99&lt;/h3&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/tl-sg1005p.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/tl-sg1005p.jpg&#34;  alt=&#34;TP-Link 5 Port Gigabit, 4 Port PoE Switch&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;This was the little PoE switch I got to break out the ethernet from the wall.
+It was the least expensive thing I could find at my local Microcenter.&lt;/p&gt;
+
+&lt;h3 id=&#34;qotom-q535g6-373-46&#34;&gt;Qotom Q535G6 - $373.46&lt;/h3&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/qotom-q535g6-fanless.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/qotom-q535g6-fanless.jpg&#34;  alt=&#34;Qotom Q535G6&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;This is a fanless mini PC I got on &lt;a href=&#34;https://ebay.us/Q7sGUT&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;eBay&lt;/a&gt;, which I have
+installed &lt;a href=&#34;https://www.pfsense.org/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;pfSense&lt;/a&gt; on and am using as my router.
+I bought one with an Intel i3-7130U, 4GB of RAM, and 32GB mSATA SSD. I also sprang for
+the $25 &lt;a href=&#34;https://ebay.us/clsesA&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;rackmount case upgrade&lt;/a&gt;.
+When I was looking at these earlier,
+the rackmount cases where near-impossible to get, and when I was actually ready to
+buy, only the 6-port version of the rackmount case was available. Thus, I bought
+the matching 6-port mini PC and rack case. Now, there&amp;rsquo;s 4-port versions back in stock,
+which would have saved me a lot of money on the PC, as I don&amp;rsquo;t need all 6 ports. Oh well.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/qotom-rackmount.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/qotom-rackmount.jpg&#34;  alt=&#34;Qotom rackmount case diagram&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Qotom rackmount case diagram&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;When the computer arrived (they were nice enough to assemble
+it for me in the rack case), I plugged it in and was very surprised to learn it in-fact
+had a fan. I didn&amp;rsquo;t look closely at the diagram above to see &amp;ldquo;Active cooling&amp;rdquo;.
+However, the fan was making a horrible grinding sound, but only when the computer
+was right-side up. I figured out the cause to this is that the fan is
+installed on the bottom-side of the motherboard.
+In a normal resting position, this means the little laptop cooling fan is upside down.
+The bearing in the fan has enough slop in it that the fan rubs against its shell
+and makes the grinding sound. Unfortunately, due to how the case is designed, you
+have to take apart basically the entire thing to get at the bottom.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/qotom-q535g6-disassembly.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/qotom-q535g6-disassembly.jpg&#34;  alt=&#34;Qotom mini PC disassembled in the rackmount case&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Because of those standoffs, you have to take the top shell off before you can remove the bottom shell. This is looking at the bottom side.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;After figuring out how to take apart the whole thing, fixing it was relatively easy.
+I loosened a few screws in the fan&amp;rsquo;s shell and put a few pieces of cereal box cardboard
+in the edge to shim the shell a bit. I taped it all in place, flipped it back
+upside-down, and the fan stopped grinding.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/qotom-q535g6-fixed.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/qotom-q535g6-fixed.jpg&#34;  alt=&#34;Qotom mini PC fan fix&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;If it&amp;rsquo;s stupid but it works, it&amp;rsquo;s not stupid&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;After all this, I installed pfSense on the computer. I&amp;rsquo;ve set
+&lt;a href=&#34;https://www.reddit.com/r/pfBlockerNG/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;pfBlockerNG&lt;/a&gt; to replace
+Pi-hole to do DNS filtering. I really like that I can
+&lt;a href=&#34;https://pfsense-docs.readthedocs.io/en/latest/dns/redirecting-all-dns-requests-to-pfsense.html&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;redirect all DNS queries&lt;/a&gt;
+to my pfSense box, as this stops devices with hard-coded DNS servers from bypassing
+the local DNS server.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve configured port 1 as my WAN, port 2 as my LAN,
+port 3 as my WLAN connected directly to my wireless access point, and port 6 as
+my Work-from-home LAN. The only thing different about my Work-from-home LAN is that
+I&amp;rsquo;ve disabled the DNS filtering and redirection rules on that so as to not interfere
+with my corporate VPN or remote resources.&lt;/p&gt;
+
+&lt;p&gt;I love looking at pretty graphs, so I&amp;rsquo;ve really enjoyed looking at the data that
+the &lt;a href=&#34;https://www.ntop.org/products/traffic-analysis/ntop/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;ntopng&lt;/a&gt;
+package on pfSense provides.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/ntop.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/ntop.jpg&#34;  alt=&#34;ntopng interface graph&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;This is a graph of the total traffic across the LAN interface for a full day&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;tp-link-archer-c1900-34-99&#34;&gt;TP-Link Archer C1900 - $34.99&lt;/h3&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;../budget-home-network/img/tplink-archer.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;../budget-home-network/img/tplink-archer.jpg&#34;  alt=&#34;TP-Link Archer C1900&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;This is the same WiFi router from before. Instead now, I&amp;rsquo;m using it as an access point
+rather than a router. This was pretty easily done by disabling the DHCP server
+and plugging in the inbound connection to a LAN port rather than the WAN port.
+I also went in and turned off all the security features and UPnP as this is
+all handled by the firewall now.&lt;/p&gt;
+
+&lt;p&gt;There was one major issue though that I had to fix. As I put my wireless
+clients on a different subnet than my wired clients, I was unable to access the
+TP-Link web portal from a wired device. It turns out that by default,
+in a setup like this, the device doesn&amp;rsquo;t set a default gateway. I had to
+access the web portal from a device on the wireless subnet and manually add a route.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/tp-link-routes.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/tp-link-routes.jpg&#34;  alt=&#34;Route manually added to the wired subnet with a gateway defined&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;You can&amp;rsquo;t modify the default route that automatically sets the gateway to 0.0.0.0&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;tp-link-tl-sg1024-free&#34;&gt;TP-Link TL-SG1024 - Free&lt;/h3&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/tl-sg1024.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/tl-sg1024.jpg&#34;  alt=&#34;TP-Link 24 Port Gigabit Switch&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;I got this for free a few years ago. It&amp;rsquo;s older and not grey like the newer
+productions of this model. My switch is like the picture above and is a butt-ugly
+vomit brown/green color. I did spend $14.95 on a
+&lt;a href=&#34;https://www.amazon.com/dp/B072JK9GX6&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Noctua NF-A4x20 FLX&lt;/a&gt;
+fan to replace the 40mm fan inside with to be a bit quieter.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/tl-sg1024-fan-swap.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/tl-sg1024-fan-swap.jpg&#34;  alt=&#34;TL-SG1024 taken apart with a new fan installed&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;The result of my fan-swapping surgery. Unfortunately wasn&amp;rsquo;t able to unplug the old fan, so had to cut the wires and use the provided &lt;a href=&#34;https://www.amazon.com/dp/B01K3HZ2IO&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;3M Scotchlok butt connectors&lt;/a&gt;&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h3 id=&#34;cyberpower-or500lcdrm1u-164-95&#34;&gt;CyberPower OR500LCDRM1U - $164.95&lt;/h3&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/or500lcdrm1u.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/or500lcdrm1u.jpg&#34;  alt=&#34;CyberPower OR500LCDRM1U&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;To power everything, I purchased this 1U UPS for my networking equipment.
+My desktop computer is already on a different UPS.
+I specifically choose this one as it&amp;rsquo;s shallower
+than many other options. My rack is pretty shallow and some of the other qU UPS&amp;rsquo;s
+available would only give an inch or two of clearance in the back, while
+this is closer to 6.&lt;/p&gt;
+
+&lt;p&gt;It only supports up to 300W, but works fine for me. Under a normal load, I&amp;rsquo;m only
+using around 25% capacity (75W), and even with full CPU usage on my primary server,
+the load then is around 50% (150W). Under normal conditions, this gives me nearly
+30 minutes of runtime off the battery.&lt;/p&gt;
+
+&lt;p&gt;The UPS also comes with some pretty nifty web-based software called
+&lt;a href=&#34;https://www.cyberpowersystems.com/products/software/power-panel-business/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;PowerPanel&lt;/a&gt;
+that lets you see statuses, run tests, and setup alerts.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/powerpanel.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/powerpanel.jpg&#34;  alt=&#34;Screenshot of the PowerPanel software&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;PowerPanel interface&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;I also created a Dockerfile for this software as I couldn&amp;rsquo;t find a pre-made one that
+was updated. It&amp;rsquo;s attached here if you want it:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;files/Dockerfile&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Dockerfile&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;files/install.exp&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;install.exp&lt;/a&gt; (needed for the Dockerfile)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;files/docker-compose.yml&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;docker-compose.yml&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;6u-rack-50&#34;&gt;6U Rack - $50&lt;/h3&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/6u-rack.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/6u-rack.jpg&#34;  alt=&#34;6U rack from Craigslist&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;Last but not least is the rack itself. I was able to snag this on Craigslist for $50
+with everything included. I&amp;rsquo;m not sure what brand the rack itself is,
+but the shelves come from Navepoint. It included two shelves, a blanking plate,
+a cable routing blank, all the original hardware, and the previous owner made a nice
+little wood base for it. It&amp;rsquo;s all in spotless condition too. Not a single scratch.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s a bit smaller than I wanted, as I was thinking of getting a 9U to be able
+to put my server into a 3/4U rackmount case, but the price was too good to pass up.&lt;/p&gt;
+
+&lt;h2 id=&#34;diagram&#34;&gt;Diagram&lt;/h2&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/full-diagram.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/full-diagram.jpg&#34;  alt=&#34;Full network diagram&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Full network diagram. Switching coming from the wall jack has been left out for simplicity&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;The &amp;ldquo;zeus&amp;rdquo; server is the &lt;a href=&#34;https://blog.nathanv.me/posts/sun-ultra-24-build/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Sun Ultra 24&lt;/a&gt; server
+from before, just with a fan upgrade to be quieter, and now two HDD&amp;rsquo;s in RAID 1 via
+software RAID in Ubuntu. Everything on it runs in a Docker container.&lt;/p&gt;
+
+&lt;p&gt;If you&amp;rsquo;re wondering how all the web apps are accessed, here&amp;rsquo;s a short explanation:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Internally&lt;/strong&gt;: DNS is setup on my pfSense DNS resolver such that every subdomain of
+&lt;code&gt;nathanv.app&lt;/code&gt; resolves to my main server running Traefik: &lt;code&gt;zeus.nathanv.home&lt;/code&gt;.
+This acts a reverse proxy to all web apps. Legitimate HTTPS certificates are obtained
+via Let&amp;rsquo;s Encrypt and DNS challenge.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Externally&lt;/strong&gt;: Much like &lt;a href=&#34;https://blog.nathanv.me/posts/self-host-docker/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;&amp;ldquo;Self-Hosting with Docker and Argo Tunnel&amp;rdquo;&lt;/a&gt;,
+I&amp;rsquo;m using Cloudflare&amp;rsquo;s Argo Tunnel on my main server, which is connected to Traefik.
+All the subdomains on external DNS are CNAME&amp;rsquo;d to this tunnel. Cloudflare is then
+serving their HTTPS certificate.&lt;/p&gt;
+
+&lt;p&gt;This is called a &lt;a href=&#34;https://en.wikipedia.org/wiki/Split-horizon_DNS&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Split-Brain DNS&lt;/a&gt;
+setup.&lt;/p&gt;
+
+&lt;p&gt;For authentication, I replaced Cloudflare Access with
+&lt;a href=&#34;https://www.keycloak.org/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Keycloak&lt;/a&gt; and
+&lt;a href=&#34;https://github.com/thomseddon/traefik-forward-auth&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Traefik Forward Auth&lt;/a&gt;.
+Most applications authenticate against Keycloak with either SAML or Open ID Connect
+(OIDC) (basically OAuth2). The applications that don&amp;rsquo;t inherently have authentication,
+or are sensitive and could use a second layer (Netdata, PHPMyAdmin, etc.) are protected
+with Traefik Forward Auth, which authenticates against Keycloak via OIDC.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Quick summary:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PoE Switch: Splitting apartment complex internet connection&lt;/li&gt;
+&lt;li&gt;pfSense: Router, DHCP, DNS&lt;/li&gt;
+&lt;li&gt;TP-Link Archer: WiFi AP&lt;/li&gt;
+&lt;li&gt;Non-PoE Switch: LAN&lt;/li&gt;
+&lt;li&gt;Sun Ultra 24: Primary server&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In total, I&amp;rsquo;ve spent $688.34 on this project, before the small stuff
+like Velcro straps and color-coded cables. Call it $750. I now realize that&amp;rsquo;s
+a lot of money. I am extremely pleased how it&amp;rsquo;s turned out, though, and don&amp;rsquo;t
+forsee any changes for the near future. There is a large hole on the
+second shelf, and that&amp;rsquo;s intended to be room for a modem if/when I move
+out of this apartment complex and have my own internet connection.&lt;/p&gt;
+
+&lt;p&gt;It also looks pretty cool in the dark.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/rack-dark.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/rack-dark.jpg&#34;  alt=&#34;Server rack with status lights shining in the dark&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+  &lt;/figure&gt;
+
+
+
+        
+        </description>
+    </item>
     
     <item>
       <title>IBM Model M Cleaning</title>

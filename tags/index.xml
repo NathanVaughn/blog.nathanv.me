@@ -9,10 +9,46 @@
     <description>Recent content in Tags on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 18 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 21 Feb 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Docker</title>
+      <link>https://blog.nathanv.me/tags/docker/</link>
+      <pubDate>Sun, 21 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/docker/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>home-networking</title>
+      <link>https://blog.nathanv.me/tags/home-networking/</link>
+      <pubDate>Sun, 21 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/tags/home-networking/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+        
+        </description>
+    </item>
     
     <item>
       <title>IBM</title>
@@ -537,24 +573,6 @@
     </item>
     
     <item>
-      <title>Docker</title>
-      <link>https://blog.nathanv.me/tags/docker/</link>
-      <pubDate>Sat, 23 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.nathanv.me/tags/docker/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-        
-        </description>
-    </item>
-    
-    <item>
       <title>Docker Hub</title>
       <link>https://blog.nathanv.me/tags/docker-hub/</link>
       <pubDate>Sat, 23 Nov 2019 00:00:00 +0000</pubDate>
@@ -632,24 +650,6 @@
       <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>https://blog.nathanv.me/tags/hugo/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>home-networking</title>
-      <link>https://blog.nathanv.me/tags/home-networking/</link>
-      <pubDate>Mon, 14 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.nathanv.me/tags/home-networking/</guid>
       <description>
         
           

@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        Building a Home Network on a Not-So-Budget ::
+        Nathan Vaughn — Adventures in programming and tech
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Background After graduating college, I&amp;rsquo;m move into an apartment more permanently than 3-4 months at a time in the past. Because of this, I finally built myself a small homelab in a proper server rack, which I&amp;rsquo;ve been wanting to do for a long time. This is sort of a follow-up to &amp;ldquo;Building a Home Network on a Budget&amp;rdquo;.
+Apartment Internet For a little bit of background before we dive in, my apartment&amp;rsquo;s internet is a bit atypical."
+/>
+<meta
+  name="keywords"
+  content="[programming tech Nathan Vaughn blog]"
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://blog.nathanv.me/posts/not-so-budget-home-network/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css" />
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css" />
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png" />
+
+
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/posts/no-so-budget-home-network/img/cover.jpg"/>
+
+<meta name="twitter:title" content="Building a Home Network on a Not-So-Budget"/>
+<meta name="twitter:description" content="Now that I live somewhere permanently, my home network has gotten more complex."/>
+
+
+
+<meta property="og:title" content="Building a Home Network on a Not-So-Budget" />
+<meta property="og:description" content="Now that I live somewhere permanently, my home network has gotten more complex." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/not-so-budget-home-network/" />
+<meta property="og:image" content="https://blog.nathanv.me/posts/no-so-budget-home-network/img/cover.jpg" />
+<meta property="article:published_time" content="2021-02-21T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-02-21T22:12:01-06:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
+
+
+<meta name="theme-color" content="#7ec699">
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >nathanv@blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://nathanv.me">Homepage</a></li>
+        
+      
+        
+          <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+        
+      
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://nathanv.me">Homepage</a></li>
+      
+    
+      
+        <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Building a Home Network on a Not-So-Budget</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2021-02-21
+        </span>
+
+        
+          
+            
+
+
+  
+    <span class="post-moddate">
+      (Last Modified:
+      2021-02-21)
+    </span>
+  
+
+
+          
+        
+      
+
+      
+        <span class="post-author"
+          >— Written by Nathan Vaughn</span
+        >
+
+
+      
+        <span class="post-read-time"
+          >— 9 min read</span
+        >
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="https://blog.nathanv.me/tags/home-networking/">#home-networking</a>&nbsp;
+        
+          <a href="https://blog.nathanv.me/tags/docker/">#Docker</a>&nbsp;
+        
+      </span>
+    
+
+    
+      <figure class="post-cover">
+        
+          <img src="https://blog.nathanv.me/posts/not-so-budget-home-network/img/cover.jpg" alt="Building a Home Network on a Not-So-Budget" />
+        
+
+        
+      </figure>
+    
+
+    <div class="post-content">
+      
+        <h2>Table of Contents</h2>
+        <aside class="table-of-contents"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#background">Background</a></li>
+<li><a href="#apartment-internet">Apartment Internet</a></li>
+<li><a href="#network-infrastructure">Network Infrastructure</a>
+<ul>
+<li><a href="#tp-link-tl-sg1005p-49-99">TP-Link TL-SG1005P - $49.99</a></li>
+<li><a href="#qotom-q535g6-373-46">Qotom Q535G6 - $373.46</a></li>
+<li><a href="#tp-link-archer-c1900-34-99">TP-Link Archer C1900 - $34.99</a></li>
+<li><a href="#tp-link-tl-sg1024-free">TP-Link TL-SG1024 - Free</a></li>
+<li><a href="#cyberpower-or500lcdrm1u-164-95">CyberPower OR500LCDRM1U - $164.95</a></li>
+<li><a href="#6u-rack-50">6U Rack - $50</a></li>
+</ul></li>
+<li><a href="#diagram">Diagram</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul></li>
+</ul>
+</nav></aside>
+      
+      
+
+<h2 id="background">Background</h2>
+
+<p>After graduating college, I&rsquo;m move into an apartment more permanently than 3-4 months
+at a time in the past. Because of this, I finally built myself a small
+<a href="https://www.reddit.com/r/homelab/" rel="noreferrer" target="_blank">homelab</a> in a proper server rack,
+which I&rsquo;ve been wanting to do for a long time. This is sort of a follow-up to
+&ldquo;<a href="/posts/budget-home-network/" rel="noreferrer" target="_blank">Building a Home Network on a Budget</a>&rdquo;.</p>
+
+<h2 id="apartment-internet">Apartment Internet</h2>
+
+<p>For a little bit of background before we dive in,
+my apartment&rsquo;s internet is a bit atypical. I don&rsquo;t have service directly through
+my ISP. Instead, the internet is provided by my apartment complex through
+<a href="https://www.spectrum.com/communitysolutions/home" rel="noreferrer" target="_blank">Spectrum Community Solutions</a>.
+Only WiFi is available, and I have to go into a web portal and manually add
+the MAC address of every device I have to my account so that they can connect.
+Even after doing this, many of devices would still just refuse to connect:</p>
+
+
+  <figure class="center" >
+    <a href="img/failed-to-connect.png" target="_blank">
+      <img src="img/failed-to-connect.png"  alt="Failed to connect to network message on Android"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >My phone would almost always fail to connect</figcaption>
+    
+  </figure>
+
+
+
+<p>This was infuriating to say the least. I found the 5mbps guest WiFi more reliable.
+The good news is, my apartment has a WiFi router in it, and it&rsquo;s plugged into the wall.</p>
+
+
+  <figure class="center" >
+    <a href="img/wifi-before.png" target="_blank">
+      <img src="img/wifi-before.png"  alt="Diagram of apartment WiFi as provided"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >Small diagram of apartment WiFi as it is provided</figcaption>
+    
+  </figure>
+
+
+
+<p>With a bit of experimentation, I discovered that just unplugging the Spectrum WiFi
+access point, and plugging the wall jack directly into my laptop resulted in an
+internet connection! No Spectrum authentication bullshit, and it was full gigabit
+both ways (better than the 300mbps promised number)! So as to not disturb the internet
+for my neighbors, I put a switch between the wall jack and the Spectrum WiFi access
+point so that I could connect my own devices via Ethernet. I did have to go out
+and buy a PoE switch, as the existing access point was PoE and I didn&rsquo;t own a
+PoE switch.</p>
+
+
+  <figure class="center" >
+    <a href="img/wifi-after.png" target="_blank">
+      <img src="img/wifi-after.png"  alt="Diagram of apartment WiFi after slight modification"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >Small diagram of apartment WiFi after a slight modification</figcaption>
+    
+  </figure>
+
+
+
+<h2 id="network-infrastructure">Network Infrastructure</h2>
+
+<p>Here are the components of my home network infrastructure.</p>
+
+<h3 id="tp-link-tl-sg1005p-49-99">TP-Link TL-SG1005P - $49.99</h3>
+
+
+  <figure class="center" >
+    <a href="img/tl-sg1005p.jpg" target="_blank">
+      <img src="img/tl-sg1005p.jpg"  alt="TP-Link 5 Port Gigabit, 4 Port PoE Switch"  style="border-radius: 8px;" />
+    </a>
+    
+  </figure>
+
+
+
+<p>This was the little PoE switch I got to break out the ethernet from the wall.
+It was the least expensive thing I could find at my local Microcenter.</p>
+
+<h3 id="qotom-q535g6-373-46">Qotom Q535G6 - $373.46</h3>
+
+
+  <figure class="center" >
+    <a href="img/qotom-q535g6-fanless.jpg" target="_blank">
+      <img src="img/qotom-q535g6-fanless.jpg"  alt="Qotom Q535G6"  style="border-radius: 8px;" />
+    </a>
+    
+  </figure>
+
+
+
+<p>This is a fanless mini PC I got on <a href="https://ebay.us/Q7sGUT" rel="noreferrer" target="_blank">eBay</a>, which I have
+installed <a href="https://www.pfsense.org/" rel="noreferrer" target="_blank">pfSense</a> on and am using as my router.
+I bought one with an Intel i3-7130U, 4GB of RAM, and 32GB mSATA SSD. I also sprang for
+the $25 <a href="https://ebay.us/clsesA" rel="noreferrer" target="_blank">rackmount case upgrade</a>.
+When I was looking at these earlier,
+the rackmount cases where near-impossible to get, and when I was actually ready to
+buy, only the 6-port version of the rackmount case was available. Thus, I bought
+the matching 6-port mini PC and rack case. Now, there&rsquo;s 4-port versions back in stock,
+which would have saved me a lot of money on the PC, as I don&rsquo;t need all 6 ports. Oh well.</p>
+
+
+  <figure class="center" >
+    <a href="img/qotom-rackmount.jpg" target="_blank">
+      <img src="img/qotom-rackmount.jpg"  alt="Qotom rackmount case diagram"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >Qotom rackmount case diagram</figcaption>
+    
+  </figure>
+
+
+
+<p>When the computer arrived (they were nice enough to assemble
+it for me in the rack case), I plugged it in and was very surprised to learn it in-fact
+had a fan. I didn&rsquo;t look closely at the diagram above to see &ldquo;Active cooling&rdquo;.
+However, the fan was making a horrible grinding sound, but only when the computer
+was right-side up. I figured out the cause to this is that the fan is
+installed on the bottom-side of the motherboard.
+In a normal resting position, this means the little laptop cooling fan is upside down.
+The bearing in the fan has enough slop in it that the fan rubs against its shell
+and makes the grinding sound. Unfortunately, due to how the case is designed, you
+have to take apart basically the entire thing to get at the bottom.</p>
+
+
+  <figure class="center" >
+    <a href="img/qotom-q535g6-disassembly.jpg" target="_blank">
+      <img src="img/qotom-q535g6-disassembly.jpg"  alt="Qotom mini PC disassembled in the rackmount case"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >Because of those standoffs, you have to take the top shell off before you can remove the bottom shell. This is looking at the bottom side.</figcaption>
+    
+  </figure>
+
+
+
+<p>After figuring out how to take apart the whole thing, fixing it was relatively easy.
+I loosened a few screws in the fan&rsquo;s shell and put a few pieces of cereal box cardboard
+in the edge to shim the shell a bit. I taped it all in place, flipped it back
+upside-down, and the fan stopped grinding.</p>
+
+
+  <figure class="center" >
+    <a href="img/qotom-q535g6-fixed.jpg" target="_blank">
+      <img src="img/qotom-q535g6-fixed.jpg"  alt="Qotom mini PC fan fix"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >If it&rsquo;s stupid but it works, it&rsquo;s not stupid</figcaption>
+    
+  </figure>
+
+
+
+<p>After all this, I installed pfSense on the computer. I&rsquo;ve set
+<a href="https://www.reddit.com/r/pfBlockerNG/" rel="noreferrer" target="_blank">pfBlockerNG</a> to replace
+Pi-hole to do DNS filtering. I really like that I can
+<a href="https://pfsense-docs.readthedocs.io/en/latest/dns/redirecting-all-dns-requests-to-pfsense.html" rel="noreferrer" target="_blank">redirect all DNS queries</a>
+to my pfSense box, as this stops devices with hard-coded DNS servers from bypassing
+the local DNS server.</p>
+
+<p>I&rsquo;ve configured port 1 as my WAN, port 2 as my LAN,
+port 3 as my WLAN connected directly to my wireless access point, and port 6 as
+my Work-from-home LAN. The only thing different about my Work-from-home LAN is that
+I&rsquo;ve disabled the DNS filtering and redirection rules on that so as to not interfere
+with my corporate VPN or remote resources.</p>
+
+<p>I love looking at pretty graphs, so I&rsquo;ve really enjoyed looking at the data that
+the <a href="https://www.ntop.org/products/traffic-analysis/ntop/" rel="noreferrer" target="_blank">ntopng</a>
+package on pfSense provides.</p>
+
+
+  <figure class="center" >
+    <a href="img/ntop.jpg" target="_blank">
+      <img src="img/ntop.jpg"  alt="ntopng interface graph"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >This is a graph of the total traffic across the LAN interface for a full day</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="tp-link-archer-c1900-34-99">TP-Link Archer C1900 - $34.99</h3>
+
+
+  <figure class="center" >
+    <a href="../budget-home-network/img/tplink-archer.jpg" target="_blank">
+      <img src="../budget-home-network/img/tplink-archer.jpg"  alt="TP-Link Archer C1900"  style="border-radius: 8px;" />
+    </a>
+    
+  </figure>
+
+
+
+<p>This is the same WiFi router from before. Instead now, I&rsquo;m using it as an access point
+rather than a router. This was pretty easily done by disabling the DHCP server
+and plugging in the inbound connection to a LAN port rather than the WAN port.
+I also went in and turned off all the security features and UPnP as this is
+all handled by the firewall now.</p>
+
+<p>There was one major issue though that I had to fix. As I put my wireless
+clients on a different subnet than my wired clients, I was unable to access the
+TP-Link web portal from a wired device. It turns out that by default,
+in a setup like this, the device doesn&rsquo;t set a default gateway. I had to
+access the web portal from a device on the wireless subnet and manually add a route.</p>
+
+
+  <figure class="center" >
+    <a href="img/tp-link-routes.jpg" target="_blank">
+      <img src="img/tp-link-routes.jpg"  alt="Route manually added to the wired subnet with a gateway defined"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >You can&rsquo;t modify the default route that automatically sets the gateway to 0.0.0.0</figcaption>
+    
+  </figure>
+
+
+
+<h3 id="tp-link-tl-sg1024-free">TP-Link TL-SG1024 - Free</h3>
+
+
+  <figure class="center" >
+    <a href="img/tl-sg1024.jpg" target="_blank">
+      <img src="img/tl-sg1024.jpg"  alt="TP-Link 24 Port Gigabit Switch"  style="border-radius: 8px;" />
+    </a>
+    
+  </figure>
+
+
+
+<p>I got this for free a few years ago. It&rsquo;s older and not grey like the newer
+productions of this model. My switch is like the picture above and is a butt-ugly
+vomit brown/green color. I did spend $14.95 on a
+<a href="https://www.amazon.com/dp/B072JK9GX6" rel="noreferrer" target="_blank">Noctua NF-A4x20 FLX</a>
+fan to replace the 40mm fan inside with to be a bit quieter.</p>
+
+
+  <figure class="center" >
+    <a href="img/tl-sg1024-fan-swap.jpg" target="_blank">
+      <img src="img/tl-sg1024-fan-swap.jpg"  alt="TL-SG1024 taken apart with a new fan installed"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >The result of my fan-swapping surgery. Unfortunately wasn&rsquo;t able to unplug the old fan, so had to cut the wires and use the provided <a href="https://www.amazon.com/dp/B01K3HZ2IO" rel="noreferrer" target="_blank">3M Scotchlok butt connectors</a></figcaption>
+    
+  </figure>
+
+
+
+<h3 id="cyberpower-or500lcdrm1u-164-95">CyberPower OR500LCDRM1U - $164.95</h3>
+
+
+  <figure class="center" >
+    <a href="img/or500lcdrm1u.jpg" target="_blank">
+      <img src="img/or500lcdrm1u.jpg"  alt="CyberPower OR500LCDRM1U"  style="border-radius: 8px;" />
+    </a>
+    
+  </figure>
+
+
+
+<p>To power everything, I purchased this 1U UPS for my networking equipment.
+My desktop computer is already on a different UPS.
+I specifically choose this one as it&rsquo;s shallower
+than many other options. My rack is pretty shallow and some of the other qU UPS&rsquo;s
+available would only give an inch or two of clearance in the back, while
+this is closer to 6.</p>
+
+<p>It only supports up to 300W, but works fine for me. Under a normal load, I&rsquo;m only
+using around 25% capacity (75W), and even with full CPU usage on my primary server,
+the load then is around 50% (150W). Under normal conditions, this gives me nearly
+30 minutes of runtime off the battery.</p>
+
+<p>The UPS also comes with some pretty nifty web-based software called
+<a href="https://www.cyberpowersystems.com/products/software/power-panel-business/" rel="noreferrer" target="_blank">PowerPanel</a>
+that lets you see statuses, run tests, and setup alerts.</p>
+
+
+  <figure class="center" >
+    <a href="img/powerpanel.jpg" target="_blank">
+      <img src="img/powerpanel.jpg"  alt="Screenshot of the PowerPanel software"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >PowerPanel interface</figcaption>
+    
+  </figure>
+
+
+
+<p>I also created a Dockerfile for this software as I couldn&rsquo;t find a pre-made one that
+was updated. It&rsquo;s attached here if you want it:</p>
+
+<ul>
+<li><a href="files/Dockerfile" rel="noreferrer" target="_blank">Dockerfile</a></li>
+<li><a href="files/install.exp" rel="noreferrer" target="_blank">install.exp</a> (needed for the Dockerfile)</li>
+<li><a href="files/docker-compose.yml" rel="noreferrer" target="_blank">docker-compose.yml</a></li>
+</ul>
+
+<h3 id="6u-rack-50">6U Rack - $50</h3>
+
+
+  <figure class="center" >
+    <a href="img/6u-rack.jpg" target="_blank">
+      <img src="img/6u-rack.jpg"  alt="6U rack from Craigslist"  style="border-radius: 8px;" />
+    </a>
+    
+  </figure>
+
+
+
+<p>Last but not least is the rack itself. I was able to snag this on Craigslist for $50
+with everything included. I&rsquo;m not sure what brand the rack itself is,
+but the shelves come from Navepoint. It included two shelves, a blanking plate,
+a cable routing blank, all the original hardware, and the previous owner made a nice
+little wood base for it. It&rsquo;s all in spotless condition too. Not a single scratch.</p>
+
+<p>It&rsquo;s a bit smaller than I wanted, as I was thinking of getting a 9U to be able
+to put my server into a 3/4U rackmount case, but the price was too good to pass up.</p>
+
+<h2 id="diagram">Diagram</h2>
+
+
+  <figure class="center" >
+    <a href="img/full-diagram.jpg" target="_blank">
+      <img src="img/full-diagram.jpg"  alt="Full network diagram"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >Full network diagram. Switching coming from the wall jack has been left out for simplicity</figcaption>
+    
+  </figure>
+
+
+
+<p>The &ldquo;zeus&rdquo; server is the <a href="/posts/sun-ultra-24-build/" rel="noreferrer" target="_blank">Sun Ultra 24</a> server
+from before, just with a fan upgrade to be quieter, and now two HDD&rsquo;s in RAID 1 via
+software RAID in Ubuntu. Everything on it runs in a Docker container.</p>
+
+<p>If you&rsquo;re wondering how all the web apps are accessed, here&rsquo;s a short explanation:</p>
+
+<p><strong>Internally</strong>: DNS is setup on my pfSense DNS resolver such that every subdomain of
+<code>nathanv.app</code> resolves to my main server running Traefik: <code>zeus.nathanv.home</code>.
+This acts a reverse proxy to all web apps. Legitimate HTTPS certificates are obtained
+via Let&rsquo;s Encrypt and DNS challenge.</p>
+
+<p><strong>Externally</strong>: Much like <a href="/posts/self-host-docker/" rel="noreferrer" target="_blank">&ldquo;Self-Hosting with Docker and Argo Tunnel&rdquo;</a>,
+I&rsquo;m using Cloudflare&rsquo;s Argo Tunnel on my main server, which is connected to Traefik.
+All the subdomains on external DNS are CNAME&rsquo;d to this tunnel. Cloudflare is then
+serving their HTTPS certificate.</p>
+
+<p>This is called a <a href="https://en.wikipedia.org/wiki/Split-horizon_DNS" rel="noreferrer" target="_blank">Split-Brain DNS</a>
+setup.</p>
+
+<p>For authentication, I replaced Cloudflare Access with
+<a href="https://www.keycloak.org/" rel="noreferrer" target="_blank">Keycloak</a> and
+<a href="https://github.com/thomseddon/traefik-forward-auth" rel="noreferrer" target="_blank">Traefik Forward Auth</a>.
+Most applications authenticate against Keycloak with either SAML or Open ID Connect
+(OIDC) (basically OAuth2). The applications that don&rsquo;t inherently have authentication,
+or are sensitive and could use a second layer (Netdata, PHPMyAdmin, etc.) are protected
+with Traefik Forward Auth, which authenticates against Keycloak via OIDC.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Quick summary:</p>
+
+<ul>
+<li>PoE Switch: Splitting apartment complex internet connection</li>
+<li>pfSense: Router, DHCP, DNS</li>
+<li>TP-Link Archer: WiFi AP</li>
+<li>Non-PoE Switch: LAN</li>
+<li>Sun Ultra 24: Primary server</li>
+</ul>
+
+<p>In total, I&rsquo;ve spent $688.34 on this project, before the small stuff
+like Velcro straps and color-coded cables. Call it $750. I now realize that&rsquo;s
+a lot of money. I am extremely pleased how it&rsquo;s turned out, though, and don&rsquo;t
+forsee any changes for the near future. There is a large hole on the
+second shelf, and that&rsquo;s intended to be room for a modem if/when I move
+out of this apartment complex and have my own internet connection.</p>
+
+<p>It also looks pretty cool in the dark.</p>
+
+
+  <figure class="center" >
+    <a href="img/rack-dark.jpg" target="_blank">
+      <img src="img/rack-dark.jpg"  alt="Server rack with status lights shining in the dark"  style="border-radius: 8px;" />
+    </a>
+    
+  </figure>
+
+
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="https://blog.nathanv.me/posts/ibm-model-m-cleaning/">
+                  <span class="button__text">IBM Model M Cleaning</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        <script src="https://utteranc.es/client.js"
+        repo="nathanvaughn/blog.nathanv.me"
+        issue-term="pathname"
+        label="comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >nathanv@blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2021 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-91853319-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+  </body>
+</html>
