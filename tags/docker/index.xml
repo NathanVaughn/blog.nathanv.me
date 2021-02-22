@@ -30,7 +30,7 @@
 
 &lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
 
-&lt;p&gt;After graduating college, I&amp;rsquo;m move into an apartment more permanently than 3-4 months
+&lt;p&gt;After graduating college, I&amp;rsquo;ve moved into an apartment more permanently than 3-4 months
 at a time in the past. Because of this, I finally built myself a small
 &lt;a href=&#34;https://www.reddit.com/r/homelab/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;homelab&lt;/a&gt; in a proper server rack,
 which I&amp;rsquo;ve been wanting to do for a long time. This is sort of a follow-up to
@@ -44,7 +44,7 @@ my ISP. Instead, the internet is provided by my apartment complex through
 &lt;a href=&#34;https://www.spectrum.com/communitysolutions/home&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Spectrum Community Solutions&lt;/a&gt;.
 Only WiFi is available, and I have to go into a web portal and manually add
 the MAC address of every device I have to my account so that they can connect.
-Even after doing this, many of devices would still just refuse to connect:&lt;/p&gt;
+Even after doing this, many of my devices would still just refuse to connect:&lt;/p&gt;
 
 
   &lt;figure class=&#34;center&#34; &gt;
@@ -58,7 +58,7 @@ Even after doing this, many of devices would still just refuse to connect:&lt;/p
 
 
 
-&lt;p&gt;This was infuriating to say the least. I found the 5mbps guest WiFi more reliable.
+&lt;p&gt;This was infuriating to say the least and I found the 5mbps guest WiFi more reliable.
 The good news is, my apartment has a WiFi router in it, and it&amp;rsquo;s plugged into the wall.&lt;/p&gt;
 
 
@@ -67,7 +67,7 @@ The good news is, my apartment has a WiFi router in it, and it&amp;rsquo;s plugg
       &lt;img src=&#34;img/wifi-before.png&#34;  alt=&#34;Diagram of apartment WiFi as provided&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
-      &lt;figcaption class=&#34;center&#34; &gt;Small diagram of apartment WiFi as it is provided&lt;/figcaption&gt;
+      &lt;figcaption class=&#34;center&#34; &gt;Small diagram of apartment WiFi as it was provided&lt;/figcaption&gt;
     
   &lt;/figure&gt;
 
@@ -76,7 +76,7 @@ The good news is, my apartment has a WiFi router in it, and it&amp;rsquo;s plugg
 &lt;p&gt;With a bit of experimentation, I discovered that just unplugging the Spectrum WiFi
 access point, and plugging the wall jack directly into my laptop resulted in an
 internet connection! No Spectrum authentication bullshit, and it was full gigabit
-both ways (better than the 300mbps promised number)! So as to not disturb the internet
+both ways (better than the 300mbps promised)! So as to not disturb the internet
 for my neighbors, I put a switch between the wall jack and the Spectrum WiFi access
 point so that I could connect my own devices via Ethernet. I did have to go out
 and buy a PoE switch, as the existing access point was PoE and I didn&amp;rsquo;t own a
@@ -268,7 +268,7 @@ access the web portal from a device on the wireless subnet and manually add a ro
 productions of this model. My switch is like the picture above and is a butt-ugly
 vomit brown/green color. I did spend $14.95 on a
 &lt;a href=&#34;https://www.amazon.com/dp/B072JK9GX6&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Noctua NF-A4x20 FLX&lt;/a&gt;
-fan to replace the 40mm fan inside with to be a bit quieter.&lt;/p&gt;
+fan to replace the original 40mm fan to make it quieter.&lt;/p&gt;
 
 
   &lt;figure class=&#34;center&#34; &gt;
@@ -276,7 +276,7 @@ fan to replace the 40mm fan inside with to be a bit quieter.&lt;/p&gt;
       &lt;img src=&#34;img/tl-sg1024-fan-swap.jpg&#34;  alt=&#34;TL-SG1024 taken apart with a new fan installed&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
     
-      &lt;figcaption class=&#34;center&#34; &gt;The result of my fan-swapping surgery. Unfortunately wasn&amp;rsquo;t able to unplug the old fan, so had to cut the wires and use the provided &lt;a href=&#34;https://www.amazon.com/dp/B01K3HZ2IO&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;3M Scotchlok butt connectors&lt;/a&gt;&lt;/figcaption&gt;
+      &lt;figcaption class=&#34;center&#34; &gt;The result of my fan-swapping surgery. Unfortunately I wasn&amp;rsquo;t able to unplug the old fan, so had to cut the wires and use the provided &lt;a href=&#34;https://www.amazon.com/dp/B01K3HZ2IO&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;3M Scotchlok butt connectors&lt;/a&gt;&lt;/figcaption&gt;
     
   &lt;/figure&gt;
 
@@ -297,11 +297,11 @@ fan to replace the 40mm fan inside with to be a bit quieter.&lt;/p&gt;
 &lt;p&gt;To power everything, I purchased this 1U UPS for my networking equipment.
 My desktop computer is already on a different UPS.
 I specifically choose this one as it&amp;rsquo;s shallower
-than many other options. My rack is pretty shallow and some of the other qU UPS&amp;rsquo;s
+than many other options. My rack is pretty shallow and some of the other 1U UPS&amp;rsquo;s
 available would only give an inch or two of clearance in the back, while
 this is closer to 6.&lt;/p&gt;
 
-&lt;p&gt;It only supports up to 300W, but works fine for me. Under a normal load, I&amp;rsquo;m only
+&lt;p&gt;It only supports up to 300W, but that works fine for me. Under a normal load, I&amp;rsquo;m only
 using around 25% capacity (75W), and even with full CPU usage on my primary server,
 the load then is around 50% (150W). Under normal conditions, this gives me nearly
 30 minutes of runtime off the battery.&lt;/p&gt;
@@ -322,7 +322,7 @@ that lets you see statuses, run tests, and setup alerts.&lt;/p&gt;
 
 
 
-&lt;p&gt;I also created a Dockerfile for this software as I couldn&amp;rsquo;t find a pre-made one that
+&lt;p&gt;I created a Dockerfile for this software as I couldn&amp;rsquo;t find a pre-made one that
 was updated. It&amp;rsquo;s attached here if you want it:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -345,7 +345,7 @@ was updated. It&amp;rsquo;s attached here if you want it:&lt;/p&gt;
 
 &lt;p&gt;Last but not least is the rack itself. I was able to snag this on Craigslist for $50
 with everything included. I&amp;rsquo;m not sure what brand the rack itself is,
-but the shelves come from Navepoint. It included two shelves, a blanking plate,
+but the shelves come from Navepoint. It included the two shelves, a blanking plate,
 a cable routing blank, all the original hardware, and the previous owner made a nice
 little wood base for it. It&amp;rsquo;s all in spotless condition too. Not a single scratch.&lt;/p&gt;
 
@@ -373,7 +373,7 @@ software RAID in Ubuntu. Everything on it runs in a Docker container.&lt;/p&gt;
 &lt;p&gt;If you&amp;rsquo;re wondering how all the web apps are accessed, here&amp;rsquo;s a short explanation:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Internally&lt;/strong&gt;: DNS is setup on my pfSense DNS resolver such that every subdomain of
-&lt;code&gt;nathanv.app&lt;/code&gt; resolves to my main server running Traefik: &lt;code&gt;zeus.nathanv.home&lt;/code&gt;.
+&lt;code&gt;nathanv.app&lt;/code&gt; resolves to my main server running Traefik.
 This acts a reverse proxy to all web apps. Legitimate HTTPS certificates are obtained
 via Let&amp;rsquo;s Encrypt and DNS challenge.&lt;/p&gt;
 
@@ -389,9 +389,9 @@ setup.&lt;/p&gt;
 &lt;a href=&#34;https://www.keycloak.org/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Keycloak&lt;/a&gt; and
 &lt;a href=&#34;https://github.com/thomseddon/traefik-forward-auth&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Traefik Forward Auth&lt;/a&gt;.
 Most applications authenticate against Keycloak with either SAML or Open ID Connect
-(OIDC) (basically OAuth2). The applications that don&amp;rsquo;t inherently have authentication,
-or are sensitive and could use a second layer (Netdata, PHPMyAdmin, etc.) are protected
-with Traefik Forward Auth, which authenticates against Keycloak via OIDC.&lt;/p&gt;
+(OIDC) (basically OAuth2). The applications that don&amp;rsquo;t inherently have authentication
+(Netdata, etc.), or are sensitive and could use a second layer (PHPMyAdmin, etc.)
+are protected with Traefik Forward Auth, which authenticates against Keycloak via OIDC.&lt;/p&gt;
 
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
 
@@ -410,7 +410,9 @@ like Velcro straps and color-coded cables. Call it $750. I now realize that&amp;
 a lot of money. I am extremely pleased how it&amp;rsquo;s turned out, though, and don&amp;rsquo;t
 forsee any changes for the near future. There is a large hole on the
 second shelf, and that&amp;rsquo;s intended to be room for a modem if/when I move
-out of this apartment complex and have my own internet connection.&lt;/p&gt;
+out of this apartment complex and have my own internet connection. Maybe
+I&amp;rsquo;ll find a use for my Raspberry Pi and put it there since it&amp;rsquo;s been retired
+from running Pi-hole.&lt;/p&gt;
 
 &lt;p&gt;It also looks pretty cool in the dark.&lt;/p&gt;
 

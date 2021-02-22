@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="Background After graduating college, I&amp;rsquo;m move into an apartment more permanently than 3-4 months at a time in the past. Because of this, I finally built myself a small homelab in a proper server rack, which I&amp;rsquo;ve been wanting to do for a long time. This is sort of a follow-up to &amp;ldquo;Building a Home Network on a Budget&amp;rdquo;.
+  content="Background After graduating college, I&amp;rsquo;ve moved into an apartment more permanently than 3-4 months at a time in the past. Because of this, I finally built myself a small homelab in a proper server rack, which I&amp;rsquo;ve been wanting to do for a long time. This is sort of a follow-up to &amp;ldquo;Building a Home Network on a Budget&amp;rdquo;.
 Apartment Internet For a little bit of background before we dive in, my apartment&amp;rsquo;s internet is a bit atypical."
 />
 <meta
@@ -60,7 +60,7 @@ Apartment Internet For a little bit of background before we dive in, my apartmen
 <meta property="og:url" content="https://blog.nathanv.me/posts/not-so-budget-home-network/" />
 <meta property="og:image" content="https://blog.nathanv.me/posts/no-so-budget-home-network/img/cover.jpg" />
 <meta property="article:published_time" content="2021-02-21T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-21T22:12:01-06:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+<meta property="article:modified_time" content="2021-02-21T22:24:42-06:00" /><meta property="og:site_name" content="Nathan Vaughn" />
 
 
 
@@ -239,7 +239,7 @@ Apartment Internet For a little bit of background before we dive in, my apartmen
 
 <h2 id="background">Background</h2>
 
-<p>After graduating college, I&rsquo;m move into an apartment more permanently than 3-4 months
+<p>After graduating college, I&rsquo;ve moved into an apartment more permanently than 3-4 months
 at a time in the past. Because of this, I finally built myself a small
 <a href="https://www.reddit.com/r/homelab/" rel="noreferrer" target="_blank">homelab</a> in a proper server rack,
 which I&rsquo;ve been wanting to do for a long time. This is sort of a follow-up to
@@ -253,7 +253,7 @@ my ISP. Instead, the internet is provided by my apartment complex through
 <a href="https://www.spectrum.com/communitysolutions/home" rel="noreferrer" target="_blank">Spectrum Community Solutions</a>.
 Only WiFi is available, and I have to go into a web portal and manually add
 the MAC address of every device I have to my account so that they can connect.
-Even after doing this, many of devices would still just refuse to connect:</p>
+Even after doing this, many of my devices would still just refuse to connect:</p>
 
 
   <figure class="center" >
@@ -267,7 +267,7 @@ Even after doing this, many of devices would still just refuse to connect:</p>
 
 
 
-<p>This was infuriating to say the least. I found the 5mbps guest WiFi more reliable.
+<p>This was infuriating to say the least and I found the 5mbps guest WiFi more reliable.
 The good news is, my apartment has a WiFi router in it, and it&rsquo;s plugged into the wall.</p>
 
 
@@ -276,7 +276,7 @@ The good news is, my apartment has a WiFi router in it, and it&rsquo;s plugged i
       <img src="img/wifi-before.png"  alt="Diagram of apartment WiFi as provided"  style="border-radius: 8px;" />
     </a>
     
-      <figcaption class="center" >Small diagram of apartment WiFi as it is provided</figcaption>
+      <figcaption class="center" >Small diagram of apartment WiFi as it was provided</figcaption>
     
   </figure>
 
@@ -285,7 +285,7 @@ The good news is, my apartment has a WiFi router in it, and it&rsquo;s plugged i
 <p>With a bit of experimentation, I discovered that just unplugging the Spectrum WiFi
 access point, and plugging the wall jack directly into my laptop resulted in an
 internet connection! No Spectrum authentication bullshit, and it was full gigabit
-both ways (better than the 300mbps promised number)! So as to not disturb the internet
+both ways (better than the 300mbps promised)! So as to not disturb the internet
 for my neighbors, I put a switch between the wall jack and the Spectrum WiFi access
 point so that I could connect my own devices via Ethernet. I did have to go out
 and buy a PoE switch, as the existing access point was PoE and I didn&rsquo;t own a
@@ -477,7 +477,7 @@ access the web portal from a device on the wireless subnet and manually add a ro
 productions of this model. My switch is like the picture above and is a butt-ugly
 vomit brown/green color. I did spend $14.95 on a
 <a href="https://www.amazon.com/dp/B072JK9GX6" rel="noreferrer" target="_blank">Noctua NF-A4x20 FLX</a>
-fan to replace the 40mm fan inside with to be a bit quieter.</p>
+fan to replace the original 40mm fan to make it quieter.</p>
 
 
   <figure class="center" >
@@ -485,7 +485,7 @@ fan to replace the 40mm fan inside with to be a bit quieter.</p>
       <img src="img/tl-sg1024-fan-swap.jpg"  alt="TL-SG1024 taken apart with a new fan installed"  style="border-radius: 8px;" />
     </a>
     
-      <figcaption class="center" >The result of my fan-swapping surgery. Unfortunately wasn&rsquo;t able to unplug the old fan, so had to cut the wires and use the provided <a href="https://www.amazon.com/dp/B01K3HZ2IO" rel="noreferrer" target="_blank">3M Scotchlok butt connectors</a></figcaption>
+      <figcaption class="center" >The result of my fan-swapping surgery. Unfortunately I wasn&rsquo;t able to unplug the old fan, so had to cut the wires and use the provided <a href="https://www.amazon.com/dp/B01K3HZ2IO" rel="noreferrer" target="_blank">3M Scotchlok butt connectors</a></figcaption>
     
   </figure>
 
@@ -506,11 +506,11 @@ fan to replace the 40mm fan inside with to be a bit quieter.</p>
 <p>To power everything, I purchased this 1U UPS for my networking equipment.
 My desktop computer is already on a different UPS.
 I specifically choose this one as it&rsquo;s shallower
-than many other options. My rack is pretty shallow and some of the other qU UPS&rsquo;s
+than many other options. My rack is pretty shallow and some of the other 1U UPS&rsquo;s
 available would only give an inch or two of clearance in the back, while
 this is closer to 6.</p>
 
-<p>It only supports up to 300W, but works fine for me. Under a normal load, I&rsquo;m only
+<p>It only supports up to 300W, but that works fine for me. Under a normal load, I&rsquo;m only
 using around 25% capacity (75W), and even with full CPU usage on my primary server,
 the load then is around 50% (150W). Under normal conditions, this gives me nearly
 30 minutes of runtime off the battery.</p>
@@ -531,7 +531,7 @@ that lets you see statuses, run tests, and setup alerts.</p>
 
 
 
-<p>I also created a Dockerfile for this software as I couldn&rsquo;t find a pre-made one that
+<p>I created a Dockerfile for this software as I couldn&rsquo;t find a pre-made one that
 was updated. It&rsquo;s attached here if you want it:</p>
 
 <ul>
@@ -554,7 +554,7 @@ was updated. It&rsquo;s attached here if you want it:</p>
 
 <p>Last but not least is the rack itself. I was able to snag this on Craigslist for $50
 with everything included. I&rsquo;m not sure what brand the rack itself is,
-but the shelves come from Navepoint. It included two shelves, a blanking plate,
+but the shelves come from Navepoint. It included the two shelves, a blanking plate,
 a cable routing blank, all the original hardware, and the previous owner made a nice
 little wood base for it. It&rsquo;s all in spotless condition too. Not a single scratch.</p>
 
@@ -582,7 +582,7 @@ software RAID in Ubuntu. Everything on it runs in a Docker container.</p>
 <p>If you&rsquo;re wondering how all the web apps are accessed, here&rsquo;s a short explanation:</p>
 
 <p><strong>Internally</strong>: DNS is setup on my pfSense DNS resolver such that every subdomain of
-<code>nathanv.app</code> resolves to my main server running Traefik: <code>zeus.nathanv.home</code>.
+<code>nathanv.app</code> resolves to my main server running Traefik.
 This acts a reverse proxy to all web apps. Legitimate HTTPS certificates are obtained
 via Let&rsquo;s Encrypt and DNS challenge.</p>
 
@@ -598,9 +598,9 @@ setup.</p>
 <a href="https://www.keycloak.org/" rel="noreferrer" target="_blank">Keycloak</a> and
 <a href="https://github.com/thomseddon/traefik-forward-auth" rel="noreferrer" target="_blank">Traefik Forward Auth</a>.
 Most applications authenticate against Keycloak with either SAML or Open ID Connect
-(OIDC) (basically OAuth2). The applications that don&rsquo;t inherently have authentication,
-or are sensitive and could use a second layer (Netdata, PHPMyAdmin, etc.) are protected
-with Traefik Forward Auth, which authenticates against Keycloak via OIDC.</p>
+(OIDC) (basically OAuth2). The applications that don&rsquo;t inherently have authentication
+(Netdata, etc.), or are sensitive and could use a second layer (PHPMyAdmin, etc.)
+are protected with Traefik Forward Auth, which authenticates against Keycloak via OIDC.</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
@@ -619,7 +619,9 @@ like Velcro straps and color-coded cables. Call it $750. I now realize that&rsqu
 a lot of money. I am extremely pleased how it&rsquo;s turned out, though, and don&rsquo;t
 forsee any changes for the near future. There is a large hole on the
 second shelf, and that&rsquo;s intended to be room for a modem if/when I move
-out of this apartment complex and have my own internet connection.</p>
+out of this apartment complex and have my own internet connection. Maybe
+I&rsquo;ll find a use for my Raspberry Pi and put it there since it&rsquo;s been retired
+from running Pi-hole.</p>
 
 <p>It also looks pretty cool in the dark.</p>
 
