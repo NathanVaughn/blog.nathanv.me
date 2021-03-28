@@ -323,13 +323,7 @@ that lets you see statuses, run tests, and setup alerts.&lt;/p&gt;
 
 
 &lt;p&gt;I created a Dockerfile for this software as I couldn&amp;rsquo;t find a pre-made one that
-was updated. It&amp;rsquo;s attached here if you want it:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;files/Dockerfile&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Dockerfile&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;files/install.exp&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;install.exp&lt;/a&gt; (needed for the Dockerfile)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;files/docker-compose.yml&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;docker-compose.yml&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
+was updated. See &lt;a href=&#34;https://github.com/NathanVaughn/powerpanel-business-docker&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;powerpanel-business-docker&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h3 id=&#34;6u-rack-50&#34;&gt;6U Rack - $50&lt;/h3&gt;
 
@@ -408,7 +402,7 @@ are protected with Traefik Forward Auth, which authenticates against Keycloak vi
 &lt;p&gt;In total, I&amp;rsquo;ve spent $688.34 on this project, before the small stuff
 like Velcro straps and color-coded cables. Call it $750. I now realize that&amp;rsquo;s
 a lot of money. I am extremely pleased how it&amp;rsquo;s turned out, though, and don&amp;rsquo;t
-forsee any changes for the near future. There is a large hole on the
+foresee any changes for the near future. There is a large hole on the
 second shelf, and that&amp;rsquo;s intended to be room for a modem if/when I move
 out of this apartment complex and have my own internet connection. Maybe
 I&amp;rsquo;ll find a use for my Raspberry Pi and put it there since it&amp;rsquo;s been retired
@@ -421,6 +415,21 @@ from running Pi-hole.&lt;/p&gt;
     &lt;a href=&#34;img/rack-dark.jpg&#34; target=&#34;_blank&#34;&gt;
       &lt;img src=&#34;img/rack-dark.jpg&#34;  alt=&#34;Server rack with status lights shining in the dark&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
     &lt;/a&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;&lt;em&gt;Full Disclosure:&lt;/em&gt; &lt;strong&gt;After&lt;/strong&gt; I originally posted this article, Traefik Labs
+reached out to me  and sent me a swag bag free of charge.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/traefk-swag.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/traefk-swag.jpg&#34;  alt=&#34;Traefik t-shirt and stickers&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Traefik Swag Bag&lt;/figcaption&gt;
     
   &lt;/figure&gt;
 

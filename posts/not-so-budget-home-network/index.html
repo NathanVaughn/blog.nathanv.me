@@ -57,10 +57,10 @@ Apartment Internet For a little bit of background before we dive in, my apartmen
 <meta property="og:title" content="Building a Home Network on a Not-So-Budget" />
 <meta property="og:description" content="Now that I live somewhere permanently, my home network has gotten more complex." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.nathanv.me/posts/not-so-budget-home-network/" />
-<meta property="og:image" content="https://blog.nathanv.me/posts/no-so-budget-home-network/img/cover.jpg" />
-<meta property="article:published_time" content="2021-02-21T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-02-21T22:52:59-06:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/not-so-budget-home-network/" /><meta property="og:image" content="https://blog.nathanv.me/posts/no-so-budget-home-network/img/cover.jpg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-21T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-03-27T20:28:52-05:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
 
 
 
@@ -520,13 +520,7 @@ that lets you see statuses, run tests, and setup alerts.</p>
 
 
 <p>I created a Dockerfile for this software as I couldn&rsquo;t find a pre-made one that
-was updated. It&rsquo;s attached here if you want it:</p>
-
-<ul>
-<li><a href="files/Dockerfile" rel="noreferrer" target="_blank">Dockerfile</a></li>
-<li><a href="files/install.exp" rel="noreferrer" target="_blank">install.exp</a> (needed for the Dockerfile)</li>
-<li><a href="files/docker-compose.yml" rel="noreferrer" target="_blank">docker-compose.yml</a></li>
-</ul>
+was updated. See <a href="https://github.com/NathanVaughn/powerpanel-business-docker" rel="noreferrer" target="_blank">powerpanel-business-docker</a>.</p>
 
 <h3 id="6u-rack-50">6U Rack - $50</h3>
 
@@ -605,7 +599,7 @@ are protected with Traefik Forward Auth, which authenticates against Keycloak vi
 <p>In total, I&rsquo;ve spent $688.34 on this project, before the small stuff
 like Velcro straps and color-coded cables. Call it $750. I now realize that&rsquo;s
 a lot of money. I am extremely pleased how it&rsquo;s turned out, though, and don&rsquo;t
-forsee any changes for the near future. There is a large hole on the
+foresee any changes for the near future. There is a large hole on the
 second shelf, and that&rsquo;s intended to be room for a modem if/when I move
 out of this apartment complex and have my own internet connection. Maybe
 I&rsquo;ll find a use for my Raspberry Pi and put it there since it&rsquo;s been retired
@@ -618,6 +612,21 @@ from running Pi-hole.</p>
     <a href="img/rack-dark.jpg" target="_blank">
       <img src="img/rack-dark.jpg"  alt="Server rack with status lights shining in the dark"  style="border-radius: 8px;" />
     </a>
+    
+  </figure>
+
+
+
+<p><em>Full Disclosure:</em> <strong>After</strong> I originally posted this article, Traefik Labs
+reached out to me  and sent me a swag bag free of charge.</p>
+
+
+  <figure class="center" >
+    <a href="img/traefk-swag.jpg" target="_blank">
+      <img src="img/traefk-swag.jpg"  alt="Traefik t-shirt and stickers"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >Traefik Swag Bag</figcaption>
     
   </figure>
 
@@ -721,7 +730,6 @@ if (!doNotTrack) {
 	ga('send', 'pageview');
 }
 </script>
-
     
   </body>
 </html>
