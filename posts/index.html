@@ -191,7 +191,7 @@
           
             
               Background The boto3 SDK and the underlying botocore package are very large Python libraries.
- Just boto3 and botocore alone are over 50MB  It can highly beneficial to reduce the size of these in a final build, especially in a serverless environment. AWS Lambda functions for instance only allow a maximum extracted size of 250MB, so this is over 1/5th of that alone. Additionally, a smaller package size also can dramatically increase the cold-start time of a function.
+ Just boto3 and botocore alone are over 50MB  It can highly beneficial to reduce the size of these in a final build, especially in a serverless environment. AWS Lambda functions for instance only allow a maximum extracted size of 250MB, so this is over 1/5th of that alone. Additionally, a smaller package size also can dramatically improve the cold-start time of a function.
             
           
         </div>

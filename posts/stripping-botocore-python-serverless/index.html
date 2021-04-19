@@ -12,7 +12,7 @@
 <meta
   name="description"
   content="Background The boto3 SDK and the underlying botocore package are very large Python libraries.
- Just boto3 and botocore alone are over 50MB  It can highly beneficial to reduce the size of these in a final build, especially in a serverless environment. AWS Lambda functions for instance only allow a maximum extracted size of 250MB, so this is over 1/5th of that alone. Additionally, a smaller package size also can dramatically increase the cold-start time of a function."
+ Just boto3 and botocore alone are over 50MB  It can highly beneficial to reduce the size of these in a final build, especially in a serverless environment. AWS Lambda functions for instance only allow a maximum extracted size of 250MB, so this is over 1/5th of that alone. Additionally, a smaller package size also can dramatically improve the cold-start time of a function."
 />
 <meta
   name="keywords"
@@ -51,17 +51,17 @@
 
 <meta name="twitter:title" content="Stripping Down Botocore With Python Serverless Requirements"/>
 <meta name="twitter:description" content="Background The boto3 SDK and the underlying botocore package are very large Python libraries.
- Just boto3 and botocore alone are over 50MB  It can highly beneficial to reduce the size of these in a final build, especially in a serverless environment. AWS Lambda functions for instance only allow a maximum extracted size of 250MB, so this is over 1/5th of that alone. Additionally, a smaller package size also can dramatically increase the cold-start time of a function."/>
+ Just boto3 and botocore alone are over 50MB  It can highly beneficial to reduce the size of these in a final build, especially in a serverless environment. AWS Lambda functions for instance only allow a maximum extracted size of 250MB, so this is over 1/5th of that alone. Additionally, a smaller package size also can dramatically improve the cold-start time of a function."/>
 
 
 
 <meta property="og:title" content="Stripping Down Botocore With Python Serverless Requirements" />
 <meta property="og:description" content="Background The boto3 SDK and the underlying botocore package are very large Python libraries.
- Just boto3 and botocore alone are over 50MB  It can highly beneficial to reduce the size of these in a final build, especially in a serverless environment. AWS Lambda functions for instance only allow a maximum extracted size of 250MB, so this is over 1/5th of that alone. Additionally, a smaller package size also can dramatically increase the cold-start time of a function." />
+ Just boto3 and botocore alone are over 50MB  It can highly beneficial to reduce the size of these in a final build, especially in a serverless environment. AWS Lambda functions for instance only allow a maximum extracted size of 250MB, so this is over 1/5th of that alone. Additionally, a smaller package size also can dramatically improve the cold-start time of a function." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://blog.nathanv.me/posts/stripping-botocore-python-serverless/" /><meta property="og:image" content="https://blog.nathanv.me/img/favicon.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-04-19T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-04-19T18:49:56-05:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+<meta property="article:modified_time" content="2021-04-19T18:58:09-05:00" /><meta property="og:site_name" content="Nathan Vaughn" />
 
 
 
@@ -233,18 +233,18 @@
 in a serverless environment. AWS Lambda functions for instance only allow a
 <a href="https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html" rel="noreferrer" target="_blank">maximum extracted size of 250MB</a>,
 so this is over 1/5th of that alone. Additionally, a smaller package size also
-can <a href="https://mikhail.io/serverless/coldstarts/aws/#does-package-size-matter" rel="noreferrer" target="_blank">dramatically increase</a>
+can <a href="https://mikhail.io/serverless/coldstarts/aws/#does-package-size-matter" rel="noreferrer" target="_blank">dramatically improve</a>
 the cold-start time of a function.</p>
 
 <p>Jack over at <a href="https://blog.cubieserver.de/" rel="noreferrer" target="_blank">blog.cubieserver.de</a> has an excellent
 <a href="https://blog.cubieserver.de/2020/building-a-minimal-boto3-lambda-layer/" rel="noreferrer" target="_blank">blog post</a>
 on how to strip down boto3 to the essentials, using a tool he wrote to facilitate
-layers in Lambda (don&rsquo;t worry if you don&rsquo;t know what that is). My application
-(<a href="https://lksg.me" rel="noreferrer" target="_blank">Linkspring</a>) is built with the confusingly-named
+layers in Lambda functions. My application
+(<a href="https://lksg.me" rel="noreferrer" target="_blank">Linkspring</a>) however is built with the confusingly-named
 <a href="https://www.serverless.com/" rel="noreferrer" target="_blank">serverless</a> and
 <a href="https://www.npmjs.com/package/serverless-python-requirements" rel="noreferrer" target="_blank">serverless-python-requirements</a>
-libraries.
-I was able to adapt his instructions to work with this stack.</p>
+libraries. I was able to adapt his instructions to work with this stack and want
+to share for anyone else.</p>
 
 <h2 id="solution">Solution</h2>
 

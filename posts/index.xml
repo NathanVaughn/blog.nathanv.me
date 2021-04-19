@@ -50,18 +50,18 @@
 in a serverless environment. AWS Lambda functions for instance only allow a
 &lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;maximum extracted size of 250MB&lt;/a&gt;,
 so this is over 1/5th of that alone. Additionally, a smaller package size also
-can &lt;a href=&#34;https://mikhail.io/serverless/coldstarts/aws/#does-package-size-matter&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;dramatically increase&lt;/a&gt;
+can &lt;a href=&#34;https://mikhail.io/serverless/coldstarts/aws/#does-package-size-matter&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;dramatically improve&lt;/a&gt;
 the cold-start time of a function.&lt;/p&gt;
 
 &lt;p&gt;Jack over at &lt;a href=&#34;https://blog.cubieserver.de/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;blog.cubieserver.de&lt;/a&gt; has an excellent
 &lt;a href=&#34;https://blog.cubieserver.de/2020/building-a-minimal-boto3-lambda-layer/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;blog post&lt;/a&gt;
 on how to strip down boto3 to the essentials, using a tool he wrote to facilitate
-layers in Lambda (don&amp;rsquo;t worry if you don&amp;rsquo;t know what that is). My application
-(&lt;a href=&#34;https://lksg.me&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Linkspring&lt;/a&gt;) is built with the confusingly-named
+layers in Lambda functions. My application
+(&lt;a href=&#34;https://lksg.me&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Linkspring&lt;/a&gt;) however is built with the confusingly-named
 &lt;a href=&#34;https://www.serverless.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;serverless&lt;/a&gt; and
 &lt;a href=&#34;https://www.npmjs.com/package/serverless-python-requirements&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;serverless-python-requirements&lt;/a&gt;
-libraries.
-I was able to adapt his instructions to work with this stack.&lt;/p&gt;
+libraries. I was able to adapt his instructions to work with this stack and want
+to share for anyone else.&lt;/p&gt;
 
 &lt;h2 id=&#34;solution&#34;&gt;Solution&lt;/h2&gt;
 
