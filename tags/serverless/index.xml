@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>serverless on Nathan Vaughn</title>
+    
+    
+    
+    <link>https://blog.nathanv.me/tags/serverless/</link>
+    <description>Recent content in serverless on Nathan Vaughn</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 19 Jun 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://blog.nathanv.me/tags/serverless/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DynamoDB for Dummies</title>
+      <link>https://blog.nathanv.me/posts/dynamodb-for-dummies/</link>
+      <pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/dynamodb-for-dummies/</guid>
+      <description>
+        
+          &lt;img src=&#34;https://blog.nathanv.me/posts/dynamodb-for-dummies/img/dynamodb-dummies.png&#34;/&gt;
+          
+        
+        
+        
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been dealing with DynamoDB lately, and it took me a while to wrap my head around
+it, so I thought I would make this guide for others.&lt;/p&gt;
+
+&lt;h2 id=&#34;relational-databases&#34;&gt;Relational Databases&lt;/h2&gt;
+
+&lt;p&gt;To understand DynamoDB, it might first be best to understand traditional relational
+databases (If you&amp;rsquo;re reading this, I assume you have some familiarity with SQL,
+so this will be quick).
+Relational databases such as MySQL, Oracle DB, and Microsoft SQL Server
+store highly-structured data in tables with rows and columns.
+These tables can relate to each other allowing for very powerful data access patterns.&lt;/p&gt;
+
+&lt;p&gt;For example, let&amp;rsquo;s say you have a database with a table for customers and orders.&lt;/p&gt;
+
+&lt;p&gt;Customers:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Customer ID&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Name&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Email&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Joe Smith&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;joe@example.com&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Bob Jones&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;bob@example.com&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Orders:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Order ID&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Customer ID&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Item&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Amount&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Chair&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;24.99&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Table&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;14.99&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Lamp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;44.99&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Now, let&amp;rsquo;s say you want to figure out which items were
+purchased by Bob Jones over $30. This can be done with SQL like so:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-sql&#34; data-lang=&#34;sql&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SELECT&lt;/span&gt; orders.item &lt;span style=&#34;color:#66d9ef&#34;&gt;FROM&lt;/span&gt; customers
+&lt;span style=&#34;color:#66d9ef&#34;&gt;INNER&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;JOIN&lt;/span&gt; orders &lt;span style=&#34;color:#66d9ef&#34;&gt;ON&lt;/span&gt; customers.id&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;orders.customer
+&lt;span style=&#34;color:#66d9ef&#34;&gt;WHERE&lt;/span&gt; customers.id &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;AND&lt;/span&gt; orders.amount &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This would output:&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Items&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Lamp&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;As you can see, traditional SQL-based databases provide a lot of flexibility with
+how data can be accessed. However, this comes at a cost. These types of databases
+don&amp;rsquo;t scale
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Scalability#Horizontal_(Scale_Out)_and_Vertical_Scaling_(Scale_Up)&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;horizontally, but rather vertically&lt;/a&gt;.
+This can become a challenge for high-throughput applications.&lt;/p&gt;
+
+&lt;p&gt;Most of the effort going into designing a database like this is figuring
+out how to most effectively represent the data in the database schema. How this
+data is queried and accessed is generally less important.&lt;/p&gt;
+
+&lt;h2 id=&#34;dynamodb&#34;&gt;DynamoDB&lt;/h2&gt;
+
+&lt;p&gt;DynamoDB is a proprietary NoSQL database offered by Amazon AWS that
+allows for near-infinite horizontal scalability. In contrast to relational databases,
+a lot of thought needs to be put into how the data is accessed rather than its
+representation.&lt;/p&gt;
+
+&lt;h3 id=&#34;basics&#34;&gt;Basics&lt;/h3&gt;
+
+&lt;p&gt;Here are the basics parts of DynamoDB:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Tables - A table holds items, much like relational databases. However,
+tables are entirely independent of one another and are not part
+of any &amp;ldquo;database&amp;rdquo;. Tables do &lt;em&gt;not&lt;/em&gt; have a rigid column structure.&lt;/li&gt;
+&lt;li&gt;Items - Items are what actually contain data with various attributes.
+This is like a table row. Items are uniquely identified by their primary key.&lt;/li&gt;
+&lt;li&gt;Attributes - These are the data elements of items. These do not have to be consistent
+with other items in the same table. They are like table columns.
+An item in a &amp;ldquo;Albums&amp;rdquo; table would have attributes like &amp;ldquo;Year&amp;rdquo;, &amp;ldquo;Artist&amp;rdquo;, etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/table-items-attributes.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/table-items-attributes.jpg&#34;  alt=&#34;DynamoDB elements&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;DynamoDB elements&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;In terms of pricing, DynamoDB charges for both data storage, and read and write
+operations. Read and write operations use &amp;ldquo;read units&amp;rdquo; and &amp;ldquo;write units&amp;rdquo;
+which are pretty much just arbitrary units to quantify how much
+bandwidth/processing/etc. you used to perform an operation. You can either choose
+an on-demand pricing model, or a provisioned capacity model. More info is on the
+pricing page:
+&lt;a href=&#34;https://aws.amazon.com/dynamodb/pricing/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://aws.amazon.com/dynamodb/pricing/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;keys&#34;&gt;Keys&lt;/h3&gt;
+
+&lt;p&gt;In DynamoDB, there are two ways of accessing items by their primary key.&lt;/p&gt;
+
+&lt;h4 id=&#34;partition-key-only&#34;&gt;Partition Key Only&lt;/h4&gt;
+
+&lt;p&gt;Items can have a unique partition key (also sometimes called &amp;ldquo;hash key&amp;rdquo;). No two
+items can have the same partition key. In order to query an item, one &lt;em&gt;must&lt;/em&gt; know
+the partition key.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Album ID (PK)&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Album Name&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Artist&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Year&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;0&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Moving Pictures&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Rush&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1981&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Dark Side of the Moon&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Pink Floyd&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1973&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Led Zeppelin IV&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Led Zeppelin&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1971&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;In this example, the &lt;code&gt;Album ID&lt;/code&gt; field is acting as the primary key.&lt;/p&gt;
+
+&lt;h4 id=&#34;partition-key-and-sort-key&#34;&gt;Partition Key and Sort Key&lt;/h4&gt;
+
+&lt;p&gt;Items can have a unique combination of the partition key and sort key
+(also sometimes called &amp;ldquo;range key&amp;rdquo;). This combination
+is called a &amp;ldquo;composite primary key&amp;rdquo;. No two items can have the same
+combination of the partition key and sort key. However, the partition key does &lt;em&gt;not&lt;/em&gt;
+need to be unique. The sort key, must still be unique.
+In order to query a single item, one &lt;em&gt;must&lt;/em&gt; know
+both the partition key and sort key.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Artist (PK)&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Album Name (SK)&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Year&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Rush&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Moving Pictures&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1981&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Pink Floyd&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Dark Side of the Moon&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1973&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Led Zeppelin&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Led Zeppelin IV&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1971&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;In this example, the &lt;code&gt;Artist&lt;/code&gt; field is acting as the partition key and the &lt;code&gt;Album Name&lt;/code&gt;
+as the sort key. This example would work, assuming no two artists release an album with
+the same name.&lt;/p&gt;
+
+&lt;h3 id=&#34;querying&#34;&gt;Querying&lt;/h3&gt;
+
+&lt;p&gt;In a partition key only scenario, only single items can be queried. This is because
+each item needs a single unique identifier, and that is the only query-able attribute.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, composite key scenarios are exceptionally powerful, as sort keys
+can be queried with
+&lt;a href=&#34;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.KeyConditionExpressions&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;comparisons&lt;/a&gt;
+like equals, less than, and starts with. For example, lets say you have a table of
+different buildings.&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Type (PK)&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Location (SK)&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Name&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;office&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;US:NY:NYC&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;HQ&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;office&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;US:TX:DFW&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Dallas Office&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;warehouse&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;US:CO:DNV&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Denver Warehouse&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;warehouse&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;US:CO:BLD&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Boulder Warehouse&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;With a table structure like this, you could query for all warehouses in Colorado
+with a query partition key of &lt;code&gt;warehouse&lt;/code&gt; and a query sort key of &lt;code&gt;startswith(&#39;US:CO&#39;)&lt;/code&gt;.
+You can see how this can be very powerful, especially if you use a timestamp as the
+sort key. You could easily filter for certain time ranges.&lt;/p&gt;
+
+&lt;h3 id=&#34;scanning&#34;&gt;Scanning&lt;/h3&gt;
+
+&lt;p&gt;Sometimes, you just need to get all the data in a table. With DynamoDB, this is called
+scanning. This really should be avoided if at all possible as it will consume a &lt;em&gt;LOT&lt;/em&gt;
+of read units. You can optionally filter the results by any attribute, but it
+will not reduce the number of read units used.&lt;/p&gt;
+
+&lt;h3 id=&#34;indexes&#34;&gt;Indexes&lt;/h3&gt;
+
+&lt;p&gt;Everything above really covers all the basics of DynamoDB. The core functionality is
+pretty straight-forward.&lt;/p&gt;
+
+&lt;p&gt;However, DynamoDB has more functionality. Another major feature is secondary indexes.
+Sometimes, you just need to look up values based on another attribute.
+Maybe it&amp;rsquo;s a username instead of the normal user ID.
+Secondary indexes let you query by attributes other than what you normally can.&lt;/p&gt;
+
+&lt;h4 id=&#34;global-secondary-index&#34;&gt;Global Secondary Index&lt;/h4&gt;
+
+&lt;p&gt;The first option is a Global Secondary Index. This is the most flexible option.
+It does not need to be defined at table creation and there is no limit on data size.
+It behaves just like an additional partition key.
+However, it uses additional read and write capacity units, so will cost you more.
+Additionally, a major caveat is that it is &lt;em&gt;not&lt;/em&gt; read-consistent. What this means,
+is that if you write data to a global secondary index, and then immediately
+try to read that data, you may not receive that data back for a while.
+It will eventually propagate, but it is not guaranteed to be immediate.&lt;/p&gt;
+
+&lt;h4 id=&#34;local-secondary-index&#34;&gt;Local Secondary Index&lt;/h4&gt;
+
+&lt;p&gt;The other option is a Local Secondary Index. This is a lot more restrictive, but
+can make sense for the right use-case. It &lt;em&gt;has&lt;/em&gt; to be defined at table creation
+(can&amp;rsquo;t update the schema later), each hash key can&amp;rsquo;t contain more than 10GB of data,
+and it shares the read and write capacity units of the underlying table. It also
+can &lt;em&gt;only&lt;/em&gt; be used on tables with a partition key and sort key, as it
+behaves like an additional sort key. You still need to use the original
+partition key.
+It also optionally allows you enable read and write consistency if desired.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;That&amp;rsquo;s about it! DynamoDB can be very inexpensive and flexible as a database.
+However, you really need to think through your database design and access patterns
+before you get started. It&amp;rsquo;s really best suited for large amounts of low-complexity
+data (such as logging events). Use the tool that suits your application best.&lt;/p&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dynamodbguide.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://www.dynamodbguide.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+        
+        </description>
+    </item>
+    
+  </channel>
+</rss>

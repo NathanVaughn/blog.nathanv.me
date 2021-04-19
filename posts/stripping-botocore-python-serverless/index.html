@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        Stripping Down Botocore With Python Serverless Requirements ::
+        Nathan Vaughn — Adventures in programming and tech
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Background The boto3 SDK and the underlying botocore package are very large Python libraries.
+ Just boto3 and botocore alone are over 50MB  It can highly beneficial to reduce the size of these in a final build, especially in a serverless environment. AWS Lambda functions for instance only allow a maximum extracted size of 250MB, so this is over 1/5th of that alone. Additionally, a smaller package size also can dramatically increase the cold-start time of a function."
+/>
+<meta
+  name="keywords"
+  content="[programming tech Nathan Vaughn blog]"
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://blog.nathanv.me/posts/stripping-botocore-python-serverless/" />
+
+
+
+
+
+<link rel="stylesheet" href="https://blog.nathanv.me/assets/style.css" />
+
+<link rel="stylesheet" href="https://blog.nathanv.me/style.css" />
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="https://blog.nathanv.me/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="https://blog.nathanv.me/img/favicon.png" />
+
+
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="https://blog.nathanv.me/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://blog.nathanv.me/img/favicon.png"/>
+
+<meta name="twitter:title" content="Stripping Down Botocore With Python Serverless Requirements"/>
+<meta name="twitter:description" content="Background The boto3 SDK and the underlying botocore package are very large Python libraries.
+ Just boto3 and botocore alone are over 50MB  It can highly beneficial to reduce the size of these in a final build, especially in a serverless environment. AWS Lambda functions for instance only allow a maximum extracted size of 250MB, so this is over 1/5th of that alone. Additionally, a smaller package size also can dramatically increase the cold-start time of a function."/>
+
+
+
+<meta property="og:title" content="Stripping Down Botocore With Python Serverless Requirements" />
+<meta property="og:description" content="Background The boto3 SDK and the underlying botocore package are very large Python libraries.
+ Just boto3 and botocore alone are over 50MB  It can highly beneficial to reduce the size of these in a final build, especially in a serverless environment. AWS Lambda functions for instance only allow a maximum extracted size of 250MB, so this is over 1/5th of that alone. Additionally, a smaller package size also can dramatically increase the cold-start time of a function." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.nathanv.me/posts/stripping-botocore-python-serverless/" /><meta property="og:image" content="https://blog.nathanv.me/img/favicon.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-04-19T00:00:00&#43;00:00" />
+<meta property="article:modified_time" content="2021-04-19T18:33:07-05:00" /><meta property="og:site_name" content="Nathan Vaughn" />
+
+
+
+
+<meta name="theme-color" content="#7ec699">
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >nathanv@blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="https://nathanv.me">Homepage</a></li>
+        
+      
+        
+          <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+        
+      
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="https://nathanv.me">Homepage</a></li>
+      
+    
+      
+        <li><a href="https://github.com/NathanVaughn">GitHub</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <div class="post">
+    <h1 class="post-title">Stripping Down Botocore With Python Serverless Requirements</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2021-04-19
+        </span>
+
+        
+          
+        
+      
+
+      
+        <span class="post-author"
+          >— Written by Nathan Vaughn</span
+        >
+
+
+      
+        <span class="post-read-time"
+          >— 4 min read</span
+        >
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="https://blog.nathanv.me/tags/aws/">#AWS</a>&nbsp;
+        
+          <a href="https://blog.nathanv.me/tags/python/">#Python</a>&nbsp;
+        
+          <a href="https://blog.nathanv.me/tags/severless/">#severless</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+        <h2>Table of Contents</h2>
+        <aside class="table-of-contents"><nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#background">Background</a></li>
+<li><a href="#solution">Solution</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+</nav></aside>
+      
+      
+
+<h2 id="background">Background</h2>
+
+<p>The <a href="https://github.com/boto/boto3" rel="noreferrer" target="_blank">boto3</a> SDK and the underlying
+<a href="https://github.com/boto/botocore" rel="noreferrer" target="_blank">botocore</a> package are very large Python libraries.</p>
+
+
+  <figure class="center" >
+    <a href="img/boto-size.jpg" target="_blank">
+      <img src="img/boto-size.jpg"  alt="boto3 and botocore are 50MB on disk"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >Just boto3 and botocore alone are over 50MB</figcaption>
+    
+  </figure>
+
+
+
+<p>It can highly beneficial to reduce the size of these in a final build, especially
+in a serverless environment. AWS Lambda functions for instance only allow a
+<a href="https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html" rel="noreferrer" target="_blank">maximum extracted size of 250MB</a>,
+so this is over 1/5th of that alone. Additionally, a smaller package size also
+can <a href="https://mikhail.io/serverless/coldstarts/aws/#does-package-size-matter" rel="noreferrer" target="_blank">dramatically increase</a>
+the cold-start time of a function.</p>
+
+<p>Jack over at <a href="https://blog.cubieserver.de/" rel="noreferrer" target="_blank">blog.cubieserver.de</a> has an excellent
+<a href="https://blog.cubieserver.de/2020/building-a-minimal-boto3-lambda-layer/" rel="noreferrer" target="_blank">blog post</a>
+on how to strip down boto3 to the essentials, using a tool he wrote to facilitate
+layers in Lambda (don&rsquo;t worry if you don&rsquo;t know what that is). My application
+(<a href="https://lksg.me" rel="noreferrer" target="_blank">Linkspring</a>) is built with the confusingly-named
+<a href="https://www.serverless.com/" rel="noreferrer" target="_blank">serverless</a> and
+<a href="https://www.npmjs.com/package/serverless-python-requirements" rel="noreferrer" target="_blank">serverless-python-requirements</a>
+libraries.
+I was able to adapt his instructions to work with this stack.</p>
+
+<h2 id="solution">Solution</h2>
+
+<p>Really, it&rsquo;s pretty straight forward. Add a <code>custom</code> key (if you don&rsquo;t have it already)
+to your <code>serverless.yml</code> file and add a <code>pythonRequirements</code> key under that.
+Within that, add <code>slim: true</code> and <code>slimPatternsAppendDefaults: true</code> and then your
+patterns to exclude AWS services you don&rsquo;t need. Example lifted directly from my
+codebase:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">custom</span>:
+  <span style="color:#f92672">pythonRequirements</span>:
+    <span style="color:#f92672">slim</span>: <span style="color:#66d9ef">true</span>
+    <span style="color:#f92672">strip</span>: <span style="color:#66d9ef">false</span>
+    <span style="color:#f92672">slimPatternsAppendDefaults</span>: <span style="color:#66d9ef">true</span>
+    <span style="color:#f92672">slimPatterns</span>:
+      <span style="color:#75715e"># Commented out lines are INCLUDED</span>
+      - <span style="color:#e6db74">&#39;boto3/examples/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/accessanalyzer/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/acm-pca/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/acm/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/alexaforbusiness/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/amp/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/amplify/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/amplifybackend/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/apigateway/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/apigatewaymanagementapi/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/apigatewayv2/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/appconfig/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/appflow/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/appintegrations/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/application-autoscaling/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/application-insights/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/appmesh/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/appstream/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/appsync/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/athena/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/auditmanager/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/autoscaling-plans/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/autoscaling/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/backup/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/batch/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/braket/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/budgets/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/ce/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/chime/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/cloud9/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/clouddirectory/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/cloudformation/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/cloudfront/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/cloudhsm/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/cloudhsmv2/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/cloudsearch/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/cloudsearchdomain/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/cloudtrail/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/cloudwatch/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/codeartifact/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/codebuild/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/codecommit/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/codedeploy/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/codeguru-reviewer/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/codeguruprofiler/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/codepipeline/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/codestar-connections/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/codestar-notifications/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/codestar/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/cognito-identity/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/cognito-idp/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/cognito-sync/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/comprehend/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/comprehendmedical/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/compute-optimizer/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/config/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/connect-contact-lens/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/connect/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/connectparticipant/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/cur/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/customer-profiles/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/databrew/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/dataexchange/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/datapipeline/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/datasync/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/dax/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/detective/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/devicefarm/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/devops-guru/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/directconnect/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/discovery/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/dlm/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/dms/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/docdb/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/ds/*&#39;</span>
+      <span style="color:#75715e"># - &#39;botocore/data/dynamodb/*&#39;</span>
+      <span style="color:#75715e"># - &#39;botocore/data/dynamodbstreams/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/ebs/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/ec2-instance-connect/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/ec2/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/ecr-public/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/ecr/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/ecs/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/efs/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/eks/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/elastic-inference/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/elasticache/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/elasticbeanstalk/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/elastictranscoder/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/elb/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/elbv2/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/emr-containers/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/emr/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/es/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/events/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/firehose/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/fis/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/fms/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/forecast/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/forecastquery/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/frauddetector/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/fsx/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/gamelift/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/glacier/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/globalaccelerator/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/glue/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/greengrass/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/greengrassv2/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/groundstation/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/guardduty/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/health/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/healthlake/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/honeycode/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iam/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/identitystore/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/imagebuilder/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/importexport/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/inspector/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iot-data/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iot-jobs-data/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iot/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iot1click-devices/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iot1click-projects/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iotanalytics/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iotdeviceadvisor/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iotevents-data/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iotevents/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iotfleethub/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iotsecuretunneling/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iotsitewise/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iotthingsgraph/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/iotwireless/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/ivs/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/kafka/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/kendra/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/kinesis-video-archived-media/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/kinesis-video-media/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/kinesis-video-signaling/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/kinesis/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/kinesisanalytics/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/kinesisanalyticsv2/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/kinesisvideo/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/kms/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/lakeformation/*&#39;</span>
+      <span style="color:#75715e"># - &#39;botocore/data/lambda/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/lex-models/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/lex-runtime/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/lexv2-models/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/lexv2-runtime/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/license-manager/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/lightsail/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/location/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/logs/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/lookoutequipment/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/lookoutmetrics/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/lookoutvision/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/machinelearning/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/macie/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/macie2/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/managedblockchain/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/marketplace-catalog/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/marketplace-entitlement/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/marketplacecommerceanalytics/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/mediaconnect/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/mediaconvert/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/medialive/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/mediapackage-vod/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/mediapackage/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/mediastore-data/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/mediastore/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/mediatailor/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/meteringmarketplace/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/mgh/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/mgn/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/migrationhub-config/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/mobile/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/mq/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/mturk/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/mwaa/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/neptune/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/network-firewall/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/networkmanager/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/opsworks/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/opsworkscm/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/organizations/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/outposts/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/personalize-events/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/personalize-runtime/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/personalize/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/pi/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/pinpoint-email/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/pinpoint-sms-voice/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/pinpoint/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/polly/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/pricing/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/qldb-session/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/qldb/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/quicksight/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/ram/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/rds-data/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/rds/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/redshift-data/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/redshift/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/rekognition/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/resource-groups/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/resourcegroupstaggingapi/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/robomaker/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/route53/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/route53domains/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/route53resolver/*&#39;</span>
+      <span style="color:#75715e"># - &#39;botocore/data/s3/*&#39;</span>
+      <span style="color:#75715e"># - &#39;botocore/data/s3control/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/s3outposts/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sagemaker-a2i-runtime/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sagemaker-edge/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sagemaker-featurestore-runtime/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sagemaker-runtime/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sagemaker/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/savingsplans/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/schemas/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sdb/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/secretsmanager/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/securityhub/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/serverlessrepo/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/service-quotas/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/servicecatalog-appregistry/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/servicecatalog/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/servicediscovery/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/ses/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sesv2/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/shield/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/signer/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sms-voice/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sms/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/snowball/*&#39;</span>
+      <span style="color:#75715e"># - &#39;botocore/data/sns/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sqs/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/ssm/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sso-admin/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sso-oidc/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sso/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/stepfunctions/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/storagegateway/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/sts/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/support/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/swf/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/synthetics/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/textract/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/timestream-query/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/timestream-write/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/transcribe/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/transfer/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/translate/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/waf-regional/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/waf/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/wafv2/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/wellarchitected/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/workdocs/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/worklink/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/workmail/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/workmailmessageflow/*&#39;</span>
+      - <span style="color:#e6db74">&#39;botocore/data/workspaces/*&#39;</span>
+      <span style="color:#75715e"># - &#39;botocore/data/xray/*&#39;</span></code></pre></div>
+<p>This list of patterns tells serverless-python-requirements what folders to ignore.
+The full list of services inside <code>botocore</code> will obviously differ over time,
+but it&rsquo;s trivial to write a Python or shell script to generate this for you.</p>
+
+<p>Unfortunately excluding glob paths doesn&rsquo;t work, so you have to do it this way.</p>
+
+<p>Sidenote, I added the <code>strip: false</code> as otherwise I was unable to import
+<a href="https://pillow.readthedocs.io/en/stable/" rel="noreferrer" target="_blank">Pillow</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>That&rsquo;s really it. Thanks again to Jack for creating the original guide.
+I was able to shave nearly 50MB of size of my Lambda function with this method.</p>
+
+
+  <figure class="center" >
+    <a href="img/boto-size-stripped.jpg" target="_blank">
+      <img src="img/boto-size-stripped.jpg"  alt="boto3 and botocore are only around 5MB on disk after stripping"  style="border-radius: 8px;" />
+    </a>
+    
+      <figcaption class="center" >After removing all my unneeded services, boto3 and botocore come out to around 5MB.</figcaption>
+    
+  </figure>
+
+
+
+<h2 id="references">References</h2>
+
+<ul>
+<li><a href="https://github.com/boto/botocore/issues/1543" rel="noreferrer" target="_blank">https://github.com/boto/botocore/issues/1543</a></li>
+<li><a href="https://blog.cubieserver.de/2020/building-a-minimal-boto3-lambda-layer/" rel="noreferrer" target="_blank">https://blog.cubieserver.de/2020/building-a-minimal-boto3-lambda-layer/</a></li>
+</ul>
+
+    </div>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+            
+              <span class="button next">
+                <a href="https://blog.nathanv.me/posts/not-so-budget-home-network/">
+                  <span class="button__text">Building a Home Network on a Not-So-Budget</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
+        </div>
+      
+    
+
+    
+      
+        <script src="https://utteranc.es/client.js"
+        repo="nathanvaughn/blog.nathanv.me"
+        issue-term="pathname"
+        label="comment"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+</script>
+
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >nathanv@blog</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2021 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="https://blog.nathanv.me/assets/main.js"></script>
+<script src="https://blog.nathanv.me/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-91853319-4', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+    
+  </body>
+</html>

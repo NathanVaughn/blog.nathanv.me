@@ -9,10 +9,373 @@
     <description>Recent content on Nathan Vaughn</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 21 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Apr 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://blog.nathanv.me/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Stripping Down Botocore With Python Serverless Requirements</title>
+      <link>https://blog.nathanv.me/posts/stripping-botocore-python-serverless/</link>
+      <pubDate>Mon, 19 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.nathanv.me/posts/stripping-botocore-python-serverless/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+
+&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;https://github.com/boto/boto3&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;boto3&lt;/a&gt; SDK and the underlying
+&lt;a href=&#34;https://github.com/boto/botocore&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;botocore&lt;/a&gt; package are very large Python libraries.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/boto-size.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/boto-size.jpg&#34;  alt=&#34;boto3 and botocore are 50MB on disk&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Just boto3 and botocore alone are over 50MB&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;p&gt;It can highly beneficial to reduce the size of these in a final build, especially
+in a serverless environment. AWS Lambda functions for instance only allow a
+&lt;a href=&#34;https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;maximum extracted size of 250MB&lt;/a&gt;,
+so this is over 1/5th of that alone. Additionally, a smaller package size also
+can &lt;a href=&#34;https://mikhail.io/serverless/coldstarts/aws/#does-package-size-matter&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;dramatically increase&lt;/a&gt;
+the cold-start time of a function.&lt;/p&gt;
+
+&lt;p&gt;Jack over at &lt;a href=&#34;https://blog.cubieserver.de/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;blog.cubieserver.de&lt;/a&gt; has an excellent
+&lt;a href=&#34;https://blog.cubieserver.de/2020/building-a-minimal-boto3-lambda-layer/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;blog post&lt;/a&gt;
+on how to strip down boto3 to the essentials, using a tool he wrote to facilitate
+layers in Lambda (don&amp;rsquo;t worry if you don&amp;rsquo;t know what that is). My application
+(&lt;a href=&#34;https://lksg.me&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Linkspring&lt;/a&gt;) is built with the confusingly-named
+&lt;a href=&#34;https://www.serverless.com/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;serverless&lt;/a&gt; and
+&lt;a href=&#34;https://www.npmjs.com/package/serverless-python-requirements&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;serverless-python-requirements&lt;/a&gt;
+libraries.
+I was able to adapt his instructions to work with this stack.&lt;/p&gt;
+
+&lt;h2 id=&#34;solution&#34;&gt;Solution&lt;/h2&gt;
+
+&lt;p&gt;Really, it&amp;rsquo;s pretty straight forward. Add a &lt;code&gt;custom&lt;/code&gt; key (if you don&amp;rsquo;t have it already)
+to your &lt;code&gt;serverless.yml&lt;/code&gt; file and add a &lt;code&gt;pythonRequirements&lt;/code&gt; key under that.
+Within that, add &lt;code&gt;slim: true&lt;/code&gt; and &lt;code&gt;slimPatternsAppendDefaults: true&lt;/code&gt; and then your
+patterns to exclude AWS services you don&amp;rsquo;t need. Example lifted directly from my
+codebase:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-yaml&#34; data-lang=&#34;yaml&#34;&gt;&lt;span style=&#34;color:#f92672&#34;&gt;custom&lt;/span&gt;:
+  &lt;span style=&#34;color:#f92672&#34;&gt;pythonRequirements&lt;/span&gt;:
+    &lt;span style=&#34;color:#f92672&#34;&gt;slim&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;strip&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;slimPatternsAppendDefaults&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+    &lt;span style=&#34;color:#f92672&#34;&gt;slimPatterns&lt;/span&gt;:
+      &lt;span style=&#34;color:#75715e&#34;&gt;# Commented out lines are INCLUDED&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;boto3/examples/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/accessanalyzer/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/acm-pca/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/acm/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/alexaforbusiness/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/amp/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/amplify/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/amplifybackend/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/apigateway/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/apigatewaymanagementapi/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/apigatewayv2/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/appconfig/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/appflow/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/appintegrations/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/application-autoscaling/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/application-insights/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/appmesh/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/appstream/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/appsync/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/athena/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/auditmanager/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/autoscaling-plans/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/autoscaling/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/backup/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/batch/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/braket/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/budgets/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/ce/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/chime/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/cloud9/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/clouddirectory/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/cloudformation/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/cloudfront/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/cloudhsm/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/cloudhsmv2/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/cloudsearch/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/cloudsearchdomain/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/cloudtrail/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/cloudwatch/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/codeartifact/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/codebuild/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/codecommit/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/codedeploy/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/codeguru-reviewer/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/codeguruprofiler/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/codepipeline/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/codestar-connections/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/codestar-notifications/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/codestar/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/cognito-identity/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/cognito-idp/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/cognito-sync/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/comprehend/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/comprehendmedical/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/compute-optimizer/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/config/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/connect-contact-lens/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/connect/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/connectparticipant/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/cur/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/customer-profiles/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/databrew/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/dataexchange/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/datapipeline/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/datasync/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/dax/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/detective/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/devicefarm/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/devops-guru/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/directconnect/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/discovery/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/dlm/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/dms/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/docdb/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/ds/*&amp;#39;&lt;/span&gt;
+      &lt;span style=&#34;color:#75715e&#34;&gt;# - &amp;#39;botocore/data/dynamodb/*&amp;#39;&lt;/span&gt;
+      &lt;span style=&#34;color:#75715e&#34;&gt;# - &amp;#39;botocore/data/dynamodbstreams/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/ebs/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/ec2-instance-connect/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/ec2/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/ecr-public/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/ecr/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/ecs/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/efs/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/eks/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/elastic-inference/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/elasticache/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/elasticbeanstalk/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/elastictranscoder/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/elb/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/elbv2/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/emr-containers/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/emr/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/es/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/events/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/firehose/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/fis/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/fms/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/forecast/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/forecastquery/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/frauddetector/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/fsx/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/gamelift/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/glacier/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/globalaccelerator/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/glue/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/greengrass/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/greengrassv2/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/groundstation/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/guardduty/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/health/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/healthlake/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/honeycode/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iam/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/identitystore/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/imagebuilder/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/importexport/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/inspector/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iot-data/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iot-jobs-data/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iot/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iot1click-devices/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iot1click-projects/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iotanalytics/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iotdeviceadvisor/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iotevents-data/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iotevents/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iotfleethub/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iotsecuretunneling/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iotsitewise/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iotthingsgraph/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/iotwireless/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/ivs/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/kafka/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/kendra/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/kinesis-video-archived-media/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/kinesis-video-media/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/kinesis-video-signaling/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/kinesis/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/kinesisanalytics/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/kinesisanalyticsv2/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/kinesisvideo/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/kms/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/lakeformation/*&amp;#39;&lt;/span&gt;
+      &lt;span style=&#34;color:#75715e&#34;&gt;# - &amp;#39;botocore/data/lambda/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/lex-models/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/lex-runtime/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/lexv2-models/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/lexv2-runtime/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/license-manager/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/lightsail/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/location/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/logs/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/lookoutequipment/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/lookoutmetrics/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/lookoutvision/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/machinelearning/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/macie/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/macie2/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/managedblockchain/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/marketplace-catalog/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/marketplace-entitlement/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/marketplacecommerceanalytics/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/mediaconnect/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/mediaconvert/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/medialive/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/mediapackage-vod/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/mediapackage/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/mediastore-data/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/mediastore/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/mediatailor/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/meteringmarketplace/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/mgh/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/mgn/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/migrationhub-config/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/mobile/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/mq/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/mturk/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/mwaa/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/neptune/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/network-firewall/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/networkmanager/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/opsworks/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/opsworkscm/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/organizations/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/outposts/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/personalize-events/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/personalize-runtime/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/personalize/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/pi/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/pinpoint-email/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/pinpoint-sms-voice/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/pinpoint/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/polly/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/pricing/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/qldb-session/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/qldb/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/quicksight/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/ram/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/rds-data/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/rds/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/redshift-data/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/redshift/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/rekognition/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/resource-groups/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/resourcegroupstaggingapi/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/robomaker/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/route53/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/route53domains/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/route53resolver/*&amp;#39;&lt;/span&gt;
+      &lt;span style=&#34;color:#75715e&#34;&gt;# - &amp;#39;botocore/data/s3/*&amp;#39;&lt;/span&gt;
+      &lt;span style=&#34;color:#75715e&#34;&gt;# - &amp;#39;botocore/data/s3control/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/s3outposts/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sagemaker-a2i-runtime/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sagemaker-edge/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sagemaker-featurestore-runtime/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sagemaker-runtime/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sagemaker/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/savingsplans/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/schemas/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sdb/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/secretsmanager/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/securityhub/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/serverlessrepo/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/service-quotas/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/servicecatalog-appregistry/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/servicecatalog/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/servicediscovery/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/ses/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sesv2/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/shield/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/signer/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sms-voice/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sms/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/snowball/*&amp;#39;&lt;/span&gt;
+      &lt;span style=&#34;color:#75715e&#34;&gt;# - &amp;#39;botocore/data/sns/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sqs/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/ssm/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sso-admin/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sso-oidc/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sso/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/stepfunctions/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/storagegateway/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/sts/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/support/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/swf/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/synthetics/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/textract/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/timestream-query/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/timestream-write/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/transcribe/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/transfer/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/translate/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/waf-regional/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/waf/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/wafv2/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/wellarchitected/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/workdocs/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/worklink/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/workmail/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/workmailmessageflow/*&amp;#39;&lt;/span&gt;
+      - &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;botocore/data/workspaces/*&amp;#39;&lt;/span&gt;
+      &lt;span style=&#34;color:#75715e&#34;&gt;# - &amp;#39;botocore/data/xray/*&amp;#39;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This list of patterns tells serverless-python-requirements what folders to ignore.
+The full list of services inside &lt;code&gt;botocore&lt;/code&gt; will obviously differ over time,
+but it&amp;rsquo;s trivial to write a Python or shell script to generate this for you.&lt;/p&gt;
+
+&lt;p&gt;Unfortunately excluding glob paths doesn&amp;rsquo;t work, so you have to do it this way.&lt;/p&gt;
+
+&lt;p&gt;Sidenote, I added the &lt;code&gt;strip: false&lt;/code&gt; as otherwise I was unable to import
+&lt;a href=&#34;https://pillow.readthedocs.io/en/stable/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;Pillow&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;That&amp;rsquo;s really it. Thanks again to Jack for creating the original guide.
+I was able to shave nearly 50MB of size of my Lambda function with this method.&lt;/p&gt;
+
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;a href=&#34;img/boto-size-stripped.jpg&#34; target=&#34;_blank&#34;&gt;
+      &lt;img src=&#34;img/boto-size-stripped.jpg&#34;  alt=&#34;boto3 and botocore are only around 5MB on disk after stripping&#34;  style=&#34;border-radius: 8px;&#34; /&gt;
+    &lt;/a&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;After removing all my unneeded services, boto3 and botocore come out to around 5MB.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boto/botocore/issues/1543&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://github.com/boto/botocore/issues/1543&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://blog.cubieserver.de/2020/building-a-minimal-boto3-lambda-layer/&#34; rel=&#34;noreferrer&#34; target=&#34;_blank&#34;&gt;https://blog.cubieserver.de/2020/building-a-minimal-boto3-lambda-layer/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+        
+        </description>
+    </item>
     
     <item>
       <title>Building a Home Network on a Not-So-Budget</title>

@@ -151,6 +151,60 @@
   <div class="posts">
     
       <div class="post on-list">
+        <h1 class="post-title"><a href="https://blog.nathanv.me/posts/stripping-botocore-python-serverless/">Stripping Down Botocore With Python Serverless Requirements</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2021-04-19
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by Nathan Vaughn</span
+            >
+
+
+          
+            <span class="post-read-time"
+              >— 4 min read</span
+            >
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="https://blog.nathanv.me/tags/aws/">#AWS</a>&nbsp;
+            
+              <a href="https://blog.nathanv.me/tags/python/">#Python</a>&nbsp;
+            
+              <a href="https://blog.nathanv.me/tags/severless/">#severless</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Background The boto3 SDK and the underlying botocore package are very large Python libraries.
+ Just boto3 and botocore alone are over 50MB  It can highly beneficial to reduce the size of these in a final build, especially in a serverless environment. AWS Lambda functions for instance only allow a maximum extracted size of 250MB, so this is over 1/5th of that alone. Additionally, a smaller package size also can dramatically increase the cold-start time of a function.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/stripping-botocore-python-serverless/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
         <h1 class="post-title"><a href="https://blog.nathanv.me/posts/not-so-budget-home-network/">Building a Home Network on a Not-So-Budget</a></h1>
         <div class="post-meta">
           
@@ -680,6 +734,8 @@
               <a href="https://blog.nathanv.me/tags/aws/">#AWS</a>&nbsp;
             
               <a href="https://blog.nathanv.me/tags/dynamodb/">#DynamoDB</a>&nbsp;
+            
+              <a href="https://blog.nathanv.me/tags/serverless/">#serverless</a>&nbsp;
             
           </span>
         
