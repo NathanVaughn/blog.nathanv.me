@@ -78,7 +78,7 @@ While many smaller countries don't want to look a gift horse in the mouth, some
 countries impose restrictions on their domains. For example, `.us` domains are
 limited to US citizens, residents, organizations, corporations, or some other
 presence in the United States. `.it` domains are similarly restricted to Italian
-citizens, residents, or companies. Monaco goes even, only
+citizens, residents, or companies. Monaco goes even further, only
 allowing companies with a trademark registered in Monaco to claim a `.mc` domain.
 
 This intermingling of the digital and physical world introduces
