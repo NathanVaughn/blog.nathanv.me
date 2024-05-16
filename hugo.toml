@@ -50,7 +50,7 @@ enableRobotsTXT = true
 [languages]
   [languages.en]
       title       = "nathanv@blog"
-      copyright   = "Written by a human, for humans"
+      copyright   = '<span>Written by a <a href="https://nathanv.me">human</a></span>, for humans</span>'
 
     [languages.en.params]
       keywords    = ["programming", "tech", "Nathan", "Vaughn", "blog"]
