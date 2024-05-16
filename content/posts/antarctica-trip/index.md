@@ -101,7 +101,7 @@ of congestion. However, the day after Ushuaia, our medicine ran out (and we were
 unsuccessful in buying more with our limited Spanish) and I couldn't stand it anymore.
 I went down to the ship's doctor to get checked out and see if I could get
 prescribed something. Since I was exhibiting COVID-like systems, I was tested,
-*aaaaand* I tested positive. This was my first time catching COVID and I had just
+_aaaaand_ I tested positive. This was my first time catching COVID and I had just
 scored a one-way ticket to quarantine in our cabin for five days.
 
 {{< figure src="img/PXL_20240111_162131676.jpg" caption="My pile of medicine" captionPosition="center" >}}

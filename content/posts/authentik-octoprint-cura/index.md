@@ -1,8 +1,7 @@
 ---
 author: Nathan Vaughn
 date: "2024-03-03"
-description:
-  Four hours of my life wasted to implied port numbers
+description: Four hours of my life wasted to implied port numbers
 tags:
   - Octoprint
   - Cura

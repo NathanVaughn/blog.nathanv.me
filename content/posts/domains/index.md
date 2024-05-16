@@ -62,7 +62,7 @@ ISO 3166-1 alpha-2, a standard for 2-character country codes created
 by the International Organization for Standardization
 (this also avoided the problem of deciding which "countries" are countries,
 which is it's own complicated subject).
-This means *any two-letter top-level domain is managed by a country or territory.*
+This means _any two-letter top-level domain is managed by a country or territory._
 Of course, the United States had to start first with `.us` in
 February of 1985, but other countries quickly followed. These are now
 referred to as country-code top-level domains (ccTLDs).
@@ -85,20 +85,20 @@ This intermingling of the digital and physical world introduces
 problems at times:
 
 - Despite the collapse of the Soviet Union, `.su` domains are still active and available
-for purchase.
+  for purchase.
 - `.ly` domains are managed by Libya. In 2010, the country
-[revoked `vb.ly`](https://www.zdnet.com/article/libyan-authorities-seize-vb-ly-domain/)
-for being associated with adult content.
+  [revoked `vb.ly`](https://www.zdnet.com/article/libyan-authorities-seize-vb-ly-domain/)
+  for being associated with adult content.
 - Similarly, `.af` domains are managed by Afghanistan. The Taliban
-[revoked `queer.af`](https://akko.erincandescent.net/notice/AenvYJ0yiHfspKM8uW)
-in 2024.
+  [revoked `queer.af`](https://akko.erincandescent.net/notice/AenvYJ0yiHfspKM8uW)
+  in 2024.
 - `.ac` is currently for Ascension Island which was being considered
-for the ISO standard at the time of creation but ultimately never made the cut.
+  for the ISO standard at the time of creation but ultimately never made the cut.
 - `.cs` was for Czechoslovakia, but after the country split into the Czech Republic
-and Slovakia, the top-level domain was deleted and `.cz` and `.sk` were created to
-replace it.
+  and Slovakia, the top-level domain was deleted and `.cz` and `.sk` were created to
+  replace it.
 - Despite not being a country, the European Union has the `.eu` top-level domain. After
-Brexit, UK residents who owned `.eu` domains were forced to give them up.
+  Brexit, UK residents who owned `.eu` domains were forced to give them up.
 
 In 1998, the Internet Corporation for Assigned Names and Numbers (ICANN) was created
 to manage the global DNS system. In 2000, ICANN decided there were not enough
@@ -218,7 +218,7 @@ nathanv.me.             3600    IN      NS      deb.ns.cloudflare.com.
 ```
 
 Again, we can see that the name server `b0.nic.me` still doesn't know the IP address of
-`blog.nathanv.me` but it *does* know who to talk to next, `terin.ns.cloudflare.com`
+`blog.nathanv.me` but it _does_ know who to talk to next, `terin.ns.cloudflare.com`
 or `deb.ns.cloudflare.com`. These are the name servers for the domain `nathanv.me`.
 Usually these are provided by your domain registrar, or in my case, Cloudflare.
 Finally, we can ask `terin.ns.cloudflare.com` for the IP address of `blog.nathanv.me`:
@@ -262,7 +262,7 @@ collective agreement. I want my own DNS root!"
 
 Well, you wouldn't be the first. There are multiple groups that have
 created [alternate DNS roots](https://en.wikipedia.org/wiki/Alternative_DNS_root)
-with their own Root Name Servers.  Much like cryptocurrency trying to displace the US
+with their own Root Name Servers. Much like cryptocurrency trying to displace the US
 dollar, none of them have gained any widespread adoption.
 
 ## Applications of DNS
@@ -306,25 +306,25 @@ I also highly recommend this video by Nill:
 Other weird DNS facts:
 
 - `.nato` was created for NATO, but NATO quickly transitioned to using `nato.int`
-and it was deleted shortly after, basically unused.
+  and it was deleted shortly after, basically unused.
 - A lot of people got very upset when Google created the `.dev` top-level domain
-as they were using it for development purposes. [RFC 2606](https://datatracker.ietf.org/doc/rfc2606/)
-reserves `.example`, `.invalid`, `.localhost`, and `.test` for this purpose,
-so they were playing with fire to begin with. `.local` and `.onion` have also
-been added to this list. While `.home` and `.corp` are not officially reserved,
-they are in pratice as ICANN has rejected proposals to register them.
+  as they were using it for development purposes. [RFC 2606](https://datatracker.ietf.org/doc/rfc2606/)
+  reserves `.example`, `.invalid`, `.localhost`, and `.test` for this purpose,
+  so they were playing with fire to begin with. `.local` and `.onion` have also
+  been added to this list. While `.home` and `.corp` are not officially reserved,
+  they are in pratice as ICANN has rejected proposals to register them.
 - A lot of people also got upset when Google created the `.zip` top-level domain
-as they feared it would be used to spread malware with applications like Twitter
-that recognize URLs without a proceeding `http://` or `https://`.
+  as they feared it would be used to spread malware with applications like Twitter
+  that recognize URLs without a proceeding `http://` or `https://`.
 - The email address [`dot@dotat.at`](https://dotat.at/) is my favorite
-[domain hack](https://en.wikipedia.org/wiki/Domain_hack) (read it aloud if you don't
-understand it).
+  [domain hack](https://en.wikipedia.org/wiki/Domain_hack) (read it aloud if you don't
+  understand it).
 - Antarctica has it's own top-level domain, `.aq`.
 - `.edu` domains used to have fewer restrictions than they do today. For example,
-`merit.edu` was registered and is still active despite not actually being an accredited
-educational institution. Most of these domains have been grandfathered in.
+  `merit.edu` was registered and is still active despite not actually being an accredited
+  educational institution. Most of these domains have been grandfathered in.
 - In definace of God and man and all things holy, certain top-level domains
-allow emojis. See: <https://mailoji.com/>
+  allow emojis. See: <https://mailoji.com/>
 
 ## Further Reading
 
@@ -336,7 +336,7 @@ allow emojis. See: <https://mailoji.com/>
 ## Footnotes
 
 [^1]:
-     Some usages of domain names do write the segments left-to-right.
-     A notable example of this are Android package names.
-     This site as an Android package would be `me.nathanv.blog`. Humans tend to
-     find this less intuitive, but it makes it easier for computers to parse.
+    Some usages of domain names do write the segments left-to-right.
+    A notable example of this are Android package names.
+    This site as an Android package would be `me.nathanv.blog`. Humans tend to
+    find this less intuitive, but it makes it easier for computers to parse.

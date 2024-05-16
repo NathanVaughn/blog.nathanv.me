@@ -87,7 +87,7 @@ console.log(`Using base url "${base_url}"`);
 cmd = spawn.sync(
   "hugo",
   ["--cleanDestinationDir", "--minify", "-b", base_url],
-  { encoding: "utf8" }
+  { encoding: "utf8" },
 );
 
 if (cmd.error) {
