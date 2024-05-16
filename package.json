@@ -12,6 +12,10 @@
     "build": "node build.js",
     "server": "hugo server",
     "make-patch": "patch-package hello-friend",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.0.11"
   }
 }
