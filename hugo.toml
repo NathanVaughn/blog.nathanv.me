@@ -1,8 +1,7 @@
 # general settings
 baseurl         = "/"
 languageCode    = "en-us"
-themesDir       = "node_modules"
-theme           = "hello-friend"
+theme           = "PaperMod"
 paginate        = 5
 # enableGitInfo   = true
 enableRobotsTXT = true
@@ -33,15 +32,10 @@ enableRobotsTXT = true
 
 # theme parameters
 [params]
-  contentTypeName = "posts"
   defaultTheme    = "dark"
-  showMenuItems   = 2
-  showReadingTime = true
-  toc             = true
-  rssFullText     = true
-
-  # default open graph image
-  images = ["img/opg.png"]
+  ShowReadingTime = true
+  showtoc         = true
+  comments = true
 
 [privacy]
   [privacy.youtube]
