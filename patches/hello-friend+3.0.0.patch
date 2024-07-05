@@ -1,3 +1,16 @@
+diff --git a/node_modules/hello-friend/layouts/_default/baseof.html b/node_modules/hello-friend/layouts/_default/baseof.html
+index 446ea95..7eadc2d 100644
+--- a/node_modules/hello-friend/layouts/_default/baseof.html
++++ b/node_modules/hello-friend/layouts/_default/baseof.html
+@@ -23,7 +23,7 @@
+       {{ end }}
+     </div>
+ 
+-    {{ if $.Site.GoogleAnalytics }}
++    {{ if $.Site.Config.Services.GoogleAnalytics.ID }}
+       {{ template "_internal/google_analytics.html" . }}
+     {{ end }}
+   </body>
 diff --git a/node_modules/hello-friend/layouts/partials/footer.html b/node_modules/hello-friend/layouts/partials/footer.html
 index 7b7f8c6..e7ffed2 100644
 --- a/node_modules/hello-friend/layouts/partials/footer.html
