@@ -1,8 +1,7 @@
 # general settings
 baseurl         = "/"
 languageCode    = "en-us"
-themesDir       = "node_modules"
-theme           = "hello-friend"
+theme           = "hugo-theme-hello-friend-mod"
 paginate        = 5
 # enableGitInfo   = true
 enableRobotsTXT = true
@@ -39,7 +38,8 @@ enableRobotsTXT = true
   showReadingTime = true
   toc             = true
   rssFullText     = true
-
+  # custom favicon
+  favicon = "https://nathanv.me/img/theme-colors/green.png"
   # default open graph image
   images = ["img/opg.png"]
 
