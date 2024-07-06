@@ -1,6 +1,6 @@
 {{/* Reimplement figure shortcode with resources and defaults */}}
 
-{{ $image_original := .Page.Resources.Get (.Get "src") }}
+{{ $image_original := .Page.Resources.Get (.Destination) }}
 {{ $image := $image_original }}
 
 {{/* Make sure variable lives outside scope of if statement */}}
@@ -22,12 +22,12 @@
   <a href="{{ $image_original.Permalink }}">
   <picture>
     {{ if ne $image_webp false }}
-    <source srcset="{{ $image_webp.Permalink }}" type="image/webp" {{ with .Get "alt" }} alt="{{ . | plainify }}" {{ end }} style="border-radius: 8px;" loading="lazy">
+    <source srcset="{{ $image_webp.Permalink }}" type="image/webp" {{ with .Text }} alt="{{ . | plainify }}" {{ end }} style="border-radius: 8px;" loading="lazy">
     {{ end }}
-    <img src="{{ $image.Permalink }}" {{ with .Get "alt" }} alt="{{ . | plainify }}" {{ end }} style="border-radius: 8px;" loading="lazy">
+    <img src="{{ $image.Permalink }}" {{ with .Text }} alt="{{ . | plainify }}" {{ end }} style="border-radius: 8px;" loading="lazy">
   </picture>
   </a>
-  {{ with .Get "caption" }}
+  {{ with .Title }}
     <figcaption class="center">{{ . | markdownify }}</figcaption>
   {{ end }}
 </figure>

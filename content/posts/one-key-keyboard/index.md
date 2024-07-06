@@ -54,7 +54,7 @@ keyboard here:
 Simply change the key to whatever you want to use, hit "Compile" in the top-right,
 then "Firmware" in the bottom right" once it's done compiling.
 
-{{< figure src="img/qmk_configurator.png" alt="QMK Configurator" >}}
+![QMK Configurator](img/qmk_configurator.png)
 
 This will give you a .hex file, which you can then flash onto your Teensy 2.0.
 
@@ -64,7 +64,7 @@ Wiring is stupid simple. As the layout description says, just wire together the
 F4 and F5 pins to the switch. You're just shorting 2 pins together, so orientation
 does not matter.
 
-{{< figure src="img/wiring.png" alt="Wiring" >}}
+![Wiring](img/wiring.png)
 
 To flash the firmware, download the Teensy Loader application from the website:
 [https://www.pjrc.com/teensy/loader.html](https://www.pjrc.com/teensy/loader.html)
@@ -77,7 +77,7 @@ Now, because the case is slightly bigger than the switch itself
 (or at least how mine came out), I added 4 double-sided sticky pads on the front
 and back of the switch to hold it in place.
 
-{{< figure src="img/switch_pads.png" caption="Sticky pads locations" >}}
+![](img/switch_pads.png "Sticky pads locations")
 
 That's about it, enjoy your new keyboard!
 

@@ -21,11 +21,11 @@ Garmin publishes a free simulator to use for Windows here:
 
 However, this fails to execute on a modern version of Windows.
 
-{{< figure src="img/launch-failure.png" alt="Unsupported 16-bit application. The program or feature GNC400WT.EXE cannot start or run due to incompatibility with 64-bit versions of Windows" >}}
+![Unsupported 16-bit application. The program or feature GNC400WT.EXE cannot start or run due to incompatibility with 64-bit versions of Windows](img/launch-failure.png)
 
 It even says on the webpage that it won't work.
 
-{{< figure src="img/notes.png" alt="Windows XP Operating System required. This simulator is not compatible with Windows Vista or Windows 7 Operating Systems. This simulator is not compatible with 64-bit Operating Systems." caption="Not with that attitude." >}}
+![Windows XP Operating System required. This simulator is not compatible with Windows Vista or Windows 7 Operating Systems. This simulator is not compatible with 64-bit Operating Systems.](img/notes.png "Not with that attitude.")
 
 ## Solution
 
@@ -33,11 +33,11 @@ The fix is simple. Download and install [winevdm](https://github.com/otya128/win
 
 Run the .exe again and it should work.
 
-{{< figure src="img/it-works.png" alt="Garmin GPS trainer running on Windows 11" >}}
+![Garmin GPS trainer running on Windows 11](img/it-works.png)
 
 Well, most of it.
 
-{{< figure src="img/panic.png" alt="Program panic" >}}
+![Program panic](img/panic.png)
 
 Clicking on anything in the HSI, nav mode selector, or altitude/speed selector
 causes an interrupt. Still, it's enough for me to learn the menu layouts

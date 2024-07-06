@@ -26,7 +26,7 @@ Here are the components of my home network infrastructure.
 
 ### Technicolor Modem - $11.50/Month
 
-{{< figure src="img/technicolor-modem.png" alt="Some crappy Technicolor (I didn't know they were even still around) modem provided by my ISP." caption="Some crappy Technicolor (I didn't know they were even still around) modem provided by my ISP."  >}}
+![Some crappy Technicolor (I didn't know they were even still around) modem provided by my ISP.](img/technicolor-modem.png "Some crappy Technicolor (I didn't know they were even still around) modem provided by my ISP.")
 
 This is modem/router combo provided by my ISP (Mediacom).
 While I would normally buy my own equipment,
@@ -37,13 +37,13 @@ Unfortunately, despite
 my best efforts, I have yet to figure out how to even login to the web management
 portal to disable it's WiFi, since I just want to use it as a modem, and not a router.
 
-{{< figure src="img/homewifi.jpg" alt="The online control panel doesn't seem to work, and I don't care enough to call support." caption="The online control panel doesn't seem to work, and I don't care enough to call support."  >}}
+![The online control panel doesn't seem to work, and I don't care enough to call support.](img/homewifi.jpg "The online control panel doesn't seem to work, and I don't care enough to call support.")
 
-{{< figure src="img/account_dashboard.jpg" alt="It doesn't work on my account dashboard either." caption="It doesn't work on my account dashboard either."  >}}
+![It doesn't work on my account dashboard either.](img/account_dashboard.jpg "It doesn't work on my account dashboard either.")
 
 ### TP-Link Archer C1900 - $34.99
 
-{{< figure src="img/tplink-archer.jpg" alt="TP-Link Archer C1900"  >}}
+![TP-Link Archer C1900](img/tplink-archer.jpg)
 
 I managed to snag a refurbished unit in a Newegg flash deal for $34.99.
 
@@ -58,7 +58,7 @@ up a printer, but it does provide enough amperage to power a Raspberry Pi (see b
 
 ### Raspberry Pi 3 Model B - Free
 
-{{< figure src="img/rpi3.jpg" alt="Raspberry Pi 3 Model B"  >}}
+![Raspberry Pi 3 Model B](img/rpi3.jpg)
 
 I got a free Raspberry Pi 3 a few years back when Arrow was running a promotion for
 Pi day (March 14), where they were selling Raspberry Pi's for $3.14. Well, their
@@ -73,14 +73,14 @@ plugged in.
 
 ### Netgear GS305 - $19.99
 
-{{< figure src="img/netgear-gs305.jpg" alt="Netgear GS305"  >}}
+![Netgear GS305](img/netgear-gs305.jpg)
 
 Not much to say about this. It's a basic 5-port gigabit unmanaged switch.
 I've had it for a few years.
 
 ### Netgear Powerline 1200 - $79.99
 
-{{< figure src="img/PL1200_NA_Hero_Transparent.png" alt="Netgear Powerline 1200"  >}}
+![Netgear Powerline 1200](img/PL1200_NA_Hero_Transparent.png)
 
 This one hurt the most to purchase. For best WiFi coverage, I have my router
 sitting on the main floor of my townhouse. My desktop computer and
@@ -104,7 +104,7 @@ connection to my desktop and server.
 
 ## Diagram
 
-{{< figure src="img/network_diagram.jpg" alt="Diagram of my home network." caption="Diagram of my home network."  >}}
+![Diagram of my home network.](img/network_diagram.jpg "Diagram of my home network.")
 
 ## Conclusion
 

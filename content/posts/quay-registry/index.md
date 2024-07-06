@@ -84,7 +84,7 @@ However, there are two problems with this software that prevented me from using 
 
 ### Amazon ECR Public
 
-{{< figure src="img/ecr-public-logo.png" alt="Amazon ECR Public Logo" >}}
+![Amazon ECR Public Logo](img/ecr-public-logo.png)
 
 [Link](https://gallery.ecr.aws/)
 
@@ -96,11 +96,11 @@ and there's no way to add a custom domain name.
 While it seems neat if you are fully-invested in the AWS ecosystem,
 this doesn't really provide any advantages over Docker Hub or GitHub Container Registry.
 
-{{< figure src="img/ecr-gallery.png" alt="Amazon ECR Public Gallery" >}}
+![Amazon ECR Public Gallery](img/ecr-gallery.png)
 
 ### Azure Container Registry
 
-{{< figure src="img/acr-logo.png" alt="Azure Container Registry Logo" >}}
+![Azure Container Registry Logo](img/acr-logo.png)
 
 [Link](https://azure.microsoft.com/en-us/services/container-registry/)
 
@@ -117,7 +117,7 @@ search ended here, for now.
 
 ### Harbor
 
-{{< figure src="img/harbor-logo.png" alt="Harbor Logo" >}}
+![Harbor Logo](img/harbor-logo.png)
 
 [Link](https://goharbor.io/)
 
@@ -141,7 +141,7 @@ would not be worthwhile and create an extremely fragile setup.
 
 ### Portus
 
-{{< figure src="img/portus-logo.png" alt="Portus Logo" >}}
+![Portus Logo](img/portus-logo.png)
 
 [Link](https://port.us.org/)
 
@@ -229,7 +229,7 @@ This caused it to crash.
 
 ### Sonatype Nexus Repository Manager 3
 
-{{< figure src="img/nexus-logo.png" alt="Sonatype Nexus Repository Manager 3 Logo" >}}
+![Sonatype Nexus Repository Manager 3 Logo](img/nexus-logo.png)
 
 [Link](https://help.sonatype.com/repomanager3)
 
@@ -249,11 +249,11 @@ a lot with them. Lastly, the application is also very heavy as it runs an Elasti
 instance inside the container among other services. Nice software, but just not what
 I was looking for and super overkill for what I was trying to do.
 
-{{< figure src="img/nexus-browsing.png" alt="Sonatype Nexus Repository Manager 3 repository browsing view" caption="Interface for browsing the contents of a repository">}}
+![Sonatype Nexus Repository Manager 3 repository browsing view](img/nexus-browsing.png "Interface for browsing the contents of a repository>}}")
 
 ### GitLab Container Registry
 
-{{< figure src="img/gitlab-logo.jpg" alt="GitLab Logo" >}}
+![GitLab Logo](img/gitlab-logo.jpg)
 
 [Link](https://docs.gitlab.com/ee/user/packages/container_registry/)
 
@@ -268,7 +268,7 @@ was going to be a huge plus.
 
 ### Quay
 
-{{< figure src="img/quay-logo.png" alt="Quay Logo" >}}
+![Quay Logo](img/quay-logo.png)
 
 [Link](https://www.projectquay.io/)
 
@@ -277,7 +277,7 @@ going with. I didn't find Quay earlier because when I searched for self-hosted
 registry software, Quay would come up, but I thought it meant [Quay.io](https://quay.io)
 which is Red Hat's public instance of the Quay software.
 
-{{< figure src="img/registry-software-list.png" alt="Registry software list" >}}
+![Registry software list](img/registry-software-list.png)
 
 Quay is pretty cool software. It's a self-hosted Docker registry and web UI, and a lot
 like Docker Hub. Users can create accounts and have their own namespace, and it
@@ -321,7 +321,7 @@ services:
 When you open `<ip>:8080` in your web browser, you'll be prompted to sign in.
 Enter the user `quayconfig` and the password you selected.
 
-{{< figure src="img/quay-config-login.png" alt="Quay config login" >}}
+![Quay config login](img/quay-config-login.png)
 
 Fill out the configuration. Item to note, while Quay supports MySQL, I had issues
 setting this up, and found using PostgreSQL to be easier
@@ -348,7 +348,7 @@ sign in to Quay, and Quay will create an account as needed.
 After you finish filling out the configuration, validate the configuration at the bottom
 of the page and download the configuration.
 
-{{< figure src="img/quay-config-done.png" alt="Quay config done" >}}
+![Quay config done](img/quay-config-done.png)
 
 Before you put this config inside the Quay container, there are a few important
 options not available in the UI, that you can change manually.
@@ -482,7 +482,7 @@ can see the vulnerabilities in containers right in the web UI for the registry.
 This is pretty sweet, because all the hosted registries I know of charge you
 extra for vulnerability scanning, and this is integrated directly into Quay for free.
 
-{{< figure src="img/quay-tags.png" alt="List of tags showing vulnerabilities in the Quay interface" caption="You can see the little pie chart of vulnerabilities for each tag" >}}
+![List of tags showing vulnerabilities in the Quay interface](img/quay-tags.png "You can see the little pie chart of vulnerabilities for each tag")
 
 Before you get started, Clair has a habit of writing a LOT of data to the log.
 I highly recommend modifying your Docker `daemon.json` to limit the size
@@ -502,7 +502,7 @@ of the log files. Documentation for that is
 I had my `daemon.json` file set to the default (empty) settings. I found out the
 hard way that this will allow a single log file to grow infinitely.
 
-{{< figure src="img/clair-log.png" alt="A 270GB log file" caption="It took me forever to figure out why my server was constantly hammering the disk" >}}
+![A 270GB log file](img/clair-log.png "It took me forever to figure out why my server was constantly hammering the disk")
 
 To setup Clair, you first need to configure Quay.
 Relaunch the Quay configurator and enable
@@ -573,7 +573,7 @@ volumes:
 That's it! Assuming you configured everything correctly, Clair will automatically
 start scanning images already pushed to Quay and any new images.
 
-{{< figure src="img/quay-vulns.png" alt="Vulnerabilities for a container image shown in the web UI" >}}
+![Vulnerabilities for a container image shown in the web UI](img/quay-vulns.png)
 
 If you get any "unable to analyze image" messages in Quay, this likely means
 there is a version mismatch between Quay and Clair. I would _highly_ recommend

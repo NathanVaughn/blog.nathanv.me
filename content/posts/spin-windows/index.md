@@ -48,11 +48,11 @@ and click on the latest version of
 `spin<ver>_windows64.exe.gz`. Click "Download" on the right side to get
 only this file.
 
-{{< figure src="img/download_spin.jpg" alt="Download the latest prebuilt version of Spin" caption="Download the latest prebuilt version of Spin"  >}}
+![Download the latest prebuilt version of Spin](img/download_spin.jpg "Download the latest prebuilt version of Spin")
 
 Once that's downloaded, use [7zip](https://www.7-zip.org/) to extract the archive.
 
-{{< figure src="img/extract_spin.jpg" alt="Extract the archive with 7zip" caption="Extract the archive with 7zip"  >}}
+![Extract the archive with 7zip](img/extract_spin.jpg "Extract the archive with 7zip")
 
 Inside the directory it extracted into will be an executable. Rename this to `spin.exe`.
 
@@ -64,7 +64,7 @@ which is a project that has ported GCC to Windows.
 Download and run [the installer](https://osdn.net/projects/mingw/releases/),
 and select the base MinGW package (this includes GCC).
 
-{{< figure src="img/mingw_install.jpg" alt="Install the base MinGW package" caption="Install the base MinGW package"  >}}
+![Install the base MinGW package](img/mingw_install.jpg "Install the base MinGW package")
 
 You may need to [add `C:\MinGW\bin\` to your PATH](https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/) after it installs GCC.
 You can verify it is setup correctly by running `gcc` in a shell and making sure
@@ -92,7 +92,7 @@ First, you'll need to download
 from the `optional_gui` directory on the Spin GitHub page. The easiest way to do
 this is to right-click "Raw" and then "Save link as".
 
-{{< figure src="img/download_ispin.jpg" alt="Download the GUI file for Spin" caption="Download the GUI file for Spin"  >}}
+![Download the GUI file for Spin](img/download_ispin.jpg "Download the GUI file for Spin")
 
 Save this wherever you like.
 
@@ -119,18 +119,18 @@ If you have installed Git for Windows, it likely already has already installed T
 An easy way to check is to open up [Everything](https://www.voidtools.com/),
 and look for `wish.exe`.
 
-{{< figure src="img/everything_wish.jpg" alt="wish.exe showing up in Everything" caption="Tcl/Tk is often included with Git for Windows"  >}}
+![wish.exe showing up in Everything](img/everything_wish.jpg "Tcl/Tk is often included with Git for Windows")
 
 All you need to do is right-click on `ispin.tcl`, choose "Open With",
 and select the `wish.exe` you found. Make sure to set
 "Always use this app to open .tcl files".
 
-{{< figure src="img/tcl_wish.jpg" alt="Selecting a default program association for .tcl files" caption="Selecting a default program association for .tcl files"  >}}
+![Selecting a default program association for .tcl files](img/tcl_wish.jpg "Selecting a default program association for .tcl files")
 
 With that, you should be able to launch the GUI for Spin
 by double-clicking on `ispin.tcl`.
 
-{{< figure src="img/ispin.jpg" alt="Spin GUI" caption="Spin GUI"  >}}
+![Spin GUI](img/ispin.jpg "Spin GUI")
 
 ### Tcl/Tk Distributions
 
@@ -173,7 +173,7 @@ _(Even if `dot.exe` is added to your PATH, I've found it will still not work wit
 
 You should be all set now.
 
-{{< figure src="img/automata_view.jpg" alt="Spin GUI automata view" caption="Spin GUI automata view"  >}}
+![Spin GUI automata view](img/automata_view.jpg "Spin GUI automata view")
 
 ## Conclusion
 

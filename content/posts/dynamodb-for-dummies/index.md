@@ -89,7 +89,7 @@ Here are the basics parts of DynamoDB:
   with other items in the same table. They are like table columns.
   An item in a "Albums" table would have attributes like "Year", "Artist", etc.
 
-{{< figure src="img/table-items-attributes.jpg" alt="DynamoDB elements" caption="DynamoDB elements"  >}}
+![DynamoDB elements](img/table-items-attributes.jpg "DynamoDB elements")
 
 In terms of pricing, DynamoDB charges for both data storage, and read and write
 operations. Read and write operations use "read units" and "write units"

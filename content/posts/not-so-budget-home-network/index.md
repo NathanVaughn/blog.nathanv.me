@@ -30,12 +30,12 @@ Only WiFi is available, and I have to go into a web portal and manually add
 the MAC address of every device I have to my account so that they can connect.
 Even after doing this, many of my devices would still just refuse to connect:
 
-{{< figure src="img/failed-to-connect.png" alt="Failed to connect to network message on Android" caption="My phone would almost always fail to connect" >}}
+![Failed to connect to network message on Android](img/failed-to-connect.png "My phone would almost always fail to connect")
 
 This was infuriating to say the least and I found the 5mbps guest WiFi more reliable.
 The good news is, my apartment has a WiFi router in it, and it's plugged into the wall.
 
-{{< figure src="img/wifi-before.png" alt="Diagram of apartment WiFi as provided" caption="Small diagram of apartment WiFi as it was provided" >}}
+![Diagram of apartment WiFi as provided](img/wifi-before.png "Small diagram of apartment WiFi as it was provided")
 
 With a bit of experimentation, I discovered that just unplugging the Spectrum WiFi
 access point, and plugging the wall jack directly into my laptop resulted in an
@@ -46,7 +46,7 @@ point so that I could connect my own devices via Ethernet. I did have to go out
 and buy a PoE switch, as the existing access point was PoE and I didn't own a
 PoE switch.
 
-{{< figure src="img/wifi-after.png" alt="Diagram of apartment WiFi after slight modification" caption="Small diagram of apartment WiFi after a slight modification" >}}
+![Diagram of apartment WiFi after slight modification](img/wifi-after.png "Small diagram of apartment WiFi after a slight modification")
 
 ## Network Infrastructure
 
@@ -54,14 +54,14 @@ Here are the components of my home network infrastructure.
 
 ### TP-Link TL-SG1005P - $49.99
 
-{{< figure src="img/tl-sg1005p.jpg" alt="TP-Link 5 Port Gigabit, 4 Port PoE Switch" >}}
+![TP-Link 5 Port Gigabit, 4 Port PoE Switch](img/tl-sg1005p.jpg)
 
 This was the little PoE switch I got to break out the ethernet from the wall.
 It was the least expensive thing I could find at my local Microcenter.
 
 ### Qotom Q535G6 - $373.46
 
-{{< figure src="img/qotom-q535g6-fanless.jpg" alt="Qotom Q535G6" >}}
+![Qotom Q535G6](img/qotom-q535g6-fanless.jpg)
 
 This is a fanless mini PC I got on [eBay](https://ebay.us/Q7sGUT), which I have
 installed [pfSense](https://www.pfsense.org/) on and am using as my router.
@@ -73,7 +73,7 @@ buy, only the 6-port version of the rackmount case was available. Thus, I bought
 the matching 6-port mini PC and rack case. Now, there's 4-port versions back in stock,
 which would have saved me a lot of money on the PC, as I don't need all 6 ports. Oh well.
 
-{{< figure src="img/qotom-rackmount.jpg" alt="Qotom rackmount case diagram" caption="Qotom rackmount case diagram" >}}
+![Qotom rackmount case diagram](img/qotom-rackmount.jpg "Qotom rackmount case diagram")
 
 When the computer arrived (they were nice enough to assemble
 it for me in the rack case), I plugged it in and was very surprised to learn it in-fact
@@ -86,14 +86,14 @@ The bearing in the fan has enough slop in it that the fan rubs against its shell
 and makes the grinding sound. Unfortunately, due to how the case is designed, you
 have to take apart basically the entire thing to get at the bottom.
 
-{{< figure src="img/qotom-q535g6-disassembly.jpg" alt="Qotom mini PC disassembled in the rackmount case" caption="Because of those standoffs, you have to take the top shell off before you can remove the bottom shell. This is looking at the bottom side." >}}
+![Qotom mini PC disassembled in the rackmount case](img/qotom-q535g6-disassembly.jpg "Because of those standoffs, you have to take the top shell off before you can remove the bottom shell. This is looking at the bottom side.")
 
 After figuring out how to take apart the whole thing, fixing it was relatively easy.
 I loosened a few screws in the fan's shell and put a few pieces of cereal box cardboard
 in the edge to shim the shell a bit. I taped it all in place, flipped it back
 upside-down, and the fan stopped grinding.
 
-{{< figure src="img/qotom-q535g6-fixed.jpg" alt="Qotom mini PC fan fix" caption="If it's stupid but it works, it's not stupid" >}}
+![Qotom mini PC fan fix](img/qotom-q535g6-fixed.jpg "If it's stupid but it works, it's not stupid")
 
 After all this, I installed pfSense on the computer. I've set
 [pfBlockerNG](https://www.reddit.com/r/pfBlockerNG/) to replace
@@ -112,11 +112,11 @@ I love looking at pretty graphs, so I've really enjoyed looking at the data that
 the [ntopng](https://www.ntop.org/products/traffic-analysis/ntop/)
 package on pfSense provides.
 
-{{< figure src="img/ntop.jpg" alt="ntopng interface graph" caption="This is a graph of the total traffic across the LAN interface for a full day" >}}
+![ntopng interface graph](img/ntop.jpg "This is a graph of the total traffic across the LAN interface for a full day")
 
 ### TP-Link Archer C1900 - $34.99
 
-{{< figure src="img/tplink-archer.jpg" alt="TP-Link Archer C1900" >}}
+![TP-Link Archer C1900](img/tplink-archer.jpg)
 
 This is the same WiFi router from before. Instead now, I'm using it as an access point
 rather than a router. This was pretty easily done by disabling the DHCP server
@@ -130,11 +130,11 @@ TP-Link web portal from a wired device. It turns out that by default,
 in a setup like this, the device doesn't set a default gateway. I had to
 access the web portal from a device on the wireless subnet and manually add a route.
 
-{{< figure src="img/tp-link-routes.jpg" alt="Route manually added to the wired subnet with a gateway defined" caption="You can't modify the default route that automatically sets the gateway to 0.0.0.0" >}}
+![Route manually added to the wired subnet with a gateway defined](img/tp-link-routes.jpg "You can't modify the default route that automatically sets the gateway to 0.0.0.0")
 
 ### TP-Link TL-SG1024 - Free
 
-{{< figure src="img/tl-sg1024.jpg" alt="TP-Link 24 Port Gigabit Switch" >}}
+![TP-Link 24 Port Gigabit Switch](img/tl-sg1024.jpg)
 
 I got this for free a few years ago. It's older and not grey like the newer
 productions of this model. My switch is like the picture above and is a butt-ugly
@@ -142,11 +142,11 @@ vomit brown/green color. I did spend $14.95 on a
 [Noctua NF-A4x20 FLX](https://www.amazon.com/dp/B072JK9GX6)
 fan to replace the original 40mm fan to make it quieter.
 
-{{< figure src="img/tl-sg1024-fan-swap.jpg" alt="TL-SG1024 taken apart with a new fan installed" caption="The result of my fan-swapping surgery. Unfortunately I wasn't able to unplug the old fan, so had to cut the wires and use the provided [3M Scotchlok butt connectors](https://www.amazon.com/dp/B01K3HZ2IO)" >}}
+![TL-SG1024 taken apart with a new fan installed](img/tl-sg1024-fan-swap.jpg "The result of my fan-swapping surgery. Unfortunately I wasn't able to unplug the old fan, so had to cut the wires and use the provided [3M Scotchlok butt connectors](https://www.amazon.com/dp/B01K3HZ2IO)")
 
 ### CyberPower OR500LCDRM1U - $164.95
 
-{{< figure src="img/or500lcdrm1u.jpg" alt="CyberPower OR500LCDRM1U" >}}
+![CyberPower OR500LCDRM1U](img/or500lcdrm1u.jpg)
 
 To power everything, I purchased this 1U UPS for my networking equipment.
 My desktop computer is already on a different UPS.
@@ -164,14 +164,14 @@ The UPS also comes with some pretty nifty web-based software called
 [PowerPanel](https://www.cyberpowersystems.com/products/software/power-panel-business/)
 that lets you see statuses, run tests, and setup alerts.
 
-{{< figure src="img/powerpanel.jpg" alt="Screenshot of the PowerPanel software" caption="PowerPanel interface" >}}
+![Screenshot of the PowerPanel software](img/powerpanel.jpg "PowerPanel interface")
 
 I created a Dockerfile for this software as I couldn't find a pre-made one that
 was updated. See [powerpanel-business-docker](https://github.com/NathanVaughn/powerpanel-business-docker).
 
 ### 6U Rack - $50
 
-{{< figure src="img/6u-rack.jpg" alt="6U rack from Craigslist" >}}
+![6U rack from Craigslist](img/6u-rack.jpg)
 
 Last but not least is the rack itself. I was able to snag this on Craigslist for $50
 with everything included. I'm not sure what brand the rack itself is,
@@ -184,7 +184,7 @@ to put my server into a 3/4U rackmount case, but the price was too good to pass 
 
 ## Diagram
 
-{{< figure src="img/full-diagram.jpg" alt="Full network diagram" caption="Full network diagram. Switching coming from the wall jack has been left out for simplicity" >}}
+![Full network diagram](img/full-diagram.jpg "Full network diagram. Switching coming from the wall jack has been left out for simplicity")
 
 The "zeus" server is the [Sun Ultra 24]({{< relref "sun-ultra-24-build" >}}) server
 from before, just with a fan upgrade to be quieter, and now two HDD's in RAID 1 via
@@ -234,9 +234,9 @@ from running Pi-hole.
 
 It also looks pretty cool in the dark.
 
-{{< figure src="img/rack-dark.jpg" alt="Server rack with status lights shining in the dark" >}}
+![Server rack with status lights shining in the dark](img/rack-dark.jpg)
 
 _Full Disclosure:_ **After** I originally posted this article, Traefik Labs
 reached out to me and sent me a swag bag free of charge.
 
-{{< figure src="img/traefik-swag.jpg" alt="Traefik t-shirt and stickers" caption="Traefik Swag Bag" >}}
+![Traefik t-shirt and stickers](img/traefik-swag.jpg "Traefik Swag Bag")

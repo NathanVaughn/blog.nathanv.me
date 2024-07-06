@@ -33,6 +33,6 @@ killing all the running executables isn't enough, as Synergy registers a service
 will automatically restart them. Find "Synergy" in the list, right-click and go to
 Properties -> Startup type -> Manual.
 
-{{< figure src="img/synergy-service-manual.jpg" alt="Synergy Windows service" caption="Set the Synergy service to start manually"  >}}
+![Synergy Windows service](img/synergy-service-manual.jpg "Set the Synergy service to start manually")
 
 You'll just need to manually start and stop the Synergy service now whenever you want to use it.

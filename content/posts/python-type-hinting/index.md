@@ -444,7 +444,7 @@ temp_age = float(person.age)
 0 errors, 0 warnings, 0 infos
 ```
 
-{{< figure src="img/peewee-float.png" alt="Type 'FloatField' cannot be assigned to type 'SupportsFloat | SupportsIndex | str | bytes | bytearray'" caption="Strangely, this only occurs in VS Code for me, and not the command-line `pyright` tool" >}}
+![Type 'FloatField' cannot be assigned to type 'SupportsFloat | SupportsIndex | str | bytes | bytearray'](img/peewee-float.png "Strangely, this only occurs in VS Code for me, and not the command-line `pyright` tool")
 
 In reality, this works fine, but `pyright` isn't having it. Often, putting something like
 

@@ -14,7 +14,7 @@ title: Stripping Down Botocore With Python Serverless Requirements
 The [boto3](https://github.com/boto/boto3) SDK and the underlying
 [botocore](https://github.com/boto/botocore) package are very large Python libraries.
 
-{{< figure src="img/boto-size.jpg" alt="boto3 and botocore are 50MB on disk" caption="Just boto3 and botocore alone are over 50MB" >}}
+![boto3 and botocore are 50MB on disk](img/boto-size.jpg "Just boto3 and botocore alone are over 50MB")
 
 It can highly beneficial to reduce the size of these in a final build, especially
 in a serverless environment. AWS Lambda functions for instance only allow a
@@ -328,7 +328,7 @@ Sidenote, I added the `strip: false` as otherwise I was unable to import
 That's really it. Thanks again to Jack for creating the original guide.
 I was able to shave nearly 50MB of size of my Lambda function with this method.
 
-{{< figure src="img/boto-size-stripped.jpg" alt="boto3 and botocore are only around 5MB on disk after stripping" caption="After removing all my unneeded services, boto3 and botocore come out to around 5MB." >}}
+![boto3 and botocore are only around 5MB on disk after stripping](img/boto-size-stripped.jpg "After removing all my unneeded services, boto3 and botocore come out to around 5MB.")
 
 ## References
 

@@ -39,7 +39,7 @@ prominently display that
 2.4 GHz WiFi is required, but I didn't think anything of it, since all of
 my Wyze devices and MyQ garage door opener only support 2.4 GHz and they work fine.
 
-{{< figure src="img/Screenshot 2024-05-28 194818.png" >}}
+![](img/Screenshot 2024-05-28 194818.png)
 
 After doing some Googling and seeing
 [this help article](https://help.kidde.com/hc/en/6-kidde/faq/801-how-can-i-ensure-my-wi-fi-network-is-on-a-compatible-2-4-ghz-band/)
@@ -48,7 +48,7 @@ a dual band SSID with 2.4, 5, and 6 GHz bands. Apparently the WPA2-PSK/WPA3-SAE
 authentication that Omada requires you to use with WiFi 6 is not supported by the
 Kidde detector.
 
-{{< figure src="img/Screenshot 2024-05-28 201138.png" caption="My primary WiFi network setup in the Omada controller that didn't work" >}}
+![](img/Screenshot 2024-05-28 201138.png "My primary WiFi network setup in the Omada controller that didn't work")
 
 ## Fix
 
@@ -56,7 +56,7 @@ I ended up creating a seperate SSID just for this one device in Omada and disabl
 WiFi 6. Leaving 5 GHz enabled still worked fine, it just took issue with WiFi 6 and
 the authentication required.
 
-{{< figure src="img/Screenshot 2024-05-28 201352.png" caption="'Fixed' seperate SSID just for Kidde" >}}
+![](img/Screenshot 2024-05-28 201352.png "'Fixed' seperate SSID just for Kidde")
 
 ## Afterwards
 
@@ -65,7 +65,7 @@ the app did allow me to send automated error reports. I submitted at least one o
 and actually got an email the following business day from a real employee
 at Kidde saying they had recieved the report and suggested some troubleshooting steps.
 
-{{< figure src="img/kidde_email.jpg" caption="Email I recieved from Kidde" >}}
+![](img/kidde_email.jpg "Email I recieved from Kidde")
 
 I am incredibly surprised and impressed by this. I've never once had a company
 contact me about any (automatic or manual) error reports I submit.

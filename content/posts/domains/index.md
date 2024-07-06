@@ -258,7 +258,7 @@ You may be wondering, "Who do these Root Name Servers think they are?
 There's nothing special giving them their power other than
 collective agreement. I want my own DNS root!"
 
-{{< figure src="img/alt_dns_root.png" alt="Bender from Futurama saying 'We'll make our own DNS root with blackjack and hookers'" >}}
+![Bender from Futurama saying 'We'll make our own DNS root with blackjack and hookers'](img/alt_dns_root.png)
 
 Well, you wouldn't be the first. There are multiple groups that have
 created [alternate DNS roots](https://en.wikipedia.org/wiki/Alternative_DNS_root)

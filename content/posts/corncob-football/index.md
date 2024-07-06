@@ -139,14 +139,14 @@ come out to 0.0953. This means we're in the right ballpark. (I didn't expect to
 hit the value exactly as CFD inherently has some error, and SOLIDWORKS flow
 simulation isn't a top-tier product)
 
-{{< figure src="img/football_cfd.png" alt="Football CFD" caption="Football CFD"  >}}
+![Football CFD](img/football_cfd.png "Football CFD")
 
 ### Reference Calculations
 
 Finally, with all of this data, we can now plot theoretical trajectories.
 [Source.](https://www.grc.nasa.gov/www/k-12/airplane/flteqs.html)
 
-{{< figure src="img/football_flights.png" alt="Football Trajectories" caption="Football Trajectories"  >}}
+![Football Trajectories](img/football_flights.png "Football Trajectories")
 
 ```txt
 Thrown at 5 degrees, a football will fly for 0.85 seconds, landing 21.85 meters downfield.
@@ -211,13 +211,13 @@ I did manage to find one
 A quick measurement shows the length of the model falls within our acceptable range,
 so no scaling required.
 
-{{< figure src="img/corn_length.png" alt="Corncob Length" caption="Corncob Length"  >}}
+![Corncob Length](img/corn_length.png "Corncob Length")
 
 In order to get the frontal area of our selected corncob, I simply measured
 the diameter of the model, which happened to be a near-perfect circle with
 a diameter of 35.49 mm.
 
-{{< figure src="img/corn_diameter.png" alt="Corncob Diameter" caption="Corncob Diameter"  >}}
+![Corncob Diameter](img/corn_diameter.png "Corncob Diameter")
 
 This gives the corncob a frontal area of 989.24 mm<sup>2</sup> or 0.00098924 m<sup>2</sup>.
 
@@ -229,7 +229,7 @@ for about 20 minutes. This simulation took significantly longer as the model
 was not a native SOLIDWORKS file, but a very complex imported geometry. Meshing
 the model alone took about 5 minutes.
 
-{{< figure src="img/cpu_usage.png" alt="CPU Usage" caption="CPU Usage"  >}}
+![CPU Usage](img/cpu_usage.png "CPU Usage")
 
 After the simulation was finished, I was very surprised to have the coefficient of drag
 come out to 0.184 (almost twice that of the football).
@@ -239,14 +239,14 @@ Another theory I have is that the kernels protruding create a lot of low-pressur
 increasing drag, as you can see in the image below with the sort of "ripples" of
 pressure values.
 
-{{< figure src="img/corncob_cfd.png" alt="Corncob CFD" caption="Corncob CFD"  >}}
+![Corncob CFD](img/corncob_cfd.png "Corncob CFD")
 
 ### Throwing Distance
 
 Now, we bring it all together. How far can you actually throw a corncob? I plotted
 theoretical trajectories using the same math as before.
 
-{{< figure src="img/corncob_flights.png" alt="Corncob Trajectories" caption="Corncob Trajectories"  >}}
+![Corncob Trajectories](img/corncob_flights.png "Corncob Trajectories")
 
 ```txt
 Thrown at 5 degrees, a corncob will fly for 1.01 seconds, landing 39.47 meters downfield.

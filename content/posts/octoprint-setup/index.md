@@ -28,12 +28,12 @@ pre-made Raspberry Pi image. Below, is what I have figured out for myself.
 First off, while Raspberry Pis are extremely commonly used with OctoPrint,
 they're pretty hard to get at time of writing.
 
-{{< figure src="img/2022-10-30-20-47-13.png" caption="Expensive Raspberry Pis on eBay" >}}
+![](img/2022-10-30-20-47-13.png "Expensive Raspberry Pis on eBay")
 
 What I found to be a little less expensive, more powerful, and x86, was an old
 HP Chromebox.
 
-{{< figure src="img/2022-10-30-20-49-52.png" caption="HP Chromebox J5N50UT" >}}
+![](img/2022-10-30-20-49-52.png "HP Chromebox J5N50UT")
 
 The Chromebox line is like a desktop version of a Chromebook, that is
 designed to only run ChromeOS. However, ChromeOS is built on Linux,
@@ -57,7 +57,7 @@ of the tape and take out the metal assembly.
 You can now remove the write protection screw. It should stand out as the only screw
 that has contacts that make electrical contact with the motherboard.
 
-{{< figure src="img/1590137438225223-0.jpg" caption="From https://reflectiveriot.blogspot.com/2020/05/hp-chromebox-g1-write-protection-screw.html" >}}
+![](img/1590137438225223-0.jpg "From https://reflectiveriot.blogspot.com/2020/05/hp-chromebox-g1-write-protection-screw.html")
 
 Put everything back together. Now you need to enable developer mode. Put a paperclip
 or something into the pin hole on the side of the Chromebox, and
@@ -173,7 +173,7 @@ snapshots are:
 - /?action=stream
 - /?action=snapshot
 
-{{< figure src="img/2022-11-02-20-19-49.png" caption="Homemade webcam mount" >}}
+![](img/2022-11-02-20-19-49.png "Homemade webcam mount")
 
 ## Connect OctoPrint to the Ender 3
 
@@ -203,7 +203,7 @@ If you're using Cura, you can also add the
 plugin, to allow you to directly print from Cura, without needing to open up
 the OctoPrint UI.
 
-{{< figure src="img/2022-11-02-20-07-12.png" caption="Print with OctoPrint button in Cura" >}}
+![](img/2022-11-02-20-07-12.png "Print with OctoPrint button in Cura")
 
 ## Conclusion
 
@@ -213,13 +213,13 @@ then go to my desktop to set up the print in Cura, and I can send it to my print
 directly over the network without having to get up. No needing to export `.gcode`,
 copy it to an MicroSD card, and load that on the printer.
 
-{{< figure src="img/2022-11-02-20-10-02.png" caption="Home 3D printer setup" >}}
+![](img/2022-11-02-20-10-02.png "Home 3D printer setup")
 
 With the extensive plugin community of OctoPrint, the remote monitoring of my printer
 is fantastic too. Being able to see GCODE progress, temperature graphs,
 and a live webcam all in one interface is extremely handy.
 
-{{< figure src="img/2022-11-02-20-13-18.png" caption="My OctoPrint interface" >}}
+![](img/2022-11-02-20-13-18.png "My OctoPrint interface")
 
 ## References
 

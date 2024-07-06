@@ -23,7 +23,7 @@ Do you ever have a gnarly mess of nested parantheses or curly braces because of 
 math expression or JSON? Well fear not anymore, this extension color-codes
 brackets with rainbow colors to indicate which parentheses belong to each other.
 
-{{< figure src="img/bracket-pair-colorizer.png" caption="This is also really helpful for AWS CloudFormation templates" alt="Bracket Pair Colorizer VS Code extension" >}}
+![Bracket Pair Colorizer VS Code extension](img/bracket-pair-colorizer.png "This is also really helpful for AWS CloudFormation templates")
 
 ### TODO Tree
 
@@ -32,7 +32,7 @@ brackets with rainbow colors to indicate which parentheses belong to each other.
 This extension helps find all of your `TODO`s and `fixme`s in your code and displays
 them in a helpful tree view.
 
-{{< figure src="img/todo-tree.png" alt="TODO Tree VS Code extension" >}}
+![TODO Tree VS Code extension](img/todo-tree.png)
 
 ### Live Share
 
@@ -49,7 +49,7 @@ when a coworker or myself needs a second set of eyes to help debug an issue.
 It's like Postman, but built in to VS Code. It can even import and (sort of) export
 Postman files.
 
-{{< figure src="img/thunder-client.png" alt="Thunder Client VS Code extension" >}}
+![Thunder Client VS Code extension](img/thunder-client.png)
 
 ## Git
 
@@ -61,7 +61,7 @@ Git Graph is probably my absolute favorite extension. Git Graph is basically
 a GUI Git client right in VS Code. Coupled with VS Code's existing Git integration,
 it turns VS Code into a formidable Git GUI.
 
-{{< figure src="img/git-graph.png" alt="Git Graph VS Code extension" >}}
+![Git Graph VS Code extension](img/git-graph.png)
 
 I mostly use it for branching and merging. And frankly, I almost never even
 use a Git GUI client like [GitKraken](https://www.gitkraken.com/)
@@ -74,12 +74,12 @@ anymore (except for a few rare edge cases) as this has everything I need.
 GitLens adds a ton in-line Git blame information
 (among other functionality).
 
-{{< figure src="img/gitlens-inline.png" alt="GitLens VS Code extension inline popup" >}}
+![GitLens VS Code extension inline popup](img/gitlens-inline.png)
 
 This is fantastic when working with other developers to easily identify who
 last edited a line and can subsequently be yelled at for breaking the tests 😛.
 
-{{< figure src="img/gitlens-blame.png" alt="GitLens VS Code extension file line blame" >}}
+![GitLens VS Code extension file line blame](img/gitlens-blame.png)
 
 ## Python
 
@@ -94,7 +94,7 @@ here are my favorite Python extensions.
 The Python Test Explorer extension adds really handy UI on the side to see
 all of your tests, and quickly run, debug, and view tests.
 
-{{< figure src="img/python-test-explorer.png" alt="Python Test Explorer VS Code Extension" >}}
+![Python Test Explorer VS Code Extension](img/python-test-explorer.png)
 
 Make sure to go into your settings and enable detection for your testing framework.
 For example:
@@ -111,7 +111,7 @@ With my recent love of [Python's type hinting](https://www.python.org/dev/peps/p
 this extension helps remind you and autocomplete type hints as you type
 a function definition.
 
-{{< figure src="img/python-type-hint.png" alt="Python Type Hint VS Code Extension" >}}
+![Python Type Hint VS Code Extension](img/python-type-hint.png)
 
 In addition to this, enable PyLance warnings for type issues:
 
@@ -127,7 +127,7 @@ get irrationally angry when things like
 [Protobufs](https://github.com/protocolbuffers/protobuf/issues/2638#issue-203602478)
 don't have proper type hints.
 
-{{< figure src="img/python-type-error.png" caption="In this example, VS Code is complaining that `config.REDIS_PORT` can possibly be `None`, which can't convert to an `int`"alt="Python Type Error" >}}
+![](img/python-type-error.png "In this example, VS Code is complaining that `config.REDIS_PORT` can possibly be `None`, which can't convert to an `int`alt=Python Type Error")
 
 ### Python Docstring Generator
 
@@ -137,9 +137,9 @@ This extension helps pre-fill out Python docstrings for functions. I like it a l
 to help keep my docstring style consistent. It comes with a few different presets
 depending on what you like.
 
-{{< figure src="img/python-docstring-generator-1.png" caption="Button that appears when you type 3 quotes" alt="Python Docstring Generator VS Code Extension pre-click" >}}
+![Python Docstring Generator VS Code Extension pre-click](img/python-docstring-generator-1.png "Button that appears when you type 3 quotes")
 
-{{< figure src="img/python-docstring-generator-2.png" caption="Pre-filled out docstring generated" alt="Python Docstring Generator VS Code Extension post-click" >}}
+![Python Docstring Generator VS Code Extension post-click](img/python-docstring-generator-2.png "Pre-filled out docstring generated")
 
 ### Sourcery
 
@@ -149,7 +149,7 @@ Holy crap, this one is a game changer. This extension automatically suggests int
 refactorings for your code. It is truly magical, and difficult to describe how
 amazing it is.
 
-{{< figure src="img/sourcery.png" alt="Sourcery VS Code Extension" >}}
+![Sourcery VS Code Extension](img/sourcery.png)
 
 It even adds a "quick fix" button too so you can one-click accept the suggestions.
 
@@ -165,7 +165,7 @@ This is a fairly well featured image editor inside of VS Code. I find this insan
 useful while writing Markdown as I can paste a screenshot into it, crop it, resize it,
 draw boxes on it, then save it, without needing to open another program.
 
-{{< figure src="img/luna-paint.png" alt="Luna Paint VS Code Extension" >}}
+![Luna Paint VS Code Extension](img/luna-paint.png)
 
 ### Image Preview
 
@@ -174,7 +174,7 @@ draw boxes on it, then save it, without needing to open another program.
 Have you ever wanted to be able to hover over a file path of an image,
 and have it displayed in VS Code? Well, that's exactly what this extension does.
 
-{{< figure src="img/image-preview.png" alt="Image Preview VS Code Extension" >}}
+![Image Preview VS Code Extension](img/image-preview.png)
 
 Besides Markdown this also really helpful for writing CSS or HTML templates with icons.
 
@@ -188,7 +188,7 @@ While I don't use Azure Pipelines in my personal projects, I do use them extensi
 at work. This extensions helps a ton by providing completion for tasks
 and showing syntax errors.
 
-{{< figure src="img/azure-pipelines.png" alt="Azure Pipelines VS Code Extension" >}}
+![Azure Pipelines VS Code Extension](img/azure-pipelines.png)
 
 I'd also recommend setting up your file associations with a bit more generic matching
 patterns. For example, I often have multiple Pipeline files like
@@ -213,4 +213,4 @@ one however is that it also allows you to manage your Actions right in VS Code.
 You can see logs of past runs, fire off new runs
 (if you have `workflow_dispatch:` setup), and configure secrets.
 
-{{< figure src="img/github-actions.png" alt="Github Actions VS Code Extension" >}}
+![Github Actions VS Code Extension](img/github-actions.png)

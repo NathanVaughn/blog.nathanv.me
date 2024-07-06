@@ -16,7 +16,7 @@ face-value, and I've definitely had instances where the origin of a commit was u
 due to misconfiguration. By signing commits, it is without a doubt me that created
 that commit. Also I get a nice "Verified" icon in GitHub.
 
-{{< figure src="img/2023-06-06-18-06-02.png" caption="[https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)"  >}}
+![](img/2023-06-06-18-06-02.png "[https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits)")
 
 I really struggled to get GPG signing set up on Windows with some of my workflows.
 While Windows itself wasn't too hard, getting WSL to work took some struggling,
@@ -145,11 +145,11 @@ to avoid this. -->
 For best I/O performance, I highly recommend using the "Clone in Volume"
 option when creating the Dev Container.
 
-{{< figure src="img/2023-06-06-18-12-50.png"  >}}
+![](img/2023-06-06-18-12-50.png)
 
 ## Conclusion
 
 With all of this set up, you should now be able to sign your commits while developing
 on Windows no matter if you're using Windows directly, WSL, or a Dev Container.
 
-{{< figure src="img/2023-06-06-17-57-28.png" alt="GPG passphrase entry dialog"  >}}
+![GPG passphrase entry dialog](img/2023-06-06-17-57-28.png)
