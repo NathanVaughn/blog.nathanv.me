@@ -26,7 +26,7 @@ Here are the components of my home network infrastructure.
 
 ### Technicolor Modem - $11.50/Month
 
-{{< figure src="img/technicolor-modem.png" alt="Some crappy Technicolor (I didn't know they were even still around) modem provided by my ISP." caption="Some crappy Technicolor (I didn't know they were even still around) modem provided by my ISP." captionPosition="center" >}}
+{{< figure src="img/technicolor-modem.png" alt="Some crappy Technicolor (I didn't know they were even still around) modem provided by my ISP." caption="Some crappy Technicolor (I didn't know they were even still around) modem provided by my ISP."  >}}
 
 This is modem/router combo provided by my ISP (Mediacom).
 While I would normally buy my own equipment,
@@ -37,9 +37,9 @@ Unfortunately, despite
 my best efforts, I have yet to figure out how to even login to the web management
 portal to disable it's WiFi, since I just want to use it as a modem, and not a router.
 
-{{< figure src="img/homewifi.jpg" alt="The online control panel doesn't seem to work, and I don't care enough to call support." caption="The online control panel doesn't seem to work, and I don't care enough to call support." captionPosition="center" >}}
+{{< figure src="img/homewifi.jpg" alt="The online control panel doesn't seem to work, and I don't care enough to call support." caption="The online control panel doesn't seem to work, and I don't care enough to call support."  >}}
 
-{{< figure src="img/account_dashboard.jpg" alt="It doesn't work on my account dashboard either." caption="It doesn't work on my account dashboard either." captionPosition="center" >}}
+{{< figure src="img/account_dashboard.jpg" alt="It doesn't work on my account dashboard either." caption="It doesn't work on my account dashboard either."  >}}
 
 ### TP-Link Archer C1900 - $34.99
 
@@ -104,7 +104,7 @@ connection to my desktop and server.
 
 ## Diagram
 
-{{< figure src="img/network_diagram.jpg" alt="Diagram of my home network." caption="Diagram of my home network." captionPosition="center" >}}
+{{< figure src="img/network_diagram.jpg" alt="Diagram of my home network." caption="Diagram of my home network."  >}}
 
 ## Conclusion
 

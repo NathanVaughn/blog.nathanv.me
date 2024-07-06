@@ -66,7 +66,7 @@ with some smart watch capabilities.
 Inside the box, you get the band itself, and a USB charger that is very reminiscent
 of a FitBit.
 
-{{< figure src="img/in-the-box.jpg" alt="Wyze Band box and charger" caption="Wyze Band box and charger" captionPosition="center" >}}
+{{< figure src="img/in-the-box.jpg" alt="Wyze Band box and charger" caption="Wyze Band box and charger"  >}}
 
 The Wyze Band comes with a hole-punch style band. The other side has a little peg
 which holds it in place firmly. As I pre-ordered the band,
@@ -74,19 +74,19 @@ I also received an additional more traditional watch style
 band. I haven't put this on, as it has moving pieces and seems more fragile, and
 I like the basic band just fine.
 
-{{< figure src="img/band-comparison.jpg" alt="Both bands side by side to show differences" caption="The watch style band is on top, and the hole-punch band is attached to the Band on the bottom" captionPosition="center" >}}
+{{< figure src="img/band-comparison.jpg" alt="Both bands side by side to show differences" caption="The watch style band is on top, and the hole-punch band is attached to the Band on the bottom"  >}}
 
 The front Band itself has a small touchscreen full-color AMOLED display
 (which looks fantastic) and a single illuminated button below it.
 This button acts as a pseudo home and back button.
 Pressing and holding this button triggers Amazon Alexa.
 
-{{< figure src="img/band-front.jpg" alt="Front of the Wyze Band" caption="Front of the Band" captionPosition="center" >}}
+{{< figure src="img/band-front.jpg" alt="Front of the Wyze Band" caption="Front of the Band"  >}}
 
 The back side of the Band has the two charging contacts, the heart rate sensor, and
 an etched Wyze logo.
 
-{{< figure src="img/band-back.jpg" alt="Back of the Wyze Band" caption="Back of the Band" captionPosition="center" >}}
+{{< figure src="img/band-back.jpg" alt="Back of the Wyze Band" caption="Back of the Band"  >}}
 
 The right side of the Band features two holes for the microphones for Alexa.
 
@@ -140,7 +140,7 @@ and give a live display.
 In the app, this page shows heart rate graphs and you
 can configure how often heart rate is collected.
 
-{{< figure src="img/heart-rate-app.jpg" alt="The heart rate screen on the Band and in the Wyze app" caption="The heart rate screen on the Band and in the Wyze app" captionPosition="center" >}}
+{{< figure src="img/heart-rate-app.jpg" alt="The heart rate screen on the Band and in the Wyze app" caption="The heart rate screen on the Band and in the Wyze app"  >}}
 
 This is quite fun, and works well. I enjoy seeing how much my heart rate
 goes up just playing a tense horror game, or a stressful board game.
@@ -150,11 +150,11 @@ goes up just playing a tense horror game, or a stressful board game.
 On the Band itself, tapping on this screen will show small graphs for the day
 of steps, heart rate, and sleep tracking.
 
-{{< figure src="img/activity-band.jpg" alt="The activity graphs on the Band" caption="The activity graphs on the Band" captionPosition="center" >}}
+{{< figure src="img/activity-band.jpg" alt="The activity graphs on the Band" caption="The activity graphs on the Band"  >}}
 
 In the app, this page shows the same graphs, but for more periods of time.
 
-{{< figure src="img/activity-app.jpg" alt="The activity screen on the Band and in the Wyze app" caption="The activity screen on the Band and in the Wyze app" captionPosition="center" >}}
+{{< figure src="img/activity-app.jpg" alt="The activity screen on the Band and in the Wyze app" caption="The activity screen on the Band and in the Wyze app"  >}}
 
 My only complaint here is that this is the Wyze app is the _only_
 place you can view this data outside of the Band.
@@ -163,11 +163,11 @@ place you can view this data outside of the Band.
 
 On the Band itself, tapping on this screen will give you a 7-day forecast.
 
-{{< figure src="img/weather-band.jpg" alt="The weather forecast on the Band" caption="The weather forecast on the Band" captionPosition="center" >}}
+{{< figure src="img/weather-band.jpg" alt="The weather forecast on the Band" caption="The weather forecast on the Band"  >}}
 
 In the app, you can configure a few settings along with location.
 
-{{< figure src="img/weather-app.jpg" alt="The weather screen on the Band and in the Wyze app" caption="The weather screen on the Band and in the Wyze app" captionPosition="center" >}}
+{{< figure src="img/weather-app.jpg" alt="The weather screen on the Band and in the Wyze app" caption="The weather screen on the Band and in the Wyze app"  >}}
 
 I really like this little app. It's an easy way to quickly check the weather,
 and the 7-day forecast is handy. I do wish tapping on a day would give a little bit
@@ -180,7 +180,7 @@ really dislike running (I much prefer biking), so I have this disabled.
 
 In the app, you can change a few settings for this functionality.
 
-{{< figure src="img/run-app.jpg" alt="The running screen on the Band and in the Wyze app" caption="The running screen on the Band and in the Wyze app" captionPosition="center" >}}
+{{< figure src="img/run-app.jpg" alt="The running screen on the Band and in the Wyze app" caption="The running screen on the Band and in the Wyze app"  >}}
 
 #### Alarm
 
@@ -190,7 +190,7 @@ I use my phone for alarms, so I have this disabled.
 
 In the app, you can set alarms (strangely, only up to 6).
 
-{{< figure src="img/alarms-app.jpg" alt="The alarm screen on the Band and in the Wyze app" caption="The alarm screen on the Band and in the Wyze app" captionPosition="center" >}}
+{{< figure src="img/alarms-app.jpg" alt="The alarm screen on the Band and in the Wyze app" caption="The alarm screen on the Band and in the Wyze app"  >}}
 
 #### Shortcuts
 
@@ -204,7 +204,7 @@ smart home products. It probably just lists the shortcuts available.
 
 In the app, you can (presumably) setup these shortcuts.
 
-{{< figure src="img/shortcuts-app.jpg" alt="The shortcuts screen on the Band and in the Wyze app" caption="The shortcuts screen on the Band and in the Wyze app" captionPosition="center" >}}
+{{< figure src="img/shortcuts-app.jpg" alt="The shortcuts screen on the Band and in the Wyze app" caption="The shortcuts screen on the Band and in the Wyze app"  >}}
 
 #### Notifications
 
@@ -213,7 +213,7 @@ notifications.
 
 In the app, you can configure which apps you would like to receive notifications from.
 
-{{< figure src="img/notifications-app.jpg" alt="The notifications screen on the Band and in the Wyze app" caption="The notifications screen on the Band and in the Wyze app" captionPosition="center" >}}
+{{< figure src="img/notifications-app.jpg" alt="The notifications screen on the Band and in the Wyze app" caption="The notifications screen on the Band and in the Wyze app"  >}}
 
 I'm still undecided on this one. Yes, getting notifications on your wrist is nice,
 especially for things like phone calls, but it just doesn't work that well.
@@ -238,7 +238,7 @@ On the Band itself, tapping on this screen will make your phone vibrate.
 
 In the app, you can make the Band vibrate.
 
-{{< figure src="img/find-device-app.jpg" alt="The find device screen on the Band and in the Wyze app" caption="The find device screen on the Band and in the Wyze app" captionPosition="center" >}}
+{{< figure src="img/find-device-app.jpg" alt="The find device screen on the Band and in the Wyze app" caption="The find device screen on the Band and in the Wyze app"  >}}
 
 This is really nifty, and something I would not have thought of. Again, when I first
 got the band, this didn't seem to consistently work. I would have the Band and my phone
@@ -272,7 +272,7 @@ if you're into that kind of thing.
 
 In the app, you can setup Alexa.
 
-{{< figure src="img/alexa-app.jpg" alt="The Alexa screen on the Band and in the Wyze app" caption="The Alexa screen on the Band and in the Wyze app" captionPosition="center" >}}
+{{< figure src="img/alexa-app.jpg" alt="The Alexa screen on the Band and in the Wyze app" caption="The Alexa screen on the Band and in the Wyze app"  >}}
 
 #### Settings
 
@@ -283,14 +283,14 @@ On the Band itself, tapping on this screen will show bring up some power functio
 
 In the app, you can change some Band settings.
 
-{{< figure src="img/settings-app.jpg" alt="The settings screen on the Band and in the Wyze app" caption="The settings screen on the Band and in the Wyze app" captionPosition="center" >}}
+{{< figure src="img/settings-app.jpg" alt="The settings screen on the Band and in the Wyze app" caption="The settings screen on the Band and in the Wyze app"  >}}
 
 Now, you may naively assume this is where you would find all of your Band settings
 in the app. How wrong you are. No, if you want to modify _other_ settings
 such as Alexa, device name, or your health info, you have to click the three dots in
 the top right which is super not-obvious.
 
-{{< figure src="img/settings-app-2.jpg" alt="The additional settings in the Wyze app" caption="WHY IS THIS NOT WITH THE OTHER SETTINGS?!" captionPosition="center" >}}
+{{< figure src="img/settings-app-2.jpg" alt="The additional settings in the Wyze app" caption="WHY IS THIS NOT WITH THE OTHER SETTINGS?!"  >}}
 
 I cannot figure why this is just not with the other Band settings in the Wyze app.
 You have to swipe through all these screens to access all these settings, with one of
@@ -367,7 +367,7 @@ unstable.
 Just in general, things are still a bit buggy. For example, while taking pictures
 for this review, my band shows the location as Seattle, despite being in Florida.
 
-{{< figure src="img/bad-weather.jpg" alt="Seattle being displayed on the Band, despite being in Florida" caption="We're not in Florida anymore..." captionPosition="center" >}}
+{{< figure src="img/bad-weather.jpg" alt="Seattle being displayed on the Band, despite being in Florida" caption="We're not in Florida anymore..."  >}}
 
 When I tap on the screen, it correctly shows me the weather for my location in Florida.
 Funnily enough, the weather its displaying on the main screen is also the weather

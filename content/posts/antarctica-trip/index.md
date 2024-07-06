@@ -29,7 +29,7 @@ After nearly 24 hours of travel and arriving early in the morning,
 I was wiped so I was able to crash and catch up on sleep, though
 I did walk around a little bit.
 
-{{< figure src="img/PXL_20240104_154451488.jpg" caption="View from my hotel room" captionPosition="center" >}}
+{{< figure src="img/PXL_20240104_154451488.jpg" caption="View from my hotel room"  >}}
 
 The next day, my parents arrived in Buenos Aires on the cruise ship from the previous
 leg (they had gotten on a few weeks prior). We had a walking tour booked
@@ -40,7 +40,7 @@ just outside a massive metropolitan area. Afterward, we walked around a local
 market and took a different train back towards the city center.
 It was a very nice tour.
 
-{{< figure src="img/PXL_20240105_173611492.jpg" caption="A mural in the art district" captionPosition="center" >}}
+{{< figure src="img/PXL_20240105_173611492.jpg" caption="A mural in the art district"  >}}
 
 The next day was my turn to board the cruise ship.
 Since my boarding time was later in the afternoon, my parents and I walked around
@@ -51,7 +51,7 @@ was running out of the freight terminal. All and all, it took me two and a half
 hours to board the ship. We did have a nice dinner at one of the onboard
 specialty restaurants that evening.
 
-{{< figure src="img/Leg3.jpg" caption="The cruise itinerary" captionPosition="center" >}}
+{{< figure src="img/Leg3.jpg" caption="The cruise itinerary"  >}}
 
 With three sea days before our first port of call, we had scheduled a
 backstage tour on the ship. I will say, with all the waivers we had to sign and
@@ -62,7 +62,7 @@ and the bridge. It was still interesting though, especially the engine control
 room with an officer who gave a great in-depth lesson in the ship's propulsion and
 electrical systems.
 
-{{< figure src="img/PXL_20240108_144054239.jpg" caption="The engine control room" captionPosition="center" >}}
+{{< figure src="img/PXL_20240108_144054239.jpg" caption="The engine control room"  >}}
 
 Our first destination was Ushuaia, Argentina, known as El Ciudad Del Fin Del Mundo
 ("The City at the End of the World"). In Ushuaia, we had a private tour with a local
@@ -76,7 +76,7 @@ headed north into true Patagonia. The mountain scenery was just phenomenal.
 Towards the end of our drive, we stopped at a local Coast Guard base and walked around
 the beach.
 
-{{< figure src="img/PXL_20240110_174733920.jpg" caption="El barco del fin del mundo" captionPosition="center" >}}
+{{< figure src="img/PXL_20240110_174733920.jpg" caption="El barco del fin del mundo"  >}}
 
 Heading back into town, we stopped at an overlook of the city by a hotel.
 
@@ -85,14 +85,14 @@ Heading back into town, we stopped at an overlook of the city by a hotel.
 Finally, we made a quick stop at the airport and caught a few general aviation planes
 taking off and landing.
 
-{{< figure src="img/PXL_20240110_194558094.jpg" caption="One of my favorite pictures from the trip, taken at the airport in Ushuaia" captionPosition="center" >}}
+{{< figure src="img/PXL_20240110_194558094.jpg" caption="One of my favorite pictures from the trip, taken at the airport in Ushuaia"  >}}
 
 The scenery in Ushuaia was incredible and it's just hard to describe.
 Our guide dropped us off at the prison museum that we wanted to go through.
 Ushuaia was founded as a penal colony (because if the prisoners escaped,
 where were they going to go?) and the old prison is now preserved as a museum.
 
-{{< figure src="img/PXL_20240111_002749530.jpg" caption="Leaving Ushuaia" captionPosition="center" >}}
+{{< figure src="img/PXL_20240111_002749530.jpg" caption="Leaving Ushuaia"  >}}
 
 Now see, the day before we got to Ushuaia, I woke up feeling a bit sick, but my
 parents had brought some cold and flu medicine and I was able to power through the
@@ -104,7 +104,7 @@ prescribed something. Since I was exhibiting COVID-like systems, I was tested,
 _aaaaand_ I tested positive. This was my first time catching COVID and I had just
 scored a one-way ticket to quarantine in our cabin for five days.
 
-{{< figure src="img/PXL_20240111_162131676.jpg" caption="My pile of medicine" captionPosition="center" >}}
+{{< figure src="img/PXL_20240111_162131676.jpg" caption="My pile of medicine"  >}}
 
 All and all, the days blended together and I felt it went by pretty fast.
 I had bought a Nintendo Switch for this trip given the number of sea days and that
@@ -116,41 +116,41 @@ in the room, see how I was feeling, and place room service orders. This made tak
 naps and getting some rest rather challenging. Other than that, while it wasn't fun,
 it wasn't awful.
 
-{{< figure src="img/PXL_20240111_215414498.jpg" caption="Some main dining room, room service" captionPosition="center" >}}
+{{< figure src="img/PXL_20240111_215414498.jpg" caption="Some main dining room, room service"  >}}
 
 Thankfully four out of my five days of quarantine were sea days as we transited the
 Drake Passage and sailed through the Antarctic Peninsula.
 As we got into the Antarctic Peninsula, we sailed through the Schollart Channel and
 to Paradise Bay.
 
-{{< figure src="img/PXL_20240112_143741950.jpg" caption="Unedited picture taken from my cellphone" captionPosition="center" >}}
+{{< figure src="img/PXL_20240112_143741950.jpg" caption="Unedited picture taken from my cellphone"  >}}
 
 {{< figure src="img/PXL_20240112_224348622.jpg" >}}
 
-{{< figure src="img/PXL_20240112_222022948.jpg" caption="We saw a huge number of whales" captionPosition="center" >}}
+{{< figure src="img/PXL_20240112_222022948.jpg" caption="We saw a huge number of whales"  >}}
 
 There weren't many visible penguins on the first day. They're so small that unless
 they are very close to the ship, they're impossible to spot. The colonies are visible
 as penguin poop is pink from the krill they eat, so those are easy to spot.
 
-{{< figure src="img/image-5.png" caption="There is a penguin in this picture" captionPosition="center" >}}
+{{< figure src="img/image-5.png" caption="There is a penguin in this picture"  >}}
 
 While we were in Paradise Bay, one of the onboard naturalists was narrating.
 He flat out said don't bother coming back, you'll be disappointed.
 The weather was absolutely perfect. Calm seas, great visibility, and it never got
 below freezing.
 
-{{< figure src="img/PXL_20240112_160013816.MP.jpg" caption="Proof of location and temperature on the stateroom TV" captionPosition="center" >}}
+{{< figure src="img/PXL_20240112_160013816.MP.jpg" caption="Proof of location and temperature on the stateroom TV"  >}}
 
-{{< figure src="img/PXL_20240112_201425434.jpg" caption="Paradise Bay. It could not have been more picturesque" captionPosition="center" >}}
+{{< figure src="img/PXL_20240112_201425434.jpg" caption="Paradise Bay. It could not have been more picturesque"  >}}
 
-{{< figure src="img/PXL_20240112_194837741.jpg" caption="The ship's bridge for a sense of scale. We were on deck 8." captionPosition="center" >}}
+{{< figure src="img/PXL_20240112_194837741.jpg" caption="The ship's bridge for a sense of scale. We were on deck 8."  >}}
 
 It was incredibly serene down in Antarctica. The snow absorbs a lot of sound, and
 other than our ship quietly cutting through the water and a few other ships
 in the vicinity, there is no evidence of humans. It's very humbling.
 
-{{< figure src="img/PXL_20240112_194053327.jpg" caption="There are two man-made objects in this photo. A smaller cruise ship and Brown Station that was basically invisible without binoculars. It's located to the right of the ship on the first rocky bit that touches the water, just above and to the right of the largest iceberg in the photo." captionPosition="center" >}}
+{{< figure src="img/PXL_20240112_194053327.jpg" caption="There are two man-made objects in this photo. A smaller cruise ship and Brown Station that was basically invisible without binoculars. It's located to the right of the ship on the first rocky bit that touches the water, just above and to the right of the largest iceberg in the photo."  >}}
 
 The scale of the Antarctic mountains really surprised me, it was not something
 I was expecting. The following day, we sailed around Elephant Island where
@@ -158,11 +158,11 @@ Shackleton and his crew were stranded for a while. Again, another beautiful day.
 Here, the penguins were very active, as the bow thrusters of the ship were stirring
 up a lot of plankton so they were swimming around catching food.
 
-{{< figure src="img/PXL_20240113_192608318.jpg" caption="Wonderfully clear day with a blue sky" captionPosition="center" >}}
+{{< figure src="img/PXL_20240113_192608318.jpg" caption="Wonderfully clear day with a blue sky"  >}}
 
-{{< figure src="img/PXL_20240113_230608376.jpg" caption="Amazing cloud formations" captionPosition="center" >}}
+{{< figure src="img/PXL_20240113_230608376.jpg" caption="Amazing cloud formations"  >}}
 
-{{< figure src="img/image-2.png" caption="The penguins are fast and small so this is the best still image I have" captionPosition="center" >}}
+{{< figure src="img/image-2.png" caption="The penguins are fast and small so this is the best still image I have"  >}}
 
 After our amazing two days in Antarctica, we sailed towards the Falklands.
 On my fifth day of quarantine, we made our stop at Port Stanley. Unfortunately,
@@ -179,7 +179,7 @@ scheduled to snorkel/swim with the sea lions in Puerto Madyrn. As we walked down
 pier, I noticed a big mass of white stuff in the water. I quickly realized they were
 jellyfish.
 
-{{< figure src="img/image.png" caption="So so so many jellyfish" captionPosition="center" >}}
+{{< figure src="img/image.png" caption="So so so many jellyfish"  >}}
 
 I was suddenly less excited about swimming. As it turns out, the waves were too
 rough and the wind was blowing in the wrong direction, so no swimming.
@@ -194,12 +194,12 @@ see the sea lions just from the cliffs above.
 
 {{< figure src="img/PXL_20240117_133716411.PANO.jpg" >}}
 
-{{< figure src="img/PXL_20240117_130123587.jpg" caption="The little black ones are the pups" captionPosition="center" >}}
+{{< figure src="img/PXL_20240117_130123587.jpg" caption="The little black ones are the pups"  >}}
 
 On the way back into town, some local horses had formed a roadblock and were
 checking cars for food.
 
-{{< figure src="img/PXL_20240117_135324443.jpg" caption="Clever girl" captionPosition="center" >}}
+{{< figure src="img/PXL_20240117_135324443.jpg" caption="Clever girl"  >}}
 
 On the pier walking back to the ship, we ended up having one of the best views
 of the sea lions. About a half dozen were napping on the steps into the water.
@@ -208,19 +208,19 @@ of the sea lions. About a half dozen were napping on the steps into the water.
 
 The next day, our last port of call was Montevideo, Uruguay.
 
-{{< figure src="img/PXL_20240119_122609586.jpg" caption="Welcome sign at the port" captionPosition="center" >}}
+{{< figure src="img/PXL_20240119_122609586.jpg" caption="Welcome sign at the port"  >}}
 
 In Montevideo, we did a city tour that drove us around and saw
 the sights. Besides driving around
 the city, we stopped at a local market and the country's capitol building.
 
-{{< figure src="img/PXL_20240119_150200522.jpg" caption="The Uruguayan capitol" captionPosition="center" >}}
+{{< figure src="img/PXL_20240119_150200522.jpg" caption="The Uruguayan capitol"  >}}
 
 Afterward, we walked around on our own back towards the port. The day after we
 were there, the city of Montevideo was celebrating its 300th birthday, so there
 was lots of live music and events being set up.
 
-{{< figure src="img/PXL_20240119_154048569.jpg" caption="Pretty local park with live music" captionPosition="center" >}}
+{{< figure src="img/PXL_20240119_154048569.jpg" caption="Pretty local park with live music"  >}}
 
 Lastly, before getting back on the ship, we walked through an indoor shopping mall
 and meat market that smelled heavenly. There was haze in the whole building of the
@@ -240,13 +240,13 @@ and we had to board the tour bus, so we abandoned it and filled out a lost bag f
 The tour first took us through an above-ground cemetery for wealthy people in
 Buenos Aires.
 
-{{< figure src="img/PXL_20240120_131647276.jpg" caption="Lots of crypts, like New Orleans" captionPosition="center" >}}
+{{< figure src="img/PXL_20240120_131647276.jpg" caption="Lots of crypts, like New Orleans"  >}}
 
 Afterward, we were taken to the ranch, where there were traditional dances,
 lots of food, peacocks that were very accustomed to people, and finally a
 Gaucho demonstration on horseback.
 
-{{< figure src="img/PXL_20240120_191056024.jpg" caption="A Gaucho trying to stick the pole through a hanging ring not much larger" captionPosition="center" >}}
+{{< figure src="img/PXL_20240120_191056024.jpg" caption="A Gaucho trying to stick the pole through a hanging ring not much larger"  >}}
 
 Thankfully while at the ranch, our bag was found and sent to the airport
 to meet us there with our other bags.
@@ -257,7 +257,7 @@ to Cedar Rapids ended up being delayed **seven** times, and once
 I got to Cedar Rapids, my car was buried in the parking lot. I had to un-bury
 it in the below-freezing cold by myself to get home.
 
-{{< figure src="img/image-7.png" caption="Flight delays and buried car" captionPosition="center" >}}
+{{< figure src="img/image-7.png" caption="Flight delays and buried car"  >}}
 
 Despite all of the things that went wrong, it was the trip of a lifetime, and my
 parents are already planning on going back. The pictures truly do not do the beauty

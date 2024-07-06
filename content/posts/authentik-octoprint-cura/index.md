@@ -29,7 +29,7 @@ would register as `octoprint.nathanv.app`, however Qt would make it appear as
 `octoprint.nathanv.app:443`. The fix was to setup a duplicate proxy provider
 and application in Authentik with the port number as part of the hostname.
 
-{{< figure src="img/2024-03-03-16-44-31.png" caption="Duplicate proxy provider in Authentik." captionPosition="center" >}}
+{{< figure src="img/2024-03-03-16-44-31.png" caption="Duplicate proxy provider in Authentik."  >}}
 
 Now the OctoPrint web UI and Cura all work correctly with extra authentication.
 
