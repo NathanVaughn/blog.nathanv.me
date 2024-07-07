@@ -5,13 +5,13 @@ description: No long be bound by the shackles of AWS or your filesystem.
 tags:
   - Docker
   - S3
-  - CloudFlare
-title: Making Sonatype Nexus 3 work with CloudFlare R2
+  - Cloudflare
+title: Making Sonatype Nexus 3 work with Cloudflare R2
 ---
 
 This is how to make [Sonatype Nexus 3](https://www.sonatype.com/products/sonatype-nexus-repository)
 work with
-[CloudFlare R2](https://www.cloudflare.com/developer-platform/r2/)
+[Cloudflare R2](https://www.cloudflare.com/developer-platform/r2/)
 (and possibly other S3-compatible blob storage providers).
 
 ## Configuration
@@ -35,8 +35,8 @@ In the web UI, select the following options when setting up a new blob store:
 
 - Region: `us-east-1`. `Default` will not work.
 - Bucket: Your bucket name
-- Access Key ID: Your CloudFlare R2 access key ID. See <https://developers.cloudflare.com/r2/api/s3/tokens/>
-- Secret Access Key: Your CloudFlare R2 secret access key. See <https://developers.cloudflare.com/r2/api/s3/tokens/>
+- Access Key ID: Your Cloudflare R2 access key ID. See <https://developers.cloudflare.com/r2/api/s3/tokens/>
+- Secret Access Key: Your Cloudflare R2 secret access key. See <https://developers.cloudflare.com/r2/api/s3/tokens/>
 - Endpoint URL: `https://<account id>.r2.cloudflarestorage.com/`
 - Use path-style access: False
 
