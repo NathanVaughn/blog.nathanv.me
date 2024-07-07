@@ -39,7 +39,7 @@ prominently display that
 2.4 GHz WiFi is required, but I didn't think anything of it, since all of
 my Wyze devices and MyQ garage door opener only support 2.4 GHz and they work fine.
 
-![](img/Screenshot 2024-05-28 194818.png)
+![](img/Screenshot_2024-05-28_194818.png)
 
 After doing some Googling and seeing
 [this help article](https://help.kidde.com/hc/en/6-kidde/faq/801-how-can-i-ensure-my-wi-fi-network-is-on-a-compatible-2-4-ghz-band/)
@@ -48,7 +48,7 @@ a dual band SSID with 2.4, 5, and 6 GHz bands. Apparently the WPA2-PSK/WPA3-SAE
 authentication that Omada requires you to use with WiFi 6 is not supported by the
 Kidde detector.
 
-![](img/Screenshot 2024-05-28 201138.png "My primary WiFi network setup in the Omada controller that didn't work")
+![](img/Screenshot_2024-05-28_201138.png "My primary WiFi network setup in the Omada controller that didn't work")
 
 ## Fix
 
@@ -56,7 +56,7 @@ I ended up creating a seperate SSID just for this one device in Omada and disabl
 WiFi 6. Leaving 5 GHz enabled still worked fine, it just took issue with WiFi 6 and
 the authentication required.
 
-![](img/Screenshot 2024-05-28 201352.png "'Fixed' seperate SSID just for Kidde")
+![](img/Screenshot_2024-05-28_201352.png "'Fixed' seperate SSID just for Kidde")
 
 ## Afterwards
 
