@@ -13,7 +13,7 @@ userelativecover: true
 There's been a lot of bad reporting on the global IT system outages today, so I want
 to publish some correct information.
 
-## What Happend
+## What Happened
 
 Around 3am Central Standard Time on July 19th, 2024,
 [CrowdStrike](https://www.crowdstrike.com/) pushed a new
@@ -48,7 +48,7 @@ the number of affected computers is likely in the millions.
 {{< video src="vid/order66.mp4" alt="Lego Star Wars Palpatine saying 'Execute Order 66'" >}}
 
 This included Windows servers (physical and virtual) and workstations. Many hospitals,
-emergency services, airlines, and other enterprises (incuding my employer)
+emergency services, airlines, and other enterprises (including my employer)
 were affected.
 [Delta](https://news.delta.com/update/july-19-2024-operation/delta-extends-waiver-support-vendor-it-issues-recovery-continues),
 [United](https://x.com/united/status/1814360333068411053), and
@@ -66,7 +66,7 @@ for the screw up.
 
 Microsoft is not involved in this, despite much media coverage to the contrary.
 While Microsoft had a major outage in the Central US Azure data center the previous
-data (2024-07-18), this was unrelated and coinceidental. The bad update only affected
+day (2024-07-18), this was unrelated and coincidental. The bad update only affected
 Windows systems running CrowdStrike Falcon, not Linux or MacOS, which may be why
 so many people focused on Microsoft.
 
@@ -76,7 +76,7 @@ This is tough. Generally, quickly preventing security threats is considered a go
 thing. No one wants to have their systems compromised because their antivirus software
 took a week to protect against a new
 [0-day](https://en.wikipedia.org/wiki/Zero-day_vulnerability). However, I think many
-organizations are going to re-evaulate how they control software updates in every
+organizations are going to re-evaluate how they control software updates in every
 part of their technology stack, and no longer just the big ticket items like
 operating system or database versions.
 
