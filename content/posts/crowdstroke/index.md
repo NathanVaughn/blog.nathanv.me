@@ -45,6 +45,11 @@ Just about any network-connected Windows system running CrowdStrike Falcon when 
 content update was pushed out was Order 66'ed. While no numbers have been released yet,
 the number of affected computers is likely in the millions.
 
+2024-07-20 update:
+Microsoft currently estimates
+[8.5 million devices](https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/)
+were affected
+
 {{< video src="vid/order66.mp4" alt="Lego Star Wars Palpatine saying 'Execute Order 66'" >}}
 
 This included Windows servers (physical and virtual) and workstations. Many hospitals,
@@ -64,11 +69,16 @@ testing process, but they seem to have
 [taken responsibility](https://www.crowdstrike.com/blog/our-statement-on-todays-outage/)
 for the screw up.
 
+2024-07-20 update: CrowdStrike has posted [more information](https://www.crowdstrike.com/blog/falcon-update-for-windows-hosts-technical-details/)
+on what went wrong, though it is far from complete.
+
 Microsoft is not involved in this, despite much media coverage to the contrary.
 While Microsoft had a major outage in the Central US Azure data center the previous
 day (2024-07-18), this was unrelated and coincidental. The bad update only affected
 Windows systems running CrowdStrike Falcon, not Linux or MacOS, which may be why
 so many people focused on Microsoft.
+
+!["Is this a Microsoft outage?"](img/is-this-a-microsoft-outage.png)
 
 ## How Do We Prevent This
 
