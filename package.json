@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "cross-spawn": "^7.0.3",
-    "hugo-extended": "^0.134.0",
+    "hugo-extended": "^0.135.0",
     "prettier": "^3.3.3"
   },
   "scripts": {
