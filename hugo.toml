@@ -2,9 +2,11 @@
 baseurl         = "/"
 languageCode    = "en-us"
 theme           = "hugo-theme-hello-friend-mod"
-paginate        = 5
 # enableGitInfo   = true
 enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 5
 
 # better resampling algorithm
 [imaging]
