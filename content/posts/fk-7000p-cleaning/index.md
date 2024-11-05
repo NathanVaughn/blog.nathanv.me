@@ -1,10 +1,11 @@
 ---
 author: Nathan Vaughn
-date: "2024-11-06"
-description: Deep dive into a Focus FK-7000P keyboard I bought on eBay.
+date: "2024-08-29"
+description: My attempt at polishing the original door hardware in my century home.
 tags:
-  - mechanical keyboards
-title: FK-7000P Cleaning
+  - Home Improvement
+title: Polishing Antique Brass Door Hardware
+userelativecover: true
 ---
 
 ## Background
@@ -56,7 +57,7 @@ right control key.
 A couple layout oddities:
 
 - The right <kbd>Shift</kbd> key is unusually narrow, and to the right of it is the
-  <kbd>\</kbd> key.
+  <kbd>\\</kbd> key.
 - While this keyboard has "Windows" keys, the left key is blank and the right key has
   an asterisks on it (more on this later).
 - The lock lights are embedded in the relevant keys, instead of the normal location
@@ -64,7 +65,7 @@ A couple layout oddities:
 
 ![Front of keyboard as I got it](img/PXL_20241027_202907929.jpg "Front of keyboard as I got it")
 
-For connectivity, the keyboard has a male 5-pin DIN connector, and a female DB-9
+For connectivity, the keyboard has a male 5-pin DIN connector, and a female DB9
 (RS232) serial connector for the integrated mouse.
 
 ![Connectors](img/PXL_20241027_203344284.jpg "Connectors")
@@ -95,7 +96,7 @@ Easy, right?
 
 Now, let's talk about the most interesting part, the keys and keycaps.
 The key switches are knockoff Alps switches of some kind. They're white, clicky,
-and totally unbranded other than some 4 digit code that is different on almost all of
+and totally unbranded other than some four digit code that is different on almost all of
 the switches.
 
 ![Close up of one of the key switches](img/PXL_20241027_203302022.jpg "Knockoff Alps?")
@@ -110,8 +111,13 @@ The keycaps are all double shot and appear to be ABS.
 
 ![Bottom of a keycap](img/PXL_20241027_203517033.jpg "One keycap removed")
 
-The Print Screen key and Pause key are the only two keycaps that also have side legends.
-These are printed on and are not part of the plastic.
+The <kbd>Print Screen</kbd> key and <kbd>Pause</kbd> key are the only two keycaps
+that also have side legends. These are printed on and are not part of the plastic.
 
 Across all of the keycaps, there are four different colors. Most keycaps have black
-text, but the <kbd>Ctrl</kbd>
+text, but the <kbd>Ctrl</kbd> keys have red text, the <kbd>Shift</kbd> keys have green,
+and the <kbd>Alt</kbd> keys have blue.
+
+![Example of keycap colors](img/PXL_20241027_203354272.jpg "Example of keycap colors")
+
+## Disassembly
