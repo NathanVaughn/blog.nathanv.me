@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "cross-spawn": "^7.0.3",
-    "hugo-extended": "^0.136.0",
+    "hugo-extended": "^0.137.0",
     "prettier": "^3.3.3"
   },
   "scripts": {
@@ -13,6 +13,6 @@
     "install": "git submodule update --init --recursive"
   },
   "devDependencies": {
-    "husky": "^9.1.5"
+    "husky": "^9.1.6"
   }
 }
