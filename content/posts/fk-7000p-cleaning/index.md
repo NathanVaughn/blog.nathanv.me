@@ -36,16 +36,17 @@ A couple interesting things to note about the box:
 
 1. The box says "Windows, OS/2 Ready". OS/2 was publicly announced and released in 1987.
    The first version of Windows was released in 1985. We'll come back to this.
-2. The box also uses the phrase "Super Spacesaver". Generally, the "Spacesacer" term is
+2. The box also uses the phrase "Super Spacesaver". Generally, the "Spacesaver" term is
    used for keyboards without a numpad, such as the
    "[IBM Space Saving Keyboard](https://deskthority.net/wiki/IBM_Space_Saving_Keyboard)".
    This keyboard clearly has a numpad, and I'm not really sure what space they're
    claiming to save.
 3. This keyboard was manufactured by
    [Focus Electronic](https://deskthority.net/wiki/Focus_Electronic).
-   However, there is no branding on the box or keyboard exterior with the "Focus" name,
+   However, there is no branding on the box with the "Focus" name,
    only their "Key Track" branding. The closest thing to a brand name anywhere
-   is the "FK" prefix on the model number.
+   is the "FK" prefix on the model number, or on the sticker on the bottom of the
+   bottom of the keyboard.
 
 ## Keyboard
 
@@ -121,3 +122,81 @@ and the <kbd>Alt</kbd> keys have blue.
 ![Example of keycap colors](img/PXL_20241027_203354272.jpg "Example of keycap colors")
 
 ## Disassembly
+
+To take apart the keyboard, I first removed as many keycaps as feasible. Clearly the
+keycaps have never been removed before, as they took a huge amount of force to pull off
+with my keycap puller. A couple I left on because I was bending the backplate so much.
+
+The <kbd>Shift</kbd> keys, <kbd>Enter</kbd> keys, Numpad <kbd>+</kbd> key,
+<kbd>Backspace</kbd> key, and spacebar all have stabilizers. These all popped out
+without damage as I removed the keycaps, but I would still be careful with them.
+
+To take the top case off, remove three screws on the bottom. Next, you will need
+to undo eight clips: four on the top edge and four on the bottom edge.
+
+![Bottom of the keyboard](img/PXL_20241027_203220996.jpg "Bottom of the keyboard")
+
+I found my [iFixit Opening Tools](https://www.ifixit.com/products/ifixit-opening-tool)
+to be really good at helping get the clips undone without chewing into them.
+Once you get the first one, the rest are easier.
+
+Carefully remove the top case and try not to send the trackball flying. The
+top case is the only thing holding it in place. I may have dropped the trackball
+more than once while disassembling and cleaning this keyboard.
+
+![Keyboard with the keycaps and top case removed](img/PXL_20241027_211052223.jpg "Keyboard with the keycaps and top case removed")
+
+To remove the main PCB from the bottom case, remove four screws. There are two
+on the edges of the trackball assembly, one holding the grounding strap next
+to the connectors, and one holding the backplate to the PCB next to the trackball.
+With these removed, the circuit board can lift out.
+
+![Back of the main PCB](img/PXL_20241029_021020390.jpg "Back of the main PCB")
+
+Be sure to carefully lift out the mouse button daughter board. It is only connected by
+three small wires.
+
+![Mouse button daughter board](img/PXL_20241027_211137501.jpg "Mouse button daughter board")
+
+## Observations
+
+After removing the PCB from the bottom case, I noticed a couple things.
+
+First off, despite the lack of branding on the outside, I counted four different
+Focus logos on the inside.
+
+![Focus logos](img/internal-focus-logos.png "Clockwise from top left: Bottom case, PCB, QC sticker, top case")
+
+The QA sticker in the above collage features a date: December 15th, 1982.
+This is... peculiar. Remember how the box said "Windows, OS/2 Ready" and
+that implies this was made around 1987? This sticker implies this keyboard is
+from 1982 and predates OS/2 by five years.
+
+Adding to the mystery, based on
+[this Wikipedia image](https://en.wikipedia.org/wiki/Intel_MCS-48#/media/File:Intel_8049_Microcontroller.jpg),
+the main microcontroller has a date code representing manufacture in late 1989.
+
+![Main microcontroller](img/PXL_20241027_220826852.jpg "Main microcontroller")
+
+All-in-all, I'm not sure what to make of this. The serial number starts with "93" so
+maybe that's a clue. The PS/2 port was introduced in 1987, so I wouldn't think
+this keyboard could be too far past that. Overall, it's hard to tell the vintage of
+this keyboard.
+
+Next, despite the lock lights being integrated into the key switches and keycaps,
+the plastic mold for the top case still has the cutouts for them. The "Key Track"
+sticker is just slapped over top.
+
+![Cutouts are visible by light shining through](img/PXL_20241027_212841256.MP.jpg "You can see the cutouts by holding it up to a light")
+
+Remember that blank left "Windows" key? The PCB helpfully labels every single key
+in the design. That key is labelled "MACRO".
+
+![MACRO key PCB label](img/PXL_20241027_215455897.jpg "MACRO key PCB label")
+
+On my Windows 11 computer, this registers as
+[`IntlBackslash`](https://www.w3.org/TR/uievents-code/#code-IntlBackslash)
+which is somehow different from a normal backslash.
+
+Making this even more weird, on my Ubuntu 24.04 laptop, this key registered
+as a standard <kbd>\<</kbd> key.
