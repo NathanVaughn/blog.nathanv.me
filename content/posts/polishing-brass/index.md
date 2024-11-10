@@ -57,7 +57,7 @@ initial layers of gunk off. I recommend wearing safety glasses and a mask for th
 the boiling vinegar will smell _terrible_ and hurt your eyes, like chopping an onion.
 After doing this, the hardware will have a matte copper color to it.
 
-{{< video src="vid/PXL_20240708_212455605.mp4" >}}
+{{< video src="vid/PXL_20240708_212455605.mp4" caption="I can still smell this video" >}}
 
 Next, start using the bench grinder with the polishing wheels. I found the orange
 wheel with a little bit of the green compound worked best. Don't use too much of the

@@ -1,16 +1,18 @@
 # general settings
-baseurl         = "/"
-languageCode    = "en-us"
-theme           = "hugo-theme-hello-friend-mod"
+baseurl      = "/"
+languageCode = "en-us"
+theme        = "hugo-theme-hello-friend-mod"
 # enableGitInfo   = true
 enableRobotsTXT = true
+# increase timeout due to image processing
+timeout = "120s"
 
 [pagination]
   pagerSize = 5
 
 # better resampling algorithm
 [imaging]
-  quality = 95
+  quality        = 95
   resampleFilter = "Lanczos"
 
 # markdown settings
@@ -26,9 +28,9 @@ enableRobotsTXT = true
   unsafe = true
 
 [markup.highlight]
-  lineNos = true
+  lineNos            = true
   lineNumbersInTable = false
-  anchorLineNos = true
+  anchorLineNos      = true
   # https://xyproto.github.io/splash/docs/all.html
   style = "vulcan"
 
@@ -46,35 +48,35 @@ enableRobotsTXT = true
   images = ["img/opg.png"]
 
 [privacy]
-  [privacy.youtube]
-    privacyEnhanced = true
+[privacy.youtube]
+  privacyEnhanced = true
 
 [languages]
-  [languages.en]
-      title       = "nathanv@blog"
-      copyright   = '<span>Written by a <a href="https://nathanv.me">human</a>, for humans</span>'
+[languages.en]
+  title     = "nathanv@blog"
+  copyright = '<span>Written by a <a href="https://nathanv.me">human</a>, for humans</span>'
 
-    [languages.en.params]
-      keywords    = ["programming", "tech", "Nathan", "Vaughn", "blog"]
-      description = "Adventures in programming and tech"
-      subtitle    = "Adventures in programming and tech"
-      lastModDisplay = "Last Modified:"
+[languages.en.params]
+  keywords       = ["programming", "tech", "Nathan", "Vaughn", "blog"]
+  description    = "Adventures in programming and tech"
+  subtitle       = "Adventures in programming and tech"
+  lastModDisplay = "Last Modified:"
 
-    # logo parameters
-    [languages.en.params.logo]
-      logoText     = "nathanv@blog"
-      logoHomeLink = "/"
+# logo parameters
+[languages.en.params.logo]
+  logoText     = "nathanv@blog"
+  logoHomeLink = "/"
 
-  # extra links
-  [languages.en.menu]
-    [[languages.en.menu.main]]
-      identifier = "Homepage"
-      name       = "Homepage"
-      weight     = 10
-      url        = "https://nathanv.me"
+# extra links
+[languages.en.menu]
+[[languages.en.menu.main]]
+  identifier = "Homepage"
+  name       = "Homepage"
+  weight     = 10
+  url        = "https://nathanv.me"
 
-    [[languages.en.menu.main]]
-      identifier = "links"
-      name       = "Links"
-      weight     = 20
-      url        = "https://links.nathanv.me/"
+[[languages.en.menu.main]]
+  identifier = "links"
+  name       = "Links"
+  weight     = 20
+  url        = "https://links.nathanv.me/"
