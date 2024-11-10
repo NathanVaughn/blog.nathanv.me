@@ -301,7 +301,7 @@ functions even after cleaning it. I can only describe the key switches themselve
 as "crunchy". The action when pushing them is not smooth like modern mechanical
 switches which have a nice smooth action. These feel like they're rubbing against
 the wall of the switch on every press. This is especially pronounced on the modifier
-keys like <kbd>Tab<kbd>. And because of this, sometimes you have to press
+keys like <kbd>Tab</kbd>. And because of this, sometimes you have to press
 harder to get the switch to move since it feels like it's stuck, and then it goes all
 at once.
 
