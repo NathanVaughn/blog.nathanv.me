@@ -227,6 +227,10 @@ It made a huge difference.
 
 ![Arrow keys and trackball difference](img/before-after-cleaning.png "Arrow keys and trackball difference (click to see full-size)")
 
+I cleaned the rubber contact rollers for the trackball with a cotton swab and isopropyl
+as well. I put a little bit of dry graphite lubricant on the shafts to stop
+them from squeaking, too.
+
 ## Repair
 
 Before putting everything back together, I thought it would be good to ensure
@@ -315,6 +319,11 @@ right side and not centered or two switches, it's very uneven to press.
 {{< audio src="audio/sentence.mp3" caption="FK-7000P" >}}
 
 ## Conclusion
+
+Overall, this keyboard is odd to me. It was clearly not cheap when it was new.
+It has mechanical key switches, double-shot keycaps, an intricate PCB, a metal
+backplate and a well-designed box. However, the key switches are not great
+and the trackball just sucks. It's a weird mix of high and low quality.
 
 Hopefully you found this interesting, and this contributes some information to
 an exceptionally uncommon mechanical keyboard.
