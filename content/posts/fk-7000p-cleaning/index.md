@@ -1,10 +1,13 @@
 ---
 author: Nathan Vaughn
-date: "2024-08-29"
-description: My attempt at polishing the original door hardware in my century home.
+cover: img/PXL_20241031_225003731.jpg
+date: "2024-11-09"
+description: Cleaning a Focus FK-7000P keyboard from the 1980s
+images:
+  - /posts/fk-7000p-cleaning/img/PXL_20241031_225003731.jpg
 tags:
-  - Home Improvement
-title: Polishing Antique Brass Door Hardware
+  - mechanical keyboards
+title: Focus FK-7000P Keyboard Cleaning
 userelativecover: true
 ---
 
@@ -66,34 +69,7 @@ A couple layout oddities:
 
 ![Front of keyboard as I got it](img/PXL_20241027_202907929.jpg "Front of keyboard as I got it")
 
-For connectivity, the keyboard has a male 5-pin DIN connector, and a female DB9
-(RS232) serial connector for the integrated mouse.
-
-![Connectors](img/PXL_20241027_203344284.jpg "Connectors")
-
-The keyboard helpfully came with the original user's guide as well.
-
-![User's Guide Front](img/PXL_20241027_202951582.jpg "User's Guide Front")
-
-![User's Guide Centerfold](img/PXL_20241027_203045194.jpg "User's Guide Centerfold")
-
-![User's Guide Back](/img/PXL_20241027_203123449.jpg "User's Guide Back")
-
-Using the keyboard with a modern computer ended up being less painful than I expected.
-Don't get me wrong, it was still painful, but less than I expected. Process:
-
-1. Set the keyboard to "A" with the switch on the back.
-2. Set the mouse to "2" with the other switch on the back.
-3. Adapt the 5-pin DIN keyboard connector to PS/2. [Non-affiliate link](https://www.amazon.com/dp/B07KVDZWBX/)
-4. Adapt the PS/2 keyboard connector to USB with an active adapter. [Non-affiliate link](https://www.amazon.com/dp/B00IACID2C)
-5. Adapt the DB-9 mouse connector to USB. [Non-affiliate link](https://www.amazon.com/dp/B00AHYJWWG)
-   I only ever tried adapters with the FTDI chipset and had no issues.
-6. In Windows, use Device Manager to force update the drivers for the serial adapter.
-   For me on Windows 11, it then triggered Windows Update to install the drivers.
-
-Easy, right?
-
-![Mess of adapters required to get it to work](img/PXL_20241031_225301921.jpg "Mess of adapters required to get it to work")
+![The NumLock light on](img/PXL_20241031_224651645.jpg "The NumLock light on")
 
 Now, let's talk about the most interesting part, the keys and keycaps.
 The key switches are knockoff Alps switches of some kind. They're white, clicky,
@@ -102,9 +78,11 @@ the switches.
 
 ![Close up of one of the key switches](img/PXL_20241027_203302022.jpg "Knockoff Alps?")
 
+{{< video src="vid/PXL_20241031_224038937.mp4" caption="Switch sound test" autoplay="false" >}}
+
 The three switches for the lock keys are notable exceptions. These three keys
 have a red LED embedded in the switch, are yellow, and are linear switches with no
-click.
+click. The keycaps themselves have little windows embedded in them.
 
 ![Keyboard with most of the keycaps removed](img/PXL_20241027_205320353.jpg "Keyboard with most of the keycaps removed")
 
@@ -130,6 +108,8 @@ with my keycap puller. A couple I left on because I was bending the backplate so
 The <kbd>Shift</kbd> keys, <kbd>Enter</kbd> keys, Numpad <kbd>+</kbd> key,
 <kbd>Backspace</kbd> key, and spacebar all have stabilizers. These all popped out
 without damage as I removed the keycaps, but I would still be careful with them.
+
+![The bottom of the <kbd>Enter</kbd> key](img/PXL_20241031_222049827.jpg "The <kbd>Enter</kbd> key in particular has a complicated stabilizer")
 
 To take the top case off, remove three screws on the bottom. Next, you will need
 to undo eight clips: four on the top edge and four on the bottom edge.
@@ -165,7 +145,7 @@ After removing the PCB from the bottom case, I noticed a couple things.
 First off, despite the lack of branding on the outside, I counted four different
 Focus logos on the inside.
 
-![Focus logos](img/internal-focus-logos.png "Clockwise from top left: Bottom case, PCB, QC sticker, top case")
+![Focus logos](img/internal-focus-logos.jpg "Clockwise from top left: Bottom case, PCB, QC sticker, top case")
 
 The QA sticker in the above collage features a date: December 15th, 1982.
 This is... peculiar. Remember how the box said "Windows, OS/2 Ready" and
@@ -200,3 +180,143 @@ which is somehow different from a normal backslash.
 
 Making this even more weird, on my Ubuntu 24.04 laptop, this key registered
 as a standard <kbd>\<</kbd> key.
+
+Another thing I want to point out is how flimsy the arrow key buttons are.
+There is very little material holding them on and they're designed to flex.
+I don't foresee them surviving a lot of use.
+
+![Arrow key buttons](img/arrow_key_connections.png "Bottom side of the arrow key buttons")
+
+Lastly, the trackball mechanism is pretty old. There are two rotary shafts, one
+below the trackball and one to the right side. Each is spring-loaded and pushes
+into the trackball with a little rubber wheel. The rotation of the shaft is determined
+by an optical encoder. On each shaft is a wheel with lots of slots in it.
+On one side of the wheel are two lights (photodiodes) and on the other side are two
+sensors (phototransistors). As the wheel rotates, the light is either blocked or
+visible, and the sensors are positioned such that while one is blocked the other
+is visible. This allows it to determine the direction of rotation.
+
+![Optical encoder diagram](img/optical-encoder.png "Optical encoder diagram. Image from <https://www.encoder.com/article-what-is-an-optical-encoder>")
+
+In practice, it's not great. If the rubber on the shafts get dirty, they can slip
+and not register movement. Additionally, since the rubber is spring-loaded, it doesn't
+work as well in the opposite direction. After cleaning and putting everything back
+together, I found the trackball doesn't reliably register going left or up.
+With the nature of the encoder wheel, there is a minimum
+rotation required to register movement, too.
+
+![The trackball mechanism](img/PXL_20241027_213923861.jpg "The trackball mechanism")
+
+![HM8350A](img/PXL_20241027_220836303.jpg "This chip interprets the rotary encoders of the trackball")
+
+Here are a couple more photos for posterity:
+
+![The model number embedded in the backplate](img/PXL_20241027_214313564.jpg "The model number embedded in the backplate")
+
+![T74LS174B1](img/PXL_20241027_220831015.jpg "Another chip")
+
+## Cleaning
+
+Finally, let's talk about cleaning. Really, this isn't anything special.
+After taking all the keycaps off, I let them soak in a bath of warm soapy water.
+
+![Keycaps soaking](img/PXL_20241027_221039636.MP.jpg "Scrub a dub dub")
+
+For the keyboard itself, I spent a lot of time with cotton swabs and isopropyl alcohol.
+It made a huge difference.
+
+![Arrow keys and trackball difference](img/before-after-cleaning.png "Arrow keys and trackball difference (click to see full-size)")
+
+## Repair
+
+Before putting everything back together, I thought it would be good to ensure
+that everything worked. I'm glad I did, because numpad <kbd>0</kbd>,
+numpad <kbd>7</kbd>, and both <kbd>Enter</kbd> keys were not working.
+It seemed like an odd combination of keys to not work so I was worried.
+
+Undeterred, I poked and prodded at the PCB with my multimeter. After around 30 minutes,
+I found the problem. Since this is a single-layer PCB, whenever two traces needed
+to cross, they put a wire over the top. One of these under the backplate
+had broken. The broken wire was the ground for this set of keys.
+
+![Broken trace diagram](img/trace-break.png "This is why these keys were affected")
+
+Since removing the backplate was going to required desoldering every single
+switch, I decided to just add a bodge wire.
+
+![Bodge wire](img/PXL_20241029_022912862.jpg "Bodge wire")
+
+This worked and fixed everything!
+
+## Reassembly
+
+Reassembly was basically the opposite of disassembly. When putting the keycaps
+with stabilizers back on, I found it easiest to put the stabilizer on the backplate
+first (since this required a lot of force to press into place), then put the keycap
+on the stabilizer, and then put the keycap on the switch.
+
+![Keycap reassembly](img/PXL_20241031_222410858.jpg "Keycap reassembly")
+
+Also, make sure to get the mouse button daughterboard back to how it was, I found it
+easy to accidentally pinch the wires.
+
+Lastly, when putting the top case back on, it took a surprising amount of force to
+push the clips back together. None of them snapped for me though I was afraid
+they would.
+
+## Usage
+
+For connectivity, the keyboard has a male 5-pin DIN connector, and a female DB9
+(RS232) serial connector for the integrated mouse.
+
+![Connectors](img/PXL_20241027_203344284.jpg "Connectors")
+
+The keyboard helpfully came with the original user's guide as well.
+
+![User's Guide Front](img/PXL_20241027_202951582.jpg "User's Guide Front")
+
+![User's Guide Centerfold](img/PXL_20241027_203045194.jpg "User's Guide Centerfold")
+
+![User's Guide Back](/img/PXL_20241027_203123449.jpg "User's Guide Back")
+
+Using the keyboard with a modern computer ended up being less painful than I expected.
+Don't get me wrong, it was still painful, but less than I expected. Process:
+
+1. Set the keyboard to "A" with the switch on the back.
+2. Set the mouse to "2" with the other switch on the back.
+3. Adapt the 5-pin DIN keyboard connector to PS/2. [Non-affiliate link](https://www.amazon.com/dp/B07KVDZWBX/)
+4. Adapt the PS/2 keyboard connector to USB with an active adapter. [Non-affiliate link](https://www.amazon.com/dp/B00IACID2C)
+5. Adapt the DB-9 mouse connector to USB. [Non-affiliate link](https://www.amazon.com/dp/B00AHYJWWG)
+   I only ever tried adapters with the FTDI chipset and had no issues.
+6. In Windows, use Device Manager to force update the drivers for the serial adapter.
+   For me on Windows 11, it then triggered Windows Update to install the drivers.
+
+Easy, right?
+
+![Mess of adapters required to get it to work](img/PXL_20241031_225301921.jpg "Mess of adapters required to get it to work")
+
+Overall, the experience is ... poor. I forced myself to write this section on the
+keyboard itself to be sure. As mentioned early, the trackball barely
+functions even after cleaning it. I can only describe the key switches themselves
+as "crunchy". The action when pushing them is not smooth like modern mechanical
+switches which have a nice smooth action. These feel like they're rubbing against
+the wall of the switch on every press. This is especially pronounced on the modifier
+keys like <kbd>Tab<kbd>. And because of this, sometimes you have to press
+harder to get the switch to move since it feels like it's stuck, and then it goes all
+at once.
+
+Additionally, the keycaps have a little a
+texture to them that I personally don't like. It's a stark contrast to the smooth
+keycaps of the
+[8BitDo Retro Keyboard](https://www.8bitdo.com/retro-mechanical-keyboard-c64/)
+I've primarily been using lately. Lastly, since the switch for the spacebar is on the
+right side and not centered or two switches, it's very uneven to press.
+
+{{< audio src="audio/sentence.mp3" caption="FK-7000P" >}}
+
+## Conclusion
+
+Hopefully you found this interesting, and this contributes some information to
+an exceptionally uncommon mechanical keyboard.
+
+![FK-7000P](img/PXL_20241031_224619164.jpg)
