@@ -73,8 +73,13 @@ steps:
     displayName: Install uv
 
   # https://dev.to/kummerer94/azure-pipelines-uv-cache-46ii
-  - script: echo "##vso[task.setvariable variable=uv-cache-path;]$(uv cache dir)"
+  - task: PythonScript@0
     displayName: Get uv cache dir
+    inputs:
+      scriptSource: inline
+      script: |
+        import subprocess
+        print(f'##vso[task.setvariable variable=uv-cache-path]{subprocess.getoutput(["uv", "cache", "dir"])}')
 
   - task: Cache@2
     displayName: Cache uv data
