@@ -39,7 +39,7 @@ keyring-provider = "subprocess"
 # name is arbitrary
 name = "azure-devops"
 # replace items in curly braces with your actual org/project/feed names
-# the username must be provided in the URL
+# the username must be provided in the URL and be "VssSessionToken" exactly
 url = "https://VssSessionToken@pkgs.dev.azure.com/{organization}/{project}/_packaging/{feed}/pypi/simple/"
 # if you want to publish a package as well, set the following URL too
 publish-url = "https://pkgs.dev.azure.com/{organization}/{project}/_packaging/{feed}/pypi/upload/"
@@ -61,7 +61,7 @@ env:
   # https://docs.astral.sh/uv/configuration/indexes/#providing-credentials
   # This environment variable must match the name you gave the index,
   # except capitalized and the non-alphanumeric characters replaced with underscores
-  UV_INDEX_AZURE_DEVOPS_USERNAME: VssSessionToken
+  UV_INDEX_AZURE_DEVOPS_USERNAME: x # username is arbitrary
   UV_INDEX_AZURE_DEVOPS_PASSWORD: $(System.AccessToken)
   UV_KEYRING_PROVIDER: disabled
 ```
@@ -73,7 +73,7 @@ on both Windows and Linux runners.
 ```yaml
 variables:
   # These will be set as global environment variables
-  UV_INDEX_AZURE_DEVOPS_USERNAME: VssSessionToken
+  UV_INDEX_AZURE_DEVOPS_USERNAME: x
   UV_KEYRING_PROVIDER: disabled
   # This environment variable keeps the cache in a predictable location
   UV_CACHE_DIR: $(Agent.TempDirectory)/cache/uv
