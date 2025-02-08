@@ -114,7 +114,7 @@ instead:
 - script: uv publish --index azure-devops
   displayName: Publish package
   env:
-    # The environment variable used for publish packages is different
+    # The environment variable used for publishing packages is different
     UV_PUBLISH_TOKEN: $(System.AccessToken)
 ```
 
