@@ -32,7 +32,8 @@ timeout = "120s"
   lineNumbersInTable = false
   anchorLineNos      = true
   # https://xyproto.github.io/splash/docs/all.html
-  style = "vulcan"
+  # was using vulcan before, comments were borderline unreadable
+  style = "doom-one"
 
 # theme parameters
 [params]
