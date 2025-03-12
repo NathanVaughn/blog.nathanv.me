@@ -17,6 +17,10 @@ with Azure Artifacts and Pipelines took a bit of fiddling so I wanted to write
 up my findings to supplement the
 [official documentation](https://docs.astral.sh/uv/guides/integration/alternative-indexes/#azure-artifacts).
 
+03-12-2025 update: Since I wrote this article, the official documentation has been 
+[dramatically improved](https://github.com/astral-sh/uv/commit/368f9a82d9b24b997a3556f3ccdd111d6f483195)
+and covers most of the same content.
+
 ## Setup
 
 Before creating the virtual environment, ensure you have the
