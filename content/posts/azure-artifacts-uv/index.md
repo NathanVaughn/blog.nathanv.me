@@ -122,6 +122,13 @@ instead:
     UV_PUBLISH_TOKEN: $(System.AccessToken)
 ```
 
+Lastly, while
+[the documentation](https://docs.astral.sh/uv/concepts/cache/#caching-in-continuous-integration)
+recommends running `uv cache prune --ci` at the end to remove built wheel files,
+Azure Artifacts is pretty horrifically slow, and it's usually faster to
+use as much cache as possible, rather than re-download files. I would recommend
+omitting this.
+
 ## References
 
 - <https://docs.astral.sh/uv/guides/integration/alternative-indexes/#azure-artifacts>
