@@ -1,0 +1,3 @@
+Trailing slash on void elements has no effect and interacts badly with unquoted attribute values.
+An “img” element must have an “alt” attribute, except under certain conditions. For details, consult guidance on providing text alternatives for images.
+Attribute “loading” not allowed on element “source” at this point.

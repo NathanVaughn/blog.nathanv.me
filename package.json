@@ -11,9 +11,11 @@
     "build": "node build.js",
     "server": "hugo server",
     "prepare": "husky",
-    "install": "git submodule update --init --recursive"
+    "install": "git submodule update --init --recursive",
+    "validate": "html-validator public --ignore-config=html-ignore.txt"
   },
   "devDependencies": {
-    "husky": "^9.1.6"
+    "husky": "^9.1.6",
+    "w3c-html-validator": "^1.9.1"
   }
 }

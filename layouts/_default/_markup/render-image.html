@@ -22,7 +22,7 @@
   <a href="{{ $image_original.Permalink }}">
   <picture>
     {{ if ne $image_webp false }}
-    <source srcset="{{ $image_webp.Permalink }}" type="image/webp" {{ with .Text }} alt="{{ . | plainify }}" {{ end }} style="border-radius: 8px;" loading="lazy">
+    <source srcset="{{ $image_webp.Permalink }}" type="image/webp" {{ with .Text }} {{ end }} style="border-radius: 8px;" loading="lazy">
     {{ end }}
     <img src="{{ $image.Permalink }}" {{ with .Text }} alt="{{ . | plainify }}" {{ end }} style="border-radius: 8px;" loading="lazy">
   </picture>
