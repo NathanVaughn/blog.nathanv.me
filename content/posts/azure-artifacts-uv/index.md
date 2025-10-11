@@ -70,9 +70,40 @@ env:
   UV_KEYRING_PROVIDER: disabled
 ```
 
+Lastly, there are a few options for installing `uv` on the runner. `pipx` is generally
+the easiest, and natively cross-platform, but tends to be somewhat slow as it creates
+a Python virtual environment for a single executable.
+
+```yaml
+- script: pipx install uv
+  displayName: Install uv
+```
+
+Another option is to use the official install script, which is much faster,
+but you need to tell the runner about the new PATH location. Additionally,
+Windows vs Unix path differences makes this a bit more complicated:
+
+```yaml
+# Linux
+- bash: |
+    curl -LsSf https://astral.sh/uv/install.sh | sh
+
+    # uv install directory
+    UV_BIN_PATH="$HOME/.local/bin"
+
+    # if `cygpath` command exists, use it to convert
+    # path to a Windows-style path
+    if command -v cygpath >/dev/null 2>&1; then
+        UV_BIN_PATH=$(cygpath -w "$UV_BIN_PATH")
+    fi
+
+    # tell the runner about the path
+    echo "##vso[task.prependpath]$UV_BIN_PATH"
+  displayName: Install uv
+```
+
 Here is a full example of installing `uv`, persisting the cache, and
-installing packages. This example is cross-platform and should work
-on both Windows and Linux runners.
+installing packages. Use the installation method you prefer.
 
 ```yaml
 variables:
@@ -83,7 +114,13 @@ variables:
   UV_CACHE_DIR: $(Agent.TempDirectory)/cache/uv
 
 steps:
-  - script: pipx install uv
+  - bash: |
+      curl -LsSf https://astral.sh/uv/install.sh | sh
+      UV_BIN_PATH="$HOME/.local/bin"
+      if command -v cygpath >/dev/null 2>&1; then
+          UV_BIN_PATH=$(cygpath -w "$UV_BIN_PATH")
+      fi
+      echo "##vso[task.prependpath]$UV_BIN_PATH"
     displayName: Install uv
 
   - task: Cache@2
