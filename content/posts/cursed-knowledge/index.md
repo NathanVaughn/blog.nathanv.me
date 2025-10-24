@@ -11,6 +11,25 @@ This list is inspired by the [Immich team](https://immich.app/cursed-knowledge)
 and will be updated over time. Items were accurate when written,
 but may become outdated.
 
+## Python Pre-allocated Integers
+
+[Source](https://github.com/satwikkansal/wtfpython?tab=readme-ov-file#-how-not-to-use-is-operator)
+
+The CPython interpreter pre-allocates integer objects in the range -5 to 256.
+This can result in surprising behavior when (mis)using the `is` operator:
+
+```python
+>>> a = 256
+>>> b = 256
+>>> a is b
+True
+
+>>> a = 257
+>>> b = 257
+>>> a is b
+False
+```
+
 ## Sun Grid Engine Qmon Missing Fonts (February 2019)
 
 [Source](http://talby.rcs.manchester.ac.uk/~rcs/_bits/sge_qmon_fonts.html)
@@ -79,21 +98,21 @@ This can make things challenging when your IT department wants to know
 what ports to open in the firewall. The range of port numbers
 potentially used will vary by operating system.
 
-## Command PE Missing DLL (Early 2022)
+## Command Professional Edition Missing DLL (Early 2022)
 
 Source: Hours of my life wasted
 
-[CommandPE](https://command.matrixgames.com/?page_id=3822)
+[Command Professional Edition](https://command.matrixgames.com/?page_id=3822)
 is missing a DLL file in the installer that prevents the command line version
 from running. Downloading the missing DLL from NuGet and placing it in the
 correct directory will fix the issue.
 
-## Command PE Progress Bar (Early 2022)
+## Command Professional Edition Progress Bar (Early 2022)
 
-Source: Countless hours of my life wasted
+Source: Even more hours of my life wasted
 
 The command line version of
-[CommandPE](https://command.matrixgames.com/?page_id=3822)
+[Command Professional Edition](https://command.matrixgames.com/?page_id=3822)
 will crash immediately if it is run in a context where there is no terminal width
 (for example, from a Python `subprocess` call). This is because it tries to draw
 a progress bar and wants to know terminal width to draw it. A terminal window
@@ -106,3 +125,24 @@ must be spawned for every execution.
 The [Qt](https://www.qt.io/) network library may include the port number in the hostname
 (for example, `https://blog.nathanv.me:443`).
 [Authentik](https://goauthentik.io/) will treat this as a completely different host.
+
+## Hiding Tkinter Combobox Popdown (August 2025)
+
+This is less "cursed knowledge" and more "horrible hack", but to my knowledge there
+is no way to prevent a [Tkinter](https://docs.python.org/3/library/tkinter.html)
+combobox from showing it's popdown widget when clicked.
+In the event you want to draw your own custom widget, you can immediately destroy the
+popdown widget after it is shown:
+
+```python
+import tkinter as tk
+from tkinter import ttk
+
+combobox = ttk.Combobox(root, values=["Option 1", "Option 2"])
+
+def on_click(event: tk.Event) -> None:
+    popdown = combobox.tk.call("ttk::combobox::PopdownWindow", str(combobox))
+    combobox.tk.call("destroy", f"{popdown}.f")
+
+combobox.bind("<Button-1>", on_click)
+```
