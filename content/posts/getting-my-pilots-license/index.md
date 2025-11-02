@@ -196,7 +196,7 @@ compatibility between different EFB apps. One of the nicest things about the
 Garmin box is the Bluetooth connectivity. This is really handy with my
 iPad since it kind of "just works", and I can still setup a WiFi hotspot
 off my phone in-flight if I need. I also found it will happily connect to more than
-one-device, so both my instructor and I had our iPads connect automatically.
+one device, so both my instructor and I had our iPads connect automatically.
 
 While the Sentry devices are attractive,
 the fact they lock you in to ForeFlight really sucks. I didn't realize it when I bought
