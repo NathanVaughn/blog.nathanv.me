@@ -146,3 +146,28 @@ def on_click(event: tk.Event) -> None:
 
 combobox.bind("<Button-1>", on_click)
 ```
+
+## Authentik Verified Email (November 2025)
+
+[Source](https://docs.goauthentik.io/releases/2025.10/#default-oauth-scope-mappings)
+
+Authentik version 2025.10 now defaults `email_verified` to False for OIDC providers.
+Some applications require `email_verified` to be set to True to allow login.
+In particular, the
+[Kubernetes API server](https://kubernetes.io/docs/reference/access-authn-authz/authentication/)
+is one of these applications.
+This means any upstream applications like [Headlamp](https://headlamp.dev/) that
+use the Kubernetes API server will also stop working with little indication.
+
+To fix this, in Authentik, go to Customization -> Property Mappings.
+Create a new "Scope Mapping". Set the scope name to "email" and the Expression as:
+
+```python
+return {
+    "email": user.email,
+    "email_verified": True,
+}
+```
+
+In your OIDC providers, add the new scope to the provider scopes under
+"Advanced protocol settings".

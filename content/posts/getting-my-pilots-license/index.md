@@ -364,7 +364,7 @@ and made my own placard.
 
 ![My homemade INOP placard](img/PXL_20240927_162547087.jpg "My homemade INOP placard")
 
-While minor, to me this showed a lack of caring abut compliance with federal
+While minor, to me this showed a lack of caring about compliance with federal
 regulations. If they're too lazy to comply with even the simplest of requirements,
 what else are they skimping on?
 
