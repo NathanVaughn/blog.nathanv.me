@@ -176,7 +176,7 @@ In your OIDC providers, add the new scope to the provider scopes under
 
 [Source](https://stackoverflow.com/a/34907530)
 
-With the Python [xlrd](https://xlrd.readthedocs.io/en/latest/) library
+With the [xlrd](https://xlrd.readthedocs.io/en/latest/) Python library
 used to read old `.xls` files, cells that contain an error
 will silently return the internal error code rather than a string
 such as `"#N/A"`, like [openpyxl](https://openpyxl.readthedocs.io/en/stable/) does.
