@@ -171,3 +171,32 @@ return {
 
 In your OIDC providers, add the new scope to the provider scopes under
 "Advanced protocol settings".
+
+## xlrd Error Codes (November 2025)
+
+[Source](https://stackoverflow.com/a/34907530)
+
+With the Python [xlrd](https://xlrd.readthedocs.io/en/latest/) library
+used to read old `.xls` files, cells that contain an error
+will silently return the internal error code rather than a string
+such as `"#N/A"`, like [openpyxl](https://openpyxl.readthedocs.io/en/stable/) does.
+
+This is a pretty major footgun if your code is expecting the cell to contain a number
+as an actual value versus an error code are indistinguishable.
+
+A way to handle this is as follows:
+
+```python
+from xrld.biffh import XL_CELL_ERROR, error_text_from_code
+
+...
+
+cell = sheet.cell(rowx=row, colx=col)
+value = cell.value
+
+# check if the cell contains an error
+if cell.ctype == XL_CELL_ERROR:
+  # if so, convert the error code into the equivalent error text
+  # https://github.com/python-excel/xlrd/blob/3a19d22014d7b3f3041b7188d21a653c18c709bf/xlrd/biffh.py#L90-L100
+  value = error_text_from_code[value]
+```
