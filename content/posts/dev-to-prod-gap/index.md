@@ -7,7 +7,6 @@ tags:
   - GitHub Actions
   - Python
   - VS Code
-  - GitHub Actions
 title: Closing the dev-to-prod gap
 ---
 
