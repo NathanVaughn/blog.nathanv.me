@@ -156,7 +156,7 @@ awareness benefit is tremendous.
 I did _not_ get a cellular model. This means the iPad does not have a GPS receiver.
 I did this for three reasons. First, I was not intending on getting a SIM card for the
 iPad. I didn't anticipate needing internet access in-flight, and if I do, I can setup
-a hotspot off my phone. Second, I knew I was going to use a separate ADS-B IN receiver
+a hotspot off my phone. Second, I knew I was going to use a separate ADS-B In receiver
 anyways which all include a GPS. Lastly, it was cheaper.
 
 Personally, I like mounting it to the yoke, I found a window suction cup
@@ -171,7 +171,7 @@ and take it with me every time I fly.
 **_Giant_** caveat here, a close friend of mine works at Garmin so I was able to
 get employee pricing on this.
 
-This little box is an ADS-B IN receiver as well as a GPS receiver and backup
+This little box is an ADS-B In receiver as well as a GPS receiver and backup
 AHRS device (provides attitude and altitude information). This is super handy in
 the cockpit and just gives you so much more situational awareness. There's already
 been multiple times flying where this helps me spot traffic I would have never
@@ -184,12 +184,12 @@ The major competitors are:
 - [Stratus](https://stratusbyappareo.com/products/stratus-ads-b-receivers/)
 - [Stratux](https://stratux.me/) (DIY device)
 
-| Device       | Price                           | Connectivity | Protocol    | EFB Apps                  |
-| ------------ | ------------------------------- | ------------ | ----------- | ------------------------- |
-| Garmin GDL50 | $850 ($515 w/ employee pricing) | Bluetooth    | GDL39       | ForeFlight + Garmin Pilot |
-| Sentry       | $599                            | WiFi         | Proprietary | ForeFlight                |
-| Stratus 3    | $749                            | WiFi         | GDL90       | All                       |
-| Stratux      | $440-ish                        | WiFi         | GDL90       | All                       |
+| Device       | Price                           | Connectivity | Protocol    | EFB Apps                               |
+| ------------ | ------------------------------- | ------------ | ----------- | -------------------------------------- |
+| Garmin GDL50 | $850 ($515 w/ employee pricing) | Bluetooth    | GDL39       | ForeFlight + Garmin Pilot + FltPlan Go |
+| Sentry       | $599                            | WiFi         | Proprietary | ForeFlight + Jeppesen FliteDeck Pro    |
+| Stratus 3    | $749                            | WiFi         | GDL90       | Basically All                          |
+| Stratux      | $440-ish                        | WiFi         | GDL90       | Basically All                          |
 
 I ended up choosing the Garmin box because of the employee pricing, connectivity, and
 compatibility between different EFB apps. One of the nicest things about the
