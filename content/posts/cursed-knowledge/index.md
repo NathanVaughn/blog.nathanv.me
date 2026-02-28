@@ -164,7 +164,10 @@ Create a new "Scope Mapping". Set the scope name to "email" and the Expression a
 
 ```python
 return {
-    "email": user.email,
+    "email": request.user.email,
+    # or
+    # "email": user.email,
+    # depending on version
     "email_verified": True,
 }
 ```
