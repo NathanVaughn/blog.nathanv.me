@@ -12,7 +12,8 @@
     "server": "hugo server",
     "prepare": "husky",
     "install": "git submodule update --init --recursive",
-    "validate": "html-validator public --ignore-config=html-ignore.txt"
+    "validate": "html-validator public --ignore-config=html-ignore.txt",
+    "remove-exif": "node exif.js"
   },
   "devDependencies": {
     "husky": "^9.1.6",
