@@ -113,12 +113,16 @@ Additionally, _only tag the image with its base name_. By this, I mean use
 Now that the image is pushed without the tags, the manifest needs to be updated.
 Thankfully, this can be done with the
 [`docker buildx imagetools create`](https://docs.docker.com/reference/cli/docker/buildx/imagetools/create/)
-command. The documentation for this command isn't super obvious, but it takes an image
-name and a list of tags to assign to it. The `--append` flag allows it to _add_ these
-layers to a tag, instead of replacing it. For example:
+command. The documentation for this command isn't super obvious, but it takes
+one or more image name and a list of tags to assign to it.
+
+Be very careful `--append` flag!!. This will add the selected image(s) to this tag,
+and _not_ overwrite things. This can easily end up with multiple images for the same
+platform attached tot he same tag. It's much safer to add all images at once.
+For example:
 
 ```bash
-docker buildx imagetools create --append -t docker.io/library/python:3.14.1 -t docker.io/library/python:3.14 -t docker.io/library/python:3 docker.io/library/python@sha256:abcdef
+docker buildx imagetools create -t docker.io/library/python:3.14.1 -t docker.io/library/python:3.14 -t docker.io/library/python:3 docker.io/library/python@sha256:abcdef docker.io/library/python@sha256:ghijkl
 ```
 
 By adding the `name-canonical=true` earlier, you can reference the image you want by the SHA256 digest.
@@ -165,7 +169,7 @@ jobs:
         uses: docker/bake-action/subaction/matrix@v6
         with:
           # Name of the target in the Bakefile
-          target: webtrees
+          target: target
           fields: platforms
 
       # This is another exercise left to the reader, but this step
@@ -247,7 +251,7 @@ jobs:
       - name: Save Build Metadata
         run: echo '${{ steps.builder.outputs.metadata }}' > build-metadata.json
 
-      # Upload artifact for debugging purposes
+      # Upload artifact for use later
       - name: Upload Build Metadata
         uses: actions/upload-artifact@v6
         with:
@@ -255,16 +259,54 @@ jobs:
           # A unique name is required as this is a matrix step
           name: build-metadata-${{ hashFiles('build-metadata.json') }}
 
+  update-digest:
+    needs:
+      - build
+      - bake
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+        with:
+          version: latest
+
+      # Login to the registries we will be pushing to
+      - name: DockerHub Login
+        uses: docker/login-action@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Github CR Login
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download Build Metadata
+        uses: actions/download-artifact@v8
+        with:
+          pattern: build-metadata-*
+
       # This is another excercise left to the reader. Somehow, this step
       # needs to known what tags to update in the registries. This can be
       # potentially be extracted from the Bake file or by some other means.
       # However, it cannot come from the `builder` step, because that output will
       # not have the tags since it was intentionally stripped to ensure
       # `push-by-digest` works.
+      # Additionally, it needs to know the image digests, though it could extract
+      # those from the downloaded JSON files from the previous step.
       - name: Upload Digest
-        run: |
-          docker buildx imagetools create --append ${{ fromJSON(needs.bake.outputs.metadata).tag_cmd }} $(cat build-metadata.json | jq -r '.webtrees.[ "containerimage.digest" ]')
-          docker buildx imagetools create --append ${{ fromJSON(needs.bake.outputs.metadata).tag_cmd }} $(cat build-metadata.json | jq -r '.webtrees.[ "containerimage.digest" ]')
+        run: python dev/imagetools.py ${{ fromJSON(needs.bake.outputs.metadata).tags }}
 ```
 
 Obviously, there are other ways you can approach this depending on how you tag images,
