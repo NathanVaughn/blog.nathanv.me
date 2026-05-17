@@ -2,7 +2,7 @@
 author: Nathan Vaughn
 cover: img/PXL_20260421_222458211.jpg
 date: "2026-04-21"
-description: Modding my SONY MDR7506 to unchain them from a coiled cord
+description: Modding my Sony MDR7506 to unchain them from a coiled cord
 images:
   - /posts/sony-mdr7506-detachable-cable/img/PXL_20260421_222458211.jpg
 tags:
