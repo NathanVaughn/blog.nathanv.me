@@ -2,7 +2,7 @@
   "dependencies": {
     "cross-spawn": "^7.0.5",
     "exif-be-gone": "^1.5.1",
-    "hugo-extended": "^0.161.0",
+    "hugo-extended": "^0.163.0",
     "prettier": "^3.3.3"
   },
   "scripts": {
@@ -18,5 +18,8 @@
   "devDependencies": {
     "husky": "^9.1.6",
     "w3c-html-validator": "^2.0.2"
+  },
+  "allowScripts": {
+    "hugo-extended": true
   }
 }
