@@ -1,6 +1,6 @@
 # general settings
 baseurl      = "/"
-languageCode = "en-us"
+locale       = "en-us"
 theme        = "hugo-theme-hello-friend-mod"
 # enableGitInfo   = true
 enableRobotsTXT = true
@@ -12,8 +12,16 @@ timeout = "120s"
 
 # better resampling algorithm
 [imaging]
-  quality        = 95
   resampleFilter = "Lanczos"
+
+[imaging.jpeg]
+  quality = 95
+
+[imaging.webp]
+  quality = 95
+
+[imaging.avif]
+  quality = 95
 
 # markdown settings
 [markup]
