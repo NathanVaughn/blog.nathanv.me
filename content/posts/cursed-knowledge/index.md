@@ -203,3 +203,34 @@ if cell.ctype == XL_CELL_ERROR:
   # https://github.com/python-excel/xlrd/blob/3a19d22014d7b3f3041b7188d21a653c18c709bf/xlrd/biffh.py#L90-L100
   value = error_text_from_code[value]
 ```
+
+## Ansys Mechanical ACT Context (Summer 2026)
+
+In Ansys Mechanical ACT extensions, certain global variables like `ExtAPI`
+and `Model` are only available in files which provide functions that
+are tied to button callbacks (and probably other UI callbacks).
+
+The official "solution" is to add initialize functions
+to pass these values to all other files in your extension:
+<https://innovation.ansys.com/public/forum/topics/scripting-in-mechanical-accessing-model>
+
+Personally, I have found that passing these variables to all other
+called functions is easier. For example:
+
+```python
+import helpers
+
+def button_callback(current_analysis):
+  helpers.function(extapi=ExtAPI, model=Model)
+```
+
+## Python 2 Integers (October 2026)
+
+In Python 2, integer operations always return an integer.
+
+```python
+>>> print(1/2)
+0
+```
+
+This is not the case in Python 3.
